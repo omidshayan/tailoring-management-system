@@ -1,0 +1,155 @@
+
+.fish
+{
+    width: 95%;
+    height: auto;
+    margin: 2% 2.5%;
+    border: 2px solid black;
+    box-sizing: border-box;
+    font-size: 2vmin;
+    background: #FFFFFF;
+
+}
+.fish_title1
+{
+    width: 100%;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    font-family: titr;
+    font-size: 4vmin;
+}
+.fish_title2
+{
+    width: 100%;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    font-family: titr;
+    font-size: 3vmin;
+}
+.fish_details
+{
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid black;
+}
+.fish_details_part
+{
+    width: 46%;
+    line-height: 30px;
+    float: right;
+    text-align: center;
+    font-size: 2.5vmin;
+}
+.order
+{
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid black;
+}
+.order_title0
+{
+    width: 5%;
+    line-height: 30px;
+    float: right;
+    text-align: center;
+    font-size: 2.2vmin;
+    font-weight: bold;
+}
+.order_title1
+{
+    width: 10%;
+    line-height: 30px;
+    float: right;
+    text-align: center;
+    font-size: 2.2vmin;
+    font-weight: bold;
+}
+.order_title2
+{
+    width: 40%;
+    line-height: 30px;
+    float: right;
+    text-align: center;
+}
+.order_title3
+{
+    width: 10%;
+    line-height: 30px;
+    float: right;
+    text-align: center;
+    font-size: 2.2vmin;
+    font-weight: bold;
+}
+.order_title1
+{
+    width: 15%;
+    line-height: 30px;
+    float: right;
+    text-align: center;
+    font-size: 2.2vmin;
+    font-weight: bold;
+
+}
+.order_allprice
+{
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid black;
+}
+.order_price
+{
+    line-height: 30px;
+    float: right;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.8vmin;
+    background: #ECEFF1;
+    border: 1px solid black;
+    border-right: none;
+    border-top: none;
+    box-sizing: border-box;
+}
+.order_allprice>.order_price:nth-child(1)
+{
+    width: 45%;
+}
+.order_allprice>.order_price:nth-child(2)
+{
+    border-left: none;
+    width: 55%;
+}
+.order_phone
+{
+    width: 100%;
+    line-height: 30px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-size: 3vmin;
+}
+.order_pardakti
+{
+    background: #ECEFF1;
+    width: 100%;
+    line-height: 30px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-size: 3.1vmin;
+}
+.order_address
+{
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+    font-size: 3vmin;
+    border-bottom: 1px solid black;
+}
+.order_address2
+{
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+    font-size: 2.5vmin;
+    font-weight: bold;
+}
