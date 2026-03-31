@@ -13,8 +13,8 @@ class Login extends Auth
     public function login()
     {
         if (
-            (isset($_SESSION['trs_employee']) && !empty($_SESSION['trs_employee'])) ||
-            (isset($_SESSION['trs_admin']) && !empty($_SESSION['trs_admin']))
+            (isset($_SESSION['tar_employee']) && !empty($_SESSION['tar_employee'])) ||
+            (isset($_SESSION['tar_admin']) && !empty($_SESSION['tar_admin']))
         ) {
             $this->redirect('/');
             exit();
@@ -47,7 +47,7 @@ class Login extends Auth
                 if ($user['state'] == 1 && $user['role'] == 1 && $user['super_admin'] == null) {
 
                     $permissions = $db->select('SELECT `section_name` FROM `permissions` WHERE employee_id = ?', [$user['id']])->fetchAll();
-                    $_SESSION['trs_employee'] = [
+                    $_SESSION['tar_employee'] = [
                         'id' => $user['id'],
                         'name' => $user['employee_name'],
                         'image' => $user['image'],
@@ -60,7 +60,7 @@ class Login extends Auth
                     $expiry = time() + (86400 * 30 * 6);
                     $db->update('employees', $user['id'], ['remember_token', 'expire_remember_token'], [$rand, 1]);
                     if (isset($request['remember_me']) && $request['remember_me'] == 'on') {
-                        setcookie("trs_user", $rand, [
+                        setcookie("tar_user", $rand, [
                             'expires' => $expiry,
                             'path' => '/',
                             'secure' => true,
@@ -74,7 +74,7 @@ class Login extends Auth
                     // check super admin
                 } elseif ($user['state'] == 1 && $user['role'] == 3 && $user['super_admin'] == 3) {
                     $permissions = $db->select('SELECT `en_name` FROM `sections`')->fetchAll();
-                    $_SESSION['trs_admin'] = [
+                    $_SESSION['tar_admin'] = [
                         'id' => $user['id'],
                         'name' => $user['employee_name'],
                         'image' => $user['image'],
@@ -87,7 +87,7 @@ class Login extends Auth
                     $expiry = time() + (86400 * 30 * 6);
                     $db->update('employees', $user['id'], ['remember_token', 'expire_remember_token'], [$rand, 3]);
                     if (isset($request['remember_me']) && $request['remember_me'] == 'on') {
-                        setcookie("trs_user", $rand, [
+                        setcookie("tar_user", $rand, [
                             'expires' => $expiry,
                             'path' => '/',
                             'secure' => true,
@@ -114,9 +114,9 @@ class Login extends Auth
     public function userCheck()
     {
         $db = DataBase::getInstance();
-        if (isset($_COOKIE['trs_user'])) {
+        if (isset($_COOKIE['tar_user'])) {
 
-            $remember_token = $db->select('SELECT * FROM `employees` WHERE remember_token = ?', [$_COOKIE['trs_user']])->fetch();
+            $remember_token = $db->select('SELECT * FROM `employees` WHERE remember_token = ?', [$_COOKIE['tar_user']])->fetch();
 
             if (!$remember_token || !is_array($remember_token)) {
                 $this->redirect('logout');
@@ -129,7 +129,7 @@ class Login extends Auth
 
             if ($remember_token['expire_remember_token'] == 1 && $remember_token['role'] == 1 && $remember_token['state'] == 1) {
                 $permissions = $db->select('SELECT `section_name` FROM `permissions` WHERE employee_id = ?', [$remember_token['id']])->fetchAll();
-                $_SESSION['trs_employee'] = [
+                $_SESSION['tar_employee'] = [
                     'id' => $remember_token['id'],
                     'name' => $remember_token['employee_name'],
                     'image' => $remember_token['image'],
@@ -140,7 +140,7 @@ class Login extends Auth
             } elseif ($remember_token['state'] == 1 && $remember_token['role'] == 3 && $remember_token['super_admin'] == 3) {
 
                 $permissions = $db->select('SELECT `en_name` FROM `sections`')->fetchAll();
-                $_SESSION['trs_admin'] = [
+                $_SESSION['tar_admin'] = [
                     'id' => $remember_token['id'],
                     'name' => $remember_token['employee_name'],
                     'image' => $remember_token['image'],
