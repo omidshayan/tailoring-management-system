@@ -54,7 +54,7 @@
             </a>
           </li>
 
-          <!-- customers -->
+          <!-- employees -->
           <?php if ($this->hasAccess('general')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
@@ -62,7 +62,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
                     <path d="M16.5 13a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 16.5 13m-9 0a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 7.5 13m9 3.5c1.7 0 3 .9 3 2v.5h-15V18c0-1.1 1.3-2 3-2.5V16c.3.1.6.2 1 .2.6 0 1.1-.1 1.5-.2.6-.1 1.1-.1 1.5-.1.6 0 1.1 0 1.5.1.6.1 1 .2 1.5.2zm-5-3c1.9 0 3.5 1.6 3.5 3.5s-1.6 3.5-3.5 3.5S8.5 18.9 8.5 17s1.6-3.5 3.5-3.5zM22 17c0-2.2-2.1-4-5.5-4h-9C4.1 13 2 14.8 2 17v4h20v-4zm-9.5-6C14.7 11 17 8.7 17 5.5S14.7 0 12.5 0 8 2.3 8 5.5s2.3 5.5 4.5 5.5zm0-9C14.1 2 15 3.9 15 5.5S14.1 9 12.5 9s-2.5-1.1-2.5-3.5S10.9 2 12.5 2z" />
                   </svg>
-                  <span class="mr5">مشتریان</span>
+                  <span class="mr5">کارمندان</span>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
                   <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -84,7 +84,7 @@
             </li>
           <?php endif; ?>
 
-          <!-- employees -->
+          <!-- customer -->
           <?php if ($this->hasAccess('general')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
@@ -111,44 +111,7 @@
                   </a>
                 <?php endif; ?>
 
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('account-statement') ?>">
-                    <li class="sidebar-dropdown-menu-item">صورت حساب‌ها</li>
-                  </a>
-                <?php endif; ?>
-
-              </ul>
-            </li>
-          <?php endif; ?>
-
-          <!-- customer -->
-          <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
-              <a href="#" class="d-flex align-center justify-between dddd">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
-                    <path d="M20 3h-2V1h-2v2H8V1H6v2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM4 5h16v12H4V5zm9 6h-2v2h-2v-2H7v-2h2V7h2v2h2v2z" />
-                  </svg>
-                  <span class="mr5">مدیریت مشتریان</span>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
-                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                </svg>
-              </a>
-              <ul class="sidebar-dropdown-menu">
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('add-user') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت مشتری</li>
-                  </a>
-                <?php endif; ?>
-
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('users') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش مشتریان</li>
-                  </a>
-                <?php endif; ?>
-                <!-- 
-                <?php if ($this->hasAccess('general')): ?>
+                <!-- <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('account-statement') ?>">
                     <li class="sidebar-dropdown-menu-item">صورت حساب‌ها</li>
                   </a>

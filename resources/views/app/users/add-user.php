@@ -1,11 +1,11 @@
     <?php
-    $title = 'ثبت مشتری / فروشنده';
+    $title = 'ثبت مشتری جدید';
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php'); ?>
 
     <div class="content">
-        <div class="content-title">ثبت مشتری / فروشنده جدید</div>
+        <div class="content-title">ثبت مشتری جدید</div>
         <div class="box-container">
             <div class="insert">
                 <form action="<?= url('user-store') ?>" method="POST" enctype="multipart/form-data">
