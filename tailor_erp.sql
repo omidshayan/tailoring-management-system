@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 25, 2026 at 02:00 AM
+-- Generation Time: Mar 31, 2026 at 09:17 PM
 -- Server version: 9.1.0
 -- PHP Version: 7.4.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `transport_sis`
+-- Database: `tailor_erp`
 --
 
 -- --------------------------------------------------------
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
 --
 
 INSERT INTO `employees` (`id`, `employee_name`, `father_name`, `phone`, `password`, `email`, `address`, `position`, `branch_id`, `role`, `verify_token`, `forgot_token`, `forgot_token_expire`, `remember_token`, `expire_remember_token`, `image`, `description`, `salary_price`, `who_it`, `state`, `super_admin`, `created_at`, `updated_at`) VALUES
-(48, 'for suport', NULL, '11', '$2y$10$lW.hGj4SfTrsZL.hLRC26.I6oON0TYbMHrAy1xM/jnTebFejeqx5i', 'suport@gmail.com', NULL, '', 0, 3, NULL, '0773271c9258e60f63ae8e753f7f9c17d184d2fb496d594e1279bfd843f09169', '2025-08-11 23:16:53', 'b868e76268be7b8a97676411c5376a49cb1d35dc010dd61b9b763b5a4c0a3e30', '3', NULL, NULL, 2000, 'ali', 1, 3, '2021-09-01 23:53:55', '2026-03-25 04:53:54'),
+(48, 'for suport', NULL, '11', '$2y$10$lW.hGj4SfTrsZL.hLRC26.I6oON0TYbMHrAy1xM/jnTebFejeqx5i', 'suport@gmail.com', NULL, '', 0, 3, NULL, '0773271c9258e60f63ae8e753f7f9c17d184d2fb496d594e1279bfd843f09169', '2025-08-11 23:16:53', '8609fdaa31851cd120c9a1b58e6a84d44d5e8657f332c6c997505396f62b6da2', '3', NULL, NULL, 2000, 'ali', 1, 3, '2021-09-01 23:53:55', '2026-04-01 01:04:48'),
 (98, 'test', 'f test', '0799888888', '$2y$10$B5XPEAsS4ACkERmo9hoLleIo01FNwaWUTfWWUb/C3HNDOfaNxNnZ6', NULL, NULL, '', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ali', 1, NULL, '2026-03-25 04:15:12', '2026-03-25 05:42:55');
 
 -- --------------------------------------------------------
