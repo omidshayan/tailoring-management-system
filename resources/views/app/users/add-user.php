@@ -128,18 +128,11 @@
 
                             <div class="inputs d-flex">
                                 <div class="one">
-                                    <div class="label-form mb5 fs14">شماره مشتری <?= _star ?> </div>
-                                    <input type="text" placeholder="شماره موبایل مشتری را وارد نمایید  ..." name="customer_phone" required>
-                                </div>
-                            </div>
-
-                            <div class="inputs d-flex">
-                                <div class="one">
                                     <div class="label-form mb5 fs14">نام معرف </div>
                                     <input type="text" name="reagent" placeholder="نام معرف را وارد نمایید" />
                                 </div>
                                 <div class="one">
-                                    <div class="label-form mb5 fs14">شماره معرف <?= _star ?> </div>
+                                    <div class="label-form mb5 fs14">شماره معرف</div>
                                     <input type="number" name="reagent_phone" placeholder="شماره معرف را وارد نمایید" />
                                 </div>
                             </div>
