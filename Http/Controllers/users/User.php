@@ -19,7 +19,7 @@ class User extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if (empty($request['user_name']) || empty($request['phone'])) {
+        if (empty($request['name']) || empty($request['phone'])) {
             $this->flashMessage('error', _emptyInputs);
             return;
         }
@@ -30,48 +30,19 @@ class User extends App
             return;
         }
 
-        if ($request['password'] == '') {
-            $request['password'] = $request['phone'];
-        }
+        $request['password'] = $request['phone'];
+
         $request['password'] = $this->hash($request['password']);
 
-        $this->validateInputs($request, ['user_image' => false]);
-
-        $is_customer = isset($request['is_customer']) ? 1 : null;
-        $is_seller = isset($request['is_seller']) ? 1 : null;
-        $request['is_customer'] = $is_customer;
-        $request['is_seller'] = $is_seller;
+        $this->validateInputs($request, ['image' => false]);
 
         // check image
-        $request['user_image'] = $this->handleImageUpload($request['user_image'], 'images/users');
-
-        // Default values for optional fields to avoid undefined index
-        if (!isset($request['branch_id'])) {
-            $request['branch_id'] = null;
-        }
+        $request['image'] = $this->handleImageUpload($request['image'], 'images/users');
 
         try {
             $this->db->beginTransaction();
 
             $this->db->insert('users', array_keys($request), $request);
-
-            $newUserId = $this->db->lastInsertId();
-
-            if (!$newUserId) {
-                $row = $this->db->select('SELECT id FROM users WHERE phone = ?', [$request['phone']])->fetch();
-                $newUserId = $row ? $row->id : null;
-            }
-
-            if (!$newUserId) {
-                throw new \Exception('Cannot get new user id after insert.');
-            }
-
-            $accountBalance = [
-                'branch_id' => $request['branch_id'],
-                'user_id' => $newUserId,
-            ];
-
-            $this->db->insert('account_balances', array_keys($accountBalance), $accountBalance);
 
             $this->db->commit();
 
@@ -112,7 +83,7 @@ class User extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if (empty($request['user_name']) || empty($request['phone'])) {
+        if (empty($request['name']) || empty($request['phone'])) {
             $this->flashMessage('error', _emptyInputs);
             return;
         }
