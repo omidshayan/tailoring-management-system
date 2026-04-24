@@ -107,3 +107,74 @@
 
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const inputs = document.querySelectorAll('.validate-number');
+
+        function convertToEnglishNumber(str) {
+            return str
+                .replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+                .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+        }
+
+        function isValidNumber(value) {
+            if (value.trim() === '') return true;
+
+            const englishValue = convertToEnglishNumber(value);
+
+            return !isNaN(englishValue);
+        }
+
+        function validateInput(input) {
+            input.value = convertToEnglishNumber(input.value);
+
+            if (!isValidNumber(input.value)) {
+                input.classList.add('border-error');
+                return false;
+            }
+
+            input.classList.remove('border-error', 'shake');
+            return true;
+        }
+
+        inputs.forEach(input => {
+
+            input.addEventListener('input', function() {
+                validateInput(input);
+            });
+
+            const form = input.closest('form');
+
+            if (form && !form.dataset.numberValidationBound) {
+
+                form.dataset.numberValidationBound = true;
+
+                form.addEventListener('submit', function(e) {
+
+                    let hasError = false;
+
+                    form.querySelectorAll('.validate-number').forEach(field => {
+
+                        if (!validateInput(field)) {
+                            hasError = true;
+
+                            field.classList.remove('shake');
+                            void field.offsetWidth;
+                            field.classList.add('shake');
+                        }
+
+                    });
+
+                    if (hasError) {
+                        e.preventDefault();
+                    }
+
+                });
+
+            }
+
+        });
+
+    });
+</script>

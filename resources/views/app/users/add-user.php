@@ -17,7 +17,7 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">شماره <?= _star ?></div>
-                            <input type="text" class="checkInput" name="company" placeholder="شماره را وارد نمایید" maxlength="40" />
+                            <input type="text" class="checkInput validate-number" name="company" placeholder="شماره را وارد نمایید" maxlength="40" />
                         </div>
                     </div>
 
