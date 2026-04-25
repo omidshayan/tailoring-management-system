@@ -38,8 +38,6 @@ require_once 'user-agent.php';
 // prints 
 require_once 'prints/prints.php';
 
-// return
-require_once 'returns/return.php';
 
 // notifications
 require_once 'notifications/notifications.php';
@@ -47,8 +45,8 @@ require_once 'notifications/notifications.php';
 // branches
 require_once 'branches/branches.php';
 
-// attributes
-require_once 'basic-sections/attributes.php';
+// models
+require_once 'basic-sections/models.php';
 
 // cron job
 require_once 'cron-job/cron_job.php';
