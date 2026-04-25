@@ -1,5 +1,5 @@
     <?php
-    $title = 'جزئیات مدل: ' . $item['af_model'];
+    $title = 'جزئیات واسکت مدل: ' . $item['vest_model'];
     include_once('resources/views/layouts/header.php');
     include_once('resources/views/scripts/change-status.php');
     ?>
@@ -10,12 +10,12 @@
     </div>
 
     <div class="content">
-        <div class="content-title"> جزئیات مدل: <?= $item['af_model'] ?></div>
+        <div class="content-title"> جزئیات واسکت مدل: <?= $item['vest_model'] ?></div>
         <div class="box-container">
             <div class="details">
                 <div class="detail-item d-flex">
                     <div class="w100 m10 center">نام</div>
-                    <div class="w100 m10 center"><?= $item['af_model'] ?></div>
+                    <div class="w100 m10 center"><?= $item['vest_model'] ?></div>
                 </div>
             </div>
             <div class="details">
@@ -36,14 +36,14 @@
                         <!-- HTML -->
                         <div class="w100 m10 center">
                             <td>
-                                <a href="#" data-url="<?= url('change-status-clothes') ?>" data-id="<?= $item['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
+                                <a href="#" data-url="<?= url('change-status-vest') ?>" data-id="<?= $item['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
                             </td>
                         </div>
                     </div>
                     <div class="w100 m10 center status status-column" id="status"><?= ($item['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
                 </div>
             </div>
-            <a href="<?= url('clothes') ?>">
+            <a href="<?= url('vests') ?>">
                 <div class="btn center p5">برگشت</div>
             </a>
         </div>

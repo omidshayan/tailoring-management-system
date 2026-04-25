@@ -176,10 +176,10 @@ class Models extends App
     {
         $this->middleware(true, true, 'general');
 
-        $item = $this->db->select('SELECT * FROM models WHERE `id` = ?', [$id])->fetch();
+        $item = $this->db->select('SELECT * FROM vests WHERE `id` = ?', [$id])->fetch();
 
         if ($item != null) {
-            require_once(BASE_PATH . '/resources/views/app/basic-sections/models/model-details.php');
+            require_once(BASE_PATH . '/resources/views/app/basic-sections/models/vests/vest-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -192,7 +192,7 @@ class Models extends App
     {
         $this->middleware(true, true, 'general');
 
-        $item = $this->db->select('SELECT * FROM models WHERE id = ?', [$id])->fetch();
+        $item = $this->db->select('SELECT * FROM vests WHERE id = ?', [$id])->fetch();
 
         if (!$item) {
             require BASE_PATH . '/404.php';
@@ -200,7 +200,7 @@ class Models extends App
         }
 
         $newState = $item['status'] == 1 ? 2 : 1;
-        $this->db->update('models', $item['id'], ['status'], [$newState]);
+        $this->db->update('vests', $item['id'], ['status'], [$newState]);
         $this->send_json_response(true, _success, $newState);
     }
 }
