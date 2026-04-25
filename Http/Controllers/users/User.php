@@ -37,12 +37,21 @@ class User extends App
         $this->validateInputs($request, ['image' => false]);
 
         // check image
-        $request['image'] = $this->handleImageUpload($request['image'], 'images/users');
+        $image = $this->handleImageUpload($request['image'], 'images/users');
 
         try {
             $this->db->beginTransaction();
 
-            $this->db->insert('users', array_keys($request), $request);
+            $userInfos = [
+                'name' => $request['name'],
+                'phone' => $request['phone'],
+                'password' => $request['password'],
+                'address' => $request['address'],
+                'image' => $image,
+                'description' => $request['description'],
+                'who_it' => $request['who_it'],
+            ];
+            $this->db->insert('users', array_keys($userInfos), $userInfos);
 
             $this->db->commit();
 

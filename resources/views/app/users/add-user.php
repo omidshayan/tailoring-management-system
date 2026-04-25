@@ -126,7 +126,7 @@
                     <div class="accordion-content">
                         <div class="child-accordioin">
 
-                            <div class="inputs d-flex">
+                            <!-- <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">نام معرف </div>
                                     <input type="text" name="reagent" placeholder="نام معرف را وارد نمایید" />
@@ -135,7 +135,7 @@
                                     <div class="label-form mb5 fs14">شماره معرف</div>
                                     <input type="number" name="reagent_phone" placeholder="شماره معرف را وارد نمایید" />
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="inputs d-flex">
                                 <div class="one">
@@ -151,7 +151,7 @@
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">انتخاب عکس</div>
-                                    <input type="file" id="image" name="user_image" accept="image/jpeg, image/png, image/gif">
+                                    <input type="file" id="image" name="image" accept="image/jpeg, image/png, image/gif">
                                 </div>
                             </div>
                             <div id="imagePreview" class="mb100">
