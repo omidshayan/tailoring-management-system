@@ -52,6 +52,27 @@ class User extends App
                 'who_it' => $request['who_it'],
             ];
             $this->db->insert('users', array_keys($userInfos), $userInfos);
+            $lastId = $this->db->lastInsertId();
+
+            $measurements = [
+                'user_id' => $lastId,
+                'af_height'      => $request['af_height'] ?? null,
+                'af_sholder'     => $request['af_sholder'] ?? null,
+                'af_sleeve'      => $request['af_sleeve'] ?? null,
+                'af_ice'         => $request['af_ice'] ?? null,
+                'af_hug'         => $request['af_hug'] ?? null,
+                'af_skirt'       => $request['af_skirt'] ?? null,
+                'af_chatty'      => $request['af_chatty'] ?? null,
+                'af_pants'       => $request['af_pants'] ?? null,
+                'af_cloth'       => $request['af_cloth'] ?? null,
+                'af_bar_pants'   => $request['af_bar_pants'] ?? null,
+                'af_desc'        => $request['af_desc'] ?? null,
+                'va_height'  => $request['va_height'] ?? null,
+                'va_sholder' => $request['va_sholder'] ?? null,
+                'va_chatty'  => $request['va_chatty'] ?? null,
+                'va_desc'    => $request['va_desc'] ?? null,
+            ];
+            $this->db->insert('measurements', array_keys($measurements), $measurements);
 
             $this->db->commit();
 

@@ -28,66 +28,66 @@
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">قد</div>
-                                    <input type="text" placeholder=" اندازه قد را وارد نمایید ..." name="customer_height">
+                                    <input type="text" placeholder=" اندازه قد را وارد نمایید ..." name="af_height">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">شانه</div>
-                                    <input type="text" placeholder="اندازه شانه را وارد نمایید ..." name="customer_sholder">
+                                    <input type="text" placeholder="اندازه شانه را وارد نمایید ..." name="af_sholder">
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">آستین</div>
-                                    <input type="text" placeholder="اندازه آستین را وارد نمایید ..." name="customer_sleeve">
+                                    <input type="text" placeholder="اندازه آستین را وارد نمایید ..." name="af_sleeve">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">هخن</div>
-                                    <input type="text" placeholder="اندازه هخن را وارد نمایید ..." name="customer_ice">
+                                    <input type="text" placeholder="اندازه هخن را وارد نمایید ..." name="af_ice">
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">بغل</div>
-                                    <input type="text" placeholder="اندازه بغل را وارد نمایید ..." name="customer_hug">
+                                    <input type="text" placeholder="اندازه بغل را وارد نمایید ..." name="af_hug">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">دامن</div>
-                                    <input type="text" placeholder="اندازه دامن را وارد نمایید ..." name="customer_skirt">
+                                    <input type="text" placeholder="اندازه دامن را وارد نمایید ..." name="af_skirt">
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">چتی</div>
-                                    <input type="text" placeholder="اندازه چتی را وارد نمایید ..." name="customer_chatty">
+                                    <input type="text" placeholder="اندازه چتی را وارد نمایید ..." name="af_chatty">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">شلوار</div>
-                                    <input type="text" placeholder="اندازه شلوار را وارد نمایید ..." name="customer_pants">
+                                    <input type="text" placeholder="اندازه شلوار را وارد نمایید ..." name="af_pants">
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">پارچه</div>
-                                    <input type="text" placeholder="اندازه پارچه را وارد نمایید ..." name="customer_cloth">
+                                    <input type="text" placeholder="اندازه پارچه را وارد نمایید ..." name="af_cloth">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">بر‌ شلوار</div>
-                                    <input type="text" placeholder="اندازه بر شلوار را وارد نمایید ..." name="customer_bar_pants">
+                                    <input type="text" placeholder="اندازه بر شلوار را وارد نمایید ..." name="af_bar_pants">
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">مدل</div>
-                                    <input type="text" placeholder="مدل را وارد نمایید ..." name="customer_model">
+                                    <input type="text" placeholder="مدل را وارد نمایید ..." name="af_model">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">توضیحات دوخت</div>
-                                    <input type="type" placeholder="توضیحات را وارد نمایید ..." name="customer_size_desc">
+                                    <input type="type" placeholder="توضیحات را وارد نمایید ..." name="af_desc">
                                 </div>
                             </div>
 
@@ -101,21 +101,21 @@
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">قد</div>
-                                    <input type="text" placeholder="اندزه قد را وارد نمایید ..." name="vaskat_height">
+                                    <input type="text" placeholder="اندزه قد را وارد نمایید ..." name="va_height">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">شانه</div>
-                                    <input type="text" placeholder="اندازه شانه را وارد نمایید ..." name="vaskat_sholder">
+                                    <input type="text" placeholder="اندازه شانه را وارد نمایید ..." name="va_sholder">
                                 </div>
                             </div>
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">چتی</div>
-                                    <input type="text" placeholder="اندازه چتی را وارد نمایید ..." name="vaskat_chatty">
+                                    <input type="text" placeholder="اندازه چتی را وارد نمایید ..." name="va_chatty">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">توضیحات واسکت</div>
-                                    <input type="text" placeholder="توضیحات را وارد نمایید ..." name="vaskat_desc">
+                                    <input type="text" placeholder="توضیحات را وارد نمایید ..." name="va_desc">
                                 </div>
                             </div>
 
@@ -125,17 +125,6 @@
                     <div class="accordion-title color-orange">جزئیات بیشتر</div>
                     <div class="accordion-content">
                         <div class="child-accordioin">
-
-                            <!-- <div class="inputs d-flex">
-                                <div class="one">
-                                    <div class="label-form mb5 fs14">نام معرف </div>
-                                    <input type="text" name="reagent" placeholder="نام معرف را وارد نمایید" />
-                                </div>
-                                <div class="one">
-                                    <div class="label-form mb5 fs14">شماره معرف</div>
-                                    <input type="number" name="reagent_phone" placeholder="شماره معرف را وارد نمایید" />
-                                </div>
-                            </div> -->
 
                             <div class="inputs d-flex">
                                 <div class="one">
