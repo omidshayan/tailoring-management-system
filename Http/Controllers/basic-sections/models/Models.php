@@ -90,7 +90,7 @@ class Models extends App
     {
         $this->middleware(true, true, 'general');
 
-        $item = $this->db->select('SELECT * FROM locations WHERE id = ?', [$id])->fetch();
+        $item = $this->db->select('SELECT * FROM models WHERE id = ?', [$id])->fetch();
 
         if (!$item) {
             require BASE_PATH . '/404.php';
@@ -98,7 +98,7 @@ class Models extends App
         }
 
         $newState = $item['status'] == 1 ? 2 : 1;
-        $this->db->update('locations', $item['id'], ['status'], [$newState]);
+        $this->db->update('models', $item['id'], ['status'], [$newState]);
         $this->send_json_response(true, _success, $newState);
     }
 }

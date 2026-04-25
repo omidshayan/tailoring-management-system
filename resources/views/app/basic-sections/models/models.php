@@ -52,7 +52,7 @@ include_once('public/alerts/toastr.php');
                 foreach ($data as $item) {
                 ?>
                     <tr>
-                        <td class="color-orange"><?= $number ?></td>
+                        <td class="color-orange <?= statusColor($item['status']) ?>"><?= $number ?></td>
                         <td><?= $item['af_model'] ?></td>
                         <td>
                             <a href="<?= url('edit-clothes/' . $item['id']) ?>" class="color-orange">
