@@ -623,4 +623,14 @@ class App
                         }
                 }
         }
+
+        // back link 
+        function back_link($route)
+        {
+                return '
+                <div class="fs14 text-underline center">
+                <a href="' . url($route) . '" class="color">برگشت</a>
+                </div>
+                ';
+        }
 }

@@ -33,14 +33,14 @@ class Models extends App
         }
     }
 
-    // edit locations page
-    public function editLocation($id)
+    // edit clothes page
+    public function editClothes($id)
     {
         $this->middleware(true, true, 'general');
 
-        $item = $this->db->select('SELECT * FROM locations WHERE `id` = ?', [$id])->fetch();
+        $item = $this->db->select('SELECT * FROM models WHERE `id` = ?', [$id])->fetch();
         if ($item != null) {
-            require_once(BASE_PATH . '/resources/views/app/basic-sections/locations/edit-location.php');
+            require_once(BASE_PATH . '/resources/views/app/basic-sections/models/edit-model.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -48,8 +48,8 @@ class Models extends App
         }
     }
 
-    // edit company Store
-    public function editLocationStore($request, $id)
+    // edit clothes Store
+    public function editClothesStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
@@ -69,8 +69,8 @@ class Models extends App
         $this->flashMessageTo('success', _success, url('locations'));
     }
 
-    // locations detiles page
-    public function locationDetails($id)
+    // clothes detiles page
+    public function clothesDetails($id)
     {
         $this->middleware(true, true, 'general');
 
@@ -87,8 +87,8 @@ class Models extends App
         }
     }
 
-    // change status locations
-    public function changeStatusLocation($id)
+    // change status clothes
+    public function changeStatusClothes($id)
     {
         $this->middleware(true, true, 'general');
 
