@@ -2,7 +2,7 @@
 require_once 'Http/Controllers/basic-sections/attributes/Attribute.php';
 
 // attributes routes
-uri('attributes', 'App\Attribute', 'attributes');
+uri('clothes', 'App\Models', 'afClothes');
 uri('attribute-store', 'App\Attribute', 'attributeStore', 'POST');
 uri('edit-attribute/{id}', 'App\Attribute', 'editAttribute');
 uri('edit-attribute-store/{id}', 'App\Attribute', 'editAttributeStore', 'POST');

@@ -199,7 +199,7 @@
           <?php endif; ?> -->
 
           <!-- basic sections -->
-          <!-- <?php if ($this->hasAccess('general')): ?>
+          <?php if ($this->hasAccess('general')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
@@ -215,23 +215,18 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('products-category') ?>">
-                    <li class="sidebar-dropdown-menu-item">دسته‌بندی‌های محصولات</li>
+                  <a href="<?= url('clothes') ?>">
+                    <li class="sidebar-dropdown-menu-item">مدیریت مدل‌های لباس</li>
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('attributes') ?>">
-                    <li class="sidebar-dropdown-menu-item">ویژه‌گی‌‌های محصول</li>
-                  </a>
-                <?php endif; ?>
-                <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('companies') ?>">
-                    <li class="sidebar-dropdown-menu-item">مدیریت کمپانی‌ها</li>
+                  <a href="<?= url('vests') ?>">
+                    <li class="sidebar-dropdown-menu-item">مدیریت مدل‌های واسکت</li>
                   </a>
                 <?php endif; ?>
               </ul>
             </li>
-          <?php endif; ?> -->
+          <?php endif; ?>
 
           <!-- settings -->
           <!-- <?php if ($this->hasAccess('general')): ?>
