@@ -1,10 +1,10 @@
 <?php
-require_once 'Http/Controllers/basic-sections/attributes/Attribute.php';
+require_once 'Http/Controllers/basic-sections/models/Models.php';
 
-// attributes routes
-uri('clothes', 'App\Models', 'afClothes');
-uri('attribute-store', 'App\Attribute', 'attributeStore', 'POST');
-uri('edit-attribute/{id}', 'App\Attribute', 'editAttribute');
-uri('edit-attribute-store/{id}', 'App\Attribute', 'editAttributeStore', 'POST');
-uri('attribute-details/{id}', 'App\Attribute', 'attributeDetails');
-uri('change-status-attribute/{id}', 'App\Attribute', 'changeStatusAttribute');
+// Models routes
+uri('clothes', 'App\Models', 'clothes');
+uri('clothes-store', 'App\Models', 'clothesStore', 'POST');
+uri('edit-clothes/{id}', 'App\Models', 'editClothes');
+uri('edit-clothes-store/{id}', 'App\Models', 'editClothesStore', 'POST');
+uri('clothes-details/{id}', 'App\Models', 'clothesDetails');
+uri('change-status-clothes/{id}', 'App\Models', 'changeStatusClothes');
