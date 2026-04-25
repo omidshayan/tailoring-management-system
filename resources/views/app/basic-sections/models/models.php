@@ -14,14 +14,14 @@ include_once('public/alerts/toastr.php');
     $help_content = _help_desc;
     include_once('resources/views/helps/help.php');
     ?>
-    <!-- start page content -->
+
     <div class="box-container">
         <div class="insert">
-            <form id="myForm" action="model-store" method="POST">
+            <form id="myForm" action="<?= url('clothes-store') ?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
                         <div class="label-form mb5 fs14">نام مدل <?= _star ?> </div>
-                        <input type="text" name="company_name" class="checkInput" value="<?= old('name') ?>" placeholder="نام  مدل را وارد نمایید" autocomplete="off" />
+                        <input type="text" name="af_model" class="checkInput" value="<?= old('af_models') ?>" placeholder="نام  مدل را وارد نمایید" autocomplete="off" autofocus />
                     </div>
                 </div>
 

@@ -14,21 +14,21 @@ class Models extends App
         require_once(BASE_PATH . '/resources/views/app/basic-sections/models/models.php');
     }
 
-    // store locations
-    public function locationStore($request)
+    // store model
+    public function clothesStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['location_name'] == '') {
+        if ($request['af_model'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $company = $this->db->select('SELECT location_name FROM locations WHERE `location_name` = ?', [$request['location_name']])->fetch();
+        $item = $this->db->select('SELECT af_model FROM models WHERE `af_model` = ?', [$request['af_model']])->fetch();
 
-        if (!empty($company['location_name'])) {
+        if (!empty($item['af_model'])) {
             $this->flashMessage('error', _repeat);
         } else {
-            $this->db->insert('locations', array_keys($request), $request);
+            $this->db->insert('models', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
