@@ -1,12 +1,12 @@
 <?php
-$title = 'مدیریت مدل‌های لباس';
+$title = 'مدیریت مدل‌های واسکت';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
 
 <div class="content">
-    <div class="content-title"> مدیریت مدل‌های لباس
+    <div class="content-title"> مدیریت مدل‌های واسکت
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
