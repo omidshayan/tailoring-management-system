@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 31, 2026 at 09:17 PM
+-- Generation Time: Apr 25, 2026 at 07:19 PM
 -- Server version: 9.1.0
 -- PHP Version: 7.4.33
 
@@ -221,6 +221,75 @@ INSERT INTO `expenses_categories` (`id`, `cat_name`, `description`, `who_it`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `measurements`
+--
+
+DROP TABLE IF EXISTS `measurements`;
+CREATE TABLE IF NOT EXISTS `measurements` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `af_height` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `af_sholder` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `af_sleeve` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `af_ice` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `af_hug` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `af_skirt` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `af_chatty` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `af_pants` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `af_cloth` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `af_bar_pants` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `va_height` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `va_sholder` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `va_chatty` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `va_desc` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `af_desc` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` tinyint DEFAULT '1',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `measurements`
+--
+
+INSERT INTO `measurements` (`id`, `user_id`, `af_height`, `af_sholder`, `af_sleeve`, `af_ice`, `af_hug`, `af_skirt`, `af_chatty`, `af_pants`, `af_cloth`, `af_bar_pants`, `va_height`, `va_sholder`, `va_chatty`, `va_desc`, `af_desc`, `status`, `created_at`, `updated_at`) VALUES
+(1, 15, '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 1, '2026-04-25 18:08:01', NULL),
+(2, 16, '3453', 'dsfd', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 1, '2026-04-25 18:08:10', NULL),
+(3, 17, 'dfd', 'sdfd', 'df', 'sdfd', 'sdfsd', 'dfd', 'df', 'sdf', 'sdfsd', 'dfd', 'dsf', 'df', 'df', 'df', NULL, 1, '2026-04-25 18:09:13', NULL),
+(4, 18, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, '2026-04-25 18:12:09', NULL),
+(5, 19, '33 shkjd', 'df', '323', '43', '34534', '34534', '345', '453', '345', '453q', '33', '34', '34543', '345sldkfj saj;f  j;kdsjf df dsaf dsf d', '345345kljfgkljfskldjf sdfj sdafds fd ', 1, '2026-04-25 18:12:53', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `models`
+--
+
+DROP TABLE IF EXISTS `models`;
+CREATE TABLE IF NOT EXISTS `models` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `af_model` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `models`
+--
+
+INSERT INTO `models` (`id`, `af_model`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(1, 'jadid', 2, 'for suport', '2026-04-25 18:37:06', '2026-04-25 22:53:38'),
+(2, 'adsfdf', 1, 'for suport', '2026-04-25 18:37:19', NULL),
+(3, 'ddd', 1, 'for suport', '2026-04-25 18:37:21', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notifications`
 --
 
@@ -293,6 +362,43 @@ INSERT INTO `not_access_logs` (`id`, `user_id`, `section_name`, `page_address`, 
 (23, 48, 'students', '/afghan-zar-soft/expense-cat-store', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', 1, '2025-08-13 17:59:02', NULL),
 (24, 48, 'students', '/afghan-zar-soft/change-status-expense-cat/5', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', 1, '2025-08-13 18:31:37', NULL),
 (25, 48, 'genedral', '/transport-sis/change-status-expense/14', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', 1, '2026-03-25 06:20:49', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `total_amount` decimal(15,2) NOT NULL,
+  `delivery_date` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+DROP TABLE IF EXISTS `order_items`;
+CREATE TABLE IF NOT EXISTS `order_items` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `model_id` int NOT NULL,
+  `amount` decimal(15,2) NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -406,7 +512,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `address` varchar(126) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `image` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `father_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `description` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `state` int NOT NULL DEFAULT '1',
   `who_it` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -414,15 +519,22 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `phone` (`phone`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `phone`, `email`, `password`, `address`, `image`, `father_name`, `description`, `state`, `who_it`, `created_at`, `updated_at`) VALUES
-(3, 'ali jan ', '22', NULL, NULL, 'ivhj', '2025-08-13-16-58-29_689c84edafb71.jpg', 'reza', 'ajf', 1, 'ali', '2025-08-13 16:15:20', '2025-08-13 17:19:39'),
-(4, 'ali jan', '223', NULL, NULL, 'heart', '2025-08-13-16-50-41_689c831982a7e.jpg', 'reza', 'desc for ali jan', 1, 'ali', '2025-08-13 16:16:01', '2025-08-13 16:52:58');
+INSERT INTO `users` (`id`, `name`, `phone`, `email`, `password`, `address`, `image`, `description`, `state`, `who_it`, `created_at`, `updated_at`) VALUES
+(17, 'sdafsdf', '444343', NULL, '$2y$10$y2ZarFa26MbLW3Vl6E8KseJbJmpPIlIe3dXDetTm4kw5YDaD6f1Zu', '', NULL, '', 1, 'for suport', '2026-04-25 18:09:13', NULL),
+(16, 'asdfsdf', '456565', NULL, '$2y$10$umF8RBxpfsS0jVEjKUqIYOT7X/Vzp/zOeQJU5twB6OZR13hFqmU.2', '', NULL, '', 1, 'for suport', '2026-04-25 18:08:10', NULL),
+(15, 'dsfsdaf', '6565', NULL, '$2y$10$7VANrtNYg/fa6tPsIC83QepJVX767QVtU.em/3b30OylJzd84a1dS', '', NULL, '', 1, 'for suport', '2026-04-25 18:08:01', NULL),
+(14, 'dsfsdf', '34343', NULL, '$2y$10$xmD0uPZpZneO/OSheOfQPew/yW0/drpIUsgwfCSX/EJNbgR3hwlO6', '', NULL, '', 1, 'for suport', '2026-04-25 18:06:25', NULL),
+(13, 'dsafsdf', '333', NULL, '$2y$10$pLx/k1H96O4GzQfWr0TrhuSFJNQoe9cHT.4xyaIDNxS7HfmOa2e3a', '', NULL, '', 1, 'for suport', '2026-04-25 18:05:30', NULL),
+(12, 'sadfdsfdf', '454545', NULL, '$2y$10$VAeiHbMgb6Mxjv/7of.TIu4dJHhxAizpkwsjl3Q0MNR9MMyXyvt6a', '', '2026-04-25-17-47-18_69ecbedecb471.jpg', '', 1, 'for suport', '2026-04-25 17:47:18', NULL),
+(11, 'aaaaaa', '3434', NULL, '$2y$10$hBsvg6bhqFyrTexYFh1hce1a3lVriPPto7gd0DAJ3cNQ81BsPuCK.', '', NULL, '', 1, 'for suport', '2026-04-25 17:47:09', NULL),
+(18, 'ahmad jan', '334455', NULL, '$2y$10$kL4jDvHhjMIPzSwtI5H6xuCwEFcslETjb1mkOuiH0IKWFRLlyLDf6', '', NULL, '', 1, 'for suport', '2026-04-25 18:12:09', NULL),
+(19, 'ali jan', '1111', NULL, '$2y$10$Glvj00HVEbfdvKeWkxIhie6TGRnUhGENpTqC9vwXO5IKCHFhdmCq.', 'address dfsdf sdf', '2026-04-25-18-12-53_69ecc4dd423f2.jpg', 'descr fomr', 1, 'for suport', '2026-04-25 18:12:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -451,6 +563,31 @@ CREATE TABLE IF NOT EXISTS `user_licenses` (
 
 INSERT INTO `user_licenses` (`id`, `user_id`, `branch_id`, `license_key`, `start_date`, `end_date`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
 (1, 48, 48, 'sadfa3243edfdsfd', '2025-09-04', '2026-09-17', 1, NULL, '2025-09-17 12:37:57', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vests`
+--
+
+DROP TABLE IF EXISTS `vests`;
+CREATE TABLE IF NOT EXISTS `vests` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `vest_model` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `vests`
+--
+
+INSERT INTO `vests` (`id`, `vest_model`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(1, 'دخص', 2, 'for suport', '2026-04-25 22:49:36', '2026-04-25 22:53:51'),
+(2, 'f', 1, 'for suport', '2026-04-25 22:49:38', '2026-04-25 22:54:00');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
