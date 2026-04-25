@@ -106,7 +106,7 @@ class Models extends App
 
     ////////////// vests /////////////////
 
-        // Vests page
+    // Vests page
     public function vests()
     {
         $this->middleware(true, true, 'general', true);
@@ -121,16 +121,16 @@ class Models extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['af_model'] == '') {
+        if ($request['vest_model'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $item = $this->db->select('SELECT af_model FROM models WHERE `af_model` = ?', [$request['af_model']])->fetch();
+        $item = $this->db->select('SELECT vest_model FROM vests WHERE `vest_model` = ?', [$request['vest_model']])->fetch();
 
-        if (!empty($item['af_model'])) {
+        if (!empty($item['vest_model'])) {
             $this->flashMessage('error', _repeat);
         } else {
-            $this->db->insert('models', array_keys($request), $request);
+            $this->db->insert('vests', array_keys($request), $request);
             $this->flashMessage('success', _success);
         }
     }
@@ -204,4 +204,3 @@ class Models extends App
         $this->send_json_response(true, _success, $newState);
     }
 }
-
