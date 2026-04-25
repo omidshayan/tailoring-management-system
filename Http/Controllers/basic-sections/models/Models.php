@@ -54,19 +54,19 @@ class Models extends App
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['location_name'] == '') {
+        if ($request['af_model'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $item = $this->db->select('SELECT * FROM locations WHERE `location_name` = ?', [$request['location_name']])->fetch();
+        $item = $this->db->select('SELECT * FROM models WHERE `af_model` = ?', [$request['af_model']])->fetch();
 
         if ($item) {
             if ($item['id'] != $id) {
-                $this->flashMessage('error', 'نام کمپانی وارد شده تکراری است.');
+                $this->flashMessage('error', 'نام مدل وارد شده تکراری است.');
             }
         }
-        $this->db->update('locations', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('locations'));
+        $this->db->update('models', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('clothes'));
     }
 
     // clothes detiles page
@@ -74,12 +74,10 @@ class Models extends App
     {
         $this->middleware(true, true, 'general');
 
-        $branchId = $this->getBranchId();
-
-        $item = $this->db->select('SELECT * FROM locations WHERE `id` = ?', [$id])->fetch();
+        $item = $this->db->select('SELECT * FROM models WHERE `id` = ?', [$id])->fetch();
 
         if ($item != null) {
-            require_once(BASE_PATH . '/resources/views/app/basic-sections/locations/location-details.php');
+            require_once(BASE_PATH . '/resources/views/app/basic-sections/models/model-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
