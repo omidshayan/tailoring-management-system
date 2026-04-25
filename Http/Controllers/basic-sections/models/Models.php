@@ -111,9 +111,9 @@ class Models extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $models = $this->db->select('SELECT * FROM models')->fetchAll();
+        $Vests = $this->db->select('SELECT * FROM vests')->fetchAll();
 
-        require_once(BASE_PATH . '/resources/views/app/basic-sections/models/models.php');
+        require_once(BASE_PATH . '/resources/views/app/basic-sections/vests/vests.php');
     }
 
     // store Vest
