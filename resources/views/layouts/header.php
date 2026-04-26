@@ -54,6 +54,36 @@
             </a>
           </li>
 
+          <!-- basic sections -->
+          <?php if ($this->hasAccess('general')): ?>
+            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
+              <a href="#" class="d-flex align-center justify-between dddd">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5" />
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                  </svg>
+                  <span class="mr5">سفارشات</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w14 sidebar-arrow" viewBox="0 0 16 16">
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                </svg>
+              </a>
+              <ul class="sidebar-dropdown-menu">
+                <?php if ($this->hasAccess('general')): ?>
+                  <a href="<?= url('add-order') ?>">
+                    <li class="sidebar-dropdown-menu-item">ثبت سفارش جدید</li>
+                  </a>
+                <?php endif; ?>
+                <?php if ($this->hasAccess('general')): ?>
+                  <a href="<?= url('orders') ?>">
+                    <li class="sidebar-dropdown-menu-item">نمایش سفارشات</li>
+                  </a>
+                <?php endif; ?>
+              </ul>
+            </li>
+          <?php endif; ?>
+
           <!-- employees -->
           <?php if ($this->hasAccess('general')): ?>
             <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
