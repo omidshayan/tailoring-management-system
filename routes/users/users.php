@@ -14,5 +14,5 @@ uri('search-user-details', 'App\User', 'searchUserDetails', 'POST');
 
 
 // live search items
-uri('search-itemm', 'App\User', 'searchItem', 'POST');
+uri('search-item', 'App\User', 'searchItem', 'POST');
 

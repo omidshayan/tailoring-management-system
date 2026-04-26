@@ -9,3 +9,5 @@ uri('order-details/{id}', 'App\Order', 'orderDetails');
 uri('edit-order/{id}', 'App\Order', 'editOrder');
 uri('edit-order/store/{id}', 'App\Order', 'editOrderStore', 'POST');
 uri('change-status-order/{id}', 'App\Order', 'changeStatusOrder');
+
+uri('search-user', 'App\FinancialSector', 'searchUser', 'POST');

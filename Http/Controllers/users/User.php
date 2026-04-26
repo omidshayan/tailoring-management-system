@@ -222,7 +222,7 @@ class User extends App
     public function searchItem($request)
     {
         $this->middleware(true, true, 'general');
-        $infos = $this->db->select("SELECT * FROM users WHERE `user_name` LIKE ?", ['%' . $request['customer_name'] . '%'])->fetchAll();
+        $infos = $this->db->select("SELECT * FROM users WHERE `name` LIKE ?", ['%' . $request['customer_name'] . '%'])->fetchAll();
 
         $response = [
             'status' => 'success',
