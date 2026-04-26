@@ -23,3 +23,4 @@ uri('buy-fabric-details/{id}', 'App\Fabric', 'buyFabricDetails');
 uri('change-status-buy-fabric/{id}', 'App\Fabric', 'changeStatusBuyFabric');
 
 uri('delete-fabric-cart/{id}', 'App\Fabric', 'deleteFabricCart');
+// uri('delete-product-cart/{id}', 'App\ProductInventory', 'deleteProductCart');
