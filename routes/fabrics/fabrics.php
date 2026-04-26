@@ -18,3 +18,5 @@ uri('buy-fabric', 'App\Fabric', 'buyFabric');
 uri('buy-fabric-store', 'App\Fabric', 'buyFabricStore', 'POST');
 uri('fabric-purchases', 'App\Fabric', 'showFabrics');
 uri('edit-buy-fabric/{id}', 'App\Fabric', 'editBuyFabric');
+uri('edit-buy-fabric-store/{id}', 'App\Fabric', 'editBuyFabricStore', 'POST');
+uri('change-status-buy-fabric/{id}', 'App\Fabric', 'changeStatusBuyFabric');

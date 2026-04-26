@@ -205,11 +205,12 @@ class Fabric extends App
     // edit Buy Fabric
     public function editBuyFabric($id)
     {
+        dd('ok');
         $this->middleware(true, true, 'general', true);
 
         $fabric = $this->db->select('SELECT * FROM fabric_stock WHERE id = ?', [$id])->fetch();
         if ($fabric != null) {
-            require_once(BASE_PATH . '/resources/views/app/fabrics/edit-fabric.php');
+            require_once(BASE_PATH . '/resources/views/app/fabrics/manage/edit-buy-fabric.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
@@ -218,31 +219,31 @@ class Fabric extends App
     }
 
     // edit employee store
-    public function editFabricStore($request, $id)
-    {
-        $this->middleware(true, true, 'general', true, $request, true);
+    // public function editFabricStore($request, $id)
+    // {
+    //     $this->middleware(true, true, 'general', true, $request, true);
 
-        // check empty form
-        if ($request['name'] == '' || $request['buy_price'] == '' || $request['sell_price'] == '') {
-            $this->flashMessage('error', _emptyInputs);
-        }
-        $existingFabric = $this->db->select(
-            'SELECT * FROM fabrics 
-                WHERE name = ? 
-                AND category = ? 
-                AND id != ?',
-            [
-                $request['name'],
-                $request['category'],
-                $id
-            ]
-        )->fetch();
+    //     // check empty form
+    //     if ($request['name'] == '' || $request['buy_price'] == '' || $request['sell_price'] == '') {
+    //         $this->flashMessage('error', _emptyInputs);
+    //     }
+    //     $existingFabric = $this->db->select(
+    //         'SELECT * FROM fabrics 
+    //             WHERE name = ? 
+    //             AND category = ? 
+    //             AND id != ?',
+    //         [
+    //             $request['name'],
+    //             $request['category'],
+    //             $id
+    //         ]
+    //     )->fetch();
 
-        if ($existingFabric) {
-            $this->flashMessage('error', _repeat);
-        }
+    //     if ($existingFabric) {
+    //         $this->flashMessage('error', _repeat);
+    //     }
 
-        $this->db->update('fabrics', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('fabrics'));
-    }
+    //     $this->db->update('fabrics', $id, array_keys($request), $request);
+    //     $this->flashMessageTo('success', _success, url('fabrics'));
+    // }
 }
