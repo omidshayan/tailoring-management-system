@@ -32,16 +32,16 @@
 
         <div class="box-container">
             <div class="insert">
-                <form action="<?= url('fabric-store') ?>" method="POST">
+                <form action="<?= url('buy-fabric-store') ?>" method="POST">
 
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">قیمت خرید فی متر <?= _star ?></div>
-                            <input type="text" class="checkInput" name="buy_price" placeholder="رنگ پارچه را وارد نمایید" />
+                            <div class="label-form mb5 fs14">فی متر <?= _star ?></div>
+                            <input type="text" class="checkInput" name="quantity" placeholder="فی متر پارچه را وارد نمایید" />
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">قیمت فروش فی متر <?= _star ?></div>
-                            <input type="text" class="checkInput" name="sell_price" placeholder="رنگ پارچه را وارد نمایید" />
+                            <div class="label-form mb5 fs14">توضیحات</div>
+                            <textarea name="description" placeholder="توضیحات خرید را وارد نمایید"></textarea>
                         </div>
                     </div>
 
