@@ -12,37 +12,25 @@ class Fabric extends App
     }
 
     // store employee
-    public function employeeStore($request)
+    public function fabricStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '') {
+        if ($request['name'] == '' || $request['buy_price'] == '' || $request['sell_price'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
+        $existingEmployee = $this->db->select('SELECT * FROM fabrics WHERE `name` = ? AND category = ?', [$request['name'], $request['category']])->fetch();
+
         if ($existingEmployee) {
-            $this->flashMessage('error', _phone_repeat);
+            $this->flashMessage('error', _repeat);
         } else {
-
-            if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
-                $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
-            }
-
-            $request['password'] = $this->hash($request['password']);
-            $employee = $this->validateInputs($request, ['image' => false]);
-
-            $request['role'] = 1;
-
-            // check image
-            $this->handleImageUpload($request['image'], 'images/employees');
 
             try {
                 $this->db->beginTransaction();
 
-                // insert new employee
-                $this->db->insert('employees', array_keys($request), $request);
+                $this->db->insert('fabrics', array_keys($request), $request);
 
                 $this->db->commit();
 
