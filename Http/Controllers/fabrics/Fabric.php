@@ -162,6 +162,12 @@ class Fabric extends App
             JOIN fabrics f ON fs.fabric_id = f.id
             ORDER BY fs.id DESC'
             )->fetchAll();
+
+            $total = $this->db->select(
+                'SELECT SUM(f.buy_price * fs.quantity) as total
+                    FROM fabric_stock fs
+                    JOIN fabrics f ON fs.fabric_id = f.id'
+            )->fetch();
         }
 
         require_once(BASE_PATH . '/resources/views/app/fabrics/manage/buy-fabric.php');
@@ -302,5 +308,30 @@ class Fabric extends App
 
         $this->db->update('fabric_stock', $employee['id'], ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
+    }
+
+    // delete product from cart
+    public function deleteFabricCart($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        if (!is_numeric($id)) {
+            $this->flashMessage('error', 'لطفا اطلاعات درست ارسال نمائید!');
+        }
+
+        $product_cart = $this->db->select('SELECT id FROM fabric_stock WHERE `id` = ?', [$id])->fetch();
+
+        if (!$product_cart) {
+            require_once(BASE_PATH . '/404.php');
+            exit;
+        }
+
+        $result = $this->db->delete('fabric_stock', $id);
+
+        if ($result) {
+            $this->flashMessage('success', _success);
+        } else {
+            $this->flashMessage('error', _error);
+        }
     }
 }
