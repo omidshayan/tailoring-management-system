@@ -153,4 +153,35 @@ class Fabric extends App
         $this->middleware(true, true, 'general', true);
         require_once(BASE_PATH . '/resources/views/app/fabrics/manage/buy-fabric.php');
     }
+
+    // store buy fabric
+    public function buyFabricStore($request)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        // check empty form
+        if ($request['fabric_id'] == '' || $request['quantity'] == '') {
+            $this->flashMessage('error', _emptyInputs);
+        }
+
+        $item = $this->db->select('SELECT * FROM fabrics WHERE `id` = ?', [$request['fabric_id']])->fetch();
+
+        if (!$item) {
+            require_once BASE_PATH . '/404.php';
+            exit;
+        }
+
+        try {
+            $this->db->beginTransaction();
+
+            $this->db->insert('fabric_stock', array_keys($request), $request);
+
+            $this->db->commit();
+
+            $this->flashMessage('success', _success);
+        } catch (Exception $e) {
+            $this->db->rollBack();
+            $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
+        }
+    }
 }
