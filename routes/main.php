@@ -54,6 +54,9 @@ require_once 'cron-job/cron_job.php';
 // orders job
 require_once 'orders/orders.php';
 
+// fabrics
+require_once 'fabrics/fabrics.php';
+
 
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
