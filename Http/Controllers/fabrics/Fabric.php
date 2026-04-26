@@ -8,6 +8,11 @@ class Fabric extends App
     public function addFabric()
     {
         $this->middleware(true, true, 'general', true);
+
+        $invoice = $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
+
+        $invoice = $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
+
         require_once(BASE_PATH . '/resources/views/app/fabrics/add-fabric.php');
     }
 
@@ -23,6 +28,8 @@ class Fabric extends App
 
         $existingEmployee = $this->db->select('SELECT * FROM fabrics WHERE `name` = ? AND category = ?', [$request['name'], $request['category']])->fetch();
 
+        $invoice =  $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
+        
         if ($existingEmployee) {
             $this->flashMessage('error', _repeat);
         } else {
