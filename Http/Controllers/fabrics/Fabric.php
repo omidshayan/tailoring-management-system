@@ -205,10 +205,16 @@ class Fabric extends App
     // edit Buy Fabric
     public function editBuyFabric($id)
     {
-        dd('ok');
         $this->middleware(true, true, 'general', true);
 
-        $fabric = $this->db->select('SELECT * FROM fabric_stock WHERE id = ?', [$id])->fetch();
+        $fabric = $this->db->select(
+            'SELECT fs.*, f.name 
+            FROM fabric_stock fs
+            LEFT JOIN fabrics f ON fs.fabric_id = f.id
+            WHERE fs.id = ?',
+            [$id]
+        )->fetch();
+
         if ($fabric != null) {
             require_once(BASE_PATH . '/resources/views/app/fabrics/manage/edit-buy-fabric.php');
             exit();
