@@ -24,9 +24,12 @@ include_once('public/alerts/error.php');
                 </div>
 
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                <input type="submit" id="submit" value="ثبت" class="btn" />
+                <input type="submit" id="submit" value="ویـــرایــش" class="btn" />
             </form>
         </div>
+        <a href="<?= url('fabric-purchases') ?>">
+            <div class="color text-underline center p5">برگشت</div>
+        </a>
     </div>
 </div>
 
