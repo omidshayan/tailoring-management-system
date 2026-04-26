@@ -50,7 +50,7 @@
 
         <!-- table fabric -->
         <?php
-        if (isset($invoice)) { ?>
+        if (isset($invoice) && !empty($invoice)) { ?>
             <div class="box-container mt20">
                 <span>فاکتور شماره: <?= $invoice['id'] ?> - مجموع فاکتور: <?= number_format($total['total']) . _afghani ?></span>
                 <table class="fl-table">
@@ -87,7 +87,7 @@
                         ?>
                     </tbody>
                 </table>
-                <form action="close-invoice" method="post">
+                <form action="<?= url('close-invoice/' . $invoice['id']) ?>" method="post">
                     <input type="hidden" name="total_amount" value="<?= $total['total'] ?>">
 
                     <input type="submit" id="submit" value="بستن فاکتور" class="center" />

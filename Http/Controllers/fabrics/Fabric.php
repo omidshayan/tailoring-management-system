@@ -213,11 +213,11 @@ class Fabric extends App
     }
 
     // store buy fabric
-    public function closeBuyFabricStore($request)
+    public function closeInvoice($request, $id)
     {
-        $this->middleware(true, true, 'general', true, $request, true);
+        $this->middleware(true, true, 'general', true);
 
-        $invoice =  $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
+        $invoice =  $this->db->select('SELECT * FROM invoices WHERE id = ?', [$id])->fetch();
 
         if ($invoice) {
         } else {
@@ -228,7 +228,7 @@ class Fabric extends App
         try {
             $this->db->beginTransaction();
 
-            $this->db->update('invoices', $invoice['id'], ['quantity'], [$request['quantity']]);
+            $this->db->update('invoices', $invoice['id'], ['total_amount', 'status'], [$request['total_amount'], 2]);
 
             $this->db->commit();
 
