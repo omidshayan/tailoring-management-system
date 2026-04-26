@@ -9,10 +9,6 @@ class Fabric extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $invoice = $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
-
-        $invoice = $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
-
         require_once(BASE_PATH . '/resources/views/app/fabrics/add-fabric.php');
     }
 
@@ -28,8 +24,6 @@ class Fabric extends App
 
         $existingEmployee = $this->db->select('SELECT * FROM fabrics WHERE `name` = ? AND category = ?', [$request['name'], $request['category']])->fetch();
 
-        $invoice =  $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
-        
         if ($existingEmployee) {
             $this->flashMessage('error', _repeat);
         } else {
@@ -158,6 +152,18 @@ class Fabric extends App
     public function buyFabric()
     {
         $this->middleware(true, true, 'general', true);
+
+        $invoice = $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
+
+        if ($invoice) {
+            $fabrics = $this->db->select(
+                'SELECT fs.*, f.name, f.sell_price 
+            FROM fabric_stock fs
+            JOIN fabrics f ON fs.fabric_id = f.id
+            ORDER BY fs.id DESC'
+            )->fetchAll();
+        }
+
         require_once(BASE_PATH . '/resources/views/app/fabrics/manage/buy-fabric.php');
     }
 
@@ -177,6 +183,14 @@ class Fabric extends App
             require_once BASE_PATH . '/404.php';
             exit;
         }
+
+        $invoice =  $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
+
+        if ($invoice) {
+        } else {
+            $this->db->insert('invoices', ['type'], [2]);
+        }
+
 
         try {
             $this->db->beginTransaction();
@@ -246,7 +260,7 @@ class Fabric extends App
             $this->flashMessage('error', 'فایل مورد نظر یافت نشد!');
         }
 
-        $this->db->update('fabric_stock', $id, ['quantity', 'description'], [$request['quantity'], $request['description']]);
+        $this->db->update('fabric_stock', $id, ['quantity'], [$request['quantity']]);
         $this->flashMessageTo('success', _success, url('fabric-purchases'));
     }
 

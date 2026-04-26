@@ -17,10 +17,6 @@ include_once('public/alerts/error.php');
                         <div class="label-form mb5 fs14">فی متر <?= _star ?></div>
                         <input type="text" class="checkInput" name="quantity" value="<?= $fabric['quantity'] ?>" placeholder="فی متر پارچه را وارد نمایید" />
                     </div>
-                    <div class="one">
-                        <div class="label-form mb5 fs14">توضیحات</div>
-                        <textarea name="description" placeholder="توضیحات خرید را وارد نمایید"><?= $fabric['description'] ?></textarea>
-                    </div>
                 </div>
 
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
