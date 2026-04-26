@@ -63,7 +63,7 @@
                                 response.items.forEach(item => {
                                     itemsData.push(item);
                                     let phoneText = item.phone ? ` - ${item.phone}` : '';
-                                    output += `<li class="resSel search-item color" role="option" data-id="${item.id}">${item.user_name}${phoneText}</li>`;
+                                    output += `<li class="resSel search-item color" role="option" data-id="${item.id}">${item.name}${phoneText}</li>`;
                                 });
                             } else {
                                 output = '<li class="resSel search-item color no-select" role="option">چیزی یافت نشد</li>';

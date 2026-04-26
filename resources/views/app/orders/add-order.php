@@ -31,22 +31,59 @@
             </div>
         </div>
 
-        <div class="box-container">
+        <div class="content-container">
             <div class="insert">
 
-                <form action="<?= url('deposit-money-store') ?>" method="POST" id="transactionForm">
+                <form action="<?= url('order-store') ?>" method="POST" id="transactionForm">
 
                     <div class="inputs d-flex">
+
+                        <!-- نوع سفارش -->
                         <div class="one">
-                            <div class="label-form mb5 fs14">مبلغ پرداختی <?= _star ?></div>
-                            <input type="number" class="checkInput" value="<?= old('amount') ?>" name="amount" autofocus placeholder="مبلغ پرداختی را وارد نمایید" />
-                        </div>
-                        <div class="one">
-                            <div class="label-form mb5 fs14">نوع ارز <?= _star ?></div>
-                            <select name="currency" class="checkSelect">
-                                <option value="af">افغانی</option>
+                            <div class="label-form mb5 fs14">نوع</div>
+                            <select id="typeSelect" name="type" onchange="changeType()">
+                                <option value="afghan" selected>لباس افغانی</option>
+                                <option value="vest">واسکت</option>
+                                <option value="suit">کت و شلوار</option>
                             </select>
                         </div>
+
+                        <div class="one" id="afghanBox">
+                            <div class="label-form mb5 fs14">مدل</div>
+                            <select name="afghan_model">
+                                <option disabled selected>مدل را انتخاب نمایید</option>
+                                <?php foreach ($models as $model) { ?>
+                                    <option value="<?= $model['af_model'] ?>">
+                                        <?= $model['af_model'] ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+
+                        <div class="one" id="vestBox" style="display:none;">
+                            <div class="label-form mb5 fs14">مدل</div>
+                            <select name="vest_model">
+                                <option disabled selected>مدل را انتخاب نمایید</option>
+                                <?php foreach ($vests as $vest) { ?>
+                                    <option value="<?= $vest['vest_model'] ?>">
+                                        <?= $vest['vest_model'] ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+
+                        <div class="one" id="suitBox" style="display:none;">
+                            <div class="label-form mb5 fs14">مدل</div>
+                            <select name="suit_model">
+                                <option disabled selected>مدل را انتخاب نمایید</option>
+                                <?php foreach ($suits as $suit) { ?>
+                                    <option value="<?= $suit['suit_model'] ?>">
+                                        <?= $suit['suit_model'] ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+
                     </div>
 
                     <div class="inputs d-flex">
@@ -106,6 +143,29 @@
                 sourceSelect.value = "1";
             }
         });
+    </script>
+
+    <!-- select models -->
+    <script>
+        function changeType() {
+            let type = document.getElementById('typeSelect').value;
+
+            document.getElementById('afghanBox').style.display = 'none';
+            document.getElementById('vestBox').style.display = 'none';
+            document.getElementById('suitBox').style.display = 'none';
+
+            if (type === 'afghan') {
+                document.getElementById('afghanBox').style.display = 'block';
+            } else if (type === 'vest') {
+                document.getElementById('vestBox').style.display = 'block';
+            } else if (type === 'suit') {
+                document.getElementById('suitBox').style.display = 'block';
+            }
+        }
+
+        window.onload = function() {
+            changeType();
+        };
     </script>
 
     <?php include_once('resources/views/layouts/footer.php') ?>

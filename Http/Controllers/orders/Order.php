@@ -8,12 +8,18 @@ class Order extends App
     public function addOrder()
     {
         $this->middleware(true, true, 'general', true);
+
+        $models = $this->db->select('SELECT * FROM models WHERE `status` = 1')->fetchAll();
+
+        $vests = $this->db->select('SELECT * FROM vests WHERE `status` = 1')->fetchAll();
+
         require_once(BASE_PATH . '/resources/views/app/orders/add-order.php');
     }
 
     // store employee
-    public function employeeStore($request)
+    public function orderStore($request)
     {
+        dd($request);
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form

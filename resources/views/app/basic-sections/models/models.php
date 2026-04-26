@@ -46,14 +46,14 @@ include_once('public/alerts/toastr.php');
             <tbody>
                 <?php
                 $perPage = 10;
-                $data = paginate($vest, $perPage);
+                $data = paginate($models, $perPage);
                 $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                 $number = ($currentPage - 1) * $perPage + 1;
                 foreach ($data as $item) {
                 ?>
                     <tr>
                         <td class="color-orange <?= statusColor($item['status']) ?>"><?= $number ?></td>
-                        <td><?= $item['vest_model'] ?></td>
+                        <td><?= $item['af_model'] ?></td>
                         <td>
                             <a href="<?= url('edit-clothes/' . $item['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -78,16 +78,16 @@ include_once('public/alerts/toastr.php');
             </tbody>
         </table>
         <div class="flex-justify-align mt20 paginate-section">
-            <div class="table-info fs12">تعداد کل: <?= count($vests) ?></div>
+            <div class="table-info fs12">تعداد کل: <?= count($models) ?></div>
             <?php
-            if (count($vests) == null) { ?>
+            if (count($models) == null) { ?>
                 <div class="center color-red fs12">
                     <i class="fa fa-comment"></i>
                     <?= _not_infos ?>
                 </div>
             <?php } else {
-                if (count($vests) > 10) {
-                    echo paginateView($vests, 10);
+                if (count($models) > 10) {
+                    echo paginateView($models, 10);
                 }
             }
             ?>
