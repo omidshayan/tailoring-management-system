@@ -71,6 +71,11 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
+                  <a href="<?= url('fabrics') ?>">
+                    <li class="sidebar-dropdown-menu-item">مدیریت تکه‌ها</li>
+                  </a>
+                <?php endif; ?>
+                <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('add-order') ?>">
                     <li class="sidebar-dropdown-menu-item">ثبت سفارش جدید</li>
                   </a>
