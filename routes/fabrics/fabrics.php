@@ -11,3 +11,6 @@ uri('edit-fabric-store/{id}', 'App\Fabric', 'editFabricStore', 'POST');
 uri('change-status-fabric/{id}', 'App\Fabric', 'changeStatusFabric');
 
 // uri('search-employee', 'App\Employee', 'searchEmployee', 'POST');
+
+// manage fabrices
+uri('buy-fabric', 'App\Fabric', 'buyFabric');

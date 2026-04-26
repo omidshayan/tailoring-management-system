@@ -130,6 +130,18 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
+                  <a href="<?= url('buy-fabric') ?>">
+                    <li class="sidebar-dropdown-menu-item">خرید پارچه</li>
+                  </a>
+                <?php endif; ?>
+                <?php if ($this->hasAccess('general')): ?>
+                  <a href="<?= url('fabric-purchases') ?>">
+                    <li class="sidebar-dropdown-menu-item">نمایش خرید‌ها</li>
+                  </a>
+                <?php endif; ?>
+                <hr class="hr">
+                <hr class="hr">
+                <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('add-fabric') ?>">
                     <li class="sidebar-dropdown-menu-item">ثبت پارچه جدید</li>
                   </a>

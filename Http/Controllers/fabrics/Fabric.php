@@ -128,4 +128,14 @@ class Fabric extends App
         $this->db->update('fabrics', $employee['id'], ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
+
+
+    /////// manage fabrices //////////
+
+    // buy fabric
+    public function buyFabric()
+    {
+        $this->middleware(true, true, 'general', true);
+        require_once(BASE_PATH . '/resources/views/app/fabrics/manage/buy-fabric.php');
+    }
 }
