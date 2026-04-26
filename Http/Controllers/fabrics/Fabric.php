@@ -43,22 +43,22 @@ class Fabric extends App
     }
 
     // show employees
-    public function showEmployees()
+    public function fabrics()
     {
         $this->middleware(true, true, 'general');
-        $employees = $this->db->select('SELECT * FROM employees')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
+        $fabrics = $this->db->select('SELECT * FROM fabrics')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/fabrics/fabrics.php');
         exit();
     }
 
     // edit employee page
-    public function editEmployee($id)
+    public function editFabric($id)
     {
         $this->middleware(true, true, 'general', true);
 
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
-        if ($employee != null) {
-            require_once(BASE_PATH . '/resources/views/app/employees/edit-employee.php');
+        $fabric = $this->db->select('SELECT * FROM fabrics WHERE id = ?', [$id])->fetch();
+        if ($fabric != null) {
+            require_once(BASE_PATH . '/resources/views/app/fabrics/edit-fabric.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
