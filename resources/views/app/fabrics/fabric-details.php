@@ -1,9 +1,9 @@
 <?php
-$title = 'جزئیات کاربر: ' . $employee['employee_name'];
+$title = 'جزئیات پارچه: ' . $fabric['name'];
 include_once('resources/views/layouts/header.php');
 include_once('resources/views/scripts/change-status.php');
 include_once('resources/views/scripts/show-img-modal.php');
-$date = explode(' ', $employee['created_at']);
+$date = explode(' ', $fabric['created_at']);
 ?>
 
 <div id="alert" class="alert" style="display: none;">حالم بده، با برنامه نویس مه تماس بگیر :(</div>
@@ -14,67 +14,74 @@ $date = explode(' ', $employee['created_at']);
 </div>
 <!-- Start content -->
 <div class="content">
-    <div class="content-title"> جزئیات کاربر : <?= $employee['employee_name'] ?></div>
+    <div class="content-title"> جزئیات پارچه : <?= $fabric['name'] ?></div>
 
-    <!-- start page content -->
     <div class="box-container">
-
-        <div class="accordion-title color-orange">مشخصات عمومی</div>
-        <div class="accordion-content">
-            <div class="child-accordioin">
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">نام: </div>
-                    <div class="info-detaile"><?= $employee['employee_name'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">ایمیل: </div>
-                    <div class="info-detaile"><?= ($employee['father_name'] ? $employee['father_name'] : '- - - - ') ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">شماره: </div>
-                    <div class="info-detaile"><?= $employee['phone'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">آدرس: </div>
-                    <div class="info-detaile"><?= ($employee['address'] ? $employee['address'] : '- - - - ') ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">توضیحات: </div>
-                    <div class="info-detaile"><?= ($employee['description'] ? $employee['description'] : '- - - - ') ?></div>
-                </div>
-                <div class="detailes-culomn d-flex align-center cursor-p">
-                    <div class="title-detaile">عکس: </div>
-                    <div class=" m10 flex-justify-align">
-                        <?= $employee['image']
-                            ? '<img class="w50 cursor-p" src="' . asset('public/images/employees/' . $employee['image']) . '" alt="employee image" onclick="openModal(\'' . asset('public/images/employees/' . $employee['image']) . '\')">'
-                            : ' - - - - ' ?>
-                    </div>
-                </div>
-                <div class="detailes-culomn d-flex align-center cursor-p">
-                    <div class="title-detaile"><a href="#" data-url="<?= url('change-status-employee') ?>" data-id="<?= $employee['id'] ?>" class="changeStatus color btn p5 w100 m10 center" id="submit">تغییر وضعیت</a></div>
-                    <div class="info-detaile">
-                        <div class="w100 m10 center status status-column" id="status"><?= ($employee['state'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
-                    </div>
-                </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">نام پارچه</div>
+                <div class="w100 m10 center"><?= $fabric['name'] ?></div>
             </div>
         </div>
-
-        <!-- salaries -->
-        <div class="accordion-title color-orange">جزئیات مالی</div>
-        <div class="accordion-content">
-            <div class="child-accordioin">
-                <div class="color-red p10 center fs14">
-                    چیزی یافت نشد
-                </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">دسته بندی</div>
+                <div class="w100 m10 center"><?= $fabric['category'] ?></div>
             </div>
         </div>
-
-        <a href="<?= url('employees') ?>">
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">قیمت خرید فی متر</div>
+                <div class="w100 m10 center"><?= number_format($fabric['buy_price']) . ' <span class="fs11 color-orange"> (افغانی)</span>' ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">قیمت فروش فی متر</div>
+                <div class="w100 m10 center"><?= number_format($fabric['sell_price']) . ' <span class="fs11 color-orange"> (افغانی)</span>' ?></div>
+            </div>
+        </div>
+                <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">رنگ</div>
+                <div class="w100 m10 center"><?= $fabric['color'] ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">تاریخ ثبت</div>
+                <div class="w100 m10 center"><?= jdate('Y/m/d', strtotime($fabric['created_at'])) ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">توسط</div>
+                <div class="w100 m10 center"><?= $fabric['who_it'] ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">توضیحات</div>
+                <div class="w100 m10 center"><?= ($fabric['description']) ? $fabric['description'] : '- - - -' ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">
+                    <!-- HTML -->
+                    <div class="w100 m10 center">
+                        <td>
+                            <a href="#" data-url="<?= url('change-status-fabric') ?>" data-id="<?= $fabric['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
+                        </td>
+                    </div>
+                </div>
+                <div class="w100 m10 center status status-column flex-justify-align" id="status"><?= ($fabric['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
+            </div>
+        </div>
+        <a href="<?= url('fabrics') ?>">
             <div class="btn center p5">برگشت</div>
         </a>
-
     </div>
-    <!-- end page content -->
 </div>
 <!-- End content -->
 

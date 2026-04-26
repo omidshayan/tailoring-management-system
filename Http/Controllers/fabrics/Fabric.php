@@ -96,14 +96,14 @@ class Fabric extends App
     }
 
     // employee detiles page
-    public function employeeDetails($id)
+    public function fabricDetails($id)
     {
         $this->middleware(true, true, 'general');
 
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
+        $fabric = $this->db->select('SELECT * FROM fabrics WHERE id = ?', [$id])->fetch();
 
-        if ($employee != null) {
-            require_once(BASE_PATH . '/resources/views/app/employees/employee-details.php');
+        if ($fabric != null) {
+            require_once(BASE_PATH . '/resources/views/app/fabrics/fabric-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
