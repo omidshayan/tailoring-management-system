@@ -194,7 +194,6 @@ class Fabric extends App
             'SELECT fs.*, f.name, f.sell_price 
             FROM fabric_stock fs
             JOIN fabrics f ON fs.fabric_id = f.id
-            WHERE fs.status = 1
             ORDER BY fs.id DESC'
         )->fetchAll();
 
@@ -249,7 +248,13 @@ class Fabric extends App
     {
         $this->middleware(true, true, 'general');
 
-        $fabric = $this->db->select('SELECT * FROM fabric_stock WHERE id = ?', [$id])->fetch();
+        $fabric = $this->db->select(
+            'SELECT fs.*, f.name, f.category, f.sell_price, f.buy_price, f.color
+            FROM fabric_stock fs
+            LEFT JOIN fabrics f ON fs.fabric_id = f.id
+            WHERE fs.id = ?',
+            [$id]
+        )->fetch();
 
         if ($fabric != null) {
             require_once(BASE_PATH . '/resources/views/app/fabrics/manage/buy-fabric-details.php');
@@ -265,7 +270,7 @@ class Fabric extends App
     {
         $this->middleware(true, true, 'general');
 
-        $employee = $this->db->select('SELECT * FROM fabrics WHERE id = ?', [$id])->fetch();
+        $employee = $this->db->select('SELECT * FROM fabric_stock WHERE id = ?', [$id])->fetch();
 
         if (!$employee) {
             require_once BASE_PATH . '/404.php';
@@ -274,7 +279,7 @@ class Fabric extends App
 
         $newStatus = $employee['status'] == 1 ? 2 : 1;
 
-        $this->db->update('fabrics', $employee['id'], ['status'], [$newStatus]);
+        $this->db->update('fabric_stock', $employee['id'], ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
 }
