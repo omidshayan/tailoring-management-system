@@ -243,4 +243,38 @@ class Fabric extends App
         $this->db->update('fabric_stock', $id, ['quantity', 'description'], [$request['quantity'], $request['description']]);
         $this->flashMessageTo('success', _success, url('fabric-purchases'));
     }
+
+    // employee detiles page
+    public function buyFabricDetails($id)
+    {
+        $this->middleware(true, true, 'general');
+
+        $fabric = $this->db->select('SELECT * FROM fabric_stock WHERE id = ?', [$id])->fetch();
+
+        if ($fabric != null) {
+            require_once(BASE_PATH . '/resources/views/app/fabrics/manage/buy-fabric-details.php');
+            exit();
+        } else {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+    }
+
+    // change status employee
+    public function changeStatusBuyFabric($id)
+    {
+        $this->middleware(true, true, 'general');
+
+        $employee = $this->db->select('SELECT * FROM fabrics WHERE id = ?', [$id])->fetch();
+
+        if (!$employee) {
+            require_once BASE_PATH . '/404.php';
+            exit;
+        }
+
+        $newStatus = $employee['status'] == 1 ? 2 : 1;
+
+        $this->db->update('fabrics', $employee['id'], ['status'], [$newStatus]);
+        $this->send_json_response(true, _success, $newStatus);
+    }
 }
