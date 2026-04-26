@@ -212,6 +212,33 @@ class Fabric extends App
         }
     }
 
+    // store buy fabric
+    public function closeBuyFabricStore($request)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        $invoice =  $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
+
+        if ($invoice) {
+        } else {
+            $this->db->insert('invoices', ['type'], [2]);
+        }
+
+
+        try {
+            $this->db->beginTransaction();
+
+            $this->db->update('invoices', $invoice['id'], ['quantity'], [$request['quantity']]);
+
+            $this->db->commit();
+
+            $this->flashMessage('success', _success);
+        } catch (Exception $e) {
+            $this->db->rollBack();
+            $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
+        }
+    }
+
     // show fabrics manage
     public function showFabrics()
     {
