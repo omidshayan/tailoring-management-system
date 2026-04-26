@@ -16,3 +16,4 @@ uri('search-fabric', 'App\Fabric', 'searchFabcic', 'POST');
 // manage fabrices
 uri('buy-fabric', 'App\Fabric', 'buyFabric');
 uri('buy-fabric-store', 'App\Fabric', 'buyFabricStore', 'POST');
+uri('fabric-purchases', 'App\Fabric', 'showFabrics');

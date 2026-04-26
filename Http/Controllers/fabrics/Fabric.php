@@ -184,4 +184,21 @@ class Fabric extends App
             $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
         }
     }
+
+    // show fabrics manage
+    public function showFabrics()
+    {
+        $this->middleware(true, true, 'general');
+
+        $fabrics = $this->db->select(
+            'SELECT fs.*, f.name, f.sell_price 
+            FROM fabric_stock fs
+            JOIN fabrics f ON fs.fabric_id = f.id
+            WHERE fs.status = 1
+            ORDER BY fs.id DESC'
+        )->fetchAll();
+
+        require_once(BASE_PATH . '/resources/views/app/fabrics/manage/show-fabrics.php');
+        exit();
+    }
 }
