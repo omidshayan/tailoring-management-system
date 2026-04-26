@@ -51,6 +51,9 @@ require_once 'basic-sections/models.php';
 // cron job
 require_once 'cron-job/cron_job.php';
 
+// orders job
+require_once 'orders/orders.php';
+
 
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {

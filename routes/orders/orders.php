@@ -1,0 +1,11 @@
+<?php
+require_once 'Http/Controllers/orders/Order.php';
+
+// add product routes
+uri('add-order', 'App\Order', 'order');
+uri('orders', 'App\Order', 'orders');
+uri('order-store', 'App\Order', 'orderStore', 'POST');
+uri('order-details/{id}', 'App\Order', 'orderDetails');
+uri('edit-order/{id}', 'App\Order', 'editOrder');
+uri('edit-order/store/{id}', 'App\Order', 'editOrderStore', 'POST');
+uri('change-status-order/{id}', 'App\Order', 'changeStatusOrder');
