@@ -2,7 +2,7 @@
 require_once 'Http/Controllers/orders/Order.php';
 
 // add product routes
-uri('add-order', 'App\Order', 'order');
+uri('add-order', 'App\Order', 'addOrder');
 uri('orders', 'App\Order', 'orders');
 uri('order-store', 'App\Order', 'orderStore', 'POST');
 uri('order-details/{id}', 'App\Order', 'orderDetails');
