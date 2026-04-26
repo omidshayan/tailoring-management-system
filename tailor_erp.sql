@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 25, 2026 at 07:19 PM
+-- Generation Time: Apr 26, 2026 at 08:17 PM
 -- Server version: 9.1.0
 -- PHP Version: 7.4.33
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `csrf_token_logs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `csrf_token_logs`
@@ -109,7 +109,9 @@ INSERT INTO `csrf_token_logs` (`id`, `message`, `ip_address`, `created_at`, `upd
 (15, 'Invalid or missing CSRF token.', '::1', '2025-08-12 21:28:50', NULL),
 (16, 'Invalid or missing CSRF token.', '::1', '2025-08-13 17:58:59', NULL),
 (17, 'Invalid or missing CSRF token.', '::1', '2025-08-13 18:43:36', NULL),
-(18, 'Invalid or missing CSRF token.', '::1', '2025-08-13 18:46:53', NULL);
+(18, 'Invalid or missing CSRF token.', '::1', '2025-08-13 18:46:53', NULL),
+(19, 'Invalid or missing CSRF token.', '::1', '2026-04-26 20:00:48', NULL),
+(20, 'Invalid or missing CSRF token.', '::1', '2026-04-26 23:36:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -221,6 +223,67 @@ INSERT INTO `expenses_categories` (`id`, `cat_name`, `description`, `who_it`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `fabrics`
+--
+
+DROP TABLE IF EXISTS `fabrics`;
+CREATE TABLE IF NOT EXISTS `fabrics` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `category` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `color` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `unit` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `buy_price` decimal(15,2) DEFAULT NULL,
+  `sell_price` decimal(15,2) DEFAULT NULL,
+  `supplier_id` int NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `quality` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `fabrics`
+--
+
+INSERT INTO `fabrics` (`id`, `name`, `category`, `color`, `unit`, `buy_price`, `sell_price`, `supplier_id`, `status`, `who_it`, `quality`, `description`, `created_at`, `updated_at`) VALUES
+(6, 'new fabric', 'چینایی', 'blue', NULL, 30.00, 50.00, 0, 1, 'for suport', NULL, 'desc\r\n', '2026-04-27 00:22:48', NULL),
+(7, 'two', 'پاکستانی', '', NULL, 50.00, 60.00, 0, 1, 'for suport', NULL, '', '2026-04-27 00:22:56', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fabric_stock`
+--
+
+DROP TABLE IF EXISTS `fabric_stock`;
+CREATE TABLE IF NOT EXISTS `fabric_stock` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `fabric_id` int NOT NULL,
+  `quantity` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `fabric_stock`
+--
+
+INSERT INTO `fabric_stock` (`id`, `fabric_id`, `quantity`, `description`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(3, 7, '100', 'desc', 1, 'for suport', '2026-04-27 00:23:12', NULL),
+(4, 7, '250', '', 1, 'for suport', '2026-04-27 00:23:23', NULL),
+(5, 6, '220', 'dddd', 1, 'for suport', '2026-04-27 00:25:28', '2026-04-27 00:46:50');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `measurements`
 --
 
@@ -271,6 +334,7 @@ DROP TABLE IF EXISTS `models`;
 CREATE TABLE IF NOT EXISTS `models` (
   `id` int NOT NULL AUTO_INCREMENT,
   `af_model` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `fee` int NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
@@ -282,10 +346,10 @@ CREATE TABLE IF NOT EXISTS `models` (
 -- Dumping data for table `models`
 --
 
-INSERT INTO `models` (`id`, `af_model`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(1, 'jadid', 2, 'for suport', '2026-04-25 18:37:06', '2026-04-25 22:53:38'),
-(2, 'adsfdf', 1, 'for suport', '2026-04-25 18:37:19', NULL),
-(3, 'ddd', 1, 'for suport', '2026-04-25 18:37:21', NULL);
+INSERT INTO `models` (`id`, `af_model`, `fee`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(1, 'jadid', 450, 1, 'for suport', '2026-04-25 18:37:06', '2026-04-26 17:22:06'),
+(2, 'adsfdf', 600, 1, 'for suport', '2026-04-25 18:37:19', NULL),
+(3, 'ddd', 800, 1, 'for suport', '2026-04-25 18:37:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -574,20 +638,22 @@ DROP TABLE IF EXISTS `vests`;
 CREATE TABLE IF NOT EXISTS `vests` (
   `id` int NOT NULL AUTO_INCREMENT,
   `vest_model` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `fee` int NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `vests`
 --
 
-INSERT INTO `vests` (`id`, `vest_model`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(1, 'دخص', 2, 'for suport', '2026-04-25 22:49:36', '2026-04-25 22:53:51'),
-(2, 'f', 1, 'for suport', '2026-04-25 22:49:38', '2026-04-25 22:54:00');
+INSERT INTO `vests` (`id`, `vest_model`, `fee`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(1, 'دخص', 400, 2, 'for suport', '2026-04-25 22:49:36', '2026-04-25 22:53:51'),
+(2, 'f', 250, 1, 'for suport', '2026-04-25 22:49:38', '2026-04-25 22:54:00'),
+(3, 'new', 300, 1, 'for suport', '2026-04-26 17:20:18', NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
