@@ -9,15 +9,15 @@
 
         <div class="box-container">
             <div class="insert">
-                <form action="<?= url('employee-store') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= url('fabric-store') ?>" method="POST">
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">نام پارچه <?= _star ?> </div>
-                            <input type="text" class="checkInput" name="employee_name" placeholder="نام پارچه را وارد نمایید" maxlength="40" />
+                            <input type="text" class="checkInput" name="name" placeholder="نام پارچه را وارد نمایید" maxlength="40" />
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">مدل پارچه</div>
-                            <select name="">
+                            <select name="category">
                                 <option disabled selected>مدل پارچه را انتخاب نمایید</option>
                                 <option value="چینایی">چینایی</option>
                                 <option value="پاکستانی">پاکستانی</option>
@@ -26,35 +26,23 @@
                             </select>
                         </div>
                     </div>
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form mb5 fs14">انتخاب فروشنده</div>
-                            <select name="">
-                                <option disabled selected>فروشنده را انتخاب نمایید</option>
-                                <option value="چینایی">چینایی</option>
-                                <option value="پاکستانی">پاکستانی</option>
-                                <option value="هندی">هندی</option>
-                                <option value="ایرانی">ایرانی</option>
-                            </select>
-                        </div>
-                        <div class="one">
-                            <div class="label-form mb5 fs14">رنگ پارچه </div>
-                            <input type="text" name="phone" placeholder="رنگ پارچه را وارد نمایید" />
-                        </div>
-                    </div>
 
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">قیمت خرید فی متر <?= _star ?></div>
-                            <input type="text" class="checkInput" name="phone" placeholder="رنگ پارچه را وارد نمایید" />
+                            <input type="text" class="checkInput" name="buy_price" placeholder="رنگ پارچه را وارد نمایید" />
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">قیمت فروش فی متر <?= _star ?></div>
-                            <input type="text" class="checkInput" name="phone" placeholder="رنگ پارچه را وارد نمایید" />
+                            <input type="text" class="checkInput" name="sell_price" placeholder="رنگ پارچه را وارد نمایید" />
                         </div>
                     </div>
 
                     <div class="inputs d-flex">
+                        <div class="one">
+                            <div class="label-form mb5 fs14">رنگ پارچه </div>
+                            <input type="text" name="color" placeholder="رنگ پارچه را وارد نمایید" />
+                        </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">توضیحات</div>
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
