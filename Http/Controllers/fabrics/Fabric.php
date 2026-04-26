@@ -67,29 +67,32 @@ class Fabric extends App
     }
 
     // edit employee store
-    public function editEmployeeStore($request, $id)
+    public function editFabricStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '') {
+        if ($request['name'] == '' || $request['buy_price'] == '' || $request['sell_price'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
+        $existingFabric = $this->db->select(
+            'SELECT * FROM fabrics 
+                WHERE name = ? 
+                AND category = ? 
+                AND id != ?',
+            [
+                $request['name'],
+                $request['category'],
+                $id
+            ]
+        )->fetch();
 
-        $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
-
-        if ($existEmployee) {
-            if ($id != $existEmployee['id']) {
-                $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
-                return;
-            }
+        if ($existingFabric) {
+            $this->flashMessage('error', _repeat);
         }
 
-        // check upload photo
-        $this->updateImageUpload($request, 'image', 'employees', 'employees', $id);
-
-        $this->db->update('employees', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('employees'));
+        $this->db->update('fabrics', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('fabrics'));
     }
 
     // employee detiles page

@@ -1,68 +1,74 @@
 <?php
-$title = 'ویرایش کارمند: ' . $employee['employee_name'];
+$title = 'ویرایش پارچه: ' . $fabric['name'];
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/error.php');
 ?>
 
 <div class="content">
-    <div class="content-title">ویرایش کارمند: <?= $employee['employee_name'] ?></div>
+    <div class="content-title">ویرایش پارچه: <?= $fabric['name'] ?></div>
 
     <div class="box-container">
         <div class="insert">
-            <form action="<?= url('edit-employee/store/' . $employee['id']) ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?= url('edit-fabric-store/' . $fabric['id']) ?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14">نام و تخلص <?= _star ?> </div>
-                        <input type="text" class="checkInput" name="employee_name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" value="<?= $employee['employee_name'] ?>" />
+                        <div class="label-form mb5 fs14">نام پارچه <?= _star ?> </div>
+                        <input type="text" class="checkInput" name="name" value="<?= $fabric['name'] ?>" placeholder="نام پارچه را وارد نمایید" maxlength="40" />
                     </div>
                     <div class="one">
-                        <div class="label-form mb5 fs14">نام پدر</div>
-                        <input type="text" name="father_name" placeholder="نام پدر را وارد نمایید" maxlength="40" value="<?= $employee['father_name'] ?>" />
+                        <div class="label-form mb5 fs14">مدل پارچه</div>
+                        <select name="category">
+                            <option disabled>مدل پارچه را انتخاب نمایید</option>
+
+                            <option value="چینایی" <?= ($fabric['category'] == 'چینایی') ? 'selected' : '' ?>>
+                                چینایی
+                            </option>
+
+                            <option value="پاکستانی" <?= ($fabric['category'] == 'پاکستانی') ? 'selected' : '' ?>>
+                                پاکستانی
+                            </option>
+
+                            <option value="هندی" <?= ($fabric['category'] == 'هندی') ? 'selected' : '' ?>>
+                                هندی
+                            </option>
+
+                            <option value="ایرانی" <?= ($fabric['category'] == 'ایرانی') ? 'selected' : '' ?>>
+                                ایرانی
+                            </option>
+
+                        </select>
                     </div>
                 </div>
+
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14">شماره <?= _star ?> </div>
-                        <input type="number" class="checkInput" name="phone" placeholder="شماره را وارد نمایید" value="<?= $employee['phone'] ?>" />
+                        <div class="label-form mb5 fs14">قیمت خرید فی متر <?= _star ?></div>
+                        <input type="text" class="checkInput" name="buy_price" value="<?= $fabric['buy_price'] ?>" placeholder="رنگ پارچه را وارد نمایید" />
                     </div>
                     <div class="one">
-                        <div class="label-form mb5 fs14">رمزعبور<?= _star ?> </div>
-                        <input type="password" disabled placeholder="رمزعبور را وارد نمایید" />
+                        <div class="label-form mb5 fs14">قیمت فروش فی متر <?= _star ?></div>
+                        <input type="text" class="checkInput" name="sell_price" value="<?= $fabric['sell_price'] ?>" placeholder="رنگ پارچه را وارد نمایید" />
                     </div>
                 </div>
+
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14">آدرس</div>
-                        <textarea name="address" placeholder="آدرس را وارد نمایید"><?= $employee['address'] ?></textarea>
+                        <div class="label-form mb5 fs14">رنگ پارچه </div>
+                        <input type="text" name="color" value="<?= $fabric['color'] ?>" placeholder="رنگ پارچه را وارد نمایید" />
                     </div>
                     <div class="one">
                         <div class="label-form mb5 fs14">توضیحات</div>
-                        <textarea name="description" placeholder="توضیحات را وارد نمایید"><?= $employee['description'] ?></textarea>
+                        <textarea name="description" placeholder="توضیحات را وارد نمایید"><?= $fabric['description'] ?></textarea>
                     </div>
                 </div>
-                <div class="inputs d-flex">
-                    <div class="one">
-                        <div class="label-form mb5 fs14">انتخاب عکس</div>
-                        <input type="file" id="image" name="image" accept="image/*">
-                    </div>
-                </div>
-                <div id="imagePreview">
-                    <img src="" class="img" alt="">
-                </div>
-                <div>
-                    <img src="<?= ($employee['image'] ? asset('public/images/employees/' . $employee['image']) : asset('public/assets/img/empty.png')) ?>" class="img" alt="logo">
-                </div>
-                <div class="fs11">تصویر فعلی</div>
 
                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                <input type="submit" id="submit" value="ویــرایش" class="btn" />
+                <input type="submit" id="submit" value="ثبت" class="btn" />
             </form>
         </div>
-        <a href="<?= url('employees') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
+        <a href="<?= url('fabrics') ?>" class="color text-underline d-flex justify-center fs14">برگشت</a>
     </div>
-    <!-- end page content -->
-
 </div>
 
 <?php include_once('resources/views/layouts/footer.php') ?>
