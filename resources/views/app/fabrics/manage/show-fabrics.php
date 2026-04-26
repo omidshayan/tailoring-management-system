@@ -21,6 +21,7 @@ include_once('public/alerts/toastr.php');
                 <tr>
                     <th>#</th>
                     <th>مدل پارچه</th>
+                    <th>متراژ (<span class="fs11">متر</span>)</th>
                     <th>قیمت فروش (<span class="fs11">فی متر</span>)</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
@@ -37,6 +38,7 @@ include_once('public/alerts/toastr.php');
                     <tr>
                         <td class="color-orange <?= ($fabric['status'] == 1) ? '' : 'color-red' ?>"><?= $number ?></td>
                         <td><?= $fabric['name'] ?></td>
+                        <td><?= $fabric['quantity'] ?></td>
                         <td><?= number_format($fabric['sell_price']) ?></td>
                         <td>
                             <a href="<?= url('edit-buy-fabric/' . $fabric['id']) ?>" class="color-orange">

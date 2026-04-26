@@ -225,31 +225,22 @@ class Fabric extends App
     }
 
     // edit employee store
-    // public function editFabricStore($request, $id)
-    // {
-    //     $this->middleware(true, true, 'general', true, $request, true);
+    public function editBuyFabricStore($request, $id)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
 
-    //     // check empty form
-    //     if ($request['name'] == '' || $request['buy_price'] == '' || $request['sell_price'] == '') {
-    //         $this->flashMessage('error', _emptyInputs);
-    //     }
-    //     $existingFabric = $this->db->select(
-    //         'SELECT * FROM fabrics 
-    //             WHERE name = ? 
-    //             AND category = ? 
-    //             AND id != ?',
-    //         [
-    //             $request['name'],
-    //             $request['category'],
-    //             $id
-    //         ]
-    //     )->fetch();
+        // check empty form
+        if ($request['quantity'] == '') {
+            $this->flashMessage('error', _emptyInputs);
+        }
 
-    //     if ($existingFabric) {
-    //         $this->flashMessage('error', _repeat);
-    //     }
+        $fabric = $this->db->select('SELECT * FROM fabric_stock WHERE id = ?', [$id])->fetch();;
 
-    //     $this->db->update('fabrics', $id, array_keys($request), $request);
-    //     $this->flashMessageTo('success', _success, url('fabrics'));
-    // }
+        if (!$fabric) {
+            $this->flashMessage('error', 'فایل مورد نظر یافت نشد!');
+        }
+
+        $this->db->update('fabric_stock', $id, ['quantity', 'description'], [$request['quantity'], $request['description']]);
+        $this->flashMessageTo('success', _success, url('fabric-purchases'));
+    }
 }
