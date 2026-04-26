@@ -3,7 +3,7 @@
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
     include_once('public/alerts/toastr.php');
-    include_once('resources/views/scripts/live-search-items.php');
+    include_once('resources/views/scripts/live-search-fabric.php');
     ?>
 
     <div class="content">
@@ -12,7 +12,7 @@
         <!-- search box for fabric -->
         <div class=" flex-justify-align mb10">
             <div class="search-database-s flex-justify-align border"
-                data-url="<?= url('search-item') ?>"
+                data-url="<?= url('search-fabric') ?>"
                 data-input-id="search_user"
                 data-result-id="backResponseSeller"
                 data-field-name="customer_name"
@@ -23,13 +23,12 @@
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </a>
-                <input type="text" class="p5 fs15 input w100 border checkInput" id="search_user" placeholder="جستجوی پارچه" autofocus />
+                <input type="text" class="p5 fs15 input w100 border checkInput" id="search_user" placeholder="جستجوی پارچه" autofocus autocomplete="off" />
                 <ul class="search-back d-none top40" id="backResponseSeller">
                     <li class="search-item color" role="option"></li>
                 </ul>
             </div>
         </div>
-
 
         <div class="box-container">
             <div class="insert">

@@ -132,6 +132,21 @@ class Fabric extends App
 
     /////// manage fabrices //////////
 
+    // search item
+    public function searchFabcic($request)
+    {
+        $this->middleware(true, true, 'general');
+        $infos = $this->db->select("SELECT * FROM fabrics WHERE `name` LIKE ?", ['%' . $request['customer_name'] . '%'])->fetchAll();
+
+        $response = [
+            'status' => 'success',
+            'items' => $infos,
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit();
+    }
+
     // buy fabric
     public function buyFabric()
     {

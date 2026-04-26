@@ -10,7 +10,8 @@ uri('edit-fabric/{id}', 'App\Fabric', 'editFabric');
 uri('edit-fabric-store/{id}', 'App\Fabric', 'editFabricStore', 'POST');
 uri('change-status-fabric/{id}', 'App\Fabric', 'changeStatusFabric');
 
-// uri('search-employee', 'App\Employee', 'searchEmployee', 'POST');
+// live search items
+uri('search-fabric', 'App\Fabric', 'searchFabcic', 'POST');
 
 // manage fabrices
 uri('buy-fabric', 'App\Fabric', 'buyFabric');
