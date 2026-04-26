@@ -2,7 +2,7 @@
 require_once 'Http/Controllers/fabrics/Fabric.php';
 
 // add product routes
-uri('add-fabric', 'App\Fabric', 'addEmployee');
+uri('add-fabric', 'App\Fabric', 'addFabric');
 uri('fabrics', 'App\Fabric', 'fabrics');
 uri('fabric-store', 'App\Fabric', 'fabricStore', 'POST');
 uri('fabric-details/{id}', 'App\Fabric', 'fabricDetails');
