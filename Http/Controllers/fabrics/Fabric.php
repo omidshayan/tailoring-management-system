@@ -112,20 +112,20 @@ class Fabric extends App
     }
 
     // change status employee
-    public function changeStatusEmployee($id)
+    public function changeStatusFabric($id)
     {
         $this->middleware(true, true, 'general');
 
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
+        $employee = $this->db->select('SELECT * FROM fabrics WHERE id = ?', [$id])->fetch();
 
         if (!$employee) {
             require_once BASE_PATH . '/404.php';
             exit;
         }
 
-        $newStatus = $employee['state'] == 1 ? 2 : 1;
+        $newStatus = $employee['status'] == 1 ? 2 : 1;
 
-        $this->db->update('employees', $employee['id'], ['state'], [$newStatus]);
+        $this->db->update('fabrics', $employee['id'], ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
 }
