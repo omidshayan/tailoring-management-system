@@ -87,11 +87,14 @@
                         ?>
                     </tbody>
                 </table>
+
+                <!-- close invoice -->
                 <form action="<?= url('close-invoice/' . $invoice['id']) ?>" method="post">
                     <input type="hidden" name="total_amount" value="<?= $total['total'] ?>">
 
                     <input type="submit" id="submit" value="بستن فاکتور" class="center" />
                 </form>
+                
             </div>
         <?php }
         ?>

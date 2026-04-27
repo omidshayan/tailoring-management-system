@@ -162,7 +162,7 @@ class Fabric extends App
             JOIN fabrics f ON fs.fabric_id = f.id
             WHERE invoice_id = ?
             ORDER BY fs.id DESC',
-            [$invoice['id']]
+                [$invoice['id']]
             )->fetchAll();
 
             $total = $this->db->select(
@@ -193,13 +193,19 @@ class Fabric extends App
         }
 
         $invoice =  $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
-        $request['invoice_id'] = $invoice['id'];
+
+        $lastId = 0;
 
         try {
 
             if (!$invoice) {
                 $this->db->insert('invoices', ['type'], [2]);
+                $lastId = $this->db->lastInsertId();
+            } else {
+                $lastId = $invoice['id'];
             }
+
+            $request['invoice_id'] = $lastId;
 
             $this->db->beginTransaction();
 
