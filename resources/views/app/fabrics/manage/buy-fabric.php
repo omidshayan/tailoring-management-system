@@ -60,6 +60,7 @@
                             <th>مدل پارچه</th>
                             <th>متراژ (<span class="fs11">متر</span>)</th>
                             <th>قیمت فروش (<span class="fs11">فی متر</span>)</th>
+                            <th>مجموع قیمت</th>
                             <th>حذف</th>
                         </tr>
                     </thead>
@@ -73,6 +74,7 @@
                                 <td><?= $fabric['name'] ?></td>
                                 <td><?= $fabric['quantity'] ?></td>
                                 <td><?= number_format($fabric['sell_price']) ?></td>
+                                <td><?= number_format($fabric['total_price']) ?></td>
                                 <td>
                                     <a href="<?= url('delete-fabric-cart/' . $fabric['id']) ?>" class="delete-product flex-justify-align">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
@@ -94,7 +96,7 @@
 
                     <input type="submit" id="submit" value="بستن فاکتور" class="center" />
                 </form>
-                
+
             </div>
         <?php }
         ?>

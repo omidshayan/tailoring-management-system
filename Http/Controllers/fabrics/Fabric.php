@@ -180,36 +180,47 @@ class Fabric extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        // check empty form
-        if ($request['fabric_id'] == '' || $request['quantity'] == '') {
+        if (!isset($request['fabric_id'], $request['quantity']) || $request['quantity'] <= 0) {
             $this->flashMessage('error', _emptyInputs);
+            return;
         }
 
-        $item = $this->db->select('SELECT * FROM fabrics WHERE `id` = ?', [$request['fabric_id']])->fetch();
+        $item = $this->db->select(
+            'SELECT * FROM fabrics WHERE id = ?',
+            [$request['fabric_id']]
+        )->fetch();
 
         if (!$item) {
             require_once BASE_PATH . '/404.php';
             exit;
         }
 
-        $invoice =  $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
-
-        $lastId = 0;
-
         try {
-
-            if (!$invoice) {
-                $this->db->insert('invoices', ['type'], [2]);
-                $lastId = $this->db->lastInsertId();
-            } else {
-                $lastId = $invoice['id'];
-            }
-
-            $request['invoice_id'] = $lastId;
 
             $this->db->beginTransaction();
 
-            $this->db->insert('fabric_stock', array_keys($request), $request);
+            $invoice = $this->db->select(
+                'SELECT * FROM invoices WHERE status = 1 ORDER BY id DESC LIMIT 1'
+            )->fetch();
+
+            if (!$invoice) {
+                $this->db->insert('invoices', ['type'], [2]);
+                $invoiceId = $this->db->lastInsertId();
+            } else {
+                $invoiceId = $invoice['id'];
+            }
+
+            $total = $item['buy_price'] * $request['quantity'];
+
+            $data = [
+                'fabric_id' => $request['fabric_id'],
+                'quantity' => $request['quantity'],
+                'invoice_id' => $invoiceId,
+                'buy_price' => $item['buy_price'],
+                'total_price' => $total
+            ];
+
+            $this->db->insert('fabric_stock', array_keys($data), $data);
 
             $this->db->commit();
 
