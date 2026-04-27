@@ -226,7 +226,6 @@ class Fabric extends App
             $this->db->insert('invoices', ['type'], [2]);
         }
 
-
         try {
             $this->db->beginTransaction();
 
