@@ -131,7 +131,7 @@ class Fabric extends App
     }
 
 
-    /////// manage fabrices //////////
+    /////// Buy fabrices //////////
 
     // search item
     public function searchFabcic($request)
@@ -160,7 +160,9 @@ class Fabric extends App
                 'SELECT fs.*, f.name, f.sell_price 
             FROM fabric_stock fs
             JOIN fabrics f ON fs.fabric_id = f.id
-            ORDER BY fs.id DESC'
+            WHERE invoice_id = ?
+            ORDER BY fs.id DESC',
+            [$invoice['id']]
             )->fetchAll();
 
             $total = $this->db->select(
@@ -191,14 +193,14 @@ class Fabric extends App
         }
 
         $invoice =  $this->db->select('SELECT * FROM invoices WHERE `status` = 1')->fetch();
-
-        if ($invoice) {
-        } else {
-            $this->db->insert('invoices', ['type'], [2]);
-        }
-
+        $request['invoice_id'] = $invoice['id'];
 
         try {
+
+            if (!$invoice) {
+                $this->db->insert('invoices', ['type'], [2]);
+            }
+
             $this->db->beginTransaction();
 
             $this->db->insert('fabric_stock', array_keys($request), $request);
