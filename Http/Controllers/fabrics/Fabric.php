@@ -262,12 +262,7 @@ class Fabric extends App
     {
         $this->middleware(true, true, 'general');
 
-        $fabrics = $this->db->select(
-            'SELECT fs.*, f.name, f.sell_price 
-            FROM fabric_stock fs
-            JOIN fabrics f ON fs.fabric_id = f.id
-            ORDER BY fs.id DESC'
-        )->fetchAll();
+        $invoices = $this->db->select('SELECT * FROM invoices WHERE `status` = 2 ORDER BY id DESC')->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/fabrics/manage/show-fabrics.php');
         exit();

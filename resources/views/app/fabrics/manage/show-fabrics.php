@@ -30,7 +30,7 @@ include_once('public/alerts/toastr.php');
             <tbody>
                 <?php
                 $perPage = 10;
-                $data = paginate($fabrics, $perPage);
+                $data = paginate($invoices, $perPage);
                 $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                 $number = ($currentPage - 1) * $perPage + 1;
                 foreach ($data as $fabric) {
@@ -64,16 +64,16 @@ include_once('public/alerts/toastr.php');
             </tbody>
         </table>
         <div class="flex-justify-align mt20 paginate-section">
-            <div class="table-info fs12">تعداد کل: <?= count($fabrics) ?></div>
+            <div class="table-info fs12">تعداد کل: <?= count($invoices) ?></div>
             <?php
-            if (count($fabrics) == null) { ?>
+            if (count($invoices) == null) { ?>
                 <div class="center color-red fs12">
                     <i class="fa fa-comment"></i>
                     <?= _not_infos ?>
                 </div>
             <?php } else {
-                if (count($fabrics) > 10) {
-                    echo paginateView($fabrics, 10);
+                if (count($invoices) > 10) {
+                    echo paginateView($invoices, 10);
                 }
             }
             ?>
