@@ -36,14 +36,14 @@
                         <!-- HTML -->
                         <div class="w100 m10 center">
                             <td>
-                                <a href="#" data-url="<?= url('change-status-clothes') ?>" data-id="<?= $item['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
+                                <a href="#" data-url="<?= url('change-status-model') ?>" data-id="<?= $item['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
                             </td>
                         </div>
                     </div>
                     <div class="w100 m10 center status status-column" id="status"><?= ($item['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
                 </div>
             </div>
-            <a href="<?= url('clothes') ?>">
+            <a href="<?= url('models') ?>">
                 <div class="btn center p5">برگشت</div>
             </a>
         </div>

@@ -287,7 +287,7 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('clothes') ?>">
+                  <a href="<?= url('models') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت مدل‌ها</li>
                   </a>
                 <?php endif; ?>

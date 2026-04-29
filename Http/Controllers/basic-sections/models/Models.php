@@ -7,7 +7,7 @@ class Models extends App
     ////////////// af clothes ///////////////
 
     // models page
-    public function clothes()
+    public function models()
     {
         $this->middleware(true, true, 'general', true);
 
@@ -17,7 +17,7 @@ class Models extends App
     }
 
     // store model
-    public function clothesStore($request)
+    public function modelStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
@@ -36,7 +36,7 @@ class Models extends App
     }
 
     // edit clothes page
-    public function editClothes($id)
+    public function editModel($id)
     {
         $this->middleware(true, true, 'general');
 
@@ -51,7 +51,7 @@ class Models extends App
     }
 
     // edit clothes Store
-    public function editClothesStore($request, $id)
+    public function editModelStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
@@ -72,7 +72,7 @@ class Models extends App
     }
 
     // clothes detiles page
-    public function clothesDetails($id)
+    public function modelDetails($id)
     {
         $this->middleware(true, true, 'general');
 
@@ -88,7 +88,7 @@ class Models extends App
     }
 
     // change status clothes
-    public function changeStatusClothes($id)
+    public function changeStatusModel($id)
     {
         $this->middleware(true, true, 'general');
 
