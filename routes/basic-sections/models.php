@@ -5,7 +5,7 @@ require_once 'Http/Controllers/basic-sections/models/Models.php';
 uri('models', 'App\Models', 'models');
 uri('model-store', 'App\Models', 'modelStore', 'POST');
 uri('edit-model/{id}', 'App\Models', 'editModel');
-uri('edit-clmodelothes-store/{id}', 'App\Models', 'editModelStore', 'POST');
+uri('edit-model-store/{id}', 'App\Models', 'editModelStore', 'POST');
 uri('model-details/{id}', 'App\Models', 'modelDetails');
 uri('change-status-model/{id}', 'App\Models', 'changeStatusModel');
 

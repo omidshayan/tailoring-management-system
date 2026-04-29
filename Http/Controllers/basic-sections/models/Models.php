@@ -56,19 +56,19 @@ class Models extends App
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['af_model'] == '') {
+        if ($request['model_name'] == '' || $request['type'] == '' || $request['fee'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $item = $this->db->select('SELECT * FROM models WHERE `af_model` = ?', [$request['af_model']])->fetch();
+        $item = $this->db->select('SELECT * FROM models WHERE `model_name` = ? AND `type` = ?', [$request['model_name'], $request['type']])->fetch();
 
-        if ($item) {
-            if ($item['id'] != $id) {
-                $this->flashMessage('error', 'نام مدل وارد شده تکراری است.');
-            }
+        if ($item && (int)$item['id'] !== (int)$id) {
+            $this->flashMessage('error', 'نام مدل وارد شده تکراری است.');
         }
+
         $this->db->update('models', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('clothes'));
+
+        $this->flashMessageTo('success', _success, url('models'));
     }
 
     // clothes detiles page

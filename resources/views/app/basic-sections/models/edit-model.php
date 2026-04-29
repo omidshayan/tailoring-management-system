@@ -20,7 +20,7 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">نام مدل <?= _star ?> </div>
-                            <input type="text" name="af_model" class="checkInput" value="<?= $item['model_name'] ?>" placeholder="نام مدل را وارد نمایید" autocomplete="off" />
+                            <input type="text" name="model_name" class="checkInput" value="<?= $item['model_name'] ?>" placeholder="نام مدل را وارد نمایید" autocomplete="off" />
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">قیمت <?= _star ?> </div>
