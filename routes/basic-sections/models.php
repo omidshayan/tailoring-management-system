@@ -2,12 +2,12 @@
 require_once 'Http/Controllers/basic-sections/models/Models.php';
 
 // cothes routes
-uri('clothes', 'App\Models', 'clothes');
-uri('clothes-store', 'App\Models', 'clothesStore', 'POST');
-uri('edit-clothes/{id}', 'App\Models', 'editClothes');
-uri('edit-clothes-store/{id}', 'App\Models', 'editClothesStore', 'POST');
-uri('clothes-details/{id}', 'App\Models', 'clothesDetails');
-uri('change-status-clothes/{id}', 'App\Models', 'changeStatusClothes');
+uri('models', 'App\Models', 'models');
+uri('model-store', 'App\Models', 'modelStore', 'POST');
+uri('edit-model/{id}', 'App\Models', 'editModel');
+uri('edit-clmodelothes-store/{id}', 'App\Models', 'editModelStore', 'POST');
+uri('model-details/{id}', 'App\Models', 'modelDetails');
+uri('change-status-model/{id}', 'App\Models', 'changeStatusModel');
 
 
 // vests routes

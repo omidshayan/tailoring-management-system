@@ -288,14 +288,14 @@
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('clothes') ?>">
-                    <li class="sidebar-dropdown-menu-item">مدیریت مدل‌های لباس</li>
+                    <li class="sidebar-dropdown-menu-item">مدیریت مدل‌ها</li>
                   </a>
                 <?php endif; ?>
-                <?php if ($this->hasAccess('general')): ?>
+                <!-- <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('vests') ?>">
                     <li class="sidebar-dropdown-menu-item">مدیریت مدل‌های واسکت</li>
                   </a>
-                <?php endif; ?>
+                <?php endif; ?> -->
               </ul>
             </li>
           <?php endif; ?>
