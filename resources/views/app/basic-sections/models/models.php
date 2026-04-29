@@ -20,7 +20,20 @@ include_once('public/alerts/toastr.php');
             <form id="myForm" action="<?= url('model-store') ?>" method="POST">
                 <div class="inputs d-flex">
                     <div class="one">
+                        <div class="label-form mb5 fs14">نوع مدل <?= _star ?></div>
+                        <select name="type">
+                            <option value="afghan" selected>لباس افغانی</option>
+                            <option value="vest">واسکت</option>
+                            <option value="suit">کت و شلوار</option>
+                        </select>
+                    </div>
+
+                    <div class="one">
                         <div class="label-form mb5 fs14">نام مدل <?= _star ?> </div>
+                        <input type="text" name="af_model" class="checkInput" value="<?= old('af_models') ?>" placeholder="نام  مدل را وارد نمایید" autocomplete="off" autofocus />
+                    </div>
+                    <div class="one">
+                        <div class="label-form mb5 fs14">قیمت <?= _star ?> </div>
                         <input type="text" name="af_model" class="checkInput" value="<?= old('af_models') ?>" placeholder="نام  مدل را وارد نمایید" autocomplete="off" autofocus />
                     </div>
                 </div>
