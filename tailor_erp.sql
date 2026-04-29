@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 26, 2026 at 08:17 PM
+-- Generation Time: Apr 29, 2026 at 12:11 PM
 -- Server version: 9.1.0
 -- PHP Version: 7.4.33
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `csrf_token_logs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `csrf_token_logs`
@@ -111,7 +111,11 @@ INSERT INTO `csrf_token_logs` (`id`, `message`, `ip_address`, `created_at`, `upd
 (17, 'Invalid or missing CSRF token.', '::1', '2025-08-13 18:43:36', NULL),
 (18, 'Invalid or missing CSRF token.', '::1', '2025-08-13 18:46:53', NULL),
 (19, 'Invalid or missing CSRF token.', '::1', '2026-04-26 20:00:48', NULL),
-(20, 'Invalid or missing CSRF token.', '::1', '2026-04-26 23:36:39', NULL);
+(20, 'Invalid or missing CSRF token.', '::1', '2026-04-26 23:36:39', NULL),
+(21, 'Invalid or missing CSRF token.', '::1', '2026-04-27 02:07:17', NULL),
+(22, 'Invalid or missing CSRF token.', '::1', '2026-04-27 02:07:18', NULL),
+(23, 'Invalid or missing CSRF token.', '::1', '2026-04-27 02:07:19', NULL),
+(24, 'Invalid or missing CSRF token.', '::1', '2026-04-27 23:20:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -262,24 +266,55 @@ INSERT INTO `fabrics` (`id`, `name`, `category`, `color`, `unit`, `buy_price`, `
 DROP TABLE IF EXISTS `fabric_stock`;
 CREATE TABLE IF NOT EXISTS `fabric_stock` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `invoice_id` int NOT NULL,
   `fabric_id` int NOT NULL,
   `quantity` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `buy_price` decimal(15,2) DEFAULT NULL,
+  `total_price` decimal(15,2) DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`id`),
+  KEY `invoice_id` (`invoice_id`,`fabric_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `fabric_stock`
 --
 
-INSERT INTO `fabric_stock` (`id`, `fabric_id`, `quantity`, `description`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(3, 7, '100', 'desc', 1, 'for suport', '2026-04-27 00:23:12', NULL),
-(4, 7, '250', '', 1, 'for suport', '2026-04-27 00:23:23', NULL),
-(5, 6, '220', 'dddd', 1, 'for suport', '2026-04-27 00:25:28', '2026-04-27 00:46:50');
+INSERT INTO `fabric_stock` (`id`, `invoice_id`, `fabric_id`, `quantity`, `buy_price`, `total_price`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(25, 8, 6, '20', 30.00, 600.00, 1, '', '2026-04-27 23:36:13', NULL),
+(26, 8, 7, '234', 50.00, 11700.00, 1, '', '2026-04-27 23:39:34', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoices`
+--
+
+DROP TABLE IF EXISTS `invoices`;
+CREATE TABLE IF NOT EXISTS `invoices` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `total_amount` decimal(15,2) DEFAULT NULL,
+  `paid_amount` decimal(15,2) DEFAULT NULL,
+  `date` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `type` tinyint NOT NULL,
+  `image` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `invoices`
+--
+
+INSERT INTO `invoices` (`id`, `user_id`, `total_amount`, `paid_amount`, `date`, `type`, `image`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(8, NULL, 12300.00, NULL, NULL, 2, NULL, 2, NULL, '2026-04-27 23:35:59', '2026-04-27 23:39:59');
 
 -- --------------------------------------------------------
 
@@ -560,6 +595,26 @@ CREATE TABLE IF NOT EXISTS `settings` (
 
 INSERT INTO `settings` (`id`, `branch_id`, `deduction_form_capital`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, '2025-08-30 17:59:43', '2026-01-22 18:52:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+DROP TABLE IF EXISTS `transactions`;
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `ref_id` int DEFAULT NULL,
+  `type` tinyint NOT NULL,
+  `total_amount` decimal(15,2) NOT NULL,
+  `paid_amount` decimal(15,2) DEFAULT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
