@@ -1,5 +1,5 @@
     <?php
-    $title = 'جزئیات مدل: ' . $item['af_model'];
+    $title = 'جزئیات مدل: ' . $item['model_name'];
     include_once('resources/views/layouts/header.php');
     include_once('resources/views/scripts/change-status.php');
     ?>
@@ -10,12 +10,34 @@
     </div>
 
     <div class="content">
-        <div class="content-title"> جزئیات مدل: <?= $item['af_model'] ?></div>
+        <div class="content-title"> جزئیات مدل: <?= $item['model_name'] ?></div>
         <div class="box-container">
             <div class="details">
                 <div class="detail-item d-flex">
                     <div class="w100 m10 center">نام</div>
-                    <div class="w100 m10 center"><?= $item['af_model'] ?></div>
+                    <div class="w100 m10 center"><?= $item['model_name'] ?></div>
+                </div>
+            </div>
+            <div class="details">
+                <div class="detail-item d-flex">
+                    <div class="w100 m10 center">نوع</div>
+                    <div class="w100 m10 center">
+                        <?php
+                        $types = [
+                            'afghan' => 'لباس افغانی',
+                            'vest'   => 'واسکت',
+                            'suit'   => 'کت و شلوار'
+                        ];
+
+                        echo $types[$item['type']] ?? $item['type'];
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="details">
+                <div class="detail-item d-flex">
+                    <div class="w100 m10 center">اجرت دوخت</div>
+                    <div class="w100 m10 center"><?= $item['fee'] ?></div>
                 </div>
             </div>
             <div class="details">
