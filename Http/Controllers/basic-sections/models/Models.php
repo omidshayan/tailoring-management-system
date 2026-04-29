@@ -21,13 +21,13 @@ class Models extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['af_model'] == '') {
+        if ($request['model_name'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $item = $this->db->select('SELECT af_model FROM models WHERE `af_model` = ?', [$request['af_model']])->fetch();
+        $item = $this->db->select('SELECT model_name, `type` FROM models WHERE `model_name` = ? AND `type` = ?', [$request['model_name'], $request['type']])->fetch();
 
-        if (!empty($item['af_model'])) {
+        if (!empty($item['model_name'])) {
             $this->flashMessage('error', _repeat);
         } else {
             $this->db->insert('models', array_keys($request), $request);
@@ -103,6 +103,21 @@ class Models extends App
         $this->db->update('models', $item['id'], ['status'], [$newState]);
         $this->send_json_response(true, _success, $newState);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     ////////////// vests /////////////////
 

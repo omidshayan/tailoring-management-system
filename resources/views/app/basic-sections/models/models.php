@@ -30,11 +30,11 @@ include_once('public/alerts/toastr.php');
 
                     <div class="one">
                         <div class="label-form mb5 fs14">نام مدل <?= _star ?> </div>
-                        <input type="text" name="af_model" class="checkInput" value="<?= old('af_models') ?>" placeholder="نام  مدل را وارد نمایید" autocomplete="off" autofocus />
+                        <input type="text" name="model_name" class="checkInput" value="<?= old('model_name') ?>" placeholder="نام مدل را وارد نمایید" autocomplete="off" />
                     </div>
                     <div class="one">
                         <div class="label-form mb5 fs14">قیمت <?= _star ?> </div>
-                        <input type="text" name="af_model" class="checkInput" value="<?= old('af_models') ?>" placeholder="نام  مدل را وارد نمایید" autocomplete="off" autofocus />
+                        <input type="text" name="fee" class="checkInput" value="<?= old('fee') ?>" placeholder="قیمت مدل را وارد نمایید" autocomplete="off" />
                     </div>
                 </div>
 
@@ -66,7 +66,7 @@ include_once('public/alerts/toastr.php');
                 ?>
                     <tr>
                         <td class="color-orange <?= statusColor($item['status']) ?>"><?= $number ?></td>
-                        <td><?= $item['af_model'] ?></td>
+                        <td><?= $item['model_name'] ?></td>
                         <td>
                             <a href="<?= url('edit-model/' . $item['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
