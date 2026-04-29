@@ -1,18 +1,30 @@
     <?php
-    $title = 'ویرایش مدل: ' . $item['af_model'];
+    $title = 'ویرایش مدل: ' . $item['model_name'];
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/error.php');
     ?>
 
     <div class="content">
-        <div class="content-title">ویرایش مدل: <?= $item['af_model'] ?></div>
+        <div class="content-title">ویرایش مدل: <?= $item['model_name'] ?></div>
         <div class="box-container">
             <div class="insert">
                 <form id="myForm" action="<?= url('edit-model-store/' . $item['id']) ?>" method="POST">
                     <div class="inputs d-flex">
                         <div class="one">
+                            <div class="label-form mb5 fs14">نوع مدل <?= _star ?></div>
+                            <select name="type">
+                                <option value="afghan" <?= ($item['type'] == 'afghan') ? 'selected' : '' ?>>لباس افغانی</option>
+                                <option value="vest" <?= ($item['type'] == 'vest') ? 'selected' : '' ?>>واسکت</option>
+                                <option value="suit" <?= ($item['type'] == 'suit') ? 'selected' : '' ?>>کت و شلوار</option>
+                            </select>
+                        </div>
+                        <div class="one">
                             <div class="label-form mb5 fs14">نام مدل <?= _star ?> </div>
-                            <input type="text" name="af_model" class="checkInput" value="<?= $item['af_model'] ?>" placeholder="نام مدل را وارد نمایید" autocomplete="off" />
+                            <input type="text" name="af_model" class="checkInput" value="<?= $item['model_name'] ?>" placeholder="نام مدل را وارد نمایید" autocomplete="off" />
+                        </div>
+                        <div class="one">
+                            <div class="label-form mb5 fs14">قیمت <?= _star ?> </div>
+                            <input type="text" name="fee" class="checkInput" value="<?= $item['fee'] ?>" placeholder="قیمت مدل را وارد نمایید" autocomplete="off" />
                         </div>
                     </div>
 
