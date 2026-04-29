@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 29, 2026 at 12:11 PM
+-- Generation Time: Apr 29, 2026 at 07:30 PM
 -- Server version: 9.1.0
 -- PHP Version: 7.4.33
 
@@ -368,23 +368,24 @@ INSERT INTO `measurements` (`id`, `user_id`, `af_height`, `af_sholder`, `af_slee
 DROP TABLE IF EXISTS `models`;
 CREATE TABLE IF NOT EXISTS `models` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `af_model` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `model_name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `type` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
   `fee` int NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `models`
 --
 
-INSERT INTO `models` (`id`, `af_model`, `fee`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(1, 'jadid', 450, 1, 'for suport', '2026-04-25 18:37:06', '2026-04-26 17:22:06'),
-(2, 'adsfdf', 600, 1, 'for suport', '2026-04-25 18:37:19', NULL),
-(3, 'ddd', 800, 1, 'for suport', '2026-04-25 18:37:21', NULL);
+INSERT INTO `models` (`id`, `model_name`, `type`, `fee`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(4, 'خیلی جدید', 'vest', 800, 1, 'for suport', '2026-04-29 23:46:26', '2026-04-29 23:59:37'),
+(5, 'جیب دار', 'afghan', 850, 1, 'for suport', '2026-04-29 23:50:27', '2026-04-29 23:57:05'),
+(6, 'کت تک', 'suit', 1200, 1, 'for suport', '2026-04-29 23:50:40', NULL);
 
 -- --------------------------------------------------------
 
