@@ -52,6 +52,8 @@ include_once('public/alerts/toastr.php');
                 <tr>
                     <th>#</th>
                     <th>نام مدل</th>
+                    <th>نوع مدل</th>
+                    <th>اجرت دوخت</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
                 </tr>
@@ -67,6 +69,17 @@ include_once('public/alerts/toastr.php');
                     <tr>
                         <td class="color-orange <?= statusColor($item['status']) ?>"><?= $number ?></td>
                         <td><?= $item['model_name'] ?></td>
+                        <td>
+                            <?php
+                            $types = [
+                                'afghan' => 'لباس افغانی',
+                                'vest'   => 'واسکت',
+                                'suit'   => 'کت و شلوار'
+                            ];
+                            echo $types[$item['type']] ?? $item['type'];
+                            ?>
+                        </td>
+                        <td><?= $item['fee'] ?></td>
                         <td>
                             <a href="<?= url('edit-model/' . $item['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

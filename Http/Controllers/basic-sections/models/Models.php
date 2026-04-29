@@ -21,7 +21,7 @@ class Models extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if ($request['model_name'] == '') {
+        if ($request['model_name'] == '' || $request['type'] == '' || $request['fee'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
