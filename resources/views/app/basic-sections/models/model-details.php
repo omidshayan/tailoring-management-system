@@ -37,7 +37,7 @@
             <div class="details">
                 <div class="detail-item d-flex">
                     <div class="w100 m10 center">اجرت دوخت</div>
-                    <div class="w100 m10 center"><?= $item['fee'] ?></div>
+                    <div class="w100 m10 center"><?= $item['fee'] . _afghani?></div>
                 </div>
             </div>
             <div class="details">
