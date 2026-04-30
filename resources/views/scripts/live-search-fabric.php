@@ -43,6 +43,10 @@
                 }
             });
 
+            $input.on('input', function() {
+                if (targetId) $('#' + targetId).val('');
+            });
+
             $input.on('keyup', function(e) {
                 let query = $(this).val().trim();
                 if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) return;
@@ -63,7 +67,14 @@
                                 response.items.forEach(item => {
                                     itemsData.push(item);
                                     let cat = item.category ? ` - ${item.category}` : '';
-                                    output += `<li class="resSel search-item color" role="option" data-id="${item.id}">${item.name}${cat}</li>`;
+                                    output += `<li 
+                                        class="resSel search-item color" 
+                                        role="option" 
+                                        data-id="${item.id}"
+                                        data-price="${item.sell_price}"
+                                        data-qty="${item.quantity}">
+                                        ${item.name}${cat}
+                                    </li>`;
                                 });
                             } else {
                                 output = '<li class="resSel search-item color no-select" role="option">چیزی یافت نشد</li>';

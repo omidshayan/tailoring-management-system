@@ -180,7 +180,7 @@ class Fabric extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        if (!isset($request['fabric_id'], $request['quantity']) || $request['quantity'] <= 0) {
+        if (!isset($request['fabric_id'], $request['quantity']) || (int)$request['quantity'] <= 0) {
             $this->flashMessage('error', _emptyInputs);
             return;
         }

@@ -15,7 +15,7 @@
                 data-url="<?= url('search-fabric') ?>"
                 data-input-id="search_user"
                 data-result-id="backResponseSeller"
-                data-field-name="customer_name"
+                data-field-name="fabric_name"
                 data-target-id="item_id">
                 <a href="#" class="color search-icon-database-s">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-10 search-icon w17">

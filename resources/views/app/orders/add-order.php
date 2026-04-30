@@ -160,10 +160,11 @@
                     </div>
 
                     <input type="hidden" name="user_id" id="item_id">
-                    <input type="hidden" name="fabric_id" id="item_id">
+                    <input type="hidden" name="fabric_id" id="fabric_id">
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                     <input type="submit" id="submit" value="ثبت" class="btn" />
                 </form>
+                
             </div>
 
         </div>
