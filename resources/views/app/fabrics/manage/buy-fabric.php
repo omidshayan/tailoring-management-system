@@ -11,7 +11,7 @@
 
         <!-- search box for fabric -->
         <div class=" flex-justify-align mb10">
-            <div class="search-database-s flex-justify-align border"
+            <div class="search-database-s search-fabric flex-justify-align border"
                 data-url="<?= url('search-fabric') ?>"
                 data-input-id="search_user"
                 data-result-id="backResponseSeller"

@@ -137,7 +137,7 @@ class Fabric extends App
     public function searchFabcic($request)
     {
         $this->middleware(true, true, 'general');
-        $infos = $this->db->select("SELECT * FROM fabrics WHERE `name` LIKE ?", ['%' . $request['customer_name'] . '%'])->fetchAll();
+        $infos = $this->db->select("SELECT * FROM fabrics WHERE `name` LIKE ?", ['%' . $request['fabric_name'] . '%'])->fetchAll();
 
         $response = [
             'status' => 'success',

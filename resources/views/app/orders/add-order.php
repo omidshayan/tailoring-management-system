@@ -11,8 +11,8 @@
     <div class="content">
         <div class="content-title print-none">ثبت سفارش جدید</div>
 
-        <!-- search box -->
-        <!-- <div class=" flex-justify-align mb10">
+        <!-- search customer -->
+        <div class=" flex-justify-align mb10">
             <div class="search-database-s flex-justify-align border"
                 data-url="<?= url('search-item') ?>"
                 data-input-id="search_user"
@@ -30,14 +30,13 @@
                     <li class="search-item color" role="option"></li>
                 </ul>
             </div>
-        </div> -->
+        </div>
 
         <div class="content-container">
             <div class="insert">
 
                 <form action="<?= url('order-store') ?>" method="POST" id="transactionForm">
 
-                    <!-- select type and models -->
                     <div class="inputs d-flex">
 
                         <div class="one">
@@ -113,17 +112,23 @@
                             </select>
                         </div>
 
+                        <!-- select fabric -->
                         <div class="one">
                             <div class="label-form mb5 fs14">جستجوی پارچه</div>
-                            <!-- search box -->
-                            <div class="search-fabric"
-                                data-url="<?= url('search-item') ?>"
-                                data-input-id="search_user"
-                                data-result-id="backResponseSeller"
-                                data-field-name="customer_name"
-                                data-target-id="item_id">
-                                <input type="text" class="p5 fs15 input w100 border checkInput" id="search_user" placeholder="جستجوی پارچه" autocomplete="off" />
-                                <ul class="search-back d-none top40" id="backResponseSeller">
+                            <div class="search-fabric pr"
+                                data-url="<?= url('search-fabric') ?>"
+                                data-input-id="search_fabric"
+                                data-result-id="backResponseFabric"
+                                data-field-name="fabric_name"
+                                data-target-id="fabric_id">
+
+                                <input type="text"
+                                    id="search_fabric"
+                                    class="p5 fs15 input w100 border checkInput"
+                                    placeholder="جستجوی پارچه"
+                                    autocomplete="off" />
+
+                                <ul class="search-back d-none top40" id="backResponseFabric">
                                     <li class="search-item color" role="option"></li>
                                 </ul>
                             </div>
@@ -155,6 +160,7 @@
                     </div>
 
                     <input type="hidden" name="user_id" id="item_id">
+                    <input type="hidden" name="fabric_id" id="item_id">
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                     <input type="submit" id="submit" value="ثبت" class="btn" />
                 </form>
