@@ -39,7 +39,6 @@
                     <!-- select type and models -->
                     <div class="inputs d-flex">
 
-                        <!-- نوع سفارش -->
                         <div class="one">
                             <div class="label-form mb5 fs14">نوع</div>
                             <select id="typeSelect" name="type" onchange="changeType()">
@@ -49,52 +48,54 @@
                             </select>
                         </div>
 
-                        <!-- مدل افغانی -->
                         <div class="one" id="afghanBox">
                             <div class="label-form mb5 fs14">مدل</div>
                             <select name="afghan_model" onchange="setFee(this)">
                                 <option disabled selected>مدل را انتخاب نمایید</option>
-                                <?php foreach ($models as $model) { ?>
+                                <?php foreach ($models as $model) {
+                                    if ($model['type'] != 'afghan') continue; ?>
+
                                     <option
-                                        value="<?= $model['af_model'] ?>"
+                                        value="<?= $model['model_name'] ?>"
                                         data-fee="<?= $model['fee'] ?>">
-                                        <?= $model['af_model'] ?>
+                                        <?= $model['model_name'] ?>
                                     </option>
                                 <?php } ?>
                             </select>
                         </div>
 
-                        <!-- مدل واسکت -->
                         <div class="one" id="vestBox" style="display:none;">
                             <div class="label-form mb5 fs14">مدل</div>
                             <select name="vest_model" onchange="setFee(this)">
                                 <option disabled selected>مدل را انتخاب نمایید</option>
-                                <?php foreach ($vests as $vest) { ?>
+                                <?php foreach ($models as $model) {
+                                    if ($model['type'] != 'vest') continue; ?>
+
                                     <option
-                                        value="<?= $vest['vest_model'] ?>"
-                                        data-fee="<?= $vest['fee'] ?>">
-                                        <?= $vest['vest_model'] ?>
+                                        value="<?= $model['model_name'] ?>"
+                                        data-fee="<?= $model['fee'] ?>">
+                                        <?= $model['model_name'] ?>
                                     </option>
                                 <?php } ?>
                             </select>
                         </div>
 
-                        <!-- مدل کت شلوار -->
                         <div class="one" id="suitBox" style="display:none;">
                             <div class="label-form mb5 fs14">مدل</div>
                             <select name="suit_model" onchange="setFee(this)">
                                 <option disabled selected>مدل را انتخاب نمایید</option>
-                                <?php foreach ($suits as $suit) { ?>
+                                <?php foreach ($models as $model) {
+                                    if ($model['type'] != 'suit') continue; ?>
+
                                     <option
-                                        value="<?= $suit['suit_model'] ?>"
-                                        data-fee="<?= $suit['fee'] ?>">
-                                        <?= $suit['suit_model'] ?>
+                                        value="<?= $model['model_name'] ?>"
+                                        data-fee="<?= $model['fee'] ?>">
+                                        <?= $model['model_name'] ?>
                                     </option>
                                 <?php } ?>
                             </select>
                         </div>
 
-                        <!-- اجرت -->
                         <div class="one">
                             <div class="label-form mb5 fs14">اجرت دوخت</div>
                             <input type="text" id="feeInput" name="fee" placeholder="اجرت دوخت را وارد نمایید" />
@@ -166,12 +167,10 @@
         function changeType() {
             let type = document.getElementById('typeSelect').value;
 
-            // مخفی کردن همه
             document.getElementById('afghanBox').style.display = 'none';
             document.getElementById('vestBox').style.display = 'none';
             document.getElementById('suitBox').style.display = 'none';
 
-            // نمایش مورد انتخاب شده
             if (type === 'afghan') {
                 document.getElementById('afghanBox').style.display = 'block';
             } else if (type === 'vest') {
@@ -180,22 +179,18 @@
                 document.getElementById('suitBox').style.display = 'block';
             }
 
-            // 🔥 خالی کردن قیمت
             document.getElementById('feeInput').value = '';
 
-            // 🔥 ریست select ها (خیلی مهم)
             document.querySelector('#afghanBox select').selectedIndex = 0;
             document.querySelector('#vestBox select').selectedIndex = 0;
             document.querySelector('#suitBox select').selectedIndex = 0;
         }
 
-        // گرفتن قیمت
         function setFee(selectEl) {
             let fee = selectEl.selectedOptions[0].dataset.fee || '';
             document.getElementById('feeInput').value = fee;
         }
 
-        // لود اولیه
         window.onload = function() {
             changeType();
         };

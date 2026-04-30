@@ -11,8 +11,6 @@ class Order extends App
 
         $models = $this->db->select('SELECT * FROM models WHERE `status` = 1')->fetchAll();
 
-        $vests = $this->db->select('SELECT * FROM vests WHERE `status` = 1')->fetchAll();
-
         require_once(BASE_PATH . '/resources/views/app/orders/add-order.php');
     }
 
