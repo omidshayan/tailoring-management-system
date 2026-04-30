@@ -15,7 +15,7 @@ include_once('public/alerts/toastr.php');
     include_once('resources/views/helps/help.php');
     ?>
 
-    <div class="box-container mt20">
+    <div class="content-container mt20">
         <table class="fl-table">
             <thead>
                 <tr>

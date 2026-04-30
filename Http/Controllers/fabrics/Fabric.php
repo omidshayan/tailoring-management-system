@@ -315,15 +315,9 @@ class Fabric extends App
     {
         $this->middleware(true, true, 'general');
 
-        $fabric = $this->db->select(
-            'SELECT fs.*, f.name, f.category, f.sell_price, f.buy_price, f.color
-            FROM fabric_stock fs
-            LEFT JOIN fabrics f ON fs.fabric_id = f.id
-            WHERE fs.id = ?',
-            [$id]
-        )->fetch();
+        $invoice = $this->db->select('SELECT * FROM invoices WHERE id = ?', [$id])->fetch();
 
-        if ($fabric != null) {
+        if ($invoice != null) {
             require_once(BASE_PATH . '/resources/views/app/fabrics/manage/buy-fabric-details.php');
             exit();
         } else {
