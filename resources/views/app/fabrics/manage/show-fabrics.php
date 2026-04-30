@@ -1,12 +1,12 @@
 <?php
-$title = 'نمایش پارچه‌های خرید شده';
+$title = 'نمایش فاکتورهای خرید';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
 
 <div class="content">
-    <div class="content-title">نمایش پارچه‌های خرید شده
+    <div class="content-title">نمایش فاکتورهای خرید
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
@@ -20,10 +20,11 @@ include_once('public/alerts/toastr.php');
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>مدل پارچه</th>
-                    <th>متراژ (<span class="fs11">متر</span>)</th>
-                    <th>قیمت فروش (<span class="fs11">فی متر</span>)</th>
-                    <th>ویرایش</th>
+                    <th>شماره فاکتور</th>
+                    <th>مجموع فاکتور</th>
+                    <th>مجموع پرداختی</th>
+                    <th>تاریخ</th>
+                    <!-- <th>ویرایش</th> -->
                     <th>جزئیات</th>
                 </tr>
             </thead>
@@ -37,17 +38,18 @@ include_once('public/alerts/toastr.php');
                 ?>
                     <tr>
                         <td class="color-orange <?= ($fabric['status'] == 1) ? '' : 'color-red' ?>"><?= $number ?></td>
-                        <td><?= $fabric['name'] ?></td>
-                        <td><?= $fabric['quantity'] ?></td>
-                        <td><?= number_format($fabric['sell_price']) ?></td>
-                        <td>
+                        <td><?= $fabric['id'] ?></td>
+                        <td><?= number_format($fabric['total_amount']) ?></td>
+                        <td><?= number_format($fabric['paid_amount']) ?></td>
+                        <td><?= jdate('Y/m/d', strtotime($fabric['created_at'])) ?></td>
+                        <!-- <td>
                             <a href="<?= url('edit-buy-fabric/' . $fabric['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" class="color-orange" />
                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                                 </svg>
                             </a>
-                        </td>
+                        </td> -->
                         <td>
                             <a href="<?= url('buy-fabric-details/' . $fabric['id']) ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
