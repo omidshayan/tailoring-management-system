@@ -121,13 +121,11 @@
                                 data-result-id="backResponseFabric"
                                 data-field-name="fabric_name"
                                 data-target-id="fabric_id">
-
                                 <input type="text"
                                     id="search_fabric"
                                     class="p5 fs15 input w100 border checkInput"
                                     placeholder="جستجوی پارچه"
                                     autocomplete="off" />
-
                                 <ul class="search-back d-none top40" id="backResponseFabric">
                                     <li class="search-item color" role="option"></li>
                                 </ul>
