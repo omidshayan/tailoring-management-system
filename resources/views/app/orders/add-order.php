@@ -98,7 +98,7 @@
 
                         <div class="one">
                             <div class="label-form mb5 fs14">اجرت دوخت</div>
-                            <input type="text" id="feeInput" name="fee" placeholder="اجرت دوخت را وارد نمایید" />
+                            <input type="text" id="feeInput" name="fee" disabled placeholder="اجرت دوخت را وارد نمایید" />
                         </div>
 
                     </div>
@@ -139,7 +139,7 @@
                         </div>
                         <div class="one w300">
                             <div class="label-form mb5 fs14">قیمت</div>
-                            <input type="text" name="fabric_total_price" id="fabric_total_price" placeholder="قیمت" readonly />
+                            <input type="text" id="fabric_total_price" placeholder="قیمت" disabled readonly />
                         </div>
                     </div>
 
