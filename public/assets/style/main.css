@@ -623,7 +623,9 @@ select option:disabled {
     flex: 0 0 auto;
     text-align: left;
 }
-
+.w250{
+    width: 250px !important;
+}
 .center-text {
     position: absolute;
     left: 50%;

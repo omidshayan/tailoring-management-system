@@ -103,22 +103,27 @@
 
                     </div>
 
+
+
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14"> منبع مالی <?= _star ?></div>
-                            <select name="source">
-                                <option disabled>مبلغ پرداختی کجا وارد شود</option>
-                                <?php
-                                foreach ($cash_boxes as $cash_box) { ?>
-                                    <option value="<?= $cash_box['id'] ?>"><?= $cash_box['name'] ?></option>
-                                <?php }
-                                ?>
+                            <div class="label-form mb5 fs14">انتخاب</div>
+                            <select name="fabric">
+                                <option value="with_fabric">همراه با پارچه</option>
+                                <option value="without_fabric">بدون پارچه</option>
                             </select>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">تاریخ را انتخاب نمایید</div>
-                            <input type="hidden" class="d-none date-server" name="transaction_date" autofocus>
-                            <input type="text" data-jdp class="cursor-p checkInput date-view" />
+                            <div class="label-form mb5 fs14">جستجوی پارچه</div>
+                            <input type="text" placeholder="جستجوی پارچه" />
+                        </div>
+                        <div class="one">
+                            <div class="label-form mb5 fs14">متراژ پارچه</div>
+                            <input type="text" placeholder="متراژ پارچه" />
+                        </div>
+                        <div class="one w250">
+                            <div class="label-form mb5 fs14">قیمت</div>
+                            <input type="text" placeholder="قیمت" />
                         </div>
                     </div>
 
