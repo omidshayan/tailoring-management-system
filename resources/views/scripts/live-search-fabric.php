@@ -1,6 +1,6 @@
 <script>
     $(document).ready(function() {
-        $('.search-database-s').each(function() {
+        $('.search-fabric').each(function() {
             const $wrapper = $(this);
             const ajaxUrl = $wrapper.data('url');
             const inputId = $wrapper.data('input-id');

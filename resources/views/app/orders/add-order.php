@@ -5,13 +5,14 @@
     include_once('public/alerts/toastr.php');
     include_once('resources/views/scripts/datePicker.php');
     include_once('resources/views/scripts/live-search-items.php');
+    include_once('resources/views/scripts/live-search-fabric.php');
     ?>
 
     <div class="content">
         <div class="content-title print-none">ثبت سفارش جدید</div>
 
         <!-- search box -->
-        <div class=" flex-justify-align mb10">
+        <!-- <div class=" flex-justify-align mb10">
             <div class="search-database-s flex-justify-align border"
                 data-url="<?= url('search-item') ?>"
                 data-input-id="search_user"
@@ -29,7 +30,7 @@
                     <li class="search-item color" role="option"></li>
                 </ul>
             </div>
-        </div>
+        </div> -->
 
         <div class="content-container">
             <div class="insert">
@@ -103,8 +104,6 @@
 
                     </div>
 
-
-
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">انتخاب</div>
@@ -113,10 +112,24 @@
                                 <option value="without_fabric">بدون پارچه</option>
                             </select>
                         </div>
+
                         <div class="one">
                             <div class="label-form mb5 fs14">جستجوی پارچه</div>
-                            <input type="text" placeholder="جستجوی پارچه" />
+                            <!-- search box -->
+                            <div class="search-fabric"
+                                data-url="<?= url('search-item') ?>"
+                                data-input-id="search_user"
+                                data-result-id="backResponseSeller"
+                                data-field-name="customer_name"
+                                data-target-id="item_id">
+                                <input type="text" class="p5 fs15 input w100 border checkInput" id="search_user" placeholder="جستجوی پارچه" autocomplete="off" />
+                                <ul class="search-back d-none top40" id="backResponseSeller">
+                                    <li class="search-item color" role="option"></li>
+                                </ul>
+                            </div>
                         </div>
+
+
                         <div class="one w300">
                             <div class="label-form mb5 fs14">متراژ پارچه</div>
                             <input type="text" placeholder="متراژ پارچه" />

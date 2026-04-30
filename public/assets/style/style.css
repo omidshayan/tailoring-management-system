@@ -1313,7 +1313,7 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     border-right: 1px solid var(--border);
     border-left: 1px solid var(--border);
     border-top: none;
-    z-index: 1000 !important;
+    z-index: 1999000 !important;
     text-align: center;
     display: none;
     list-style-type: none;
