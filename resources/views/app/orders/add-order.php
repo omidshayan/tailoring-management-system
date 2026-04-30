@@ -117,11 +117,11 @@
                             <div class="label-form mb5 fs14">جستجوی پارچه</div>
                             <input type="text" placeholder="جستجوی پارچه" />
                         </div>
-                        <div class="one">
+                        <div class="one w300">
                             <div class="label-form mb5 fs14">متراژ پارچه</div>
                             <input type="text" placeholder="متراژ پارچه" />
                         </div>
-                        <div class="one w250">
+                        <div class="one w300">
                             <div class="label-form mb5 fs14">قیمت</div>
                             <input type="text" placeholder="قیمت" />
                         </div>
