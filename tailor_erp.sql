@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 29, 2026 at 07:30 PM
+-- Generation Time: Apr 30, 2026 at 06:53 PM
 -- Server version: 9.1.0
 -- PHP Version: 7.4.33
 
@@ -237,6 +237,7 @@ CREATE TABLE IF NOT EXISTS `fabrics` (
   `category` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `color` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `unit` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `quantity` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `buy_price` decimal(15,2) DEFAULT NULL,
   `sell_price` decimal(15,2) DEFAULT NULL,
   `supplier_id` int NOT NULL,
@@ -247,15 +248,16 @@ CREATE TABLE IF NOT EXISTS `fabrics` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `fabrics`
 --
 
-INSERT INTO `fabrics` (`id`, `name`, `category`, `color`, `unit`, `buy_price`, `sell_price`, `supplier_id`, `status`, `who_it`, `quality`, `description`, `created_at`, `updated_at`) VALUES
-(6, 'new fabric', 'چینایی', 'blue', NULL, 30.00, 50.00, 0, 1, 'for suport', NULL, 'desc\r\n', '2026-04-27 00:22:48', NULL),
-(7, 'two', 'پاکستانی', '', NULL, 50.00, 60.00, 0, 1, 'for suport', NULL, '', '2026-04-27 00:22:56', NULL);
+INSERT INTO `fabrics` (`id`, `name`, `category`, `color`, `unit`, `quantity`, `buy_price`, `sell_price`, `supplier_id`, `status`, `who_it`, `quality`, `description`, `created_at`, `updated_at`) VALUES
+(6, 'new fabric 1', 'چینایی', 'blue', NULL, NULL, 30.00, 50.00, 0, 1, 'for suport', NULL, 'desc\r\n', '2026-04-27 00:22:48', '2026-04-30 22:57:17'),
+(7, 'two', 'پاکستانی', '', NULL, NULL, 50.00, 60.00, 0, 1, 'for suport', NULL, '', '2026-04-27 00:22:56', NULL),
+(8, 'dffd 1', 'پاکستانی', '', NULL, NULL, 100.00, 120.00, 0, 1, 'for suport', NULL, '', '2026-04-30 23:16:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -277,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `fabric_stock` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `invoice_id` (`invoice_id`,`fabric_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `fabric_stock`
@@ -285,7 +287,11 @@ CREATE TABLE IF NOT EXISTS `fabric_stock` (
 
 INSERT INTO `fabric_stock` (`id`, `invoice_id`, `fabric_id`, `quantity`, `buy_price`, `total_price`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
 (25, 8, 6, '20', 30.00, 600.00, 1, '', '2026-04-27 23:36:13', NULL),
-(26, 8, 7, '234', 50.00, 11700.00, 1, '', '2026-04-27 23:39:34', NULL);
+(26, 8, 7, '234', 50.00, 11700.00, 1, '', '2026-04-27 23:39:34', NULL),
+(27, 9, 6, '12', 30.00, 360.00, 1, '', '2026-04-30 22:38:39', NULL),
+(28, 9, 6, '3333', 30.00, 99990.00, 1, '', '2026-04-30 22:39:11', NULL),
+(29, 9, 6, '345', 30.00, 10350.00, 1, '', '2026-04-30 22:39:28', NULL),
+(30, 10, 8, '100', 100.00, 10000.00, 1, '', '2026-04-30 23:16:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -300,21 +306,23 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   `total_amount` decimal(15,2) DEFAULT NULL,
   `paid_amount` decimal(15,2) DEFAULT NULL,
   `date` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` tinyint NOT NULL,
+  `type` tinyint NOT NULL COMMENT '1->?- 2->buy\r\n\r\n',
   `image` varchar(128) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `who_it` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `invoices`
 --
 
 INSERT INTO `invoices` (`id`, `user_id`, `total_amount`, `paid_amount`, `date`, `type`, `image`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
-(8, NULL, 12300.00, NULL, NULL, 2, NULL, 2, NULL, '2026-04-27 23:35:59', '2026-04-27 23:39:59');
+(8, NULL, 12300.00, NULL, NULL, 2, NULL, 2, NULL, '2026-04-27 23:35:59', '2026-04-27 23:39:59'),
+(9, NULL, 123000.00, NULL, NULL, 2, NULL, 2, NULL, '2026-04-30 22:38:39', '2026-04-30 22:39:38'),
+(10, NULL, 133000.00, NULL, NULL, 2, NULL, 2, NULL, '2026-04-30 23:16:43', '2026-04-30 23:16:45');
 
 -- --------------------------------------------------------
 
@@ -376,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `models` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `models`
@@ -385,7 +393,8 @@ CREATE TABLE IF NOT EXISTS `models` (
 INSERT INTO `models` (`id`, `model_name`, `type`, `fee`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
 (4, 'خیلی جدید', 'vest', 800, 1, 'for suport', '2026-04-29 23:46:26', '2026-04-29 23:59:37'),
 (5, 'جیب دار', 'afghan', 850, 1, 'for suport', '2026-04-29 23:50:27', '2026-04-29 23:57:05'),
-(6, 'کت تک', 'suit', 1200, 1, 'for suport', '2026-04-29 23:50:40', NULL);
+(6, 'کت تک', 'suit', 1200, 1, 'for suport', '2026-04-29 23:50:40', NULL),
+(7, 'مدل بالا', 'afghan', 600, 1, 'for suport', '2026-04-30 18:48:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -646,7 +655,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `password`, `address`, `image`, `description`, `state`, `who_it`, `created_at`, `updated_at`) VALUES
-(17, 'sdafsdf', '444343', NULL, '$2y$10$y2ZarFa26MbLW3Vl6E8KseJbJmpPIlIe3dXDetTm4kw5YDaD6f1Zu', '', NULL, '', 1, 'for suport', '2026-04-25 18:09:13', NULL),
+(17, 'sdafs 11df', '444343', NULL, '$2y$10$y2ZarFa26MbLW3Vl6E8KseJbJmpPIlIe3dXDetTm4kw5YDaD6f1Zu', '', NULL, '', 1, 'for suport', '2026-04-25 18:09:13', NULL),
 (16, 'asdfsdf', '456565', NULL, '$2y$10$umF8RBxpfsS0jVEjKUqIYOT7X/Vzp/zOeQJU5twB6OZR13hFqmU.2', '', NULL, '', 1, 'for suport', '2026-04-25 18:08:10', NULL),
 (15, 'dsfsdaf', '6565', NULL, '$2y$10$7VANrtNYg/fa6tPsIC83QepJVX767QVtU.em/3b30OylJzd84a1dS', '', NULL, '', 1, 'for suport', '2026-04-25 18:08:01', NULL),
 (14, 'dsfsdf', '34343', NULL, '$2y$10$xmD0uPZpZneO/OSheOfQPew/yW0/drpIUsgwfCSX/EJNbgR3hwlO6', '', NULL, '', 1, 'for suport', '2026-04-25 18:06:25', NULL),
