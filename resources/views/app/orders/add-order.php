@@ -137,11 +137,11 @@
 
                         <div class="one w300">
                             <div class="label-form mb5 fs14">متراژ پارچه</div>
-                            <input type="text" placeholder="متراژ پارچه" />
+                            <input type="text" name="fabric_meter" id="fabric_meter" placeholder="متراژ پارچه" />
                         </div>
                         <div class="one w300">
                             <div class="label-form mb5 fs14">قیمت</div>
-                            <input type="text" placeholder="قیمت" />
+                            <input type="text" name="fabric_total_price" id="fabric_total_price" placeholder="قیمت" readonly />
                         </div>
                     </div>
 
@@ -164,7 +164,7 @@
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                     <input type="submit" id="submit" value="ثبت" class="btn" />
                 </form>
-                
+
             </div>
 
         </div>
