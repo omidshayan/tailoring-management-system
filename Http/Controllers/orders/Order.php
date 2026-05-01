@@ -100,6 +100,41 @@ class Order extends App
         }
     }
 
+    // delete product from cart
+    public function deleteItemCart($id)
+    {
+        $this->middleware(true, true, 'general', true);
+
+        if (!is_numeric($id)) {
+            $this->flashMessage('error', 'لطفا اطلاعات درست ارسال نمائید!');
+        }
+
+        $item = $this->db->select('SELECT id FROM order_items WHERE `id` = ?', [$id])->fetch();
+
+        if (!$item) {
+            require_once(BASE_PATH . '/404.php');
+            exit;
+        }
+
+        $result = $this->db->delete('order_items', $id);
+
+        if ($result) {
+            $this->flashMessage('success', _success);
+        } else {
+            $this->flashMessage('error', _error);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
     // show employees
     public function showEmployees()
     {

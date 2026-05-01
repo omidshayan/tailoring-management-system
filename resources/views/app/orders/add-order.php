@@ -190,7 +190,7 @@
                         ?>
                             <div class="d-flex bg-main border justify-between align-center">
                                 <li class="fs14 p5"><?= $number . '- ' . $typeLabel . ' - ' . ' مدل: ' . $item['model_name'] . ' - ' . ' اجرت دوخت: ' . number_format($item['sewing_fee']) ?></li>
-                                <a href="" class="p5 d-flex align-center">
+                                <a href="<?=url('delete-item-cart/' . $item['id'])?>" class="p5 d-flex align-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
                                         <path fill="#ff0000" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320z" />
                                     </svg>

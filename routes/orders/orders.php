@@ -11,3 +11,4 @@ uri('edit-order/store/{id}', 'App\Order', 'editOrderStore', 'POST');
 uri('change-status-order/{id}', 'App\Order', 'changeStatusOrder');
 
 uri('search-user', 'App\FinancialSector', 'searchUser', 'POST');
+uri('delete-item-cart/{id}', 'App\Order', 'deleteItemCart');
