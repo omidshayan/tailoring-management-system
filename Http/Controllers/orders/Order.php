@@ -9,7 +9,19 @@ class Order extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $orders = $this->db->select('SELECT * FROM orders WHERE `status` = 1')->fetchAll();
+        $orders = $this->db->select('SELECT * FROM orders WHERE `status` = 1')->fetch();
+        if ($orders) {
+
+            $orderList = $this->db->select("
+                SELECT 
+                    oi.*, 
+                    m.model_name
+                FROM order_items oi
+                LEFT JOIN models m 
+                    ON oi.model_id = m.id
+                WHERE oi.status = ?
+            ", [1])->fetchAll();
+        }
 
         require_once(BASE_PATH . '/resources/views/app/orders/add-order.php');
     }

@@ -32,6 +32,7 @@
             </div>
         </div>
 
+        <!-- form -->
         <div class="content-container">
             <div class="insert">
 
@@ -167,15 +168,54 @@
 
         </div>
 
+        <!-- lists -->
         <div class="content-container mt20 d-flex gap20">
             <?php
             if (isset($orders)) { ?>
 
-                <div class="w50d bg-green-opacity">section 1</div>
-                <div class="w50d bg-green-opacity">section 1</div>
+                <div class="w50d">
+                    <ul>
+                        <?php
+                        $number = 1;
+                        foreach ($orderList as $item) {
+                            $types = [
+                                'afghan' => 'لباس افغانی',
+                                'vest'   => 'واسکت',
+                                'suit'   => 'کت و شلوار',
+                            ];
 
-            <?php }
-            else{ 
+                            $typeLabel = $types[$item['type']] ?? 'نامشخص';
+                        ?>
+                            <li class="fs14 p5 bg-main"><?= $number . '- ' . $typeLabel . ' - ' . ' مدل: ' . $item['model_name'] . ' - ' . ' اجرت دوخت: ' . number_format($item['sewing_fee']) ?></li>
+                        <?php
+                            $number++;
+                        }
+                        ?>
+                    </ul>
+                </div>
+
+                <div class="w50d bg-main">
+                    <div class="insert">
+                        <form action="<?= url('fabric-store') ?>" method="POST">
+                            <div class="text-right fs14 p5">مجموع کل: 33</div>
+                            <div class="inputs d-flex">
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">قیمت خرید فی متر <?= _star ?></div>
+                                    <input type="text" class="checkInput" name="buy_price" placeholder="رنگ پارچه را وارد نمایید" />
+                                </div>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">قیمت فروش فی متر <?= _star ?></div>
+                                    <input type="text" class="checkInput" name="sell_price" placeholder="رنگ پارچه را وارد نمایید" />
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
+                            <input type="submit" id="submit" value="بسته فاکتور" class="btn" />
+                        </form>
+                    </div>
+                </div>
+
+            <?php } else {
                 echo '<div class="fs12 color-red m-auto">لیست سفارشات خالی است</div>';
             }
 
