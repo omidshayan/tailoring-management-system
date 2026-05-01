@@ -350,7 +350,7 @@ select option:disabled {
     padding: 20px;
 }
 .prl40{
-    padding: 0 40px;
+    padding: 0 40px !important;
 }
 .p5 {
     padding: 5px;
@@ -500,7 +500,7 @@ select option:disabled {
     background-color: #0056b3;
 }
 .btn-secondary {
-    background-color: #6c757d; /* رنگ ثانویه خاکستری */
+    background-color: #6c757d;
     border: none;
     color: white;
     transition: background-color 0.3s ease;
@@ -509,9 +509,16 @@ select option:disabled {
     border-radius: 8px;
     cursor: pointer;
 }
-
+.active-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+.active-disabled input {
+    background-color: #272727;
+    cursor: not-allowed;
+}
 .btn-secondary:hover {
-    background-color: #5a6268; /* خاکستری تیره برای هاور */
+    background-color: #5a6268;
 }
 
 /* display */

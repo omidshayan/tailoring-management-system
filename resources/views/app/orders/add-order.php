@@ -38,6 +38,7 @@
 
                 <form action="<?= url('order-store') ?>" method="POST" id="transactionForm">
 
+                    <!-- type and model -->
                     <div class="inputs d-flex">
 
                         <div class="one">
@@ -104,18 +105,19 @@
 
                     </div>
 
+                    <!-- fabric -->
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">انتخاب</div>
+                            <div class="label-form fs14">همراه با پارچه</div>
                             <select name="fabric">
-                                <option value="with_fabric">همراه با پارچه</option>
-                                <option value="without_fabric">بدون پارچه</option>
+                                <option value="with_fabric">همراه با فروش پارچه</option>
+                                <option value="without_fabric">پارچه از مشتری است</option>
                             </select>
                         </div>
 
                         <!-- select fabric -->
-                        <div class="one">
-                            <div class="label-form mb5 fs14">جستجوی پارچه</div>
+                        <div class="one deactive">
+                            <div class="label-form fs14">جستجوی پارچه <?=_star?></div>
                             <div class="search-fabric pr"
                                 data-url="<?= url('search-fabric') ?>"
                                 data-input-id="search_fabric"
@@ -124,7 +126,7 @@
                                 data-target-id="fabric_id">
                                 <input type="text"
                                     id="search_fabric"
-                                    class="p5 fs15 input w100 border"
+                                    class="p5 fs15 input w100 border checkInput"
                                     placeholder="جستجوی پارچه"
                                     autocomplete="off" />
                                 <ul class="search-back d-none top40" id="backResponseFabric">
@@ -133,21 +135,21 @@
                             </div>
                         </div>
 
+                        <div class="one w300 deactive">
+                            <div class="label-form fs14">متراژ پارچه <?=_star?></div>
+                            <input type="text" class="checkInput" name="fabric_meter" id="fabric_meter" placeholder="متراژ پارچه" />
+                        </div>
+                        <div class="one w300 deactive">
+                            <div class="label-form fs14">قیمت <?=_star?></div>
+                            <input type="text" class="checkInput" name="price_fabric" id="fabric_total_price" placeholder="قیمت" readonly />
+                        </div>
 
-                        <div class="one w300">
-                            <div class="label-form mb5 fs14">متراژ پارچه</div>
-                            <input type="text" name="fabric_meter" id="fabric_meter" placeholder="متراژ پارچه" />
-                        </div>
-                        <div class="one w300">
-                            <div class="label-form mb5 fs14">قیمت</div>
-                            <input type="text" name="price_fabric" id="fabric_total_price" placeholder="قیمت" readonly />
-                        </div>
                     </div>
 
-                    <div class="inputs d-flex">
+                    <div class="inputs">
                         <div class="one">
                             <div class="label-form mb5 fs14">توضیحات </div>
-                            <textarea name="description" placeholder="توضیحات را وارد نمائید"></textarea>
+                            <input type="text" name="description" placeholder="توضیحات سفارش" />
                         </div>
                     </div>
 
@@ -171,8 +173,8 @@
         <!-- lists -->
         <div class="content-container mt20 d-flex gap20">
             <?php
-            if (isset($orders)) { ?>
 
+            if (!empty($orderList)) { ?>
                 <div class="w50d">
                     <ul>
                         <?php
@@ -194,23 +196,22 @@
                     </ul>
                 </div>
 
+                <!-- close form -->
                 <div class="w50d bg-main">
                     <div class="insert">
-                        <form action="<?= url('fabric-store') ?>" method="POST">
-                            <div class="text-right fs14 p5">مجموع کل: 33</div>
-                            <div class="inputs d-flex">
+                        <form action="<?= url('fabsdafdfsdfric-store') ?>" method="POST">
+                            <div class="center fs14 p5">
+                                مجموع کل: <?= number_format($total['grand_total'] ?? 0) ?>
+                            </div>
+                            <div class="p5 d-flex prl40">
                                 <div class="one">
-                                    <div class="label-form mb5 fs14">قیمت خرید فی متر <?= _star ?></div>
-                                    <input type="text" class="checkInput" name="buy_price" placeholder="رنگ پارچه را وارد نمایید" />
-                                </div>
-                                <div class="one">
-                                    <div class="label-form mb5 fs14">قیمت فروش فی متر <?= _star ?></div>
-                                    <input type="text" class="checkInput" name="sell_price" placeholder="رنگ پارچه را وارد نمایید" />
+                                    <div class="label-form fs12">پرداختی (بیعانه)</div>
+                                    <input type="text" name="buy_price" placeholder="بیعانه را وارد نمایید" />
                                 </div>
                             </div>
 
                             <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                            <input type="submit" id="submit" value="بسته فاکتور" class="btn" />
+                            <input type="submit" id="submit" value="بــستــن فــاکــتور" class="btn prl40" />
                         </form>
                     </div>
                 </div>
@@ -218,7 +219,6 @@
             <?php } else {
                 echo '<div class="fs12 color-red m-auto">لیست سفارشات خالی است</div>';
             }
-
             ?>
         </div>
 
@@ -272,6 +272,53 @@
         window.onload = function() {
             changeType();
         };
+    </script>
+
+    <!-- active and deactive intpus -->
+    <script>
+        $(document).ready(function() {
+
+            function toggleFabric() {
+                let type = $('select[name="fabric"]').val();
+
+                if (type === 'without_fabric') {
+
+                    $('.deactive').each(function() {
+                        $(this).addClass('active-disabled');
+
+                        if ($(this).is('input')) {
+                            $(this).prop('disabled', true);
+                        }
+
+                        $(this).find('input').prop('disabled', true);
+
+                        // ✔ اضافه شد: حذف checkInput
+                        $(this).find('input').removeClass('checkInput');
+                    });
+
+                } else {
+
+                    $('.deactive').each(function() {
+                        $(this).removeClass('active-disabled');
+
+                        if ($(this).is('input')) {
+                            $(this).prop('disabled', false);
+                        }
+
+                        $(this).find('input').prop('disabled', false);
+
+                        // ✔ اضافه شد: برگرداندن checkInput (اگر لازم بود)
+                        $(this).find('input').addClass('checkInput');
+                    });
+
+                }
+            }
+
+            $('select[name="fabric"]').on('change', toggleFabric);
+
+            toggleFabric();
+
+        });
     </script>
 
     <?php include_once('resources/views/layouts/footer.php') ?>

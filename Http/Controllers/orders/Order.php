@@ -9,18 +9,30 @@ class Order extends App
     {
         $this->middleware(true, true, 'general', true);
 
+        $models = $this->db->select('SELECT * FROM models WHERE `status` = 1')->fetchAll();
+
         $orders = $this->db->select('SELECT * FROM orders WHERE `status` = 1')->fetch();
+
         if ($orders) {
 
             $orderList = $this->db->select("
                 SELECT 
                     oi.*, 
-                    m.model_name
+                    m.model_name,
+                    (oi.sewing_fee + COALESCE(oi.price_fabric, 0)) AS total_price
                 FROM order_items oi
                 LEFT JOIN models m 
                     ON oi.model_id = m.id
                 WHERE oi.status = ?
             ", [1])->fetchAll();
+
+            // جمع کل
+            $total = $this->db->select("
+                SELECT 
+                    SUM(oi.sewing_fee + COALESCE(oi.price_fabric, 0)) AS grand_total
+                FROM order_items oi
+                WHERE oi.status = ?
+            ", [1])->fetch();
         }
 
         require_once(BASE_PATH . '/resources/views/app/orders/add-order.php');
