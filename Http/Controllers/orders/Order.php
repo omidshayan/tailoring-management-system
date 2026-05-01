@@ -9,7 +9,7 @@ class Order extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $models = $this->db->select('SELECT * FROM models WHERE `status` = 1')->fetchAll();
+        $orders = $this->db->select('SELECT * FROM orders WHERE `status` = 1')->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/orders/add-order.php');
     }

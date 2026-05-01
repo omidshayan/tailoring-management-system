@@ -167,6 +167,17 @@
 
         </div>
 
+        <?php
+        if (isset($invoices)) { ?>
+
+        <?php }
+
+        ?>
+        <div class="content-container mt20 d-flex gap20">
+            <div class="w50d bg-green-opacity">section 1</div>
+            <div class="w50d bg-green-opacity">section 1</div>
+        </div>
+
     </div>
 
     <!-- check for print -->

@@ -281,6 +281,9 @@ select option:disabled {
 .w100 {
     width: 100% !important;
 }
+.w50d{
+    width: 50%;
+}
 .w89d{
     width: 89% !important;
 }
