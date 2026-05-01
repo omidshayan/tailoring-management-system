@@ -139,7 +139,7 @@ class Order extends App
             $this->db->beginTransaction();
 
             $order = $this->db->select(
-                'SELECT * FROM orders WHERE id = ? LIMIT 1',
+                'SELECT * FROM orders WHERE id = ? LIMIT 1 FOR UPDATE',
                 [$id]
             )->fetch();
 
@@ -165,22 +165,28 @@ class Order extends App
                 throw new Exception('مبلغ پرداختی بیشتر از مبلغ کل است');
             }
 
-            $orderData = [
-                'user_id'      => $order['user_id'],
-                'total_amount' => $total,
-                'paid_amount'  => $paid,
-                'status'       => 2,
-                'who_it'       => $userInfos['name'],
-            ];
+            // ✔ آپدیت سفارش
+            $this->db->update('orders', $id, [
+                'user_id',
+                'total_amount',
+                'paid_amount',
+                'status',
+                'who_it'
+            ], [
+                $order['user_id'],
+                $total,
+                $paid,
+                2,
+                $userInfos['name']
+            ]);
 
-            $this->db->update('orders', $id, array_keys($orderData), $orderData);
-
+            // ✔ آپدیت پارچه با لاک
             foreach ($orderItems as $item) {
 
                 if ($item['order_fabric'] == 'with_fabric') {
 
                     $fabric = $this->db->select(
-                        'SELECT id, name, quantity FROM fabrics WHERE id = ? LIMIT 1',
+                        'SELECT id, name, quantity FROM fabrics WHERE id = ? LIMIT 1 FOR UPDATE',
                         [$item['fabric_id']]
                     )->fetch();
 
@@ -198,16 +204,21 @@ class Order extends App
                 }
             }
 
+            // ✔ تراکنش مالی
             if ($paid > 0) {
-                $transaction = [
-                    'ref_id'       => $order['id'],
-                    'user_id'      => $order['user_id'],
-                    'total_amount' => $total,
-                    'paid_amount'  => $paid,
-                    'type'         => 1,
-                ];
-
-                $this->db->insert('transactions', array_keys($transaction), $transaction);
+                $this->db->insert('transactions', [
+                    'ref_id',
+                    'user_id',
+                    'total_amount',
+                    'paid_amount',
+                    'type'
+                ], [
+                    $order['id'],
+                    $order['user_id'],
+                    $total,
+                    $paid,
+                    1
+                ]);
             }
 
             $this->db->commit();
