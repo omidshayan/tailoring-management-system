@@ -25,7 +25,7 @@
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </a>
-                <input type="text" class="p5 fs15 input w100 border checkInput" value="<?= $user['name'] ?? '' ?>" id="search_user" placeholder="جستجوی مشتری" autofocus />
+                <input type="text" class="p5 fs15 input w100 border checkInput" value="<?= $user['name'] ?? '' ?>" id="search_user" placeholder="جستجوی مشتری" <?= $user['name'] ?? 'autofocus' ?> />
                 <ul class="search-back d-none top40" id="backResponseSeller">
                     <li class="search-item color" role="option"></li>
                 </ul>
