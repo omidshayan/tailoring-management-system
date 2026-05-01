@@ -12,7 +12,7 @@
             width: 100%;
             background: transparent;
             border: none;
-            overflow: hidden;            
+            overflow: hidden;
         }
 
         .acc-header {
@@ -46,7 +46,6 @@
         .acc-inner {
             overflow: hidden;
         }
-
     </style>
 
     <div class="content">
@@ -268,7 +267,7 @@
                     <!-- close form -->
                     <div class="w50d bg-main">
                         <div class="insert">
-                            <form action="<?= url('fabsdafdfsdfric-store') ?>" method="POST">
+                            <form action="<?= url('close-order-store/' . $orders['id']) ?>" method="POST">
                                 <div class="center fs14 p5 color-orange">
                                     مجموع کل: <?= number_format($total['grand_total'] ?? 0) ?>
                                 </div>

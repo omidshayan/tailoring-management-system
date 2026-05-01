@@ -125,7 +125,11 @@ class Order extends App
         }
     }
 
-
+    // close order
+    public function closeOrderStore($request, $id)
+    {
+        $this->middleware(true, true, 'general');
+    }
 
 
 
