@@ -55,12 +55,15 @@ class Order extends App
             $this->db->beginTransaction();
 
             $order = $this->db->select(
-                'SELECT id FROM orders WHERE status = ? LIMIT 1',
+                'SELECT id, user_id FROM orders WHERE status = ? LIMIT 1',
                 [1]
             )->fetch();
 
             if ($order) {
                 $orderId = $order['id'];
+                if ($order['user_id'] != $request['user_id']) {
+                    $this->db->update('orders', $order['id'], ['user_id'], [$request['user_id']]);
+                }
             } else {
                 $invoiceOrder = [
                     'user_id' => $request['user_id'],
