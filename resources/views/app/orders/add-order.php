@@ -83,7 +83,7 @@
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
-                    <span class="mr10">اطلاعات سفارش</span>
+                    <span class="mr10 fs12">اطلاعات سفارش</span>
                 </div>
 
                 <div class="acc-content">
