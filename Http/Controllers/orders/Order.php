@@ -130,6 +130,11 @@ class Order extends App
     {
         $this->middleware(true, true, 'general');
 
+        if (empty($request['total_amount'])) {
+            $this->flashMessage('error', _emptyInputs);
+            return;
+        }
+
         try {
             $this->db->beginTransaction();
 
@@ -142,7 +147,6 @@ class Order extends App
                 throw new Exception('سفارش پیدا نشد');
             }
 
-            // ❗ اگر قبلاً بسته شده
             if ($order['status'] != 1) {
                 throw new Exception('این فاکتور قبلاً بسته شده است');
             }
@@ -161,7 +165,6 @@ class Order extends App
                 throw new Exception('مبلغ پرداختی بیشتر از مبلغ کل است');
             }
 
-            // ✔ آپدیت سفارش
             $orderData = [
                 'user_id'      => $order['user_id'],
                 'total_amount' => $total,
@@ -172,7 +175,6 @@ class Order extends App
 
             $this->db->update('orders', $id, array_keys($orderData), $orderData);
 
-            // ✔ آپدیت پارچه
             foreach ($orderItems as $item) {
 
                 if ($item['order_fabric'] == 'with_fabric') {
@@ -196,7 +198,6 @@ class Order extends App
                 }
             }
 
-            // ✔ ثبت تراکنش
             if ($paid > 0) {
                 $transaction = [
                     'ref_id'       => $order['id'],

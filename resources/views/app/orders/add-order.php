@@ -275,7 +275,7 @@
                                     <div class="one">
                                         <div class="label-form fs12">پرداختی (بیعانه)</div>
                                         <input type="text" name="paid_amount" placeholder="بیعانه را وارد نمایید" />
-                                        <input type="hidden" name="total_amount" value="<?=$total['grand_total']?>" />
+                                        <input type="hidden" name="total_amount" value="<?= $total['grand_total'] ?>" />
                                     </div>
                                 </div>
 
