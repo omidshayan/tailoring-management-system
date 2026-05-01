@@ -25,8 +25,8 @@ class Order extends App
                 FROM order_items oi
                 LEFT JOIN models m 
                     ON oi.model_id = m.id
-                WHERE oi.status = ?
-            ", [1])->fetchAll();
+                WHERE oi.status = ? AND order_id = ?
+            ", [1, $orders['id']])->fetchAll();
 
             // جمع کل
             $total = $this->db->select("
@@ -129,7 +129,35 @@ class Order extends App
     public function closeOrderStore($request, $id)
     {
         $this->middleware(true, true, 'general');
+
+        $order = $this->db->select('SELECT * FROM orders WHERE id = ? LIMIT 1', [$id])->fetch();
+        if (!$order) {
+            require_once(BASE_PATH . '/404.php');
+            exit();
+        }
+
+        $orderItems = $this->db->select('SELECT * FROM order_items WHERE order_id = ?', [$id])->fetchAll();
+
+        $userInfos = $this->currentUser();
+
+        $orderData = [
+            'user_id' => $order['user_id'],
+            'total_amount' => $request['total_amount'],
+            'paid_amount' => $request['paid_amount'] ?? null,
+            'status' => 2,
+            'who_it' => $userInfos['name'],
+        ];
+        // $this->db->update('orders', $id, array_keys($request), $request);
+
+    dd($orderItems);
+        foreach ($orderItems as $item) {
+            if ($item['fabric'] == 'with_fabric') {
+
+            }
+        }
     }
+
+
 
 
 

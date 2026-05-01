@@ -274,7 +274,8 @@
                                 <div class="p5 d-flex prl40">
                                     <div class="one">
                                         <div class="label-form fs12">پرداختی (بیعانه)</div>
-                                        <input type="text" name="buy_price" placeholder="بیعانه را وارد نمایید" />
+                                        <input type="text" name="paid_amount" placeholder="بیعانه را وارد نمایید" />
+                                        <input type="hidden" name="total_amount" value="<?=$total['grand_total']?>" />
                                     </div>
                                 </div>
 
