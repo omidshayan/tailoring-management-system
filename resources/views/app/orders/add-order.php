@@ -167,15 +167,19 @@
 
         </div>
 
-        <?php
-        if (isset($invoices)) { ?>
-
-        <?php }
-
-        ?>
         <div class="content-container mt20 d-flex gap20">
-            <div class="w50d bg-green-opacity">section 1</div>
-            <div class="w50d bg-green-opacity">section 1</div>
+            <?php
+            if (isset($orders)) { ?>
+
+                <div class="w50d bg-green-opacity">section 1</div>
+                <div class="w50d bg-green-opacity">section 1</div>
+
+            <?php }
+            else{ 
+                echo '<div class="fs12 color-red m-auto">لیست سفارشات خالی است</div>';
+            }
+
+            ?>
         </div>
 
     </div>
