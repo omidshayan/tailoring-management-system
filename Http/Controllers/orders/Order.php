@@ -130,30 +130,93 @@ class Order extends App
     {
         $this->middleware(true, true, 'general');
 
-        $order = $this->db->select('SELECT * FROM orders WHERE id = ? LIMIT 1', [$id])->fetch();
-        if (!$order) {
-            require_once(BASE_PATH . '/404.php');
-            exit();
-        }
+        try {
+            $this->db->beginTransaction();
 
-        $orderItems = $this->db->select('SELECT * FROM order_items WHERE order_id = ?', [$id])->fetchAll();
+            $order = $this->db->select(
+                'SELECT * FROM orders WHERE id = ? LIMIT 1',
+                [$id]
+            )->fetch();
 
-        $userInfos = $this->currentUser();
-
-        $orderData = [
-            'user_id' => $order['user_id'],
-            'total_amount' => $request['total_amount'],
-            'paid_amount' => $request['paid_amount'] ?? null,
-            'status' => 2,
-            'who_it' => $userInfos['name'],
-        ];
-        // $this->db->update('orders', $id, array_keys($request), $request);
-
-    dd($orderItems);
-        foreach ($orderItems as $item) {
-            if ($item['fabric'] == 'with_fabric') {
-
+            if (!$order) {
+                throw new Exception('سفارش پیدا نشد');
             }
+
+            // ❗ اگر قبلاً بسته شده
+            if ($order['status'] != 1) {
+                throw new Exception('این فاکتور قبلاً بسته شده است');
+            }
+
+            $orderItems = $this->db->select(
+                'SELECT * FROM order_items WHERE order_id = ?',
+                [$id]
+            )->fetchAll();
+
+            $userInfos = $this->currentUser();
+
+            $total = (float)$request['total_amount'];
+            $paid  = (float)($request['paid_amount'] ?? 0);
+
+            if ($paid > $total) {
+                throw new Exception('مبلغ پرداختی بیشتر از مبلغ کل است');
+            }
+
+            // ✔ آپدیت سفارش
+            $orderData = [
+                'user_id'      => $order['user_id'],
+                'total_amount' => $total,
+                'paid_amount'  => $paid,
+                'status'       => 2,
+                'who_it'       => $userInfos['name'],
+            ];
+
+            $this->db->update('orders', $id, array_keys($orderData), $orderData);
+
+            // ✔ آپدیت پارچه
+            foreach ($orderItems as $item) {
+
+                if ($item['order_fabric'] == 'with_fabric') {
+
+                    $fabric = $this->db->select(
+                        'SELECT id, name, quantity FROM fabrics WHERE id = ? LIMIT 1',
+                        [$item['fabric_id']]
+                    )->fetch();
+
+                    if (!$fabric) {
+                        throw new Exception('پارچه یافت نشد');
+                    }
+
+                    $finalMeter = $fabric['quantity'] - $item['fabric_meter'];
+
+                    if ($finalMeter < 0) {
+                        throw new Exception('موجودی پارچه ' . $fabric['name'] . ' کافی نیست');
+                    }
+
+                    $this->db->update('fabrics', $fabric['id'], ['quantity'], [$finalMeter]);
+                }
+            }
+
+            // ✔ ثبت تراکنش
+            if ($paid > 0) {
+                $transaction = [
+                    'ref_id'       => $order['id'],
+                    'user_id'      => $order['user_id'],
+                    'total_amount' => $total,
+                    'paid_amount'  => $paid,
+                    'type'         => 1,
+                ];
+
+                $this->db->insert('transactions', array_keys($transaction), $transaction);
+            }
+
+            $this->db->commit();
+
+            $this->flashMessage('success', _success);
+        } catch (Exception $e) {
+
+            $this->db->rollBack();
+
+            $this->flashMessage('error', $e->getMessage());
         }
     }
 
