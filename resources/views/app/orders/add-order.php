@@ -150,12 +150,12 @@
                         </div>
                     </div>
 
-                    <div class="inputs">
+                    <!-- <div class="inputs">
                         <div class="text-right invoice-print">
                             <input type="checkbox" class="invoice-print" id="invoice-print" name="invoice_print">
                             <label for="invoice-print" class="fs14">بِل تراکنش چاپ شود</label>
                         </div>
-                    </div>
+                    </div> -->
 
                     <input type="hidden" name="user_id" id="item_id">
                     <input type="hidden" name="fabric_id" id="fabric_id">

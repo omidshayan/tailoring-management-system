@@ -17,11 +17,10 @@ class Order extends App
     // store employee
     public function orderStore($request)
     {
-        dd($request);
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '') {
+        if ($request['user_id'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
