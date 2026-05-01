@@ -15,6 +15,8 @@ class Order extends App
 
         if ($orders) {
 
+            $user = $this->db->select('SELECT * FROM users WHERE `id` = ?', [$orders['user_id']])->fetch();
+
             $orderList = $this->db->select("
                 SELECT 
                     oi.*, 
