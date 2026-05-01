@@ -19,44 +19,55 @@ class Order extends App
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
-        // check empty form
-        if ($request['user_id'] == '') {
+        // validation
+        if (empty($request['user_id'])) {
             $this->flashMessage('error', _emptyInputs);
+            return;
         }
 
-        $order = $this->db->select('SELECT * FROM orders WHERE `status` = ?', [1])->fetch();
+        try {
+            $this->db->beginTransaction();
 
-        if ($order) {
-        } else {
+            $order = $this->db->select(
+                'SELECT id FROM orders WHERE status = ? LIMIT 1',
+                [1]
+            )->fetch();
 
-            try {
-                $this->db->beginTransaction();
-
+            if ($order) {
+                $orderId = $order['id'];
+            } else {
                 $invoiceOrder = [
                     'user_id' => $request['user_id'],
+                    'status' => 1
                 ];
+
                 $this->db->insert('orders', array_keys($invoiceOrder), $invoiceOrder);
-                $lastId = $this->db->lastInsertId();
-                $orderItem = [
-                    'order_id' => $lastId,
-                    'type' => $request['type'],
-                    'model_id' => $request['model'],
-                    'sewing_fee' => $request['sewing_fee'],
-                    'fabric_id' => $request['fabric_id'],
-                    'order_fabric' => $request['fabric'],
-                    'fabric_meter' => $request['fabric_meter'],
-                    'price_fabric' => $request['price_fabric'],
-                    'description' => $request['description'],
-                ];
-                $this->db->insert('order_items', array_keys($orderItem), $orderItem);
-
-                $this->db->commit();
-
-                $this->flashMessage('success', _success);
-            } catch (Exception $e) {
-                $this->db->rollBack();
-                $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
+                $orderId = $this->db->lastInsertId();
             }
+
+            $priceFabric = (float)$request['price_fabric'];
+            $sewingFee   = (float)$request['sewing_fee'];
+
+            $orderItem = [
+                'order_id'      => $orderId,
+                'type'          => $request['type'] ?? null,
+                'model_id'      => $request['model'] ?? null,
+                'sewing_fee'    => $sewingFee,
+                'fabric_id'     => $request['fabric_id'] ?? null,
+                'order_fabric'  => $request['fabric'] ?? null,
+                'fabric_meter'  => $request['fabric_meter'] ?? 0,
+                'price_fabric'  => $priceFabric ?? null,
+                'description'   => $request['description'] ?? null,
+            ];
+
+            $this->db->insert('order_items', array_keys($orderItem), $orderItem);
+
+            $this->db->commit();
+
+            $this->flashMessage('success', _success);
+        } catch (Exception $e) {
+            $this->db->rollBack();
+            $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
         }
     }
 
