@@ -7,7 +7,61 @@
     include_once('resources/views/scripts/live-search-items.php');
     include_once('resources/views/scripts/live-search-fabric.php');
     ?>
+    <style>
+        .accordion1 {
+            width: 100%;
+        }
 
+        /* هدر → سمت راست */
+        .accordion-header {
+            display: flex;
+            justify-content: flex-start;
+            /* 👈 تغییر کرد */
+            cursor: pointer;
+        }
+
+        /* آیکون */
+        .accordion-toggle {
+            font-size: 18px;
+            user-select: none;
+            transition: transform 0.4s ease;
+        }
+
+        /* محتوا */
+        .accordion-content {
+            height: auto;
+            overflow: hidden;
+            transition: height 0.4s ease;
+            position: relative;
+        }
+
+        /* حالت بسته */
+        .accordion1:not(.open) .accordion-content {
+            height: 60px;
+            /* ارتفاع پیشفرض */
+        }
+
+        /* متن راهنما */
+        .accordion-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            color: #777;
+            pointer-events: none;
+        }
+
+        /* وقتی باز شد → مخفی */
+        .accordion1.open .accordion-hint {
+            display: none;
+        }
+
+        /* چرخش آیکون */
+        .accordion1.open .accordion-toggle {
+            transform: rotate(180deg);
+        }
+    </style>
     <div class="content">
         <div class="content-title print-none">ثبت سفارش جدید</div>
 
@@ -34,142 +88,172 @@
 
         <!-- form -->
         <div class="content-container">
-            <div class="insert">
 
-                <form action="<?= url('order-store') ?>" method="POST" id="transactionForm">
+            <div class="accordion1 open">
+                <div class="accordion-header">
+                    <span class="accordion-toggle">▼</span>
+                </div>
 
-                    <!-- type and model -->
-                    <div class="inputs d-flex">
+                <div class="accordion-content">
 
-                        <div class="one">
-                            <div class="label-form mb5 fs14">نوع</div>
-                            <select id="typeSelect" name="type" onchange="changeType()">
-                                <option value="afghan" selected>لباس افغانی</option>
-                                <option value="vest">واسکت</option>
-                                <option value="suit">کت و شلوار</option>
-                            </select>
-                        </div>
+                    <div class="insert">
 
-                        <div class="one" id="afghanBox">
-                            <div class="label-form mb5 fs14">مدل</div>
-                            <select name="model" onchange="setFee(this)">
-                                <option disabled selected>مدل را انتخاب نمایید</option>
-                                <?php foreach ($models as $model) {
-                                    if ($model['type'] != 'afghan') continue; ?>
+                        <form action="<?= url('order-store') ?>" method="POST" id="transactionForm">
 
-                                    <option
-                                        value="<?= $model['id'] ?>"
-                                        data-fee="<?= $model['fee'] ?>">
-                                        <?= $model['model_name'] ?>
-                                    </option>
-                                <?php } ?>
-                            </select>
-                        </div>
+                            <!-- type and model -->
+                            <div class="inputs d-flex">
 
-                        <div class="one" id="vestBox" style="display:none;">
-                            <div class="label-form mb5 fs14">مدل</div>
-                            <select name="model" onchange="setFee(this)">
-                                <option disabled selected>مدل را انتخاب نمایید</option>
-                                <?php foreach ($models as $model) {
-                                    if ($model['type'] != 'vest') continue; ?>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">نوع</div>
+                                    <select id="typeSelect" name="type" onchange="changeType()">
+                                        <option value="afghan" selected>لباس افغانی</option>
+                                        <option value="vest">واسکت</option>
+                                        <option value="suit">کت و شلوار</option>
+                                    </select>
+                                </div>
 
-                                    <option
-                                        value="<?= $model['id'] ?>"
-                                        data-fee="<?= $model['fee'] ?>">
-                                        <?= $model['model_name'] ?>
-                                    </option>
-                                <?php } ?>
-                            </select>
-                        </div>
+                                <div class="one" id="afghanBox">
+                                    <div class="label-form mb5 fs14">مدل</div>
+                                    <select name="model" onchange="setFee(this)">
+                                        <option disabled selected>مدل را انتخاب نمایید</option>
+                                        <?php foreach ($models as $model) {
+                                            if ($model['type'] != 'afghan') continue; ?>
 
-                        <div class="one" id="suitBox" style="display:none;">
-                            <div class="label-form mb5 fs14">مدل</div>
-                            <select name="model" onchange="setFee(this)">
-                                <option disabled selected>مدل را انتخاب نمایید</option>
-                                <?php foreach ($models as $model) {
-                                    if ($model['type'] != 'suit') continue; ?>
+                                            <option
+                                                value="<?= $model['id'] ?>"
+                                                data-fee="<?= $model['fee'] ?>">
+                                                <?= $model['model_name'] ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
 
-                                    <option
-                                        value="<?= $model['id'] ?>"
-                                        data-fee="<?= $model['fee'] ?>">
-                                        <?= $model['model_name'] ?>
-                                    </option>
-                                <?php } ?>
-                            </select>
-                        </div>
+                                <div class="one" id="vestBox" style="display:none;">
+                                    <div class="label-form mb5 fs14">مدل</div>
+                                    <select name="model" onchange="setFee(this)">
+                                        <option disabled selected>مدل را انتخاب نمایید</option>
+                                        <?php foreach ($models as $model) {
+                                            if ($model['type'] != 'vest') continue; ?>
 
-                        <div class="one">
-                            <div class="label-form mb5 fs14">اجرت دوخت</div>
-                            <input type="text" id="feeInput" name="sewing_fee" placeholder="اجرت دوخت را وارد نمایید" />
-                        </div>
+                                            <option
+                                                value="<?= $model['id'] ?>"
+                                                data-fee="<?= $model['fee'] ?>">
+                                                <?= $model['model_name'] ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
 
-                    </div>
+                                <div class="one" id="suitBox" style="display:none;">
+                                    <div class="label-form mb5 fs14">مدل</div>
+                                    <select name="model" onchange="setFee(this)">
+                                        <option disabled selected>مدل را انتخاب نمایید</option>
+                                        <?php foreach ($models as $model) {
+                                            if ($model['type'] != 'suit') continue; ?>
 
-                    <!-- fabric -->
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form fs14">همراه با پارچه</div>
-                            <select name="fabric">
-                                <option value="with_fabric">همراه با فروش پارچه</option>
-                                <option value="without_fabric">پارچه از مشتری است</option>
-                            </select>
-                        </div>
+                                            <option
+                                                value="<?= $model['id'] ?>"
+                                                data-fee="<?= $model['fee'] ?>">
+                                                <?= $model['model_name'] ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
 
-                        <!-- select fabric -->
-                        <div class="one deactive">
-                            <div class="label-form fs14">جستجوی پارچه <?= _star ?></div>
-                            <div class="search-fabric pr"
-                                data-url="<?= url('search-fabric') ?>"
-                                data-input-id="search_fabric"
-                                data-result-id="backResponseFabric"
-                                data-field-name="fabric_name"
-                                data-target-id="fabric_id">
-                                <input type="text"
-                                    id="search_fabric"
-                                    class="p5 fs15 input w100 border checkInput"
-                                    placeholder="جستجوی پارچه"
-                                    autocomplete="off" />
-                                <ul class="search-back d-none top40" id="backResponseFabric">
-                                    <li class="search-item color" role="option"></li>
-                                </ul>
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">اجرت دوخت</div>
+                                    <input type="text" id="feeInput" name="sewing_fee" placeholder="اجرت دوخت را وارد نمایید" />
+                                </div>
+
                             </div>
-                        </div>
 
-                        <div class="one w300 deactive">
-                            <div class="label-form fs14">متراژ پارچه <?= _star ?></div>
-                            <input type="text" class="checkInput" name="fabric_meter" id="fabric_meter" placeholder="متراژ پارچه" />
-                        </div>
-                        <div class="one w300 deactive">
-                            <div class="label-form fs14">قیمت <?= _star ?></div>
-                            <input type="text" class="checkInput" name="price_fabric" id="fabric_total_price" placeholder="قیمت" readonly />
-                        </div>
+                            <!-- fabric -->
+                            <div class="inputs d-flex">
+                                <div class="one">
+                                    <div class="label-form fs14">همراه با پارچه</div>
+                                    <select name="fabric">
+                                        <option value="with_fabric">همراه با فروش پارچه</option>
+                                        <option value="without_fabric">پارچه از مشتری است</option>
+                                    </select>
+                                </div>
+
+                                <!-- select fabric -->
+                                <div class="one deactive">
+                                    <div class="label-form fs14">جستجوی پارچه <?= _star ?></div>
+                                    <div class="search-fabric pr"
+                                        data-url="<?= url('search-fabric') ?>"
+                                        data-input-id="search_fabric"
+                                        data-result-id="backResponseFabric"
+                                        data-field-name="fabric_name"
+                                        data-target-id="fabric_id">
+                                        <input type="text"
+                                            id="search_fabric"
+                                            class="p5 fs15 input w100 border checkInput"
+                                            placeholder="جستجوی پارچه"
+                                            autocomplete="off" />
+                                        <ul class="search-back d-none top40" id="backResponseFabric">
+                                            <li class="search-item color" role="option"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="one w300 deactive">
+                                    <div class="label-form fs14">متراژ پارچه <?= _star ?></div>
+                                    <input type="text" class="checkInput" name="fabric_meter" id="fabric_meter" placeholder="متراژ پارچه" />
+                                </div>
+                                <div class="one w300 deactive">
+                                    <div class="label-form fs14">قیمت <?= _star ?></div>
+                                    <input type="text" class="checkInput" name="price_fabric" id="fabric_total_price" placeholder="قیمت" readonly />
+                                </div>
+
+                            </div>
+
+                            <div class="inputs">
+                                <div class="one">
+                                    <div class="label-form mb5 fs14">توضیحات </div>
+                                    <input type="text" name="description" placeholder="توضیحات سفارش" />
+                                </div>
+                            </div>
+
+                            <!-- <div class="inputs">
+                                <div class="text-right invoice-print">
+                                    <input type="checkbox" class="invoice-print" id="invoice-print" name="invoice_print">
+                                    <label for="invoice-print" class="fs14">بِل تراکنش چاپ شود</label>
+                                </div>
+                            </div> -->
+
+                            <input type="hidden" name="user_id" id="item_id" value="<?= $user['id'] ?? '' ?>">
+                            <input type="hidden" name="fabric_id" id="fabric_id">
+                            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
+                            <input type="submit" id="submit" value="ثبت" class="btn" />
+                        </form>
 
                     </div>
 
-                    <div class="inputs">
-                        <div class="one">
-                            <div class="label-form mb5 fs14">توضیحات </div>
-                            <input type="text" name="description" placeholder="توضیحات سفارش" />
-                        </div>
-                    </div>
-
-                    <!-- <div class="inputs">
-                        <div class="text-right invoice-print">
-                            <input type="checkbox" class="invoice-print" id="invoice-print" name="invoice_print">
-                            <label for="invoice-print" class="fs14">بِل تراکنش چاپ شود</label>
-                        </div>
-                    </div> -->
-
-                    <input type="hidden" name="user_id" id="item_id" value="<?= $user['id'] ?? '' ?>">
-                    <input type="hidden" name="fabric_id" id="fabric_id">
-                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                    <input type="submit" id="submit" value="ثبت" class="btn" />
-                </form>
-
+                </div>
             </div>
 
         </div>
+        <script>
+            const accordion = document.querySelector('.accordion1');
+            const toggle = accordion.querySelector('.accordion-toggle');
+            const content = accordion.querySelector('.accordion-content');
 
+            toggle.addEventListener('click', () => {
+                if (accordion.classList.contains('open')) {
+                    content.style.height = content.scrollHeight + 'px';
+
+                    requestAnimationFrame(() => {
+                        content.style.height = '0px';
+                    });
+
+                    accordion.classList.remove('open');
+                } else {
+                    content.style.height = content.scrollHeight + 'px';
+                    accordion.classList.add('open');
+                }
+            });
+        </script>
         <!-- lists -->
         <div class="content-container mt20 pt10">
             <div class="fs12 mb5 color-orange">لیست سفارشات</div>
