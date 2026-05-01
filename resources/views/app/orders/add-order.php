@@ -8,46 +8,37 @@
     include_once('resources/views/scripts/live-search-fabric.php');
     ?>
     <style>
-        /* کانتینر اصلی کاملاً شفاف */
         .acc-container {
             width: 100%;
             background: transparent;
             border: none;
-            overflow: hidden;
-            font-family: sans-serif;
+            overflow: hidden;            
         }
 
-        /* هدر آکاردئون */
         .acc-header {
             display: flex;
             align-items: center;
             justify-content: flex-start;
             cursor: pointer;
-            padding: 10px 0;
             user-select: none;
         }
 
-        /* بخش آیکون و تنظیم چرخش */
         .acc-icon {
             display: flex;
             align-items: center;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* وقتی آکاردئون باز است (حالت پیش‌فرض فعلی) */
         .acc-container.active .acc-icon {
             transform: rotate(180deg);
         }
 
-        /* محتوای آکاردئون با انیمیشن همزمان */
         .acc-content {
             display: grid;
             grid-template-rows: 0fr;
-            /* تکنیک گرید برای انیمیشن ارتفاع Auto */
             transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* باز شدن محتوا همزمان با چرخش آیکون */
         .acc-container.active .acc-content {
             grid-template-rows: 1fr;
         }
@@ -56,10 +47,8 @@
             overflow: hidden;
         }
 
-        .acc-body {
-            padding-bottom: 15px;
-        }
     </style>
+
     <div class="content">
         <div class="content-title print-none">ثبت سفارش جدید</div>
 
@@ -88,13 +77,13 @@
         <div class="content-container">
 
             <div class="acc-container active" id="accItem">
-                <div class="acc-header" onclick="toggleAcc()">
+                <div class="acc-header color-orange" onclick="toggleAcc()">
                     <div class="acc-icon">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
-                    <span style="margin-right: 12px; font-weight: bold;">عنوان بخش (پیش‌فرض باز)</span>
+                    <span class="mr10">اطلاعات سفارش</span>
                 </div>
 
                 <div class="acc-content">
@@ -408,5 +397,5 @@
             document.getElementById('accItem').classList.toggle('active');
         }
     </script>
-    
+
     <?php include_once('resources/views/layouts/footer.php') ?>
