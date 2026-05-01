@@ -50,13 +50,13 @@
 
                         <div class="one" id="afghanBox">
                             <div class="label-form mb5 fs14">مدل</div>
-                            <select name="afghan_model" onchange="setFee(this)">
+                            <select name="model" onchange="setFee(this)">
                                 <option disabled selected>مدل را انتخاب نمایید</option>
                                 <?php foreach ($models as $model) {
                                     if ($model['type'] != 'afghan') continue; ?>
 
                                     <option
-                                        value="<?= $model['model_name'] ?>"
+                                        value="<?= $model['id'] ?>"
                                         data-fee="<?= $model['fee'] ?>">
                                         <?= $model['model_name'] ?>
                                     </option>
@@ -66,13 +66,13 @@
 
                         <div class="one" id="vestBox" style="display:none;">
                             <div class="label-form mb5 fs14">مدل</div>
-                            <select name="vest_model" onchange="setFee(this)">
+                            <select name="model" onchange="setFee(this)">
                                 <option disabled selected>مدل را انتخاب نمایید</option>
                                 <?php foreach ($models as $model) {
                                     if ($model['type'] != 'vest') continue; ?>
 
                                     <option
-                                        value="<?= $model['model_name'] ?>"
+                                        value="<?= $model['id'] ?>"
                                         data-fee="<?= $model['fee'] ?>">
                                         <?= $model['model_name'] ?>
                                     </option>
@@ -82,13 +82,13 @@
 
                         <div class="one" id="suitBox" style="display:none;">
                             <div class="label-form mb5 fs14">مدل</div>
-                            <select name="suit_model" onchange="setFee(this)">
+                            <select name="model" onchange="setFee(this)">
                                 <option disabled selected>مدل را انتخاب نمایید</option>
                                 <?php foreach ($models as $model) {
                                     if ($model['type'] != 'suit') continue; ?>
 
                                     <option
-                                        value="<?= $model['model_name'] ?>"
+                                        value="<?= $model['id'] ?>"
                                         data-fee="<?= $model['fee'] ?>">
                                         <?= $model['model_name'] ?>
                                     </option>
@@ -98,7 +98,7 @@
 
                         <div class="one">
                             <div class="label-form mb5 fs14">اجرت دوخت</div>
-                            <input type="text" id="feeInput" name="fee" disabled placeholder="اجرت دوخت را وارد نمایید" />
+                            <input type="text" id="feeInput" name="sewing_fee" placeholder="اجرت دوخت را وارد نمایید" />
                         </div>
 
                     </div>
@@ -139,7 +139,7 @@
                         </div>
                         <div class="one w300">
                             <div class="label-form mb5 fs14">قیمت</div>
-                            <input type="text" id="fabric_total_price" placeholder="قیمت" disabled readonly />
+                            <input type="text" name="price_fabric" id="fabric_total_price" placeholder="قیمت" readonly />
                         </div>
                     </div>
 

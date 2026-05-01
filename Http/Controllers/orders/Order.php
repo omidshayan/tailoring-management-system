@@ -24,28 +24,31 @@ class Order extends App
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
-        if ($existingEmployee) {
-            $this->flashMessage('error', _phone_repeat);
+        $order = $this->db->select('SELECT * FROM orders WHERE `status` = ?', [1])->fetch();
+
+        if ($order) {
         } else {
-
-            if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
-                $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
-            }
-
-            $request['password'] = $this->hash($request['password']);
-            $employee = $this->validateInputs($request, ['image' => false]);
-
-            $request['role'] = 1;
-
-            // check image
-            $this->handleImageUpload($request['image'], 'images/employees');
 
             try {
                 $this->db->beginTransaction();
 
-                // insert new employee
-                $this->db->insert('employees', array_keys($request), $request);
+                $invoiceOrder = [
+                    'user_id' => $request['user_id'],
+                ];
+                $this->db->insert('orders', array_keys($invoiceOrder), $invoiceOrder);
+                $lastId = $this->db->lastInsertId();
+                $orderItem = [
+                    'order_id' => $lastId,
+                    'type' => $request['type'],
+                    'model_id' => $request['model'],
+                    'sewing_fee' => $request['sewing_fee'],
+                    'fabric_id' => $request['fabric_id'],
+                    'order_fabric' => $request['fabric'],
+                    'fabric_meter' => $request['fabric_meter'],
+                    'price_fabric' => $request['price_fabric'],
+                    'description' => $request['description'],
+                ];
+                $this->db->insert('order_items', array_keys($orderItem), $orderItem);
 
                 $this->db->commit();
 
