@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 30, 2026 at 06:53 PM
+-- Generation Time: May 01, 2026 at 04:58 PM
 -- Server version: 9.1.0
 -- PHP Version: 7.4.33
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `csrf_token_logs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `csrf_token_logs`
@@ -115,7 +115,9 @@ INSERT INTO `csrf_token_logs` (`id`, `message`, `ip_address`, `created_at`, `upd
 (21, 'Invalid or missing CSRF token.', '::1', '2026-04-27 02:07:17', NULL),
 (22, 'Invalid or missing CSRF token.', '::1', '2026-04-27 02:07:18', NULL),
 (23, 'Invalid or missing CSRF token.', '::1', '2026-04-27 02:07:19', NULL),
-(24, 'Invalid or missing CSRF token.', '::1', '2026-04-27 23:20:08', NULL);
+(24, 'Invalid or missing CSRF token.', '::1', '2026-04-27 23:20:08', NULL),
+(25, 'Invalid or missing CSRF token.', '::1', '2026-05-01 15:23:55', NULL),
+(26, 'Invalid or missing CSRF token.', '::1', '2026-05-01 15:24:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -489,7 +491,14 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `total_amount`, `delivery_date`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(11, 19, 0.00, '', 1, '', '2026-05-01 19:23:11', '2026-05-01 21:02:33');
 
 -- --------------------------------------------------------
 
@@ -502,12 +511,25 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   `id` int NOT NULL AUTO_INCREMENT,
   `order_id` int NOT NULL,
   `model_id` int NOT NULL,
-  `amount` decimal(15,2) NOT NULL,
+  `type` varchar(16) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `order_fabric` varchar(16) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fabric_meter` varchar(16) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fabric_id` int DEFAULT NULL,
+  `price_fabric` decimal(10,2) DEFAULT NULL,
+  `sewing_fee` decimal(15,2) NOT NULL,
+  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `model_id`, `type`, `order_fabric`, `fabric_meter`, `fabric_id`, `price_fabric`, `sewing_fee`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(23, 11, 5, 'afghan', 'without_fabric', '0', 0, 0.00, 850.00, '', 1, '2026-05-01 21:02:33', NULL);
 
 -- --------------------------------------------------------
 
