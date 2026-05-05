@@ -53,7 +53,12 @@ $date = explode(' ', $order['created_at']);
                 <div class="w100 m10 center"><?= $order['who_it'] ?></div>
             </div>
         </div>
-
+        <div class="detailes-culomn d-flex align-center cursor-p">
+            <div class="title-detaile"><a href="#" data-url="<?= url('change-status-order') ?>" data-id="<?= $order['id'] ?>" class="changeStatus color btn p5 w100 m10 center" id="submit">تغییر وضعیت</a></div>
+            <div class="info-detaile">
+                <div class="w100 m10 center status status-column" id="status"><?= ($order['status'] != 3) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
+            </div>
+        </div>
 
 
 
@@ -90,6 +95,5 @@ $date = explode(' ', $order['created_at']);
         <div class="center">برگشت</div>
     </a>
 </div>
-
 
 <?php include_once('resources/views/layouts/footer.php') ?>
