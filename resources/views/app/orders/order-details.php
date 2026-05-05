@@ -16,6 +16,7 @@ $date = explode(' ', $order['created_at']);
 <div class="content">
     <div class="content-title"> جزئیات پارچه : <?= $user['name'] ?></div>
 
+    <!-- primary -->
     <div class="box-container">
         <div class="details">
             <div class="detail-item d-flex">
@@ -59,9 +60,6 @@ $date = explode(' ', $order['created_at']);
                 <div class="w100 m10 center status status-column" id="status"><?= ($order['status'] != 3) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
             </div>
         </div>
-
-
-
     </div>
 
     <!-- lists -->

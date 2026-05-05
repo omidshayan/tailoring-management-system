@@ -355,8 +355,8 @@ class Order extends App
         $this->middleware(true, true, 'general');
 
         $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$id])->fetch();
-        
-            $orderList = $this->db->select("
+
+        $orderList = $this->db->select("
                 SELECT 
                     oi.*, 
                     m.model_name,
@@ -378,33 +378,21 @@ class Order extends App
         exit();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    // change status employee
-    public function changeStatusEmployee($id)
+    // change status order
+    public function changeStatusOrder($id)
     {
         $this->middleware(true, true, 'general');
 
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
+        $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$id])->fetch();
 
-        if (!$employee) {
+        if (!$order) {
             require_once BASE_PATH . '/404.php';
             exit;
         }
 
-        $newStatus = $employee['state'] == 1 ? 2 : 1;
+        $newStatus = $order['status'] == 3 ? 4 : 3;
 
-        $this->db->update('employees', $employee['id'], ['state'], [$newStatus]);
+        $this->db->update('orders', $order['id'], ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
 }
