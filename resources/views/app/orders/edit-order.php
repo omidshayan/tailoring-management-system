@@ -1,12 +1,12 @@
 <?php
-$title = 'ویرایش کارمند: ' . $employee['employee_name'];
+$title = 'ویرایش سفارش: ' . $employee['employee_name'];
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/error.php');
 ?>
 
 <div class="content">
-    <div class="content-title">ویرایش کارمند: <?= $employee['employee_name'] ?></div>
+    <div class="content-title">ویرایش سفارش: <?= $employee['employee_name'] ?></div>
 
     <div class="box-container">
         <div class="insert">

@@ -254,30 +254,30 @@ class Order extends App
         exit();
     }
 
-
-
-
-
-
-
-
-
-
-
-    // edit employee page
-    public function editEmployee($id)
+    // edit order page
+    public function editOrder($id)
     {
         $this->middleware(true, true, 'general', true);
 
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
-        if ($employee != null) {
-            require_once(BASE_PATH . '/resources/views/app/employees/edit-employee.php');
-            exit();
-        } else {
+        $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$id])->fetch();
+
+        if (!$order) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
+
+        require_once(BASE_PATH . '/resources/views/app/orders/edit-order.php');
     }
+
+
+
+
+
+
+
+
+
+
 
     // edit employee store
     public function editEmployeeStore($request, $id)
