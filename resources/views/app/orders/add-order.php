@@ -107,7 +107,7 @@
 
                                         <div class="one" id="afghanBox">
                                             <div class="label-form mb5 fs14">مدل <?= _star ?></div>
-                                            <select name="model" class="checkSelect" onchange="setFee(this)">
+                                            <select name="model" onchange="setFee(this)">
                                                 <option disabled selected>مدل را انتخاب نمایید</option>
                                                 <?php foreach ($models as $model) {
                                                     if ($model['type'] != 'afghan') continue; ?>
@@ -121,7 +121,7 @@
                                         </div>
 
                                         <div class="one" id="vestBox" style="display:none;">
-                                            <div class="label-form mb5 fs14">مدل</div>
+                                            <div class="label-form mb5 fs14">مدل <?= _star ?></div>
                                             <select name="model" onchange="setFee(this)">
                                                 <option disabled selected>مدل را انتخاب نمایید</option>
                                                 <?php foreach ($models as $model) {
@@ -137,7 +137,7 @@
                                         </div>
 
                                         <div class="one" id="suitBox" style="display:none;">
-                                            <div class="label-form mb5 fs14">مدل</div>
+                                            <div class="label-form mb5 fs14">مدل <?= _star ?></div>
                                             <select name="model" onchange="setFee(this)">
                                                 <option disabled selected>مدل را انتخاب نمایید</option>
                                                 <?php foreach ($models as $model) {
@@ -248,7 +248,7 @@
 
                                 $typeLabel = $types[$item['type']] ?? 'نامشخص';
                             ?>
-                                <div class="d-flex bg-main border justify-between align-center">
+                                <div class="d-flex bg-main border hover justify-between align-center">
                                     <li class="fs14 p5"><?= $number . '- ' . $typeLabel . ' - ' . ' مدل: ' . $item['model_name'] . ' - ' . ' اجرت دوخت: ' . number_format($item['sewing_fee']) ?></li>
                                     <a href="<?= url('delete-item-cart/' . $item['id']) ?>" class="p5 d-flex align-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
