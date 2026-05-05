@@ -64,7 +64,7 @@ include_once('public/alerts/toastr.php');
                             <?php if (!empty($user['last_order_date'])) { ?>
                                 <?= jdate('Y/m/d', strtotime($user['last_order_date'])) ?>
                                 <span class="color-orange fs11">
-                                    (<?= $this->calculateDaysText($days) ?>)
+                                    (<?= $this->daysAgoText($days) ?>)
                                 </span>
                             <?php } else { ?>
                                 <span class="color-orange fs11">سفارش ندارد</span>

@@ -88,15 +88,15 @@ class User extends App
     {
         $this->middleware(true, true, 'general');
 
-$users = $this->db->select("
-    SELECT 
-        u.*,
-        MAX(o.created_at) AS last_order_date,
-        COALESCE(DATEDIFF(NOW(), MAX(o.created_at)), 0) AS days_since_last_order
-    FROM users u
-    LEFT JOIN orders o ON o.user_id = u.id
-    GROUP BY u.id
-")->fetchAll();
+        $users = $this->db->select("
+            SELECT 
+                u.*,
+                MAX(o.created_at) AS last_order_date,
+                COALESCE(DATEDIFF(NOW(), MAX(o.created_at)), 0) AS days_since_last_order
+            FROM users u
+            LEFT JOIN orders o ON o.user_id = u.id
+            GROUP BY u.id
+        ")->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/users/show-users.php');
         exit();
     }
