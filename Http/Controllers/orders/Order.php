@@ -51,10 +51,12 @@ class Order extends App
             return;
         }
 
-        $fabric = $this->db->select('SELECT quantity FROM fabrics WHERE id = ?', [$request['fabric_id']])->fetch();
+        if ($request['fabric_id']) {
+            $fabric = $this->db->select('SELECT quantity FROM fabrics WHERE id = ?', [$request['fabric_id']])->fetch();
 
-        if ($fabric['quantity'] < $request['fabric_meter']) {
-            $this->flashMessage('error', 'موجودی پارچه کم است!');
+            if ($fabric['quantity'] < $request['fabric_meter']) {
+                $this->flashMessage('error', 'موجودی پارچه کم است!');
+            }
         }
 
         try {
@@ -105,6 +107,56 @@ class Order extends App
             $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
         }
     }
+
+    // edit order store
+    public function editOrderStore($request, $id)
+    {
+        $this->middleware(true, true, 'general', true, $request, true);
+
+        // validation
+        if (empty($request['type']) || empty($request['model']) || empty($request['sewing_fee'])) {
+            $this->flashMessage('error', _emptyInputs);
+        }
+
+        $order = $this->db->select('SELECT id FROM orders WHERE id = ?', [$id])->fetch();
+
+        if ($request['fabric_id']) {
+            $fabric = $this->db->select('SELECT quantity FROM fabrics WHERE id = ?', [$request['fabric_id']])->fetch();
+
+            if ($fabric['quantity'] < $request['fabric_meter']) {
+                $this->flashMessage('error', 'موجودی پارچه کم است!');
+            }
+        }
+
+        try {
+            $this->db->beginTransaction();
+
+            $priceFabric = (float)$request['price_fabric'];
+            $sewingFee   = (float)$request['sewing_fee'];
+
+            $orderItem = [
+                'order_id'      => $id,
+                'type'          => $request['type'] ?? null,
+                'model_id'      => $request['model'] ?? null,
+                'sewing_fee'    => $sewingFee,
+                'fabric_id'     => $request['fabric_id'] ?? null,
+                'order_fabric'  => $request['fabric'] ?? null,
+                'fabric_meter'  => $request['fabric_meter'] ?? 0,
+                'price_fabric'  => $priceFabric ?? null,
+                'description'   => $request['description'] ?? null,
+            ];
+
+            $this->db->insert('order_items', array_keys($orderItem), $orderItem);
+
+            $this->db->commit();
+
+            $this->flashMessage('success', _success);
+        } catch (Exception $e) {
+            $this->db->rollBack();
+            $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
+        }
+    }
+
 
     // delete product from cart
     public function deleteItemCart($id)
@@ -297,36 +349,7 @@ class Order extends App
         require_once(BASE_PATH . '/resources/views/app/orders/edit-order.php');
     }
 
-    // edit order store
-    public function editOrderStore($request, $id)
-    {
-        $this->middleware(true, true, 'general', true, $request, true);
 
-        // validation
-        if (empty($request['type']) || empty($request['model']) || empty($request['sewing_fee'])) {
-            $this->flashMessage('error', _emptyInputs);
-        }
-
-        // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '') {
-            $this->flashMessage('error', _emptyInputs);
-        }
-
-        $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
-
-        if ($existEmployee) {
-            if ($id != $existEmployee['id']) {
-                $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
-                return;
-            }
-        }
-
-        // check upload photo
-        $this->updateImageUpload($request, 'image', 'employees', 'employees', $id);
-
-        $this->db->update('employees', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('employees'));
-    }
 
 
 
