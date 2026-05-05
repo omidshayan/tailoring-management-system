@@ -238,24 +238,24 @@ class Order extends App
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-    // show employees
-    public function showEmployees()
+    // show orders
+    public function orders()
     {
         $this->middleware(true, true, 'general');
         $employees = $this->db->select('SELECT * FROM employees')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
         exit();
     }
+
+
+
+
+
+
+
+
+
+
 
     // edit employee page
     public function editEmployee($id)
