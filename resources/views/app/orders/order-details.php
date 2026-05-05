@@ -43,13 +43,19 @@ $date = explode(' ', $order['created_at']);
         </div>
         <div class="details">
             <div class="detail-item d-flex">
+                <div class="w100 m10 center">تاریخ ثبت</div>
+                <div class="w100 m10 center"><?= jdate('Y/m/d', strtotime($order['created_at'])) ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
                 <div class="w100 m10 center">ثبت سفارش توسط</div>
                 <div class="w100 m10 center"><?= $order['who_it'] ?></div>
             </div>
         </div>
 
 
-        
+
         <a href="<?= url('fabrics') ?>">
             <div class="btn center p5">برگشت</div>
         </a>
