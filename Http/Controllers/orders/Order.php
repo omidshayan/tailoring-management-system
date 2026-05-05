@@ -356,7 +356,16 @@ class Order extends App
 
         $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$id])->fetch();
         
-        $orderItems = $this->db->select('SELECT * FROM order_items WHERE order_id = ?', [$id])->fetchAll();
+            $orderList = $this->db->select("
+                SELECT 
+                    oi.*, 
+                    m.model_name,
+                    (oi.sewing_fee + COALESCE(oi.price_fabric, 0)) AS total_price
+                FROM order_items oi
+                LEFT JOIN models m 
+                    ON oi.model_id = m.id
+                WHERE order_id = ?
+            ", [$id])->fetchAll();
 
         $user = $this->db->select('SELECT * FROM users WHERE `id` = ?', [$order['user_id']])->fetch();
 
