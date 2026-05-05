@@ -97,8 +97,8 @@
                                     <div class="inputs d-flex">
 
                                         <div class="one">
-                                            <div class="label-form mb5 fs14">نوع</div>
-                                            <select id="typeSelect" name="type" onchange="changeType()">
+                                            <div class="label-form mb5 fs14">نوع <?= _star ?></div>
+                                            <select id="typeSelect" name="type" class="checkSelect" onchange="changeType()">
                                                 <option value="afghan" selected>لباس افغانی</option>
                                                 <option value="vest">واسکت</option>
                                                 <option value="suit">کت و شلوار</option>
@@ -106,12 +106,11 @@
                                         </div>
 
                                         <div class="one" id="afghanBox">
-                                            <div class="label-form mb5 fs14">مدل</div>
-                                            <select name="model" onchange="setFee(this)">
+                                            <div class="label-form mb5 fs14">مدل <?= _star ?></div>
+                                            <select name="model" class="checkSelect" onchange="setFee(this)">
                                                 <option disabled selected>مدل را انتخاب نمایید</option>
                                                 <?php foreach ($models as $model) {
                                                     if ($model['type'] != 'afghan') continue; ?>
-
                                                     <option
                                                         value="<?= $model['id'] ?>"
                                                         data-fee="<?= $model['fee'] ?>">
@@ -154,8 +153,8 @@
                                         </div>
 
                                         <div class="one">
-                                            <div class="label-form mb5 fs14">اجرت دوخت</div>
-                                            <input type="text" id="feeInput" name="sewing_fee" placeholder="اجرت دوخت را وارد نمایید" />
+                                            <div class="label-form mb5 fs14">اجرت دوخت <?= _star ?></div>
+                                            <input type="text" id="feeInput" class="checkInput" name="sewing_fee" placeholder="اجرت دوخت را وارد نمایید" />
                                         </div>
 
                                     </div>

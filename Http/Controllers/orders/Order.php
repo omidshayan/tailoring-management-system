@@ -46,7 +46,7 @@ class Order extends App
         $this->middleware(true, true, 'general', true, $request, true);
 
         // validation
-        if (empty($request['user_id'])) {
+        if (empty($request['user_id']) || empty($request['type']) || empty($request['model']) || empty($request['user_id']) || empty($request['sewing_fee'])) {
             $this->flashMessage('error', _emptyInputs);
             return;
         }
