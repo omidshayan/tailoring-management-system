@@ -100,6 +100,11 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
+                  <a href="<?= url('fabric-inventory') ?>">
+                    <li class="sidebar-dropdown-menu-item">موجودی پارچه‌ها</li>
+                  </a>
+                <?php endif; ?>
+                <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('buy-fabric') ?>">
                     <li class="sidebar-dropdown-menu-item">خرید پارچه</li>
                   </a>

@@ -25,3 +25,6 @@ uri('change-status-buy-fabric/{id}', 'App\Fabric', 'changeStatusBuyFabric');
 uri('close-invoice/{id}', 'App\Fabric', 'closeInvoice', 'POST');
 uri('delete-fabric-cart/{id}', 'App\Fabric', 'deleteFabricCart');
 // uri('delete-product-cart/{id}', 'App\ProductInventory', 'deleteProductCart');
+
+// inventory
+uri('fabric-inventory', 'App\Fabric', 'fabricInventory');
