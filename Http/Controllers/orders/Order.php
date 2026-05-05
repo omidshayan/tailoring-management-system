@@ -242,7 +242,13 @@ class Order extends App
     public function orders()
     {
         $this->middleware(true, true, 'general');
-        $orders = $this->db->select('SELECT * FROM orders')->fetchAll();
+
+        $orders = $this->db->select('
+            SELECT o.*, u.name AS user_name
+            FROM orders o
+            LEFT JOIN users u ON o.user_id = u.id
+        ')->fetchAll();
+        
         require_once(BASE_PATH . '/resources/views/app/orders/orders.php');
         exit();
     }

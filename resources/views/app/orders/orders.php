@@ -20,8 +20,9 @@ include_once('public/alerts/toastr.php');
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>نام</th>
-                    <th>شماره</th>
+                    <th>نام مشتری</th>
+                    <th>مدل</th>
+                    <th>اجرت دوخت</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
                 </tr>
@@ -29,7 +30,7 @@ include_once('public/alerts/toastr.php');
             <tbody>
                 <?php
                 $perPage = 10;
-                $data = paginate($employees, $perPage);
+                $data = paginate($orders, $perPage);
                 $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                 $number = ($currentPage - 1) * $perPage + 1;
                 foreach ($data as $employee) {
@@ -62,16 +63,16 @@ include_once('public/alerts/toastr.php');
             </tbody>
         </table>
         <div class="flex-justify-align mt20 paginate-section">
-            <div class="table-info fs12">تعداد کل: <?= count($employees) ?></div>
+            <div class="table-info fs12">تعداد کل: <?= count($orders) ?></div>
             <?php
-            if (count($employees) == null) { ?>
+            if (count($orders) == null) { ?>
                 <div class="center color-red fs12">
                     <i class="fa fa-comment"></i>
                     <?= _not_infos ?>
                 </div>
             <?php } else {
-                if (count($employees) > 10) {
-                    echo paginateView($employees, 10);
+                if (count($orders) > 10) {
+                    echo paginateView($orders, 10);
                 }
             }
             ?>
