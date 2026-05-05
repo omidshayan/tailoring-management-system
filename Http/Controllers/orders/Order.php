@@ -261,6 +261,8 @@ class Order extends App
 
         $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$id])->fetch();
 
+        $user = $this->db->select('SELECT `name` FROM users WHERE id = ?', [$order['user_id']])->fetch();
+
         if (!$order) {
             require_once(BASE_PATH . '/404.php');
             exit();
