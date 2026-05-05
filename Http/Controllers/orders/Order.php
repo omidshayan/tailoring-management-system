@@ -46,7 +46,7 @@ class Order extends App
         $this->middleware(true, true, 'general', true, $request, true);
 
         // validation
-        if (empty($request['user_id']) || empty($request['type']) || empty($request['model']) || empty($request['user_id']) || empty($request['sewing_fee'])) {
+        if (empty($request['user_id']) || empty($request['type']) || empty($request['model']) || empty($request['sewing_fee'])) {
             $this->flashMessage('error', _emptyInputs);
             return;
         }
@@ -301,6 +301,11 @@ class Order extends App
     public function editOrderStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
+
+        // validation
+        if (empty($request['type']) || empty($request['model']) || empty($request['sewing_fee'])) {
+            $this->flashMessage('error', _emptyInputs);
+        }
 
         // check empty form
         if ($request['employee_name'] == '' || $request['phone'] == '') {

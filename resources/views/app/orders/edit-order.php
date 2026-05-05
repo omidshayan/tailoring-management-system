@@ -91,7 +91,7 @@ include_once('resources/views/scripts/live-search-fabric.php');
 
                         <div class="insert">
 
-                            <form action="<?= url('edit-order-store') ?>" method="POST" id="transactionForm">
+                            <form action="<?= url('edit-order-store/' . $order['id']) ?>" method="POST" id="transactionForm">
 
                                 <!-- type and model -->
                                 <div class="inputs d-flex">
