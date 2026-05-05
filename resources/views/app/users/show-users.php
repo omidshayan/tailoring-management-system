@@ -32,7 +32,12 @@ include_once('public/alerts/toastr.php');
         </div>
     </div>
 
-    <div class="content-container">
+    <div class="content-container pt10 mb10">
+        <select name="" class="w120 input mb5">
+            <option value="top">فعال‌ترین مشتری</option>
+            <option value="low">کم‌فعال</option>
+            <option value="inactive">خوابیده</option>
+        </select>
         <table class="fl-table">
             <thead>
                 <tr>
