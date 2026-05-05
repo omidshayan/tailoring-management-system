@@ -131,7 +131,7 @@ class Fabric extends App
     }
 
 
-    /////// Buy fabrices //////////
+    /////// Buy fabrics //////////
 
     // search item
     public function searchFabcic($request)

@@ -51,11 +51,17 @@ class Order extends App
             return;
         }
 
+        $fabric = $this->db->select('SELECT quantity FROM fabrics WHERE id = ?', [$request['fabric_id']])->fetch();
+
+        if ($fabric['quantity'] < $request['fabric_meter']) {
+            $this->flashMessage('error', 'موجودی پارچه کم است!');
+        }
+
         try {
             $this->db->beginTransaction();
 
             $order = $this->db->select(
-                'SELECT id, user_id FROM orders WHERE status = ? LIMIT 1',
+                'SELECT id, user_id FROM orders WHERE `status` = ? LIMIT 1',
                 [1]
             )->fetch();
 
