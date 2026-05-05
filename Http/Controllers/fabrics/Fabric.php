@@ -290,6 +290,17 @@ class Fabric extends App
         }
     }
 
+    // fabric Inventory
+    public function fabricInventory()
+    {
+        $this->middleware(true, true, 'general', true);
+
+        $fabrics = $this->db->select('SELECT * FROM fabrics WHERE `status` = ?', [1])->fetchAll();
+
+        require_once(BASE_PATH . '/resources/views/app/fabrics/fabric-inventory.php');
+        exit();
+    }
+
     // edit employee store
     public function editBuyFabricStore($request, $id)
     {
