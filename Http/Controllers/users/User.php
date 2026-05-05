@@ -87,7 +87,9 @@ class User extends App
     public function showUsers()
     {
         $this->middleware(true, true, 'general');
-        $users = $this->db->select('SELECT * FROM users WHERE `status` != 0')->fetchAll();
+
+        $users = $this->db->select('SELECT * FROM users')->fetchAll();
+
         require_once(BASE_PATH . '/resources/views/app/users/show-users.php');
         exit();
     }
