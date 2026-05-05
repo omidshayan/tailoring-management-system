@@ -242,8 +242,8 @@ class Order extends App
     public function orders()
     {
         $this->middleware(true, true, 'general');
-        $employees = $this->db->select('SELECT * FROM employees')->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
+        $orders = $this->db->select('SELECT * FROM orders')->fetchAll();
+        require_once(BASE_PATH . '/resources/views/app/orders/orders.php');
         exit();
     }
 

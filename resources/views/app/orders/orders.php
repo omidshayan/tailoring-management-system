@@ -1,12 +1,12 @@
 <?php
-$title = 'کاربران';
+$title = 'سفارشات';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
 ?>
 
 <div class="content">
-    <div class="content-title">نمایش کاربران
+    <div class="content-title">نمایش سفارشات
         <span class="help fs14 text-underline cursor-p color-orange" id="openModalBtn">(راهنما)</span>
     </div>
     <?php
