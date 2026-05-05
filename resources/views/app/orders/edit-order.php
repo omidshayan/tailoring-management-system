@@ -91,7 +91,7 @@ include_once('resources/views/scripts/live-search-fabric.php');
 
                         <div class="insert">
 
-                            <form action="<?= url('order-store') ?>" method="POST" id="transactionForm">
+                            <form action="<?= url('edit-order-store') ?>" method="POST" id="transactionForm">
 
                                 <!-- type and model -->
                                 <div class="inputs d-flex">
@@ -266,7 +266,7 @@ include_once('resources/views/scripts/live-search-fabric.php');
                 <!-- close form -->
                 <div class="w50d bg-main">
                     <div class="insert">
-                        <form action="<?= url('close-order-store/' . $orders['id']) ?>" method="POST">
+                        <form action="<?= url('close-edit-order-store/' . $order['id']) ?>" method="POST">
                             <div class="center fs14 p5 color-orange">
                                 مجموع کل: <?= number_format($total['grand_total'] ?? 0) ?>
                             </div>
@@ -396,3 +396,5 @@ include_once('resources/views/scripts/live-search-fabric.php');
         document.getElementById('accItem').classList.toggle('active');
     }
 </script>
+
+<?php include_once('resources/views/layouts/footer.php') ?>

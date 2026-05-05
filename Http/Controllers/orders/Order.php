@@ -261,7 +261,33 @@ class Order extends App
 
         $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$id])->fetch();
 
-        $user = $this->db->select('SELECT `name` FROM users WHERE id = ?', [$order['user_id']])->fetch();
+        $models = $this->db->select('SELECT * FROM models WHERE `status` = 1')->fetchAll();
+
+        if ($order) {
+
+            $user = $this->db->select('SELECT * FROM users WHERE `id` = ?', [$order['user_id']])->fetch();
+
+            $orderList = $this->db->select("
+                SELECT 
+                    oi.*, 
+                    m.model_name,
+                    (oi.sewing_fee + COALESCE(oi.price_fabric, 0)) AS total_price
+                FROM order_items oi
+                LEFT JOIN models m 
+                    ON oi.model_id = m.id
+                WHERE oi.status = ? AND order_id = ?
+            ", [1, $order['id']])->fetchAll();
+
+            // جمع کل
+            $total = $this->db->select("
+                SELECT 
+                    SUM(oi.sewing_fee + COALESCE(oi.price_fabric, 0)) AS grand_total
+                FROM order_items oi
+                WHERE oi.status = ?
+            ", [1])->fetch();
+        }
+
+
 
         if (!$order) {
             require_once(BASE_PATH . '/404.php');
