@@ -56,8 +56,19 @@ include_once('public/alerts/toastr.php');
                         <td class="color-orange"><?= $number ?></td>
                         <td><?= $user['name'] ?></td>
                         <td><?= $user['phone'] ?></td>
-                        <td><?= jdate('Y/m/d', strtotime($user['created_at'])) ?>
-                            <span class="color-orange fs11"> (<?= $this->calculateDaysText($user['created_at']) ?>) </span>
+                        <td>
+                            <?php
+                            $days = $user['days_since_last_order'];
+                            ?>
+
+                            <?php if (!empty($user['last_order_date'])) { ?>
+                                <?= jdate('Y/m/d', strtotime($user['last_order_date'])) ?>
+                                <span class="color-orange fs11">
+                                    (<?= $this->calculateDaysText($days) ?>)
+                                </span>
+                            <?php } else { ?>
+                                <span class="color-orange fs11">سفارش ندارد</span>
+                            <?php } ?>
                         </td>
 
                         <td>

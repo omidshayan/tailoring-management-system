@@ -644,6 +644,33 @@ class App
                 }
         }
 
+        // days agou
+        public function daysAgoText($days)
+        {
+                if ($days === null) {
+                        return 'بدون سفارش';
+                }
+
+                $days = (int) $days;
+
+                if ($days == 0) return 'امروز';
+                if ($days == 1) return 'دیروز';
+
+                if ($days < 7) {
+                        return $days . ' روز پیش';
+                }
+
+                if ($days < 30) {
+                        return floor($days / 7) . ' هفته پیش';
+                }
+
+                if ($days < 365) {
+                        return floor($days / 30) . ' ماه پیش';
+                }
+
+                return floor($days / 365) . ' سال پیش';
+        }
+
         // back link 
         function back_link($route)
         {
