@@ -247,8 +247,9 @@ class Order extends App
             SELECT o.*, u.name AS user_name
             FROM orders o
             LEFT JOIN users u ON o.user_id = u.id
+            WHERE `status` != 1
         ')->fetchAll();
-        
+
         require_once(BASE_PATH . '/resources/views/app/orders/orders.php');
         exit();
     }
