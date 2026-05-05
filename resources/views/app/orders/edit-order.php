@@ -226,11 +226,10 @@ include_once('resources/views/scripts/live-search-fabric.php');
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- lists -->
-    <div class="content-container mt20 pt10">
+    <div class="content-container mt20 pt10 mb10">
         <div class="fs12 mb5 color-orange">لیست سفارشات</div>
         <div class="d-flex gap20">
             <?php
@@ -290,7 +289,7 @@ include_once('resources/views/scripts/live-search-fabric.php');
             ?>
         </div>
     </div>
-
+    <?= $this->back_link('orders') ?>
 </div>
 
 <!-- check for print -->
