@@ -21,8 +21,8 @@ include_once('public/alerts/toastr.php');
                 <tr>
                     <th>#</th>
                     <th>نام مشتری</th>
-                    <th>مدل</th>
-                    <th>اجرت دوخت</th>
+                    <th>اجرت دوخت <?= _afghani ?></th>
+                    <th>بیعانه</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
                 </tr>
@@ -36,9 +36,10 @@ include_once('public/alerts/toastr.php');
                 foreach ($data as $employee) {
                 ?>
                     <tr>
-                        <td class="color-orange <?= ($employee['state'] == 1) ? '' : 'color-red' ?>"><?= $number ?></td>
-                        <td><?= $employee['employee_name'] ?></td>
-                        <td><?= $employee['phone'] ?></td>
+                        <td class="color-orange <?= ($employee['status'] == 1) ? '' : 'color-red' ?>"><?= $number ?></td>
+                        <td><?= $employee['user_name'] ?></td>
+                        <td><?= number_format($employee['total_amount']) ?></td>
+                        <td><?= number_format($employee['paid_amount']) ?: 0 ?></td>
                         <td>
                             <a href="<?= url('edit-employee/' . $employee['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
