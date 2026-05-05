@@ -37,6 +37,7 @@ include_once('public/alerts/toastr.php');
             <option value="top">فعال‌ترین مشتری</option>
             <option value="low">کم‌فعال</option>
             <option value="inactive">خوابیده</option>
+            <option value="top">همه مشتریان</option>
         </select>
         <table class="fl-table">
             <thead>
