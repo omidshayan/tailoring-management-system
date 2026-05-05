@@ -297,18 +297,8 @@ class Order extends App
         require_once(BASE_PATH . '/resources/views/app/orders/edit-order.php');
     }
 
-
-
-
-
-
-
-
-
-
-
-    // edit employee store
-    public function editEmployeeStore($request, $id)
+    // edit order store
+    public function editOrderStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
@@ -332,6 +322,16 @@ class Order extends App
         $this->db->update('employees', $id, array_keys($request), $request);
         $this->flashMessageTo('success', _success, url('employees'));
     }
+
+
+
+
+
+
+
+
+
+
 
     // employee detiles page
     public function employeeDetails($id)
