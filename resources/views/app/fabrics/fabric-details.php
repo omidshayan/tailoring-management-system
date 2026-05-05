@@ -6,13 +6,13 @@ include_once('resources/views/scripts/show-img-modal.php');
 $date = explode(' ', $fabric['created_at']);
 ?>
 
-<div id="alert" class="alert" style="display: none;">حالم بده، با برنامه نویس مه تماس بگیر :(</div>
+<div id="alert" class="alert" style="display: none;"></div>
 
 <!-- loading and overlay -->
 <div class="overlay" id="loadingOverlay">
     <div class="spinner"></div>
 </div>
-<!-- Start content -->
+
 <div class="content">
     <div class="content-title"> جزئیات پارچه : <?= $fabric['name'] ?></div>
 
@@ -83,6 +83,5 @@ $date = explode(' ', $fabric['created_at']);
         </a>
     </div>
 </div>
-<!-- End content -->
 
 <?php include_once('resources/views/layouts/footer.php') ?>

@@ -349,33 +349,37 @@ class Order extends App
         require_once(BASE_PATH . '/resources/views/app/orders/edit-order.php');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    // employee detiles page
-    public function employeeDetails($id)
+    // order detiles page
+    public function orderDetails($id)
     {
         $this->middleware(true, true, 'general');
 
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
+        $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$id])->fetch();
+        
+        $orderItems = $this->db->select('SELECT * FROM order_items WHERE order_id = ?', [$id])->fetchAll();
 
-        if ($employee != null) {
-            require_once(BASE_PATH . '/resources/views/app/employees/employee-details.php');
-            exit();
-        } else {
+        $user = $this->db->select('SELECT * FROM users WHERE `id` = ?', [$order['user_id']])->fetch();
+
+        if (!$order) {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
+
+        require_once(BASE_PATH . '/resources/views/app/orders/order-details.php');
+        exit();
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     // change status employee
     public function changeStatusEmployee($id)
