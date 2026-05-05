@@ -88,7 +88,11 @@ class User extends App
     {
         $this->middleware(true, true, 'general');
 
-        $users = $this->db->select('SELECT * FROM users')->fetchAll();
+        $users = $this->db->select("
+            SELECT u.*, o.created_at AS order_created_at
+            FROM users u
+            LEFT JOIN orders o ON o.user_id = u.id
+        ")->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/users/show-users.php');
         exit();

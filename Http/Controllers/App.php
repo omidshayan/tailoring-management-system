@@ -624,6 +624,26 @@ class App
                 }
         }
 
+        // calulate jdate
+        public function calculateDaysText($timestamp)
+        {
+                if (empty($timestamp)) {
+                        return 'تاریخ نامشخص';
+                }
+
+                $today = strtotime(date('Y-m-d'));
+                $thatDay = strtotime(date('Y-m-d', $timestamp));
+                $diffDays = (int) floor(($today - $thatDay) / 86400);
+
+                if ($diffDays === 0) {
+                        return 'امروز';
+                } elseif ($diffDays === 1) {
+                        return 'دیروز';
+                } else {
+                        return jdate('l', $timestamp);
+                }
+        }
+
         // back link 
         function back_link($route)
         {

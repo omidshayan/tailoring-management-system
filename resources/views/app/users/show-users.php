@@ -3,7 +3,7 @@ $title = 'نمایش فروشندگان';
 include_once('resources/views/layouts/header.php');
 include_once('public/alerts/check-inputs.php');
 include_once('public/alerts/toastr.php');
-include_once('resources/views/scripts/users/live-search-user-details.php');
+// include_once('resources/views/scripts/users/live-search-user-details.php');
 ?>
 
 <div class="content">
@@ -32,14 +32,14 @@ include_once('resources/views/scripts/users/live-search-user-details.php');
         </div>
     </div>
 
-    <div class="box-container">
+    <div class="content-container">
         <table class="fl-table">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>نام</th>
                     <th>شماره</th>
-                    <th>نوع</th>
+                    <th>آخرین سفارش</th>
                     <th>ویرایش</th>
                     <th>جزئیات</th>
                 </tr>
@@ -54,21 +54,12 @@ include_once('resources/views/scripts/users/live-search-user-details.php');
                 ?>
                     <tr>
                         <td class="color-orange"><?= $number ?></td>
-                        <td><?= $user['user_name'] ?></td>
+                        <td><?= $user['name'] ?></td>
                         <td><?= $user['phone'] ?></td>
-                        <td>
-                            <?= $user['is_customer'] || $user['is_seller']
-                                ? ($user['is_customer'] ? 'مشتری' : '') .
-                                ($user['is_customer'] && $user['is_seller'] ? ' / ' : '') .
-                                ($user['is_seller'] ? 'فروشنده' : '')
-                                : '- - - -' ?>
+                        <td><?= jdate('Y/m/d', strtotime($user['created_at'])) ?>
+                            <span class="color-orange fs11"> (<?= $this->calculateDaysText($user['created_at']) ?>) </span>
                         </td>
 
-                        <!-- <td>
-                            <span class="status">
-                                <?= ($user['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?>
-                            </span>
-                        </td> -->
                         <td>
                             <a href="<?= url('edit-user/' . $user['id']) ?>" class="color-orange">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -93,7 +84,7 @@ include_once('resources/views/scripts/users/live-search-user-details.php');
             </tbody>
         </table>
         <div class="flex-justify-align mt20 paginate-section">
-            <div class="table-info fs14">تعداد کل: <?= $this->formatNumber(count($users)) ?></div>
+            <div class="table-info fs14">تعداد کل: <?= count($users) ?></div>
             <?php
             if (count($users) == null) { ?>
                 <div class="center">
