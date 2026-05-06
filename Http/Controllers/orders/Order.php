@@ -396,7 +396,7 @@ class Order extends App
         $this->send_json_response(true, _success, $newStatus);
     }
 
-    // change status - end sewing
+    // change status - end sewing and send msg
     public function endSewing($request, $id)
     {
         $this->middleware(true, true, 'general');
@@ -432,5 +432,34 @@ class Order extends App
         $this->db->update('orders', $order['id'], ['end_sewing', 'status'], [$date, 4]);
 
         $this->flashMessage('success', _success);
+    }
+
+    // send msg
+    public function sendMsg($id)
+    {
+        $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$id])->fetch();
+
+        if (!$order) {
+            require_once BASE_PATH . '/404.php';
+            exit;
+        }
+
+        $user = $this->db->select(
+            'SELECT phone FROM users WHERE id = ?',
+            [$order['user_id']]
+        )->fetch();
+
+        if (!$user || empty($user['phone'])) {
+            $this->flashMessage('error', 'شماره کاربر موجود نیست');
+            $this->redirectBack();
+        }
+
+        $phone = $user['phone'];
+        $message = urlencode('با سلام، سفارش شما آماده است و می توانید با مراجعه به خیاطی دریافت نمایید. خیاطی آرمان');
+
+        $link = "https://wa.me/$phone?text=$message";
+
+        header("Location: $link");
+        exit;
     }
 }
