@@ -395,4 +395,26 @@ class Order extends App
         $this->db->update('orders', $order['id'], ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
+
+    // change status - end sewing
+    public function endSewing($id)
+    {
+        $this->middleware(true, true, 'general');
+
+        $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$id])->fetch();
+
+        if (!$order) {
+            require_once BASE_PATH . '/404.php';
+            exit;
+        }
+
+        if ($order['status'] == 4) {
+            $this->flashMessage('error', 'این سفارش قبلا به اتمام رسیده است!');
+        }
+
+        $newStatus = 4;
+
+        $this->db->update('orders', $order['id'], ['status'], [$newStatus]);
+        $this->flashMessage('success', _success);
+    }
 }

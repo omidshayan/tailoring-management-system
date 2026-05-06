@@ -15,3 +15,4 @@ uri('delete-item-cart/{id}', 'App\Order', 'deleteItemCart');
 
 // close
 uri('close-order-store/{id}', 'App\Order', 'closeOrderStore', 'POST');
+uri('end-sewing/{id}', 'App\Order', 'endSewing');

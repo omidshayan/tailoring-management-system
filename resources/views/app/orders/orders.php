@@ -42,7 +42,7 @@ include_once('public/alerts/toastr.php');
                         <td><?= number_format($order['total_amount']) ?></td>
                         <td><?= number_format($order['paid_amount']) ?: 0 ?></td>
                         <td>
-                            <a href="<?= url('edit-order/' . $order['id']) ?>" class="color-orange text-underline">
+                            <a href="<?= url('end-sewing/' . $order['id']) ?>" class="color-orange text-underline">
                                 اتمام دوخت
                             </a>
                         </td>
