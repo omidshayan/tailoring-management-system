@@ -141,6 +141,7 @@ include_once('public/alerts/toastr.php');
                             </td>
                         <?php endif; ?>
 
+                        <!-- print -->
                         <td>
                             <div class="flex-justify-align">
                                 <?= ($order['status'] == 4)
@@ -231,4 +232,7 @@ include_once('public/alerts/toastr.php');
     <?php unset($_SESSION['send_whatsapp']); ?>
 <?php endif; ?>
 
-<?php include_once('resources/views/layouts/footer.php') ?>
+<!-- check for print -->
+<?php include_once('resources/views/app/prints/order-invoice-print/invoice-frame.php');
+
+include_once('resources/views/layouts/footer.php') ?>
