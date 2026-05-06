@@ -424,7 +424,7 @@ class Order extends App
             if (!empty($user['phone'])) {
                 $_SESSION['send_whatsapp'] = [
                     'phone' => $user['phone'],
-                    'message' => 'سلام، سفارش شما آماده شد'
+                    'message' => 'با سلام، سفارش شما آماده است و می توانید با مراجعه به خیاطی دریافت نمایید. خیاطی آرمان'
                 ];
             }
         }
