@@ -474,7 +474,9 @@ select option:disabled {
 .transparent {
     background-color: transparent !important;
 }
-
+.transition{
+    transition: 0.4s;
+}
 .bg-red {
     background-color: rgba(255, 0, 0, 0.452) !important;
 }

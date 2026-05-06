@@ -78,11 +78,11 @@ include_once('public/alerts/toastr.php');
 
                 <br><br>
 
-                <button type="submit" class="btn-success p10 w60 cursor-p border-radius border">
+                <button type="submit" class="btn-success p10 w60 cursor-p border-radius border hover transition">
                     اتمام
                 </button>
 
-                <button type="button" class="btn-danger p10 w60 cursor-p border-radius" onclick="closeModal()">
+                <button type="button" class="btn-danger p10 w60 cursor-p border-radius border hover transition mr25" onclick="closeModal()">
                     لغو
                 </button>
             </form>
