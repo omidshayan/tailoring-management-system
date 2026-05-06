@@ -17,7 +17,7 @@ include_once('public/alerts/toastr.php');
     }
 
     .modal-content {
-        background: #fff;
+        background: var(--main);
         width: 350px;
         margin: 10% auto;
         padding: 20px;
@@ -64,13 +64,11 @@ include_once('public/alerts/toastr.php');
     include_once('resources/views/helps/help.php');
     ?>
 
+    <!-- modal -->
     <div id="finishModal" class="modal">
         <div class="modal-content">
-
             <h3>اتمام سفارش</h3>
-
             <form method="POST" action="<?= url('end-sewing') ?>">
-
                 <input type="hidden" name="id" id="order_id">
 
                 <label style="cursor:pointer;">
@@ -80,16 +78,14 @@ include_once('public/alerts/toastr.php');
 
                 <br><br>
 
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn-success p10 w60 cursor-p border-radius border">
                     اتمام
                 </button>
 
-                <button type="button" class="btn btn-danger" onclick="closeModal()">
+                <button type="button" class="btn-danger p10 w60 cursor-p border-radius" onclick="closeModal()">
                     لغو
                 </button>
-
             </form>
-
         </div>
     </div>
 
