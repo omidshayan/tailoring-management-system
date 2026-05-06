@@ -201,6 +201,7 @@ include_once('public/alerts/toastr.php');
         </div>
     </div>
 </div>
+
 <!-- modal -->
 <script>
     function openFinishModal(orderId) {

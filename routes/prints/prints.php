@@ -5,7 +5,7 @@ require_once 'Http/Controllers/prints/Prints.php';
 uri('print-order-invoice/{id}', 'App\Prints', 'printOrderInvoice');
 
 
-
+uri('invoice-print/{id}', 'App\Prints', 'invoicePrint');
 
 
 
