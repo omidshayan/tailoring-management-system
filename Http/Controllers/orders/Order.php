@@ -408,20 +408,29 @@ class Order extends App
             exit;
         }
 
-        $date = time();
-
-        if ($request['send_whatsapp']) {
-            $user = $this->db->select('SELECT phone FROM users WHERE id = ?', [$order['user_id']])->fetch();
-            dd($user);
-        }
-
         if ($order['status'] == 4) {
             $this->flashMessage('error', 'این سفارش قبلا به اتمام رسیده است!');
         }
 
-        $newStatus = 4;
+        $date = time();
 
-        $this->db->update('orders', $order['id'], ['end_sewing', 'status'], [$date, $newStatus]);
+        if (!empty($request['send_whatsapp'])) {
+
+            $user = $this->db->select(
+                'SELECT phone FROM users WHERE id = ?',
+                [$order['user_id']]
+            )->fetch();
+
+            if (!empty($user['phone'])) {
+                $_SESSION['send_whatsapp'] = [
+                    'phone' => $user['phone'],
+                    'message' => 'سلام، سفارش شما آماده شد'
+                ];
+            }
+        }
+
+        $this->db->update('orders', $order['id'], ['end_sewing', 'status'], [$date, 4]);
+
         $this->flashMessage('success', _success);
     }
 }

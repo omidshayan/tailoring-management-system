@@ -183,7 +183,6 @@ include_once('public/alerts/toastr.php');
         </div>
     </div>
 </div>
-
 <!-- modal -->
 <script>
     function openFinishModal(orderId) {
@@ -202,5 +201,17 @@ include_once('public/alerts/toastr.php');
         }
     }
 </script>
+
+<!-- send watsapp -->
+<?php if (!empty($_SESSION['send_whatsapp'])): ?>
+    <script>
+        let data = <?= json_encode($_SESSION['send_whatsapp']) ?>;
+
+        let url = "https://wa.me/" + data.phone + "?text=" + encodeURIComponent(data.message);
+
+        window.open(url, '_blank');
+    </script>
+    <?php unset($_SESSION['send_whatsapp']); ?>
+<?php endif; ?>
 
 <?php include_once('resources/views/layouts/footer.php') ?>
