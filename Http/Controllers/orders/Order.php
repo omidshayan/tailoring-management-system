@@ -397,7 +397,7 @@ class Order extends App
     }
 
     // change status - end sewing
-    public function endSewing($id)
+    public function endSewing($request, $id)
     {
         $this->middleware(true, true, 'general');
 
