@@ -16,7 +16,8 @@ class Prints extends App
             exit();
         }
 
-        $this->flashMessageId('success', 'بِل با موفقیت ثبت شد', $invoice['id']);
+        include_once(BASE_PATH . '/resources/views/app/prints/order-invoice-print/invoice-print.php');
+        // $this->flashMessageId('success', 'بِل با موفقیت ثبت شد', $invoice['id']);
     }
 
     // get invoice infos for print
