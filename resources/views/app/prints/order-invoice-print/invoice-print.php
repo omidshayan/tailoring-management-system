@@ -30,6 +30,11 @@
                 <div> تاریخ تحویل: <?= !empty($order['delivery_date']) ? jdate('Y/m/d', $order['delivery_date']) : 'ثبت نشده' ?></div>
             </div>
 
+            <div class="d-flex gap20 mt10">
+                <span>نام مشتری: <span><?= $order['name'] ?></span></span>
+                <span>شماره تماس: <span><?= $order['phone'] ?></span></span>
+            </div>
+
             <hr class="hr">
 
             <!-- orders infos -->
