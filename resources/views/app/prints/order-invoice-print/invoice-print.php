@@ -32,7 +32,7 @@
 
             <div class="d-flex gap20 mt10">
                 <span>نام مشتری: <span><?= $order['name'] ?></span></span>
-                <span>شماره تماس: <span><?= $order['phone'] ?></span></span>
+                <span>شماره تماس: <span><?=  $this->formatNumber($order['phone']) ?></span></span>
             </div>
 
             <hr class="hr">
@@ -66,9 +66,9 @@
                             <td><?= $typeLabel ?></td>
                             <td><?= $item['model_name'] ?></td>
                             <td><?= $item['fabric_name'] ?: '✕︎' ?></td>
-                            <td><?= $item['fabric_meter'] ?: '✕︎'  ?></td>
-                            <td><?= number_format($item['price_fabric']) ?: '✕︎' ?></td>
-                            <td><?= number_format($item['sewing_fee']) ?></td>
+                            <td><?=  $this->formatNumber($item['fabric_meter']) ?: '✕︎'  ?></td>
+                            <td><?=  $this->formatNumber($item['price_fabric']) ?: '✕︎' ?></td>
+                            <td><?=  $this->formatNumber($item['sewing_fee']) ?></td>
                         <?php
                             $number++;
                         }
