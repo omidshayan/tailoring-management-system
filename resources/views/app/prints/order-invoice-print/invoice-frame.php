@@ -10,10 +10,6 @@
         <script>
             var printFrame = document.getElementById('print_frame');
             printFrame.src = '<?php echo $url; ?>';
-            printFrame.onload = function() {
-                printFrame.contentWindow.focus();
-                printFrame.contentWindow.print();
-            };
         </script>
     <?php
     }
