@@ -1,0 +1,160 @@
+ @font-face {
+     font-family: 'vazir';
+     src: url('./../../../../../public/assets/font/Vazir.ttf');
+ }
+
+ *,
+ *::before,
+ *::after {
+     box-sizing: border-box !important;
+     text-decoration: none !important;
+     font-family: 'vazir' !important;
+ }
+
+
+ body {
+     font-family: 'vazir' !important;
+     background-color: rgb(48, 48, 48);
+     padding: 0;
+     margin: 0;
+ }
+
+ :root {
+     --border: #38475960;
+ }
+
+ .form-container {
+     width: 180mm;
+     height: 7.5cm;
+     margin: 0 auto;
+     padding: 10px;
+     box-sizing: border-box;
+     font-size: 12pt;
+     direction: rtl !important;
+     background-color: #fff;
+ }
+
+ .color-culomn {
+     background-color: #83828213 !important;
+ }
+
+ .m-auto {
+     margin: 0 auto;
+ }
+
+ .pr {
+     position: relative;
+ }
+
+ .pa {
+     position: absolute !important;
+ }
+
+ .d-flex {
+     display: flex;
+ }
+
+ .align-center {
+     align-items: center;
+ }
+
+ .justify-between {
+     display: flex !important;
+     justify-content: space-between;
+ }
+
+ .center {
+     text-align: center !important;
+ }
+
+ .border {
+     border: 1px solid black !important;
+ }
+
+ .color-print {
+     color: black !important;
+ }
+
+ .fs12 {
+     font-size: 12px !important;
+ }
+
+ .fs14 {
+     font-size: 14px !important;
+ }
+
+ .fs15 {
+     font-size: 15px !important;
+ }
+
+ .fs16 {
+     font-size: 16px !important;
+ }
+
+ .fs18 {
+     font-size: 18px !important;
+ }
+
+ .fs11 {
+     font-size: 11px !important;
+ }
+
+ .fs10 {
+     font-size: 10px !important;
+ }
+.fs22{
+    font-size: 22px;
+}
+.fs30{
+    font-size: 30px;
+}
+.bold{
+    font-weight: bold;
+}
+ .hr {
+     border: 1px solid var(--border) !important;
+ }
+
+ .p5 {
+     padding: 5px;
+ }
+
+ .w100 {
+     width: 100% !important;
+ }
+
+ @media print {
+     body, html {
+         margin: 0 !important;
+         padding: 0 !important;
+     }
+
+     body * {
+         visibility: hidden;
+     }
+
+     .form-container,
+     .form-container * {
+         visibility: visible;
+     }
+
+     .form-container {
+         position: absolute;
+         left: 0;
+         top: 0;
+         width: 180mm;
+         height: 7.5cm;
+         margin: 0;
+         background-color: white;
+         direction: rtl !important;
+         page-break-after: avoid;
+         page-break-before: avoid;
+         page-break-inside: avoid;
+         margin-top: 10px;
+     }
+ }
+
+ @page {
+     margin: 0;
+     size: 210mm 297mm;
+ }

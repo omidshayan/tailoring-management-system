@@ -4,33 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>فاکتور خیاطی</title>
-    <link rel="stylesheet" href="<?= asset('public/assets/style/style.css') ?>" />
-    <link rel="stylesheet" href="<?= asset('public/assets/style/main.css') ?>" />
 
-    <style>
-        body {
-            font-family: Tahoma;
-            direction: rtl;
-            background-color: #0706065d;
-        }
-
-        .order-invoice-print {
-            width: 40%;
-            height: 7.5cm;
-            border: 2px solid #000;
-            background-color: green;
-        }
-    </style>
+      <link rel="stylesheet" href="<?= asset('resources/views/app/prints/print.css') ?>" />
 
 </head>
 
 <body>
 
-    <div class="order-invoice-print">
+    <div class="form-container border">
         <div class="order-header">
-            <div class="order-header1 d-flex">
-                <div class="header-name-en">ARMAN TEXTILE STORE TAILOR</div>
-                <div class="header-name-fa">خیاطی و پارچه سرای آرمان</div>
+            <div class="order-header1 d-flex justify-between align-center">
+                <div class="header-name-fa fs30 bold">خیاطی و پارچه سرای آرمان</div>
+                <div class="header-name-en bold fs18">ARMAN TEXTILE STORE TAILOR</div>
             </div>
             <div class="order-header2"></div>
         </div>
