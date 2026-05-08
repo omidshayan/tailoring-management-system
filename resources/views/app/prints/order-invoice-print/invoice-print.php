@@ -79,22 +79,18 @@
 
         </div>
     </div>
-<script>
-    window.onload = async function () {
 
-        // صبر برای لود فونت‌ها
-        await document.fonts.ready;
+    <!-- print -->
+    <!-- <script>
+        window.onload = async function() {
+            await document.fonts.ready;
+            setTimeout(() => {
 
-        // مکث برای رندر کامل
-        setTimeout(() => {
-
-            window.focus();
-            window.print();
-
-        }, 100);
-
-    };
-</script>
+                window.focus();
+                window.print();
+            }, 100);
+        };
+    </script> -->
 </body>
 
 </html>
