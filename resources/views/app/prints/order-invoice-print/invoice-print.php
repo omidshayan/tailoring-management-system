@@ -49,9 +49,16 @@
                     <tbody>
                         <?php
                         $number = 1;
-                        foreach ($orderItems as $item) { ?>
+                        $types = [
+                            'afghan' => 'لباس افغانی',
+                            'vest'   => 'واسکت',
+                            'suit'   => 'کت و شلوار',
+                        ];
+                        foreach ($orderItems as $item) {
+                            $typeLabel = $types[$item['type']] ?? 'نامشخص';
+                        ?>
                             <td><?= $number ?></td>
-                            <td><?= $item['type'] ?></td>
+                            <td><?= $typeLabel ?></td>
                             <td><?= $item['model_id'] ?></td>
                             <td><?= $item['fabric_id'] ?></td>
                             <td><?= $item['fabric_meter'] ?></td>

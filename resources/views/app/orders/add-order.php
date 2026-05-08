@@ -239,12 +239,12 @@
                         <ul>
                             <?php
                             $number = 1;
+                            $types = [
+                                'afghan' => 'لباس افغانی',
+                                'vest'   => 'واسکت',
+                                'suit'   => 'کت و شلوار',
+                            ];
                             foreach ($orderList as $item) {
-                                $types = [
-                                    'afghan' => 'لباس افغانی',
-                                    'vest'   => 'واسکت',
-                                    'suit'   => 'کت و شلوار',
-                                ];
 
                                 $typeLabel = $types[$item['type']] ?? 'نامشخص';
                             ?>
