@@ -27,7 +27,7 @@
             <div class="fs12 d-flex justify-between">
                 <div>شماره ثبت: <?= $order['id'] ?></div>
                 <div> تاریخ ثبت: <?= jdate('Y/m/d', strtotime($order['created_at'])) ?></div>
-                <div> تاریخ تحویل: <?= jdate('Y/m/d', $order['delivery_date']) ?></div>
+                <div> تاریخ تحویل: <?= !empty($order['delivery_date']) ? jdate('Y/m/d', $order['delivery_date']) : 'ثبت نشده' ?></div>
             </div>
 
             <hr class="hr">
@@ -59,8 +59,8 @@
                         ?>
                             <td><?= $number ?></td>
                             <td><?= $typeLabel ?></td>
-                            <td><?= $item['model_id'] ?></td>
-                            <td><?= $item['fabric_id'] ?></td>
+                            <td><?= $item['model_name'] ?></td>
+                            <td><?= $item['fabric_name'] ?></td>
                             <td><?= $item['fabric_meter'] ?></td>
                             <td><?= number_format($item['price_fabric']) ?></td>
                             <td><?= number_format($item['sewing_fee']) ?></td>
