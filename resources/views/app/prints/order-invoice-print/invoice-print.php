@@ -61,7 +61,11 @@
                 </table>
             </div>
 
-            
+            <!-- footer -->
+             <div class="justify-between fs12 m10 mt20">
+                <div class="bold">آدرس: هرات، شهرنو، نبش جاده بهزاد، انوری مارکت، طبقه دوم</div>
+                <div class="fs14 bold">آرمان ما رضایت شماست</div>
+             </div>
 
         </div>
     </div>
