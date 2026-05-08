@@ -20,7 +20,7 @@
 
             <div class="order-header1 d-flex justify-between align-center">
                 <div class="fs14">مدیریت: احمد شفیع احسان</div>
-                <div class="fs14">تماس‌ها: 0799999999 - 0799999999</div>
+                <div class="fs14">تماس‌ها: 0786484848 - 0786160407</div>
             </div>
 
             <hr class="hr">
@@ -43,7 +43,7 @@
                             <th>مدل</th>
                             <th>پارچه</th>
                             <th>متر</th>
-                            <th>قیمت</th>
+                            <th>فی متر</th>
                             <th>اجرت دوخت</th>
                         </tr>
                     </thead>
@@ -53,19 +53,33 @@
                             <td>افغانی</td>
                             <td>جدید</td>
                             <td>مخمل</td>
-                            <td>23</td>
+                            <td>6</td>
                             <td>500</td>
                             <td>400</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>واسکت</td>
+                            <td>بدون مدل</td>
+                            <td>هندی جدید</td>
+                            <td>3</td>
+                            <td>300</td>
+                            <td>800</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">جمع کل: <span class="bold">8754</span></td>
+                            <td colspan="2">بیعانه: <span class="bold">8754</span></td>
+                            <td colspan="2">باقیمانده: <span class="bold">8754</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <!-- footer -->
-             <div class="justify-between fs12 m10 mt20">
+            <div class="justify-between fs12 m10 mt20">
                 <div class="bold">آدرس: هرات، شهرنو، نبش جاده بهزاد، انوری مارکت، طبقه دوم</div>
                 <div class="fs14 bold">آرمان ما رضایت شماست</div>
-             </div>
+            </div>
 
         </div>
     </div>

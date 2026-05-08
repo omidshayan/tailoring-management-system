@@ -24,7 +24,7 @@
  }
 
  .form-container {
-     width: 180mm;
+     width: 210mm;
      margin: 0 auto;
      padding: 10px;
      box-sizing: border-box;
@@ -130,10 +130,6 @@
  .p5 {
      padding: 5px;
  }
-
- .w100 {
-     width: 100% !important;
- }
 .fl-table {
     border-radius: 5px;
     font-size: 12px;
@@ -178,7 +174,7 @@
          position: absolute;
          left: 0;
          top: 0;
-         width: 180mm;
+         width: 210mm;
          margin: 0;
          background-color: white;
          direction: rtl !important;
