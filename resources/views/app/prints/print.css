@@ -63,6 +63,11 @@
      justify-content: space-between;
  }
 
+ .justify-around {
+     display: flex !important;
+     justify-content: space-around;
+ }
+
  .center {
      text-align: center !important;
  }
@@ -105,11 +110,14 @@
 .fs22{
     font-size: 22px;
 }
-.fs30{
-    font-size: 30px;
+.fs28{
+    font-size: 28px;
 }
 .bold{
     font-weight: bold;
+}
+.gap50{
+    gap: 50px;
 }
  .hr {
      border: 1px solid var(--border) !important;

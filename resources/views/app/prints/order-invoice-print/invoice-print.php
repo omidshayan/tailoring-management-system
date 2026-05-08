@@ -14,16 +14,25 @@
     <div class="form-container border">
         <div class="order-header">
             <div class="order-header1 d-flex justify-between align-center">
-                <div class="fs30 bold">خیاطی و پارچه سرای آرمان</div>
+                <div class="fs28 bold">خیاطی و پارچه سرای آرمان</div>
                 <div class="bold fs18">ARMAN TEXTILE STORE TAILOR</div>
             </div>
 
             <div class="order-header1 d-flex justify-between align-center">
-                <div class="fs18 bold">مدیریت: احمد شفیع احسان</div>
-                <div class="bold fs16">تماس‌ها: 0799999999 - 0799999999</div>
+                <div class="fs14">مدیریت: احمد شفیع احسان</div>
+                <div class="fs14">تماس‌ها: 0799999999 - 0799999999</div>
             </div>
 
-            <div class="order-header2"></div>
+            <hr class="hr">
+            
+            <div class="fs11 d-flex justify-between">
+                <div>شماره ثبت: 1250</div>
+                <div> تاریخ ثبت: 0405/212/25</div>
+                <div> تاریخ تحویل: 0405/212/25</div>
+            </div>
+
+            <hr class="hr">
+
         </div>
     </div>
 
