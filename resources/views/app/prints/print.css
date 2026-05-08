@@ -1,203 +1,205 @@
- @font-face {
-     font-family: 'vazir';
-     src: url('font/Vazir.eot');
-     src: url('font/Vazir.ttf');
-     src: url('font/Vazir.woff');
- }
+@font-face {
+    font-family: 'Vazir';
+    src: url('./../../../../../public/assets/font/Vazir.ttf') format('truetype');
+    /* src: url('font/Vazir.woff2') format('woff2'),
+        url('font/Vazir.woff') format('woff'),
+        url('font/Vazir.ttf') format('truetype'); */
+    font-weight: normal;
+    font-style: normal;
+}
 
- *,
- *::before,
- *::after {
-     box-sizing: border-box !important;
-     text-decoration: none !important;
-     font-family: 'vazir' !important;
- }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Vazir', sans-serif;
+}
 
- body {
-     font-family: 'vazir' !important;
-     background-color: rgb(48, 48, 48);
-     padding: 0;
-     margin: 0;
- }
+body {
+    font-family: 'Vazir' !important;
+    background-color: rgb(48, 48, 48);
+    padding: 0;
+    margin: 0;
+}
 
- :root {
-     --border: #38475960;
- }
+:root {
+    --border: #38475960;
+}
 
- .form-container {
-     width: 210mm;
-     margin: 0 auto;
-     padding: 10px;
-     box-sizing: border-box;
-     font-size: 12pt;
-     direction: rtl !important;
-     background-color: #fff;
- }
+.form-container {
+    width: 210mm;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 12pt;
+    direction: rtl !important;
+    background-color: #fff;
+}
 
- .color-culomn {
-     background-color: #83828213 !important;
- }
+.color-culomn {
+    background-color: #83828213 !important;
+}
 
- .m-auto {
-     margin: 0 auto;
- }
+.m-auto {
+    margin: 0 auto;
+}
 
- .m10 {
-     margin: 10px;
- }
+.m10 {
+    margin: 10px;
+}
 
- .mt20 {
-     margin-top: 20px;
- }
+.mt20 {
+    margin-top: 20px;
+}
 
- .pr {
-     position: relative;
- }
+.pr {
+    position: relative;
+}
 
- .pa {
-     position: absolute !important;
- }
+.pa {
+    position: absolute !important;
+}
 
- .d-flex {
-     display: flex;
- }
+.d-flex {
+    display: flex;
+}
 
- .align-center {
-     align-items: center;
- }
+.align-center {
+    align-items: center;
+}
 
- .justify-between {
-     display: flex !important;
-     justify-content: space-between;
- }
+.justify-between {
+    display: flex !important;
+    justify-content: space-between;
+}
 
- .justify-around {
-     display: flex !important;
-     justify-content: space-around;
- }
+.justify-around {
+    display: flex !important;
+    justify-content: space-around;
+}
 
- .center {
-     text-align: center !important;
- }
+.center {
+    text-align: center !important;
+}
 
- .border {
-     border: 1px solid black !important;
- }
+.border {
+    border: 1px solid black !important;
+}
 
- .color-print {
-     color: black !important;
- }
+.color-print {
+    color: black !important;
+}
 
- .fs12 {
-     font-size: 12px !important;
- }
+.fs12 {
+    font-size: 12px !important;
+}
 
- .fs14 {
-     font-size: 14px !important;
- }
+.fs14 {
+    font-size: 14px !important;
+}
 
- .fs15 {
-     font-size: 15px !important;
- }
+.fs15 {
+    font-size: 15px !important;
+}
 
- .fs16 {
-     font-size: 16px !important;
- }
+.fs16 {
+    font-size: 16px !important;
+}
 
- .fs18 {
-     font-size: 18px !important;
- }
+.fs18 {
+    font-size: 18px !important;
+}
 
- .fs11 {
-     font-size: 11px !important;
- }
+.fs11 {
+    font-size: 11px !important;
+}
 
- .fs10 {
-     font-size: 10px !important;
- }
+.fs10 {
+    font-size: 10px !important;
+}
 
- .fs22 {
-     font-size: 22px;
- }
+.fs22 {
+    font-size: 22px;
+}
 
- .fs28 {
-     font-size: 28px;
- }
+.fs28 {
+    font-size: 28px;
+}
 
- .bold {
-     font-weight: bold;
- }
+.bold {
+    font-weight: bold;
+}
 
- .gap20 {
-     gap: 20px;
- }
+.gap20 {
+    gap: 20px;
+}
 
- .hr {
-     border: 1px solid var(--border) !important;
- }
+.hr {
+    border: 1px solid var(--border) !important;
+}
 
- .p5 {
-     padding: 5px;
- }
+.p5 {
+    padding: 5px;
+}
 
- .fl-table {
-     border-radius: 5px;
-     font-size: 12px;
-     font-weight: normal;
-     border-collapse: collapse;
-     width: 100%;
-     max-width: 100%;
-     white-space: nowrap;
-     border: 1px solid black;
- }
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    border: 1px solid black;
+}
 
- .fl-table th {
-     border: 1px solid black;
- }
+.fl-table th {
+    border: 1px solid black;
+}
 
- .fl-table td, .fl-table th {
-     text-align: center;
-     padding: 8px;
-     border: 1px solid black;
- }
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid black;
+}
 
- .fl-table td {
-     font-size: 14px;
- }
+.fl-table td {
+    font-size: 14px;
+}
 
- @media print {
-     body, html {
-         margin: 0 !important;
-         padding: 0 !important;
-         font-family: 'vazir' !important;
-     }
+@media print {
+    body, html {
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: 'Vazir' !important;
+    }
 
-     body * {
-         visibility: hidden;
-         font-family: 'vazir' !important;
-     }
+    body * {
+        font-family: 'Vazir' !important;
+    }
 
-     .form-container,
-     .form-container * {
-         visibility: visible;
-     }
+    .form-container,
+    .form-container * {
+        visibility: visible;
+    }
 
-     .form-container {
-         position: absolute;
-         left: 0;
-         top: 0;
-         width: 210mm;
-         margin: 0;
-         background-color: white;
-         direction: rtl !important;
-         page-break-after: avoid;
-         page-break-before: avoid;
-         page-break-inside: avoid;
-         margin-top: 10px;
-     }
- }
+    .form-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 210mm;
+        margin: 0;
+        background-color: white;
+        direction: rtl !important;
+        page-break-after: avoid;
+        page-break-before: avoid;
+        page-break-inside: avoid;
+        margin-top: 10px;
+    }
+}
 
- @page {
-     margin: 0;
-     size: 210mm 297mm;
- }
+@page {
+    margin: 0;
+    size: 210mm 297mm;
+}

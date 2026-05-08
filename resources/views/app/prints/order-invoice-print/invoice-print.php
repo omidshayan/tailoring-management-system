@@ -60,11 +60,12 @@
                         <?php
                             $number++;
                         }
+                        $final = $order['total_amount'] - $order['paid_amount'];
                         ?>
                         <tr>
                             <td colspan="3">جمع کل: <span class="bold"><?= $this->formatNumber($order['total_amount']) ?></span></td>
-                            <td colspan="2">بیعانه: <span class="bold">8754</span></td>
-                            <td colspan="2">باقیمانده: <span class="bold">8754</span></td>
+                            <td colspan="2">بیعانه: <span class="bold"><?= $this->formatNumber($order['paid_amount']) ?: 0 ?></span></td>
+                            <td colspan="2">باقیمانده: <span class="bold"><?= $this->formatNumber($final) ?></span></td>
                         </tr>
                     </tbody>
                 </table>
