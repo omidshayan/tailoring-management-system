@@ -25,7 +25,6 @@
 
  .form-container {
      width: 180mm;
-     height: 7.5cm;
      margin: 0 auto;
      padding: 10px;
      box-sizing: border-box;
@@ -41,7 +40,9 @@
  .m-auto {
      margin: 0 auto;
  }
-
+.m10{
+    margin: 10px;
+}
  .pr {
      position: relative;
  }
@@ -116,8 +117,8 @@
 .bold{
     font-weight: bold;
 }
-.gap50{
-    gap: 50px;
+.gap20{
+    gap: 20px;
 }
  .hr {
      border: 1px solid var(--border) !important;
@@ -130,6 +131,30 @@
  .w100 {
      width: 100% !important;
  }
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    border: 1px solid black;
+}
+
+.fl-table th {
+    border: 1px solid black;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.fl-table td {
+    font-size: 14px;
+}
 
  @media print {
      body, html {
@@ -151,7 +176,6 @@
          left: 0;
          top: 0;
          width: 180mm;
-         height: 7.5cm;
          margin: 0;
          background-color: white;
          direction: rtl !important;
