@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
     <div class="form-container border">
         <div class="order-header">
             <div class="order-header1 d-flex justify-between align-center">
@@ -25,10 +24,10 @@
 
             <hr class="hr">
 
-            <div class="fs11 d-flex justify-between">
-                <div>شماره ثبت: 1250</div>
-                <div> تاریخ ثبت: 0405/212/25</div>
-                <div> تاریخ تحویل: 0405/212/25</div>
+            <div class="fs12 d-flex justify-between">
+                <div>شماره ثبت: <?=$order['id']?></div>
+                <div> تاریخ ثبت: <?=jdate('Y/m/d', strtotime($order['created_at']))?></div>
+                <div> تاریخ تحویل: <?=jdate('Y/m/d', $order['delivery_date'])?></div>
             </div>
 
             <hr class="hr">

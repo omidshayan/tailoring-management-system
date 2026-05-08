@@ -16,8 +16,8 @@ class Prints extends App
             exit();
         }
 
-        include_once(BASE_PATH . '/resources/views/app/prints/order-invoice-print/invoice-print.php');
-        // $this->flashMessageId('success', 'بِل با موفقیت ثبت شد', $invoice['id']);
+        // include_once(BASE_PATH . '/resources/views/app/prints/order-invoice-print/invoice-print.php');
+        $this->flashMessageId('success', 'بِل با موفقیت ثبت شد', $invoice['id']);
     }
 
     // get invoice infos for print
@@ -30,7 +30,9 @@ class Prints extends App
             [$id]
         )->fetch();
 
-        if (!$order) {
+        if ($order) {
+            $orderItems = $this->db->select('SELECT * FROM order_items WHERE order_id = ?', [$order['id']])->fetchAll();
+        } else {
             require_once BASE_PATH . '/404.php';
             exit();
         }

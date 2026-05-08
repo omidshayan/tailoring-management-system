@@ -1,6 +1,8 @@
  @font-face {
      font-family: 'vazir';
-     src: url('./../../../../../public/assets/font/Vazir.ttf');
+     src: url('font/Vazir.eot');
+     src: url('font/Vazir.ttf');
+     src: url('font/Vazir.woff');
  }
 
  *,
@@ -10,8 +12,6 @@
      text-decoration: none !important;
      font-family: 'vazir' !important;
  }
-
-
  body {
      font-family: 'vazir' !important;
      background-color: rgb(48, 48, 48);
@@ -22,7 +22,6 @@
  :root {
      --border: #38475960;
  }
-
  .form-container {
      width: 210mm;
      margin: 0 auto;
@@ -159,10 +158,12 @@
      body, html {
          margin: 0 !important;
          padding: 0 !important;
+         font-family: 'vazir' !important;
      }
 
      body * {
          visibility: hidden;
+         font-family: 'vazir' !important;
      }
 
      .form-container,
