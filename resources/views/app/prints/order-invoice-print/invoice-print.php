@@ -25,9 +25,9 @@
             <hr class="hr">
 
             <div class="fs12 d-flex justify-between">
-                <div>شماره ثبت: <?=$order['id']?></div>
-                <div> تاریخ ثبت: <?=jdate('Y/m/d', strtotime($order['created_at']))?></div>
-                <div> تاریخ تحویل: <?=jdate('Y/m/d', $order['delivery_date'])?></div>
+                <div>شماره ثبت: <?= $order['id'] ?></div>
+                <div> تاریخ ثبت: <?= jdate('Y/m/d', strtotime($order['created_at'])) ?></div>
+                <div> تاریخ تحویل: <?= jdate('Y/m/d', $order['delivery_date']) ?></div>
             </div>
 
             <hr class="hr">
@@ -47,24 +47,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>افغانی</td>
-                            <td>جدید</td>
-                            <td>مخمل</td>
-                            <td>6</td>
-                            <td>500</td>
-                            <td>400</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>واسکت</td>
-                            <td>بدون مدل</td>
-                            <td>هندی جدید</td>
-                            <td>3</td>
-                            <td>300</td>
-                            <td>800</td>
-                        </tr>
+                        <?php
+                        $number = 1;
+                        foreach ($orderItems as $item) { ?>
+                            <td><?= $number ?></td>
+                            <td><?= $item['type'] ?></td>
+                            <td><?= $item['model_id'] ?></td>
+                            <td><?= $item['fabric_id'] ?></td>
+                            <td><?= $item['fabric_meter'] ?></td>
+                            <td><?= number_format($item['price_fabric']) ?></td>
+                            <td><?= number_format($item['sewing_fee']) ?></td>
+                        <?php
+                            $number++;
+                        }
+                        ?>
                         <tr>
                             <td colspan="3">جمع کل: <span class="bold">8754</span></td>
                             <td colspan="2">بیعانه: <span class="bold">8754</span></td>
