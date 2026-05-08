@@ -294,8 +294,8 @@
     </div>
 
     <!-- check for print -->
-    <?php include_once('resources/views/app/prints/financials/payment-frame.php'); ?>
-
+    <?php include_once('resources/views/app/prints/order-invoice-print/invoice-frame.php');
+    ?>
     <!-- active select tag -->
     <script>
         document.getElementById('price_type').addEventListener('change', function() {
