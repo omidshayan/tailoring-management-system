@@ -62,7 +62,7 @@
                         }
                         ?>
                         <tr>
-                            <td colspan="3">جمع کل: <span class="bold">8754</span></td>
+                            <td colspan="3">جمع کل: <span class="bold"><?= $this->formatNumber($order['total_amount']) ?></span></td>
                             <td colspan="2">بیعانه: <span class="bold">8754</span></td>
                             <td colspan="2">باقیمانده: <span class="bold">8754</span></td>
                         </tr>
@@ -71,7 +71,7 @@
             </div>
 
             <!-- footer -->
-            <div class="justify-between fs12 m10 mt20">
+            <div class="justify-between fs12 m10">
                 <div class="bold">آدرس: هرات، شهرنو، نبش جاده بهزاد، انوری مارکت، طبقه دوم</div>
                 <div class="fs14 bold">آرمان ما رضایت شماست</div>
             </div>

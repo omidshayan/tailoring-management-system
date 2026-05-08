@@ -58,6 +58,27 @@ class App
                 return preg_replace('/\.00$/', '', number_format((float) $score, 2, '.', ''));
         }
 
+        // format number 
+        public function formatNumber($score, $forInput = false)
+        {
+                if (!is_numeric($score)) return $score;
+                if (is_array($score)) return array_map([$this, 'formatNumber'], $score);
+
+                $rounded = round((float)$score);
+                $formatted = rtrim(rtrim(number_format(abs($rounded), 2, '.', ','), '0'), '.');
+
+                $english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+                $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+                $formatted = str_replace($english, $persian, $formatted);
+
+                if ($forInput) return $formatted;
+
+                if ($rounded < 0)
+                        return '<span style="color:red; direction:ltr; display:inline-block;">-&nbsp;' . $formatted . '</span>';
+                else
+                        return '<span style="direction:ltr; display:inline-block;">' . $formatted . '</span>';
+        }
+
         // validate request
         public function validateRequest($request, ...$fields)
         {
