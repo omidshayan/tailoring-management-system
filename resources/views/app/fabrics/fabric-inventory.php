@@ -38,7 +38,7 @@ include_once('public/alerts/toastr.php');
                         <td class="color-orange <?= ($fabric['status'] == 1) ? '' : 'color-red' ?>"><?= $number ?></td>
                         <td><?= $fabric['name'] ?></td>
                         <td><?= $fabric['category'] ?></td>
-                        <td><?= $fabric['quantity'] ?> <span class="fs12">(متر)</span></td>
+                        <td><?= ($fabric['quantity']) ? $fabric['quantity'] . '<span class="fs12">(متر)</span>' : '0' ?> </td>
                         <td>
                             <a href="<?= url('fabric-details/' . $fabric['id']) ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
