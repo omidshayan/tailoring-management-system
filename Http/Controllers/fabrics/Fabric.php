@@ -248,6 +248,8 @@ class Fabric extends App
 
             $this->db->update('invoices', $invoice['id'], ['total_amount', 'status'], [$request['total_amount'], 2]);
 
+            $this->db->update('fabrics', $invoice['id'], ['total_amount', 'status'], [$request['total_amount'], 2]);
+
             $this->db->commit();
 
             $this->flashMessage('success', _success);
