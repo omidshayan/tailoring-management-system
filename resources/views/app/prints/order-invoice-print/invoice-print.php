@@ -24,7 +24,7 @@
             </div>
 
             <hr class="hr">
-            
+
             <div class="fs11 d-flex justify-between">
                 <div>شماره ثبت: 1250</div>
                 <div> تاریخ ثبت: 0405/212/25</div>
@@ -32,6 +32,9 @@
             </div>
 
             <hr class="hr">
+
+            <!-- customer infos -->
+            
 
         </div>
     </div>
