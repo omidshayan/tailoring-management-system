@@ -65,9 +65,9 @@
                             <td><?= $number ?></td>
                             <td><?= $typeLabel ?></td>
                             <td><?= $item['model_name'] ?></td>
-                            <td><?= $item['fabric_name'] ?: '✖' ?></td>
-                            <td><?= $item['fabric_meter'] ?: '✖'  ?></td>
-                            <td><?= number_format($item['price_fabric']) ?: '✖' ?></td>
+                            <td><?= $item['fabric_name'] ?: '✕︎' ?></td>
+                            <td><?= $item['fabric_meter'] ?: '✕︎'  ?></td>
+                            <td><?= number_format($item['price_fabric']) ?: '✕︎' ?></td>
                             <td><?= number_format($item['sewing_fee']) ?></td>
                         <?php
                             $number++;
