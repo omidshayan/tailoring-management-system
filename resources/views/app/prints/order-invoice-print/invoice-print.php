@@ -25,14 +25,14 @@
             <hr class="hr">
 
             <div class="fs12 d-flex justify-between">
-                <div>شماره ثبت: <?=  $this->formatNumber($order['id']) ?></div>
+                <div>شماره ثبت: <?= $this->formatNumber($order['id']) ?></div>
                 <div> تاریخ ثبت: <?= jdate('Y/m/d', strtotime($order['created_at'])) ?></div>
                 <div> تاریخ تحویل: <?= !empty($order['delivery_date']) ? jdate('Y/m/d', $order['delivery_date']) : 'ثبت نشده' ?></div>
             </div>
 
             <div class="d-flex gap20 mt10">
                 <span>نام مشتری: <span><?= $order['name'] ?></span></span>
-                <span>شماره تماس: <span><?=  $this->formatNumber($order['phone']) ?></span></span>
+                <span>شماره تماس: <span><?= $this->formatNumber($order['phone']) ?></span></span>
             </div>
 
             <hr class="hr">
@@ -66,9 +66,9 @@
                             <td><?= $typeLabel ?></td>
                             <td><?= $item['model_name'] ?></td>
                             <td><?= $item['fabric_name'] ?: '✕︎' ?></td>
-                            <td><?=  $this->formatNumber($item['fabric_meter']) ?: '✕︎'  ?></td>
-                            <td><?=  $this->formatNumber($item['price_fabric']) ?: '✕︎' ?></td>
-                            <td><?=  $this->formatNumber($item['sewing_fee']) ?></td>
+                            <td><?= $this->formatNumber($item['fabric_meter']) ?: '✕︎'  ?></td>
+                            <td><?= $this->formatNumber($item['price_fabric']) ?: '✕︎' ?></td>
+                            <td><?= $this->formatNumber($item['sewing_fee']) ?></td>
                         <?php
                             $number++;
                         }
