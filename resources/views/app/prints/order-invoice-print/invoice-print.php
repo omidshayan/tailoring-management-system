@@ -33,9 +33,8 @@
 
             <hr class="hr">
 
-            <!-- customer infos -->
-            <div class="customer-infos">
-
+            <!-- orders infos -->
+            <div>
                 <table class="fl-table">
                     <thead>
                         <tr>
@@ -60,8 +59,9 @@
                         </tr>
                     </tbody>
                 </table>
-
             </div>
+
+            
 
         </div>
     </div>
