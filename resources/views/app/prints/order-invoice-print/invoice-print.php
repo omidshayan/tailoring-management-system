@@ -25,7 +25,7 @@
             <hr class="hr">
 
             <div class="fs12 d-flex justify-between">
-                <div>شماره ثبت: <?= $order['id'] ?></div>
+                <div>شماره ثبت: <?=  $this->formatNumber($order['id']) ?></div>
                 <div> تاریخ ثبت: <?= jdate('Y/m/d', strtotime($order['created_at'])) ?></div>
                 <div> تاریخ تحویل: <?= !empty($order['delivery_date']) ? jdate('Y/m/d', $order['delivery_date']) : 'ثبت نشده' ?></div>
             </div>
