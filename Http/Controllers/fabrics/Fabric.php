@@ -254,9 +254,11 @@ class Fabric extends App
 
             foreach ($stocks as $stock) {
 
-                $fabric =  $this->db->select('SELECT * FROM fabrics WHERE id = ?', [$stock['fabric_id']])->fetch();
+                $fabric =  $this->db->select('SELECT id, quantity FROM fabrics WHERE id = ?', [$stock['fabric_id']])->fetch();
 
-                $this->db->update('fabrics', $fabric['id'], ['quantity'], [$stock['quantity']]);
+                $newMeter = $fabric['quantity'] + $stock['quantity'];
+
+                $this->db->update('fabrics', $fabric['id'], ['quantity'], [$newMeter]);
             }
 
             $this->db->commit();
