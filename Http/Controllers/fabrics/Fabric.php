@@ -248,12 +248,18 @@ class Fabric extends App
         if (!$stocks) {
             $this->flashMessage('error', 'لیست فاکتور خالی است!');
         }
+
         try {
             $this->db->beginTransaction();
 
             $this->db->update('invoices', $invoice['id'], ['total_amount', 'status'], [$request['total_amount'], 2]);
 
-            $this->db->update('fabrics', $invoice['id'], ['total_amount', 'status'], [$request['total_amount'], 2]);
+            foreach ($stocks as $stock) {
+
+                $fabric =  $this->db->select('SELECT * FROM fabrics WHERE id = ?', [$stock['id']])->fetch();
+
+                $this->db->update('fabrics', $fabric['id'], ['quantity'], [$stock['quantity']]);
+            }
 
             $this->db->commit();
 
