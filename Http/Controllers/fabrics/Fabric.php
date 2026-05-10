@@ -238,13 +238,11 @@ class Fabric extends App
 
         $invoice =  $this->db->select('SELECT * FROM invoices WHERE id = ?', [$id])->fetch();
 
-        if ($invoice) {
+        if (!$invoice) {
             $this->flashMessage('error', 'فاکتور معتبر یافت نشد!');
-        } else {
-            $this->db->insert('invoices', ['type'], [2]);
         }
 
-        $stocks =  $this->db->select('SELECT * FROM fabric_stock WHERE id = ?', [$id])->fetchAll();
+        $stocks =  $this->db->select('SELECT * FROM fabric_stock WHERE invoice_id = ?', [$id])->fetchAll();
         if (!$stocks) {
             $this->flashMessage('error', 'لیست فاکتور خالی است!');
         }
@@ -256,7 +254,7 @@ class Fabric extends App
 
             foreach ($stocks as $stock) {
 
-                $fabric =  $this->db->select('SELECT * FROM fabrics WHERE id = ?', [$stock['id']])->fetch();
+                $fabric =  $this->db->select('SELECT * FROM fabrics WHERE id = ?', [$stock['fabric_id']])->fetch();
 
                 $this->db->update('fabrics', $fabric['id'], ['quantity'], [$stock['quantity']]);
             }
