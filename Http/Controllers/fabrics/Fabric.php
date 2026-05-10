@@ -239,12 +239,15 @@ class Fabric extends App
         $invoice =  $this->db->select('SELECT * FROM invoices WHERE id = ?', [$id])->fetch();
 
         if ($invoice) {
+            $this->flashMessage('error', 'فاکتور معتبر یافت نشد!');
         } else {
             $this->db->insert('invoices', ['type'], [2]);
         }
 
         $stocks =  $this->db->select('SELECT * FROM fabric_stock WHERE id = ?', [$id])->fetchAll();
-        
+        if (!$stocks) {
+            $this->flashMessage('error', 'لیست فاکتور خالی است!');
+        }
         try {
             $this->db->beginTransaction();
 
