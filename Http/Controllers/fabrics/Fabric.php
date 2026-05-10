@@ -243,6 +243,8 @@ class Fabric extends App
             $this->db->insert('invoices', ['type'], [2]);
         }
 
+        $stocks =  $this->db->select('SELECT * FROM fabric_stock WHERE id = ?', [$id])->fetchAll();
+        
         try {
             $this->db->beginTransaction();
 
