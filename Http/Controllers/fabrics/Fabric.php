@@ -204,7 +204,7 @@ class Fabric extends App
             )->fetch();
 
             if (!$invoice) {
-                $this->db->insert('invoices', ['type'], [2]);
+                $this->db->insert('invoices', ['type', 'who_it'], [2, $request['who_it']]);
                 $invoiceId = $this->db->lastInsertId();
             } else {
                 $invoiceId = $invoice['id'];
