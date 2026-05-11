@@ -6,7 +6,7 @@
     ?>
 
     <div class="content">
-        <div class="content-title">ثبت مشتری جدید</div>
+        <div class="content-title">ویرایش مشتری: <?= $user['name'] ?></div>
         <div class="box-container">
             <div class="insert">
                 <form action="<?= url('user-store') ?>" method="POST" enctype="multipart/form-data">
@@ -14,11 +14,11 @@
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">نام مشتری <?= _star ?> </div>
-                            <input type="text" class="checkInput" name="name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" />
+                            <input type="text" class="checkInput" value="<?= $user['name'] ?>" name="name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" />
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">شماره <?= _star ?></div>
-                            <input type="text" class="checkInput validate-number" name="phone" placeholder="شماره را وارد نمایید" maxlength="15" />
+                            <input type="text" class="checkInput validate-number" value="<?= $user['phone'] ?>" name="phone" placeholder="شماره را وارد نمایید" maxlength="15" />
                         </div>
                     </div>
 
@@ -29,66 +29,66 @@
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">قد</div>
-                                    <input type="text" placeholder=" اندازه قد را وارد نمایید ..." name="af_height">
+                                    <input type="text" value="<?= $user['af_height'] ?>" placeholder="اندازه قد را وارد نمایید ..." name="af_height">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">شانه</div>
-                                    <input type="text" placeholder="اندازه شانه را وارد نمایید ..." name="af_sholder">
+                                    <input type="text" value="<?= $user['af_sholder'] ?>" placeholder="اندازه شانه را وارد نمایید ..." name="af_sholder">
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">آستین</div>
-                                    <input type="text" placeholder="اندازه آستین را وارد نمایید ..." name="af_sleeve">
+                                    <input type="text" value="<?= $user['af_sleeve'] ?>" placeholder="اندازه آستین را وارد نمایید ..." name="af_sleeve">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">هخن</div>
-                                    <input type="text" placeholder="اندازه هخن را وارد نمایید ..." name="af_ice">
+                                    <input type="text" value="<?= $user['af_ice'] ?>" placeholder="اندازه هخن را وارد نمایید ..." name="af_ice">
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">بغل</div>
-                                    <input type="text" placeholder="اندازه بغل را وارد نمایید ..." name="af_hug">
+                                    <input type="text" value="<?= $user['af_hug'] ?>" placeholder="اندازه بغل را وارد نمایید ..." name="af_hug">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">دامن</div>
-                                    <input type="text" placeholder="اندازه دامن را وارد نمایید ..." name="af_skirt">
+                                    <input type="text" value="<?= $user['af_skirt'] ?>" placeholder="اندازه دامن را وارد نمایید ..." name="af_skirt">
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">چتی</div>
-                                    <input type="text" placeholder="اندازه چتی را وارد نمایید ..." name="af_chatty">
+                                    <input type="text" value="<?= $user['af_chatty'] ?>" placeholder="اندازه چتی را وارد نمایید ..." name="af_chatty">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">شلوار</div>
-                                    <input type="text" placeholder="اندازه شلوار را وارد نمایید ..." name="af_pants">
+                                    <input type="text" value="<?= $user['af_pants'] ?>" placeholder="اندازه شلوار را وارد نمایید ..." name="af_pants">
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">پارچه</div>
-                                    <input type="text" placeholder="اندازه پارچه را وارد نمایید ..." name="af_cloth">
+                                    <input type="text" value="<?= $user['af_cloth'] ?>" placeholder="اندازه پارچه را وارد نمایید ..." name="af_cloth">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">بر‌ شلوار</div>
-                                    <input type="text" placeholder="اندازه بر شلوار را وارد نمایید ..." name="af_bar_pants">
+                                    <input type="text" value="<?= $user['af_bar_pants'] ?>" placeholder="اندازه بر شلوار را وارد نمایید ..." name="af_bar_pants">
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">مدل</div>
-                                    <input type="text" placeholder="مدل را وارد نمایید ..." name="af_model">
+                                    <input type="text" value="<?= $user['af_model'] ?>" placeholder="مدل را وارد نمایید ..." name="af_model">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">توضیحات دوخت</div>
-                                    <input type="type" placeholder="توضیحات را وارد نمایید ..." name="af_desc">
+                                    <input type="type" value="<?= $user['af_desc'] ?>" placeholder="توضیحات را وارد نمایید ..." name="af_desc">
                                 </div>
                             </div>
 
