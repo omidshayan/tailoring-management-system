@@ -47,7 +47,7 @@ class Fabric extends App
     public function fabrics()
     {
         $this->middleware(true, true, 'general');
-        $fabrics = $this->db->select('SELECT * FROM fabrics')->fetchAll();
+        $fabrics = $this->db->select('SELECT * FROM fabrics ORDER BY id DESC')->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/fabrics/fabrics.php');
         exit();
     }

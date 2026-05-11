@@ -300,6 +300,7 @@ class Order extends App
             FROM orders o
             LEFT JOIN users u ON o.user_id = u.id
             WHERE `status` != 1
+            ORDER BY id DESC
         ')->fetchAll();
 
         require_once(BASE_PATH . '/resources/views/app/orders/orders.php');
