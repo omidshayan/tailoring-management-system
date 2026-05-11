@@ -62,13 +62,15 @@
                         foreach ($orderItems as $item) {
                             $typeLabel = $types[$item['type']] ?? 'نامشخص';
                         ?>
-                            <td><?= $number ?></td>
-                            <td><?= $typeLabel ?></td>
-                            <td><?= $item['model_name'] ?></td>
-                            <td><?= $item['fabric_name'] ?: '✕︎' ?></td>
-                            <td><?= $this->formatNumber($item['fabric_meter']) ?: '✕︎'  ?></td>
-                            <td><?= $this->formatNumber($item['price_fabric']) ?: '✕︎' ?></td>
-                            <td><?= $this->formatNumber($item['sewing_fee']) ?></td>
+                            <tr>
+                                <td><?= $number ?></td>
+                                <td><?= $typeLabel ?></td>
+                                <td><?= $item['model_name'] ?></td>
+                                <td><?= $item['fabric_name'] ?: '✕︎' ?></td>
+                                <td><?= $this->formatNumber($item['fabric_meter']) ?: '✕︎'  ?></td>
+                                <td><?= $this->formatNumber($item['price_fabric']) ?: '✕︎' ?></td>
+                                <td><?= $this->formatNumber($item['sewing_fee']) ?></td>
+                            </tr>
                         <?php
                             $number++;
                         }
