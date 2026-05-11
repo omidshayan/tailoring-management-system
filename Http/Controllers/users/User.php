@@ -176,6 +176,8 @@ class User extends App
 
         if ($user != null) {
 
+            $measurement = $this->db->select('SELECT * FROM measurements WHERE user_id = ?', [$id])->fetch();
+
             require_once(BASE_PATH . '/resources/views/app/users/user-details.php');
             exit();
         } else {
