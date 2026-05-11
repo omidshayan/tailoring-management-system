@@ -80,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="inputs d-flex">
+                            <!-- <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">مدل</div>
                                     <input type="text" placeholder="مدل را وارد نمایید ..." name="af_model">
@@ -89,7 +89,7 @@
                                     <div class="label-form mb5 fs14">توضیحات دوخت</div>
                                     <input type="type" placeholder="توضیحات را وارد نمایید ..." name="af_desc">
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
