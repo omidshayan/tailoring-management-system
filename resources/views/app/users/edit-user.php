@@ -9,7 +9,7 @@
         <div class="content-title">ویرایش مشتری: <?= $user['name'] ?></div>
         <div class="box-container">
             <div class="insert">
-                <form action="<?= url('user-store') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= url('edit-user-store/' . $user['id']) ?>" method="POST" enctype="multipart/form-data">
 
                     <div class="inputs d-flex">
                         <div class="one">
@@ -143,8 +143,11 @@
                     </div>
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                    <input type="submit" id="submit" value="ثبت" class="btn" />
+                    <input type="submit" id="submit" value="ویــرایـــش" class="btn" />
                 </form>
+            </div>
+            <div class="center text-underline">
+                <a href="<?=url('users')?>" class="color">برگشت</a>
             </div>
         </div>
         <!-- end page content -->

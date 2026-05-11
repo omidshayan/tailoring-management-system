@@ -20,7 +20,6 @@ include_once('resources/views/scripts/change-status.php');
 
         <div class="insert">
 
-
             <div class="accordion-title color-orange">مشخصات عمومی</div>
             <div class="accordion-content">
                 <div class="child-accordioin">

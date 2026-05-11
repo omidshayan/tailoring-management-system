@@ -127,6 +127,7 @@ class User extends App
     // edit user store
     public function editUserStore($request, $id)
     {
+        $this->flashMessage('error', 'این قسمت در حال تکمیل شدن است!');
         $this->middleware(true, true, 'general', true, $request, true);
 
         if (empty($request['name']) || empty($request['phone'])) {
