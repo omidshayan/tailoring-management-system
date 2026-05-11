@@ -207,13 +207,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- <div class="inputs">
-                                        <div class="text-right invoice-print">
-                                            <input type="checkbox" class="invoice-print" id="invoice-print" name="invoice_print">
-                                            <label for="invoice-print" class="fs14">بِل تراکنش چاپ شود</label>
-                                        </div>
-                                    </div> -->
-
                                     <input type="hidden" name="user_id" id="item_id" value="<?= $user['id'] ?? '' ?>">
                                     <input type="hidden" name="fabric_id" id="fabric_id">
                                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
@@ -278,8 +271,15 @@
                                     </div>
                                 </div>
 
+                                                                    <div class="inputs">
+                                        <div class="text-right invoice-print">
+                                            <input type="checkbox" class="invoice-print" id="invoice-print" name="invoice_print">
+                                            <label for="invoice-print" class="fs12">بِل تراکنش چاپ شود</label>
+                                        </div>
+                                    </div>
+
                                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
-                                <input type="submit" id="submit" value="بــستــن فــاکــتور" class="btn prl40" />
+                                <input type="submit" id="submit" value="بــستــن فــاکــتور" class="btn prl40 m0 mb5" />
                             </form>
                         </div>
                     </div>

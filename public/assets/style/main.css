@@ -235,14 +235,14 @@ select option:disabled {
 .mr35{
     margin-right: 35px;
 }
-.mb5 {
-    margin-bottom: 5px;
-}
 .m-auto {
     margin: 0 auto;
 }
 .m0 {
     margin: 0 !important;
+}
+.mb5 {
+    margin-bottom: 5px !important;
 }
 .mr30{
     margin-right: 30px !important;
