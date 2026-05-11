@@ -147,10 +147,9 @@
                 </form>
             </div>
             <div class="center text-underline">
-                <a href="<?=url('users')?>" class="color">برگشت</a>
+                <a href="<?= url('users') ?>" class="color">برگشت</a>
             </div>
         </div>
-        <!-- end page content -->
     </div>
 
     <?php include_once('resources/views/layouts/footer.php') ?>
