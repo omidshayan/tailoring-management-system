@@ -107,12 +107,7 @@ class User extends App
         $this->middleware(true, true, 'general', true);
 
         $user = $this->db->select(
-            'SELECT 
-                users.*,
-                measurements.id AS measurement_id,
-                measurements.height,
-                measurements.weight,
-                measurements.created_at AS measurement_created_at
+            'SELECT users.*, measurements.* 
             FROM users
             LEFT JOIN measurements 
             ON measurements.user_id = users.id

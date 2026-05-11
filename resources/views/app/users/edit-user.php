@@ -81,7 +81,7 @@
                                 </div>
                             </div>
 
-                            <div class="inputs d-flex">
+                            <!-- <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">مدل</div>
                                     <input type="text" value="<?= $user['af_model'] ?>" placeholder="مدل را وارد نمایید ..." name="af_model">
@@ -90,7 +90,7 @@
                                     <div class="label-form mb5 fs14">توضیحات دوخت</div>
                                     <input type="type" value="<?= $user['af_desc'] ?>" placeholder="توضیحات را وارد نمایید ..." name="af_desc">
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
@@ -102,21 +102,21 @@
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">قد</div>
-                                    <input type="text" placeholder="اندزه قد را وارد نمایید ..." name="va_height">
+                                    <input type="text" value="<?= $user['va_height'] ?>" placeholder="اندزه قد را وارد نمایید ..." name="va_height">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">شانه</div>
-                                    <input type="text" placeholder="اندازه شانه را وارد نمایید ..." name="va_sholder">
+                                    <input type="text" value="<?= $user['va_sholder'] ?>" placeholder="اندازه شانه را وارد نمایید ..." name="va_sholder">
                                 </div>
                             </div>
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">چتی</div>
-                                    <input type="text" placeholder="اندازه چتی را وارد نمایید ..." name="va_chatty">
+                                    <input type="text" value="<?= $user['va_chatty'] ?>" placeholder="اندازه چتی را وارد نمایید ..." name="va_chatty">
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">توضیحات واسکت</div>
-                                    <input type="text" placeholder="توضیحات را وارد نمایید ..." name="va_desc">
+                                    <input type="text" value="<?= $user['va_desc'] ?>" placeholder="توضیحات را وارد نمایید ..." name="va_desc">
                                 </div>
                             </div>
 
@@ -130,23 +130,27 @@
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">آدرس</div>
-                                    <textarea name="address" placeholder="آدرس را وارد نمایید"></textarea>
+                                    <textarea name="address" placeholder="آدرس را وارد نمایید"><?= $user['address'] ?></textarea>
                                 </div>
                                 <div class="one">
                                     <div class="label-form mb5 fs14">توضیحات</div>
-                                    <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
+                                    <textarea name="description" placeholder="توضیحات را وارد نمایید"><?= $user['description'] ?></textarea>
                                 </div>
                             </div>
 
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">انتخاب عکس</div>
-                                    <input type="file" id="image" name="image" accept="image/jpeg, image/png, image/gif">
+                                    <input type="file" id="image" name="image" accept="image/*">
                                 </div>
                             </div>
-                            <div id="imagePreview" class="mb100">
+                            <div id="imagePreview">
                                 <img src="" class="img" alt="">
                             </div>
+                            <div>
+                                <img src="<?= ($user['image'] ? asset('public/images/users/' . $user['image']) : asset('public/assets/img/empty.png')) ?>" class="img" alt="logo">
+                            </div>
+                            <div class="fs11">تصویر فعلی</div>
 
                         </div>
                     </div>
