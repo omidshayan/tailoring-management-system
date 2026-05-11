@@ -236,7 +236,6 @@ class Fabric extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        // دریافت فاکتور
         $invoice = $this->db->select(
             'SELECT * FROM invoices WHERE id = ? LIMIT 1',
             [$id]
@@ -246,12 +245,10 @@ class Fabric extends App
             $this->flashMessage('error', 'فاکتور معتبر یافت نشد!');
         }
 
-        // جلوگیری از بستن مجدد فاکتور
         if ((int)$invoice['status'] === 2) {
             $this->flashMessage('error', 'این فاکتور قبلاً بسته شده است!');
         }
 
-        // دریافت آیتم‌های فاکتور
         $stocks = $this->db->select(
             'SELECT * FROM fabric_stock WHERE invoice_id = ?',
             [$id]
@@ -265,7 +262,6 @@ class Fabric extends App
 
             $this->db->beginTransaction();
 
-            // محاسبه مجموع فاکتور از دیتابیس
             $totalAmount = 0;
 
             foreach ($stocks as $stock) {
@@ -276,7 +272,6 @@ class Fabric extends App
                 );
             }
 
-            // بستن فاکتور
             $this->db->update(
                 'invoices',
                 $invoice['id'],
@@ -284,7 +279,6 @@ class Fabric extends App
                 [$totalAmount, 2]
             );
 
-            // بروزرسانی موجودی پارچه‌ها
             foreach ($stocks as $stock) {
 
                 $fabric = $this->db->select(
@@ -321,7 +315,7 @@ class Fabric extends App
             );
         }
     }
-    
+
     // show fabrics manage
     public function showFabrics()
     {
