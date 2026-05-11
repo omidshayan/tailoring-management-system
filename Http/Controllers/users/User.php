@@ -172,13 +172,9 @@ class User extends App
     {
         $this->middleware(true, true, 'general');
 
-        $branchId = $this->getBranchId();
-
-        $user = $this->db->select('SELECT * FROM users WHERE id = ? AND branch_id = ?', [$id, $branchId])->fetch();
+        $user = $this->db->select('SELECT * FROM users WHERE id = ?', [$id])->fetch();
 
         if ($user != null) {
-
-            $account_balance = $this->db->select('SELECT * FROM account_balances WHERE user_id = ?  AND branch_id = ?', [$id, $branchId])->fetch();
 
             require_once(BASE_PATH . '/resources/views/app/users/user-details.php');
             exit();
