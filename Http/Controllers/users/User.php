@@ -179,7 +179,14 @@ class User extends App
     {
         $this->middleware(true, true, 'general');
 
-        $user = $this->db->select('SELECT * FROM users WHERE id = ?', [$id])->fetch();
+        $user = $this->db->select(
+            'SELECT users.*, measurements.* 
+            FROM users
+            LEFT JOIN measurements 
+            ON measurements.user_id = users.id
+            WHERE users.id = ?',
+            [$id]
+        )->fetch();
 
         if ($user != null) {
 

@@ -25,7 +25,6 @@
                     <div class="accordion-title color-orange mb5">ثبت اندزه‌ها</div>
                     <div class="accordion-content">
                         <div class="child-accordioin">
-
                             <div class="inputs d-flex">
                                 <div class="one">
                                     <div class="label-form mb5 fs14">قد</div>
@@ -80,18 +79,6 @@
                                     <input type="text" value="<?= $user['af_bar_pants'] ?>" placeholder="اندازه بر شلوار را وارد نمایید ..." name="af_bar_pants">
                                 </div>
                             </div>
-
-                            <!-- <div class="inputs d-flex">
-                                <div class="one">
-                                    <div class="label-form mb5 fs14">مدل</div>
-                                    <input type="text" value="<?= $user['af_model'] ?>" placeholder="مدل را وارد نمایید ..." name="af_model">
-                                </div>
-                                <div class="one">
-                                    <div class="label-form mb5 fs14">توضیحات دوخت</div>
-                                    <input type="type" value="<?= $user['af_desc'] ?>" placeholder="توضیحات را وارد نمایید ..." name="af_desc">
-                                </div>
-                            </div> -->
-
                         </div>
                     </div>
 
