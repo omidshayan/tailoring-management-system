@@ -280,7 +280,7 @@ class Order extends App
             $this->db->commit();
 
             if ($request['invoice_print']) {
-                dd('ok');
+                $this->flashMessageId('success', 'بِل با موفقیت چاپ شد', $order['id']);
             }
 
             $this->flashMessage('success', _success);
