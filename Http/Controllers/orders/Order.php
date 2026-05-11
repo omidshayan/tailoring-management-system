@@ -238,7 +238,6 @@ class Order extends App
                 $userInfos['name']
             ]);
 
-            // ✔ آپدیت پارچه با لاک
             foreach ($orderItems as $item) {
 
                 if ($item['order_fabric'] == 'with_fabric') {
@@ -262,7 +261,6 @@ class Order extends App
                 }
             }
 
-            // ✔ تراکنش مالی
             if ($paid > 0) {
                 $this->db->insert('transactions', [
                     'ref_id',
@@ -280,6 +278,10 @@ class Order extends App
             }
 
             $this->db->commit();
+
+            if ($request['invoice_print']) {
+                dd('ok');
+            }
 
             $this->flashMessage('success', _success);
         } catch (Exception $e) {

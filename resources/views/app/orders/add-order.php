@@ -271,12 +271,12 @@
                                     </div>
                                 </div>
 
-                                                                    <div class="inputs">
-                                        <div class="text-right invoice-print">
-                                            <input type="checkbox" class="invoice-print" id="invoice-print" name="invoice_print">
-                                            <label for="invoice-print" class="fs12">بِل تراکنش چاپ شود</label>
-                                        </div>
+                                <div class="inputs">
+                                    <div class="text-right invoice-print">
+                                        <input type="checkbox" class="invoice-print" id="invoice-print" name="invoice_print">
+                                        <label for="invoice-print" class="fs12">بِل تراکنش چاپ شود</label>
                                     </div>
+                                </div>
 
                                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
                                 <input type="submit" id="submit" value="بــستــن فــاکــتور" class="btn prl40 m0 mb5" />
