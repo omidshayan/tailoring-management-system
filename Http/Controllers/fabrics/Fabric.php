@@ -236,40 +236,92 @@ class Fabric extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $invoice =  $this->db->select('SELECT * FROM invoices WHERE id = ?', [$id])->fetch();
+        // دریافت فاکتور
+        $invoice = $this->db->select(
+            'SELECT * FROM invoices WHERE id = ? LIMIT 1',
+            [$id]
+        )->fetch();
 
         if (!$invoice) {
             $this->flashMessage('error', 'فاکتور معتبر یافت نشد!');
         }
 
-        $stocks =  $this->db->select('SELECT * FROM fabric_stock WHERE invoice_id = ?', [$id])->fetchAll();
+        // جلوگیری از بستن مجدد فاکتور
+        if ((int)$invoice['status'] === 2) {
+            $this->flashMessage('error', 'این فاکتور قبلاً بسته شده است!');
+        }
+
+        // دریافت آیتم‌های فاکتور
+        $stocks = $this->db->select(
+            'SELECT * FROM fabric_stock WHERE invoice_id = ?',
+            [$id]
+        )->fetchAll();
+
         if (!$stocks) {
             $this->flashMessage('error', 'لیست فاکتور خالی است!');
         }
 
         try {
+
             $this->db->beginTransaction();
 
-            $this->db->update('invoices', $invoice['id'], ['total_amount', 'status'], [$request['total_amount'], 2]);
+            // محاسبه مجموع فاکتور از دیتابیس
+            $totalAmount = 0;
 
             foreach ($stocks as $stock) {
 
-                $fabric =  $this->db->select('SELECT id, quantity FROM fabrics WHERE id = ?', [$stock['fabric_id']])->fetch();
+                $totalAmount += (
+                    (float)$stock['quantity'] *
+                    (float)$stock['buy_price']
+                );
+            }
 
-                $newMeter = $fabric['quantity'] + $stock['quantity'];
+            // بستن فاکتور
+            $this->db->update(
+                'invoices',
+                $invoice['id'],
+                ['total_amount', 'status'],
+                [$totalAmount, 2]
+            );
 
-                $this->db->update('fabrics', $fabric['id'], ['quantity'], [$newMeter]);
+            // بروزرسانی موجودی پارچه‌ها
+            foreach ($stocks as $stock) {
+
+                $fabric = $this->db->select(
+                    'SELECT id, quantity FROM fabrics WHERE id = ? LIMIT 1',
+                    [$stock['fabric_id']]
+                )->fetch();
+
+                if (!$fabric) {
+                    throw new Exception('پارچه معتبر یافت نشد!');
+                }
+
+                $currentQuantity = (float)($fabric['quantity'] ?? 0);
+
+                $newQuantity = $currentQuantity + (float)$stock['quantity'];
+
+                $this->db->update(
+                    'fabrics',
+                    $fabric['id'],
+                    ['quantity'],
+                    [$newQuantity]
+                );
             }
 
             $this->db->commit();
 
             $this->flashMessage('success', _success);
         } catch (Exception $e) {
+
             $this->db->rollBack();
-            $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
+
+            $this->flashMessage(
+                'error',
+                'خطا در ثبت اطلاعات: ' . $e->getMessage()
+            );
         }
     }
-
+    
     // show fabrics manage
     public function showFabrics()
     {
