@@ -67,10 +67,10 @@ body {
     align-items: center;
 }
 
-.justify-between {
+/* .justify-between {
     display: flex !important;
     justify-content: space-between;
-}
+} */
 
 .justify-around {
     display: flex !important;
