@@ -29,12 +29,13 @@ class Order extends App
             ", [1, $orders['id']])->fetchAll();
 
             // جمع کل
-            $total = $this->db->select("
-                SELECT 
-                    SUM(oi.sewing_fee + COALESCE(oi.price_fabric, 0)) AS grand_total
-                FROM order_items oi
-                WHERE oi.status = ?
-            ", [1])->fetch();
+                $total = $this->db->select("
+                    SELECT 
+                        SUM(oi.sewing_fee + COALESCE(oi.price_fabric, 0)) AS grand_total
+                    FROM order_items oi
+                    WHERE oi.status = ?
+                    AND oi.order_id = ?
+                ", [1, $orders['id']])->fetch();
         }
 
         require_once(BASE_PATH . '/resources/views/app/orders/add-order.php');
@@ -223,7 +224,6 @@ class Order extends App
                 throw new Exception('مبلغ پرداختی بیشتر از مبلغ کل است');
             }
 
-            // ✔ آپدیت سفارش
             $this->db->update('orders', $id, [
                 'user_id',
                 'total_amount',
