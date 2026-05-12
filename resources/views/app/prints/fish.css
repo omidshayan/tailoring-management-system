@@ -5,31 +5,34 @@
     background-color: #fff;
     border: 1px solid black;
 }
-.bbb{
+
+.bbb {
     border-bottom: 1px solid black;
 }
+
 @media print {
 
     .fish-print,
     .fish-print * {
         visibility: visible;
     }
+
     .fish-print {
-        position: absolute;
-        left: 0;
-        top: 0;
         width: 80mm;
-        margin: 0;
         background-color: white;
         direction: rtl !important;
         page-break-after: avoid;
         page-break-before: avoid;
         page-break-inside: avoid;
-        margin-top: 10px;
+        margin-top: -76px !important;
+    }
+
+    .fish-print+.fish-print {
+        margin-top: 10px !important;
     }
 }
 
 @page {
     margin: -60px 10px !important;
-    size: 80mm 297mm;
+    size: 85mm 297mm;
 }

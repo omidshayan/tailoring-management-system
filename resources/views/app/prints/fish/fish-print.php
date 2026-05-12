@@ -1,26 +1,28 @@
 <?php
 if (!empty($orderList)) {
-    foreach ($orderList as $order) {
-
-        $types = [
-            'afghan' => 'لباس افغانی',
-            'vest'   => 'واسکت',
-            'suit'   => 'کت و شلوار',
-        ];
 ?>
-        <html lang="fa">
+    <html lang="fa">
 
-        <head>
-            <meta charset="UTF-8">
-            <title>فاکتور خیاطی</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>فاکتور خیاطی</title>
 
-            <link rel="stylesheet" href="<?= asset('resources/views/app/prints/print.css') ?>" />
-            <link rel="stylesheet" href="<?= asset('resources/views/app/prints/fish.css') ?>" />
+        <link rel="stylesheet" href="<?= asset('resources/views/app/prints/print.css') ?>" />
+        <link rel="stylesheet" href="<?= asset('resources/views/app/prints/fish.css') ?>" />
 
-        </head>
+    </head>
 
 
-        <body>
+    <body>
+        <?php
+        foreach ($orderList as $order) {
+
+            $types = [
+                'afghan' => 'لباس افغانی',
+                'vest'   => 'واسکت',
+                'suit'   => 'کت و شلوار',
+            ];
+        ?>
             <div class="fish-print color-print">
                 <div class="center fs14">خیاطی و پارچه سرای آرمان</div>
 
@@ -57,7 +59,7 @@ if (!empty($orderList)) {
                     <span>بر شلوار: <span class="fs14 bold"><?= $measurement['af_bar_pants'] ?: '--' ?></span></span>
                 </div>
                 <div class="fs12 p5 bbb">
-                    <span>مدل: <span class="fs14 bold"></span><?= $item['model_name'] ?></span>
+                    <span>مدل: <span class="fs14 bold"></span><?= $order['model_id'] ?></span>
                 </div>
 
                 <?= !empty($orders['end_sewing'])
@@ -66,12 +68,12 @@ if (!empty($orderList)) {
                 ?>
 
             </div>
+        <?php }
+        ?>
+    </body>
 
-        </body>
+    </html>
 
-        </html>
-    <?php }
-    ?>
 
 
 <?php }

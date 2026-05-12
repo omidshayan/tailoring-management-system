@@ -112,7 +112,7 @@
                                                 <?php foreach ($models as $model) {
                                                     if ($model['type'] != 'afghan') continue; ?>
                                                     <option
-                                                        value="<?= $model['id'] ?>"
+                                                        value="<?= $model['model_name'] ?>"
                                                         data-fee="<?= $model['fee'] ?>">
                                                         <?= $model['model_name'] ?>
                                                     </option>
@@ -128,7 +128,7 @@
                                                     if ($model['type'] != 'vest') continue; ?>
 
                                                     <option
-                                                        value="<?= $model['id'] ?>"
+                                                        value="<?= $model['model_name'] ?>"
                                                         data-fee="<?= $model['fee'] ?>">
                                                         <?= $model['model_name'] ?>
                                                     </option>
@@ -144,7 +144,7 @@
                                                     if ($model['type'] != 'suit') continue; ?>
 
                                                     <option
-                                                        value="<?= $model['id'] ?>"
+                                                        value="<?= $model['model_name'] ?>"
                                                         data-fee="<?= $model['fee'] ?>">
                                                         <?= $model['model_name'] ?>
                                                     </option>
