@@ -2,10 +2,11 @@
     font-family: 'Vazir';
     /* src: url('./../../../../../public/assets/font/Vazir.ttf') format('truetype'); */
     src: url('font/Vazir.woff') format('woff'),
-         url('font/Vazir.ttf') format('truetype');
+        url('font/Vazir.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
+
 *,
 *::before,
 *::after {
@@ -27,6 +28,16 @@ body {
 
 .form-container {
     width: 210mm;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 12pt;
+    direction: rtl !important;
+    background-color: #fff;
+}
+
+.fish-print {
+    width: 80mm;
     margin: 0 auto;
     padding: 10px;
     box-sizing: border-box;
@@ -136,9 +147,11 @@ body {
 .hr {
     border: 1px solid var(--border) !important;
 }
-.mt10{
+
+.mt10 {
     margin-top: 10px !important;
 }
+
 .p5 {
     padding: 5px;
 }
@@ -169,26 +182,16 @@ body {
 }
 
 @media print {
-    body, html {
-        margin: 0 !important;
-        padding: 0 !important;
-        font-family: 'Vazir' !important;
-    }
-
-    body * {
-        font-family: 'Vazir' !important;
-    }
-
-    .form-container,
-    .form-container * {
+    .fish-print,
+    .fish-print * {
         visibility: visible;
     }
 
-    .form-container {
+    .fish-print {
         position: absolute;
         left: 0;
         top: 0;
-        width: 210mm;
+        width: 80mm;
         margin: 0;
         background-color: white;
         direction: rtl !important;
@@ -201,5 +204,5 @@ body {
 
 @page {
     margin: 0;
-    size: 210mm 297mm;
+    size: 80mm 297mm;
 }

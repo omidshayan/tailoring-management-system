@@ -259,7 +259,7 @@
                     <!-- close form -->
                     <div class="w50d bg-main">
                         <div class="insert">
-                            <form action="<?= url('close-order-store/' . $orders['id']) ?>" method="POST">
+                            <form action="<?= url('close-order-store/' . $orders['id']) ?>" method="POST" id="invoice-form">
                                 <div class="center fs14 p5 color-orange">
                                     مجموع کل: <?= number_format($total['grand_total'] ?? 0) ?>
                                 </div>
@@ -292,9 +292,12 @@
         </div>
 
         <!-- print fish -->
-        <?php include_once('resources/views/app/prints/fish/fish-frame.php'); ?>
-
+        
+        
     </div>
+    
+    <!-- fish print -->
+    <?php include_once('resources/views/app/prints/fish/fish-print.php'); ?>
 
     <!-- check for print -->
     <?php include_once('resources/views/app/prints/order-invoice-print/invoice-frame.php');
