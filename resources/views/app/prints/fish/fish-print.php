@@ -3,7 +3,7 @@ if (!empty($orderList)) {
 ?>
     <script>
         document.getElementById('invoice-form').addEventListener('submit', function(e) {
-            
+
             window.print();
 
             setTimeout(() => {

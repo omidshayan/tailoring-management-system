@@ -413,7 +413,7 @@ class Order extends App
     {
         $this->middleware(true, true, 'general');
 
-        $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$id])->fetch();
+        $order = $this->db->select('SELECT * FROM orders WHERE id = ?', [$request['id']])->fetch();
 
         if (!$order) {
             require_once BASE_PATH . '/404.php';

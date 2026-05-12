@@ -89,7 +89,7 @@ include_once('public/alerts/toastr.php');
                 foreach ($data as $order) {
                 ?>
 
-                    <!-- modal -->
+                    <!-- modal for end sewing -->
                     <div id="finishModal" class="modal">
                         <div class="modal-content">
                             <h3>اتمام سفارش</h3>
