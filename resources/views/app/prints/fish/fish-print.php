@@ -37,31 +37,33 @@ if (!empty($orderList)) { ?>
                 </div>
 
                 <div class="fs12 justify-between p5 bbb">
-                    <span>قد: 45</span>
-                    <span>شانه: 33</span>
-                </div>
-
-                <div class="fs12 justify-between p5 bbb">
-                    <span>آستین: 45</span>
-                    <span>هخن: شانه</span>
+                    <span>قد: <span class="fs14 bold"><?= $measurement['af_height'] ?: '--' ?></span></span>
+                    <span>شانه: <span class="fs14 bold"><?= $measurement['af_sholder'] ?: '--' ?></span></span>
                 </div>
                 <div class="fs12 justify-between p5 bbb">
-                    <span>بغل: 45</span>
-                    <span>دامن: شانه</span>
+                    <span>آستین: <span class="fs14 bold"><?= $measurement['af_sleeve'] ?: '--' ?></span></span>
+                    <span>هخن: <span class="fs14 bold"><?= $measurement['af_ice'] ?: '--' ?></span></span>
                 </div>
                 <div class="fs12 justify-between p5 bbb">
-                    <span>چتی: 45</span>
-                    <span>شلوار: شانه</span>
+                    <span>بغل: <span class="fs14 bold"><?= $measurement['af_hug'] ?: '--' ?></span></span>
+                    <span>دامن: <span class="fs14 bold"><?= $measurement['af_skirt'] ?: '--' ?></span></span>
                 </div>
                 <div class="fs12 justify-between p5 bbb">
-                    <span>پارچه: 45</span>
-                    <span>بر شلوار: شانه</span>
+                    <span>چتی: <span class="fs14 bold"><?= $measurement['af_chatty'] ?: '--' ?></span></span>
+                    <span>شلوار: <span class="fs14 bold"><?= $measurement['af_pants'] ?: '--' ?></span></span>
+                </div>
+                <div class="fs12 justify-between p5 bbb">
+                    <span>پارچه: <span class="fs14 bold"><?= $measurement['af_cloth'] ?: '--' ?></span></span>
+                    <span>بر شلوار: <span class="fs14 bold"><?= $measurement['af_bar_pants'] ?: '--' ?></span></span>
                 </div>
                 <div class="fs12 p5 bbb">
-                    <span>مدل: <?= $item['model_name'] ?></span>
+                    <span>مدل: <span class="fs14 bold"></span><?= $item['model_name'] ?></span>
                 </div>
 
-                <div class="fs12 p5 center">تاریخ تحویل: <span>1405/25/10</span></div>
+                <?= !empty($orders['end_sewing'])
+                    ? '<div class="fs12 p5 center">تاریخ تحویل: <span>' . $orders['end_sewing'] . '</span></div>'
+                    : ''
+                ?>
 
             </div>
 

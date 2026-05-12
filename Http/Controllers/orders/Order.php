@@ -17,6 +17,8 @@ class Order extends App
 
             $user = $this->db->select('SELECT * FROM users WHERE `id` = ?', [$orders['user_id']])->fetch();
 
+            $measurement = $this->db->select('SELECT * FROM measurements WHERE `user_id` = ?', [$user['id']])->fetch();
+
             $orderList = $this->db->select("
                 SELECT 
                     oi.*, 
