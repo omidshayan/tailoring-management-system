@@ -10,11 +10,21 @@
     border-bottom: 1px solid black;
 }
 
+@media screen {
+    .fish-print {
+        display: none;
+    }
+}
+
 @media print {
 
     .fish-print,
     .fish-print * {
         visibility: visible;
+    }
+
+    .fish-print {
+        display: block;
     }
 
     .fish-print {
