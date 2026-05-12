@@ -5,7 +5,9 @@
     background-color: #fff;
     border: 1px solid black;
 }
-
+.bbb{
+    border-bottom: 1px solid black;
+}
 @media print {
 
     .fish-print,
