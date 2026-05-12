@@ -12,19 +12,19 @@
 <body>
     <div class="form-container border">
         <div class="order-header">
-            <div class="order-header1 d-flex justify-between align-center">
+            <div class="order-header1 d-flex jd align-center">
                 <div class="fs28 bold">خیاطی و پارچه سرای آرمان</div>
                 <div class="bold fs18">ARMAN TEXTILE STORE TAILOR</div>
             </div>
 
-            <div class="order-header1 d-flex justify-between align-center">
+            <div class="order-header1 d-flex jd align-center">
                 <div class="fs14">مدیریت: احمد شفیع احسان</div>
                 <div class="fs14">تماس‌ها: 0786484848 - 0786160407</div>
             </div>
 
             <hr class="hr">
 
-            <div class="fs12 d-flex justify-between">
+            <div class="fs12 d-flex jd">
                 <div>شماره ثبت: <?= $this->formatNumber($order['id']) ?></div>
                 <div> تاریخ ثبت: <?= jdate('Y/m/d', strtotime($order['created_at'])) ?></div>
                 <div> تاریخ تحویل: <?= !empty($order['delivery_date']) ? jdate('Y/m/d', $order['delivery_date']) : 'ثبت نشده' ?></div>
@@ -86,7 +86,7 @@
             </div>
 
             <!-- footer -->
-            <div class="justify-between fs12 m10">
+            <div class="jd fs12 m10">
                 <div class="bold">آدرس: هرات، شهرنو، نبش جاده بهزاد، انوری مارکت، طبقه دوم</div>
                 <div class="fs14 bold">آرمان ما رضایت شماست</div>
             </div>

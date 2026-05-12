@@ -59,7 +59,7 @@ if (!empty($orderList)) {
                 <span>پارچه: <span class="fs14 bold"><?= $measurement['af_cloth'] ?: '--' ?></span></span>
                 <span>بر شلوار: <span class="fs14 bold"><?= $measurement['af_bar_pants'] ?: '--' ?></span></span>
             </div>
-            <div class="fs12 p5 bbb">
+            <div class="fs12 p5">
                 <span>مدل: <span class="fs14 bold"></span><?= $order['model_id'] ?></span>
             </div>
 
