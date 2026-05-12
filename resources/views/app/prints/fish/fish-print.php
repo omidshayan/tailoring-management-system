@@ -11,21 +11,19 @@
 </head>
 
 <body>
-    <div class="fish-print border">
-        <div class="order-header">
-            <div class="order-header1 d-flex justify-between align-center">
-                <div class="fs28 bold">خیاطی و پارچه سرای آرمان</div>
-                <div class="bold fs18">ARMAN TEXTILE STORE TAILOR</div>
-            </div>
+    <div class="fish-print">
+        <div class="center fs14 color-print">خیاطی و پارچه سرای آرمان</div>
 
-            <div class="order-header1 d-flex justify-between align-center">
-                <div class="fs14">مدیریت: احمد شفیع احسان</div>
-                <div class="fs14">تماس‌ها: 0786484848 - 0786160407</div>
-            </div>
+        <hr class="tt">
 
-
-
+        <div class="fs12 p5 color-print justify-between">
+           <div> نام: سیبیب سشیبسیب</div>
+           <div class="fa10">تاریخ: 14025/25/50</div>
         </div>
+
+        
+
+
     </div>
 
 </body>

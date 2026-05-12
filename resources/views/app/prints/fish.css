@@ -2,10 +2,8 @@
     width: 80mm;
     margin: 0 auto;
     padding: 10px;
-    box-sizing: border-box;
-    font-size: 12pt;
-    direction: rtl !important;
     background-color: #fff;
+    border: 1px solid black;
 }
 
 @media print {
@@ -30,6 +28,6 @@
 }
 
 @page {
-    margin: 0;
+    margin: 0 10px;
     size: 80mm 297mm;
 }
