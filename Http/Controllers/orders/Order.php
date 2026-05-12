@@ -28,8 +28,7 @@ class Order extends App
                 WHERE oi.status = ? AND order_id = ?
             ", [1, $orders['id']])->fetchAll();
 
-            // جمع کل
-                $total = $this->db->select("
+            $total = $this->db->select("
                     SELECT 
                         SUM(oi.sewing_fee + COALESCE(oi.price_fabric, 0)) AS grand_total
                     FROM order_items oi
@@ -44,7 +43,7 @@ class Order extends App
     // store employee
     public function orderStore($request)
     {
-        $this->middleware(true, true, 'general', true, $request, true);
+        $this->middleware(true, true, 'general');
 
         // validation
         if (empty($request['user_id']) || empty($request['type']) || empty($request['model']) || empty($request['sewing_fee'])) {
@@ -52,12 +51,22 @@ class Order extends App
             return;
         }
 
-        if ($request['fabric_id']) {
+        $fabirc = null;
+        $fabirc_id = null;
+        $fabirc_meter = null;
+        $priceFabric = null;
+
+        if ($request['fabric'] == 'with_fabric') {
             $fabric = $this->db->select('SELECT quantity FROM fabrics WHERE id = ?', [$request['fabric_id']])->fetch();
 
             if ($fabric['quantity'] < $request['fabric_meter']) {
                 $this->flashMessage('error', 'موجودی پارچه کم است!');
             }
+
+            $fabirc = $request['fabric'];
+            $fabirc_id = $request['fabric_id'];
+            $fabirc_meter = $request['fabric_meter'];
+            $priceFabric = (float)$request['price_fabric'];
         }
 
         try {
@@ -83,7 +92,6 @@ class Order extends App
                 $orderId = $this->db->lastInsertId();
             }
 
-            $priceFabric = (float)$request['price_fabric'];
             $sewingFee   = (float)$request['sewing_fee'];
 
             $orderItem = [
@@ -91,9 +99,9 @@ class Order extends App
                 'type'          => $request['type'] ?? null,
                 'model_id'      => $request['model'] ?? null,
                 'sewing_fee'    => $sewingFee,
-                'fabric_id'     => $request['fabric_id'] ?? null,
-                'order_fabric'  => $request['fabric'] ?? null,
-                'fabric_meter'  => $request['fabric_meter'] ?? 0,
+                'fabric_id'     => $fabirc_id ?? null,
+                'order_fabric'  => $fabirc,
+                'fabric_meter'  => $fabirc_meter ?? 0,
                 'price_fabric'  => $priceFabric ?? null,
                 'description'   => $request['description'] ?? null,
             ];
@@ -157,7 +165,6 @@ class Order extends App
             $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
         }
     }
-
 
     // delete product from cart
     public function deleteItemCart($id)
