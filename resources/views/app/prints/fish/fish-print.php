@@ -1,16 +1,5 @@
 <?php
-if (!empty($orderList)) { ?>
-    <html lang="fa">
-
-    <head>
-        <meta charset="UTF-8">
-        <title>فاکتور خیاطی</title>
-
-        <link rel="stylesheet" href="<?= asset('resources/views/app/prints/print.css') ?>" />
-        <link rel="stylesheet" href="<?= asset('resources/views/app/prints/fish.css') ?>" />
-
-    </head>
-    <?php
+if (!empty($orderList)) {
     foreach ($orderList as $order) {
 
         $types = [
@@ -18,7 +7,18 @@ if (!empty($orderList)) { ?>
             'vest'   => 'واسکت',
             'suit'   => 'کت و شلوار',
         ];
-    ?>
+?>
+        <html lang="fa">
+
+        <head>
+            <meta charset="UTF-8">
+            <title>فاکتور خیاطی</title>
+
+            <link rel="stylesheet" href="<?= asset('resources/views/app/prints/print.css') ?>" />
+            <link rel="stylesheet" href="<?= asset('resources/views/app/prints/fish.css') ?>" />
+
+        </head>
+
 
         <body>
             <div class="fish-print color-print">
@@ -69,10 +69,10 @@ if (!empty($orderList)) { ?>
 
         </body>
 
+        </html>
     <?php }
     ?>
 
 
-    </html>
 <?php }
 ?>

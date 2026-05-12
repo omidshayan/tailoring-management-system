@@ -2,10 +2,11 @@
     font-family: 'Vazir';
     /* src: url('./../../../../../public/assets/font/Vazir.ttf') format('truetype'); */
     src: url('font/Vazir.woff') format('woff'),
-         url('font/Vazir.ttf') format('truetype');
+        url('font/Vazir.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
+
 *,
 *::before,
 *::after {
@@ -136,9 +137,11 @@ body {
 .hr {
     border: 1px solid var(--border) !important;
 }
-.mt10{
+
+.mt10 {
     margin-top: 10px !important;
 }
+
 .p5 {
     padding: 5px;
 }
