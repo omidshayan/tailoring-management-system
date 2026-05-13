@@ -89,59 +89,41 @@ class Salary extends App
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // edit employee store
-    public function editEmployeeStore($request, $id)
+    // edit salary store
+    public function editSalaryStore($request, $id)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '') {
+        if ($request['employee_id'] == '' || $request['paid_amount'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $existEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
-
-        if ($existEmployee) {
-            if ($id != $existEmployee['id']) {
-                $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
-                return;
-            }
-        }
-
-        if ($request['password'] == '') {
-            unset($request['password']);
-        } else {
-            $request['password'] = $this->hash($request['password']);
-        }
-
-        // check upload photo
-        $this->updateImageUpload($request, 'image', 'employees', 'employees', $id);
-
-        $this->db->update('employees', $id, array_keys($request), $request);
-        $this->flashMessageTo('success', _success, url('employees'));
+        $this->db->update('salary_payments', $id, array_keys($request), $request);
+        $this->flashMessageTo('success', _success, url('salaries'));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // employee detiles page
     public function employeeDetails($id)

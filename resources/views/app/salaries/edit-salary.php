@@ -8,10 +8,9 @@
 
     <div class="content">
         <div class="content-title">ثبت معاش جدید <?= $item['employee_name'] ?></div>
-
         <div class="box-container">
             <div class="insert">
-                <form action="<?= url('edit-salary-store') ?>" method="POST">
+                <form action="<?= url('edit-salary-store/' . $item['id']) ?>" method="POST">
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">انتخاب کارمند <?= _star ?> </div>
