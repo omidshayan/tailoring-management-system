@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="form-container border">
+    <div class="form-container border-factor">
         <div class="order-header">
             <div class="order-header1 d-flex jd align-center">
                 <div class="fs28 bold">خیاطی و پارچه سرای آرمان</div>
