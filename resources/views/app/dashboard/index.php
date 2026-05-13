@@ -12,7 +12,7 @@
             </svg>
           </div>
           <div class="report-text">
-            <span>عنوان گزارش<div class="d-flex color-orange"> گزارش اول</div></span>
+            <span>تعداد مشتریان ثبت شده<div class="d-flex"><?=$totalCustomers['total']?> مشتری</div></span>
           </div>
         </div>
 
@@ -24,7 +24,7 @@
             </svg>
           </div>
           <div class="report-text">
-            <span>عنوان گزارش <div class="d-flex color-orange">گزارش دوم</div></span>
+             <span>سفارشات در حال دوخت<div class="d-flex"><?=$ordersProgress['total']?> سفارش</div></span>
           </div>
         </div>
         <div class="report-item">
@@ -35,7 +35,7 @@
             </svg>
           </div>
           <div class="report-text">
-            <span>عنوان گزارش<div class="d-flex color-orange">گزارش سوم</div> </span>
+            <span>تعداد کارمندان فعال<div class="d-flex"><?=$employees['total']?> کارمند</div></span>
           </div>
         </div>
       </div>
