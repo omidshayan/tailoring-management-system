@@ -11,7 +11,7 @@
 
         <div class="box-container">
             <div class="insert">
-                <form action="<?= url('employee-store') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= url('salary-store') ?>" method="POST">
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">انتخاب کارمند <?= _star ?> </div>

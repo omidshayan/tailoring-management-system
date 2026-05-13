@@ -4,6 +4,7 @@ namespace App;
 
 class Salary extends App
 {
+
     // add salary page
     public function addSalary()
     {
@@ -14,70 +15,57 @@ class Salary extends App
         require_once(BASE_PATH . '/resources/views/app/salaries/add-salary.php');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // store employee
-    public function employeeStore($request)
+    // store salary
+    public function salaryStore($request)
     {
         $this->middleware(true, true, 'general', true, $request, true);
 
         // check empty form
-        if ($request['employee_name'] == '' || $request['phone'] == '') {
+        if ($request['employee_id'] == '' || $request['paid_amount'] == '') {
             $this->flashMessage('error', _emptyInputs);
         }
 
-        $existingEmployee = $this->db->select('SELECT * FROM employees WHERE `phone` = ?', [$request['phone']])->fetch();
-        if ($existingEmployee) {
-            $this->flashMessage('error', _phone_repeat);
-        } else {
+        $timestamp = $request['date'];
 
-            if (!isset($request['password']) || strlen(trim($request['password'])) < 6) {
-                $this->flashMessage('error', 'رمز عبور باید حداقل 6 کاراکتر داشته باشد.');
-            }
+        $request['year'] = tr_num(jdate('Y', $timestamp), 'en');
+        $request['month'] = tr_num(jdate('m', $timestamp), 'en');
 
-            $request['password'] = $this->hash($request['password']);
-            $employee = $this->validateInputs($request, ['image' => false]);
+        try {
+            $this->db->beginTransaction();
 
-            $request['role'] = 1;
+            // insert new employee
+            $this->db->insert('salary_payments', array_keys($request), $request);
 
-            // check image
-            $this->handleImageUpload($request['image'], 'images/employees');
+            $this->db->commit();
 
-            try {
-                $this->db->beginTransaction();
-
-                // insert new employee
-                $this->db->insert('employees', array_keys($request), $request);
-
-                $this->db->commit();
-
-                $this->flashMessage('success', _success);
-            } catch (Exception $e) {
-                $this->db->rollBack();
-                $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
-            }
+            $this->flashMessage('success', _success);
+        } catch (Exception $e) {
+            $this->db->rollBack();
+            $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // show employees
     public function showEmployees()
