@@ -43,7 +43,7 @@
         <ul>
 
           <!-- dashboard -->
-          <li class="sidebar-menu">
+          <li class="sidebar-menu <?= isActive('dashboard') ?>">
             <a href="<?= url('/') ?>" class="d-flex align-center justify-between">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 16 16">

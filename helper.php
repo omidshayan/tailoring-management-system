@@ -107,6 +107,16 @@ function old($name)
 }
 // old end
 
+function currentRoute()
+{
+        $path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        return str_replace('tailoring-erp/', '', $path);
+}
+function isActive($routes, $class = 'focused')
+{
+        return in_array(currentRoute(), (array)$routes) ? $class : '';
+}
+
 // check status 
 function statusColor($status)
 {
