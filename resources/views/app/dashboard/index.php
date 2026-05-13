@@ -54,12 +54,15 @@
             <hr class="hr">
 
             <ul class="mt10 text-right ho">
-
-              <a href="" class="color">
-                <li class="p5">
-                  fgfg
-                </li>
-              </a>
+              <?php
+              foreach ($ordersList as $order) { ?>
+                <a href="" class="color">
+                  <li class="p5">
+                    <?=$order['name']?>
+                  </li>
+                </a>
+              <?php }
+              ?>
             </ul>
           </div>
         </div>

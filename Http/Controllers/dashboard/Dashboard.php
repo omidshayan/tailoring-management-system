@@ -18,6 +18,8 @@ class Dashboard extends App
 
         $ordersProgress = $this->db->select("SELECT COUNT(*) AS total FROM orders WHERE `status` = 2")->fetch();
 
+        $ordersList = $this->db->select("SELECT orders.id, orders.user_id, users.name FROM orders LEFT JOIN users ON users.id = orders.user_id WHERE orders.status = 2")->fetchAll();
+
         $employees = $this->db->select("SELECT COUNT(*) AS total FROM employees WHERE `state` = 1")->fetch();
 
         require_once(BASE_PATH . '/resources/views/app/dashboard/index.php');
