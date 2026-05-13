@@ -58,11 +58,11 @@
               $number = 1;
               foreach ($ordersList as $order) { ?>
                 <a href="<?= url('order-details/' . $order['id']) ?>" class="color">
-                  <li class="p5">
+                  <li class="p5 hover">
                     <?= $number ?> -
                     سفارش
                     <?= $order['name'] ?>
-                    ثبت شد.
+                    ثبت شد
                   </li>
                 </a>
               <?php
