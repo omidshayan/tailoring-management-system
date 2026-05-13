@@ -167,7 +167,9 @@ select option:disabled {
 .bg-main {
     background-color: var(--main);
 }
-
+.bg-simillar{
+    background-color: var(--simillar);
+}
 /* fonts */
 .fs15 {
     font-size: 15px !important;
@@ -282,7 +284,7 @@ select option:disabled {
     width: 100% !important;
 }
 .w50d{
-    width: 50%;
+    width: 50% !important;
 }
 .w89d{
     width: 89% !important;

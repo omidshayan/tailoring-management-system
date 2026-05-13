@@ -3,6 +3,7 @@
     include_once('resources/views/layouts/header.php') ?>
 
     <div class="content">
+
       <div class="report">
         <div class="report-item">
           <div class="report-icon">
@@ -12,7 +13,7 @@
             </svg>
           </div>
           <div class="report-text">
-            <span>تعداد مشتریان ثبت شده<div class="d-flex"><?=$totalCustomers['total']?> مشتری</div></span>
+            <span>تعداد مشتریان ثبت شده<div class="d-flex"><?= $totalCustomers['total'] ?> مشتری</div></span>
           </div>
         </div>
 
@@ -24,7 +25,7 @@
             </svg>
           </div>
           <div class="report-text">
-             <span>سفارشات در حال دوخت<div class="d-flex"><?=$ordersProgress['total']?> سفارش</div></span>
+            <span>سفارشات در حال دوخت<div class="d-flex"><?= $ordersProgress['total'] ?> سفارش</div></span>
           </div>
         </div>
         <div class="report-item">
@@ -35,24 +36,56 @@
             </svg>
           </div>
           <div class="report-text">
-            <span>تعداد کارمندان فعال<div class="d-flex"><?=$employees['total']?> کارمند</div></span>
+            <span>تعداد کارمندان فعال<div class="d-flex"><?= $employees['total'] ?> کارمند</div></span>
           </div>
         </div>
       </div>
       <!-- end report -->
 
-      <div class="content-container mt20">
-        <div class="content-flex">
-          <div class="mini-container">
-            <div class="mini-title">content 1</div>
+      <!-- daily reports -->
+      <div class="d-box m-auto center mt20 d-flex gap10 w50d w89d">
 
+        <!-- transactions list -->
+        <div class="bg-simillar w50d">
+          <div class="mini-title p10">
+            <div class="box-title">
+              روزنامچه
+            </div>
+            <hr class="hr">
+
+            <ul class="mt10 text-right ho">
+
+              <a href="" class="color">
+                <li class="p5">
+                  fgfg
+                </li>
+              </a>
+            </ul>
           </div>
-          <div class="mini-container">
-            content 2
+        </div>
+
+        <!-- report -->
+        <div class="bg-simillar w50d">
+          <div class="mini-title p5">
+            گزارش کلی روزنامچه
+          </div>
+          <hr class="hr">
+          <div class="mt10 p10 text-right">
+
+            <div class="p5">💰 مجموع فروش: 454</div>
+
+            <div class="p5">🛒 مجموع خرید: 44</div>
+
+            <div class="p5">📥 مجموع دریافتی: 44</div>
+
+            <div class="p5">📤 مجموع پرداختی: 4</div>
+
+            <div class="p5">💸 مجموع مصارف: 44</div>
           </div>
         </div>
 
       </div>
+
 
     </div>
 
