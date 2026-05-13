@@ -151,10 +151,14 @@
                     <li class="sidebar-dropdown-menu-item">ثبت معاش</li>
                   </a>
                 <?php endif; ?>
-
+                <?php if ($this->hasAccess('general')): ?>
+                  <a href="<?= url('employee-salaries') ?>">
+                    <li class="sidebar-dropdown-menu-item">معاشات</li>
+                  </a>
+                <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('salaries') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش معاشات</li>
+                    <li class="sidebar-dropdown-menu-item">نمایش پرداختی‌ها</li>
                   </a>
                 <?php endif; ?>
               </ul>
