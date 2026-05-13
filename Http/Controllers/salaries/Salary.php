@@ -53,7 +53,7 @@ class Salary extends App
         $salaries = $this->db->select("
             SELECT 
                 sp.*,
-                e.name AS employee_name
+                e.employee_name AS employee_name
             FROM salary_payments sp
             LEFT JOIN employees e ON sp.employee_id = e.id
             ORDER BY sp.id DESC
