@@ -4,7 +4,7 @@ namespace App;
 
 class Salary extends App
 {
-    // add employee page
+    // add salary page
     public function addSalary()
     {
         $this->middleware(true, true, 'general', true);
