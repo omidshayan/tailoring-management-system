@@ -58,7 +58,13 @@ class Employee extends App
     public function showEmployees()
     {
         $this->middleware(true, true, 'general');
-        $employees = $this->db->select('SELECT * FROM employees')->fetchAll();
+       $employees = $this->db->select(
+            'SELECT * FROM employees 
+            WHERE super_admin IS NULL 
+            OR super_admin != ? 
+            ORDER BY id DESC',
+            [3]
+        )->fetchAll();
         require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
         exit();
     }
