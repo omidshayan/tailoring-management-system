@@ -148,13 +148,13 @@
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('add-employee') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت مشتری جدید</li>
+                    <li class="sidebar-dropdown-menu-item">ثبت کارمند جدید</li>
                   </a>
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('employees') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش مشتریان</li>
+                    <li class="sidebar-dropdown-menu-item">نمایش کارمندان</li>
                   </a>
                 <?php endif; ?>
               </ul>
