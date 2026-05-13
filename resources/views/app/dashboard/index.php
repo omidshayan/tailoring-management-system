@@ -81,13 +81,10 @@
           <hr class="hr">
           <div class="mt10 p10 text-right">
 
-            <div class="p5">💰 مجموع فروش: 454</div>
+            <div class="p5">💰 مجموع دریافتی: 454</div>
 
-            <div class="p5">🛒 مجموع خرید: 44</div>
+            <div class="p5">📥 مجموع پرداختی معاش: 44</div>
 
-            <div class="p5">📥 مجموع دریافتی: 44</div>
-
-            <div class="p5">📤 مجموع پرداختی: 4</div>
 
             <div class="p5">💸 مجموع مصارف: 44</div>
           </div>
