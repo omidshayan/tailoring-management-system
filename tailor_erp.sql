@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 11, 2026 at 07:20 PM
+-- Generation Time: May 13, 2026 at 03:23 PM
 -- Server version: 9.1.0
 -- PHP Version: 7.4.33
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `csrf_token_logs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `csrf_token_logs`
@@ -120,7 +120,11 @@ INSERT INTO `csrf_token_logs` (`id`, `message`, `ip_address`, `created_at`, `upd
 (26, 'Invalid or missing CSRF token.', '::1', '2026-05-01 15:24:39', NULL),
 (27, 'Invalid or missing CSRF token.', '::1', '2026-05-05 17:12:22', NULL),
 (28, 'Invalid or missing CSRF token.', '::1', '2026-05-10 18:56:30', NULL),
-(29, 'Invalid or missing CSRF token.', '::1', '2026-05-11 16:06:22', NULL);
+(29, 'Invalid or missing CSRF token.', '::1', '2026-05-11 16:06:22', NULL),
+(30, 'Invalid or missing CSRF token.', '::1', '2026-05-11 23:56:17', NULL),
+(31, 'Invalid or missing CSRF token.', '::1', '2026-05-12 17:16:18', NULL),
+(32, 'Invalid or missing CSRF token.', '::1', '2026-05-12 17:35:43', NULL),
+(33, 'Invalid or missing CSRF token.', '::1', '2026-05-13 14:29:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -155,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `employee_name` (`employee_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `employees`
@@ -163,7 +167,8 @@ CREATE TABLE IF NOT EXISTS `employees` (
 
 INSERT INTO `employees` (`id`, `employee_name`, `father_name`, `phone`, `password`, `email`, `address`, `position`, `branch_id`, `role`, `verify_token`, `forgot_token`, `forgot_token_expire`, `remember_token`, `expire_remember_token`, `image`, `description`, `salary_price`, `who_it`, `state`, `super_admin`, `created_at`, `updated_at`) VALUES
 (48, 'for suport', NULL, '11', '$2y$10$lW.hGj4SfTrsZL.hLRC26.I6oON0TYbMHrAy1xM/jnTebFejeqx5i', 'suport@gmail.com', NULL, '', 0, 3, NULL, '0773271c9258e60f63ae8e753f7f9c17d184d2fb496d594e1279bfd843f09169', '2025-08-11 23:16:53', '051d66b072e9cb846a48e4aa12889f1049996fac3cbd512addd97a6b7bd552be', '3', NULL, NULL, 2000, 'ali', 1, 3, '2021-09-01 23:53:55', '2026-05-08 22:32:41'),
-(98, 'test', 'f test', '0799888888', '$2y$10$B5XPEAsS4ACkERmo9hoLleIo01FNwaWUTfWWUb/C3HNDOfaNxNnZ6', NULL, NULL, '', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ali', 1, NULL, '2026-03-25 04:15:12', '2026-03-25 05:42:55');
+(98, 'test', 'f test', '0799888888', '$2y$10$B5XPEAsS4ACkERmo9hoLleIo01FNwaWUTfWWUb/C3HNDOfaNxNnZ6', NULL, NULL, '', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'for suport', 1, NULL, '2026-03-25 04:15:12', '2026-05-13 12:08:54'),
+(101, 'mohammad moradi', NULL, '334455', '$2y$10$4vLnsLp4MAq7df8pJ2xn5ehwHebb4EtWUTeAo.OlH9scFsEExoLdC', NULL, 'address', '', 0, 1, NULL, NULL, NULL, NULL, NULL, '2026-05-13-12-05-43_6a0429cfcd0d1.png', 'desc', 20000, 'for suport', 1, NULL, '2026-05-13 12:05:43', '2026-05-13 12:09:07');
 
 -- --------------------------------------------------------
 
@@ -260,8 +265,8 @@ CREATE TABLE IF NOT EXISTS `fabrics` (
 --
 
 INSERT INTO `fabrics` (`id`, `name`, `category`, `color`, `unit`, `quantity`, `buy_price`, `sell_price`, `supplier_id`, `status`, `who_it`, `quality`, `description`, `created_at`, `updated_at`) VALUES
-(6, 'new fabric 1', 'چینایی', 'blue', NULL, '136', 30.00, 50.00, 0, 1, 'for suport', NULL, 'desc\r\n', '2026-04-27 00:22:48', '2026-05-11 23:47:25'),
-(9, 'مخمل', 'چینایی', 'سبز', NULL, '95', 60.00, 70.00, 0, 1, 'for suport', NULL, '', '2026-05-11 16:00:00', '2026-05-11 22:02:15'),
+(6, 'new fabric 1', 'چینایی', 'blue', NULL, '88', 30.00, 50.00, 0, 1, 'for suport', NULL, 'desc\r\n', '2026-04-27 00:22:48', '2026-05-13 01:05:17'),
+(9, 'مخمل', 'چینایی', 'سبز', NULL, '91', 60.00, 70.00, 0, 1, 'for suport', NULL, '', '2026-05-11 16:00:00', '2026-05-11 23:56:49'),
 (10, 'ساتن', 'پاکستانی', '', NULL, '60', 60.00, 80.00, 0, 1, 'for suport', NULL, '', '2026-05-11 16:00:14', '2026-05-11 16:06:09'),
 (11, 'for test', 'چینایی', '', NULL, '114', 60.00, 70.00, 0, 1, 'for suport', NULL, '', '2026-05-11 16:02:25', '2026-05-11 16:06:54');
 
@@ -502,7 +507,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
@@ -512,7 +517,31 @@ INSERT INTO `orders` (`id`, `user_id`, `total_amount`, `paid_amount`, `end_sewin
 (23, 17, 18220.00, NULL, NULL, '', 2, 'for suport', '2024-04-11 16:15:12', '2026-05-11 16:15:14'),
 (24, 21, 20020.00, 200.00, '1778520796', '', 4, 'for suport', '2026-05-11 17:52:25', '2026-05-11 22:03:16'),
 (25, 19, 21020.00, NULL, NULL, '', 2, 'for suport', '2026-05-11 23:33:29', '2026-05-11 23:47:25'),
-(26, 19, 21870.00, NULL, NULL, '', 2, 'for suport', '2026-05-11 23:48:10', '2026-05-11 23:48:15');
+(26, 19, 21870.00, NULL, NULL, '', 2, 'for suport', '2026-05-11 23:48:10', '2026-05-11 23:48:15'),
+(27, 21, 22720.00, 33.00, NULL, '', 2, 'for suport', '2026-05-11 23:53:43', '2026-05-11 23:53:47'),
+(28, 21, 24700.00, 500.00, '1778527755', '', 4, 'for suport', '2026-05-11 23:56:29', '2026-05-11 23:59:15'),
+(29, 21, 1850.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 17:06:57', '2026-05-12 17:11:50'),
+(30, 21, 1100.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 17:11:59', '2026-05-12 17:15:24'),
+(31, 21, 900.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 17:15:38', '2026-05-12 17:15:43'),
+(32, 19, 1100.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 17:16:03', '2026-05-12 17:16:04'),
+(33, 20, 1050.00, 500.00, NULL, '', 2, 'for suport', '2026-05-12 17:16:26', '2026-05-12 17:16:30'),
+(34, 20, 1800.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 17:36:41', '2026-05-12 17:38:01'),
+(35, 21, 850.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 17:40:38', '2026-05-12 17:42:12'),
+(36, 19, 850.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 17:42:23', '2026-05-12 17:42:27'),
+(37, 21, 2400.00, NULL, '1778591922', '', 4, 'for suport', '2026-05-12 17:47:56', '2026-05-12 17:48:42'),
+(38, 20, 1050.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 17:50:59', '2026-05-12 17:51:02'),
+(39, 21, 850.00, NULL, '1778618849', '', 4, 'for suport', '2026-05-12 18:43:24', '2026-05-13 01:17:29'),
+(40, 21, 850.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 18:44:33', '2026-05-12 18:44:41'),
+(41, 19, 850.00, NULL, '1778618847', '', 4, 'for suport', '2026-05-12 18:50:00', '2026-05-13 01:17:27'),
+(42, 21, 850.00, NULL, '1778618864', '', 4, 'for suport', '2026-05-12 19:11:02', '2026-05-13 01:17:44'),
+(43, 19, 850.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 22:34:36', '2026-05-12 22:34:42'),
+(44, 19, 850.00, NULL, '1778618855', '', 4, 'for suport', '2026-05-12 22:35:26', '2026-05-13 01:17:35'),
+(45, 19, 850.00, NULL, NULL, '', 2, 'for suport', '2026-05-12 23:16:58', '2026-05-12 23:29:33'),
+(46, 21, 2300.00, NULL, '1778618859', '', 4, 'for suport', '2026-05-12 23:29:45', '2026-05-13 01:17:39'),
+(47, 19, 1900.00, NULL, '1778618844', '', 4, 'for suport', '2026-05-13 01:03:13', '2026-05-13 01:17:24'),
+(48, 21, 2000.00, NULL, '1778618163', '', 4, 'for suport', '2026-05-13 01:05:04', '2026-05-13 01:06:03'),
+(49, 20, 850.00, NULL, '1778619262', '', 4, 'for suport', '2026-05-13 01:21:55', '2026-05-13 01:24:22'),
+(50, 21, 0.00, NULL, NULL, '', 1, '', '2026-05-13 01:22:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -536,7 +565,7 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `order_items`
@@ -544,27 +573,36 @@ CREATE TABLE IF NOT EXISTS `order_items` (
 
 INSERT INTO `order_items` (`id`, `order_id`, `model_id`, `type`, `order_fabric`, `fabric_meter`, `fabric_id`, `price_fabric`, `sewing_fee`, `description`, `status`, `created_at`, `updated_at`) VALUES
 (23, 11, 5, 'afghan', 'without_fabric', '0', 0, 0.00, 850.00, '', 1, '2026-05-01 21:02:33', NULL),
-(24, 12, 4, 'vest', 'without_fabric', '0', 0, 0.00, 800.00, '', 1, '2026-05-01 22:26:38', NULL),
-(25, 12, 7, 'afghan', 'with_fabric', '5', 6, 250.00, 600.00, '', 1, '2026-05-01 23:52:24', NULL),
-(26, 13, 5, 'afghan', 'with_fabric', '6', 6, 300.00, 850.00, 'ییی', 1, '2026-05-02 02:12:05', NULL),
-(29, 14, 5, 'afghan', 'without_fabric', '0', 0, 0.00, 850.00, '', 1, '2026-05-02 02:14:18', NULL),
-(30, 15, 5, 'afghan', 'with_fabric', '5', 6, 250.00, 850.00, '', 1, '2026-05-05 17:12:34', NULL),
-(31, 16, 7, 'afghan', 'with_fabric', '33', 6, 1650.00, 600.00, '', 1, '2026-05-05 17:14:07', NULL),
-(32, 16, 5, 'afghan', 'with_fabric', '6', 6, 300.00, 850.00, '', 1, '2026-05-05 17:19:47', NULL),
-(33, 17, 5, 'afghan', 'with_fabric', '2', 6, 100.00, 850.00, '', 1, '2026-05-05 17:21:45', NULL),
-(37, 14, 5, 'afghan', 'without_fabric', '0', 0, 0.00, 850.00, '', 1, '2026-05-05 22:51:39', NULL),
-(38, 14, 4, 'vest', 'without_fabric', '0', 0, 0.00, 800.00, '', 1, '2026-05-05 22:54:25', NULL),
-(40, 18, 5, 'afghan', 'without_fabric', '0', 0, 0.00, 850.00, '', 1, '2026-05-06 01:44:03', NULL),
-(41, 19, 5, 'afghan', 'without_fabric', '0', 0, 0.00, 850.00, '', 1, '2026-05-08 23:42:56', NULL),
-(42, 20, 7, 'afghan', 'with_fabric', '2', 6, 100.00, 600.00, '', 1, '2026-05-09 00:03:02', NULL),
-(43, 21, 7, 'afghan', 'with_fabric', '2', 6, 100.00, 600.00, '', 1, '2026-05-09 00:04:02', NULL),
-(44, 22, 5, 'afghan', 'with_fabric', '5', 6, 250.00, 850.00, '', 1, '2026-05-11 15:59:06', NULL),
-(45, 22, 5, 'afghan', 'with_fabric', '6', 11, 420.00, 850.00, '', 1, '2026-05-11 16:06:49', NULL),
-(46, 23, 5, 'afghan', 'with_fabric', '6', 6, 300.00, 850.00, '', 1, '2026-05-11 16:15:12', NULL),
-(48, 24, 5, 'afghan', 'without_fabric', '0', 0, 0.00, 850.00, '', 1, '2026-05-11 22:01:17', NULL),
-(49, 24, 7, 'afghan', 'with_fabric', '5', 9, 350.00, 600.00, '', 1, '2026-05-11 22:01:58', NULL),
-(50, 25, 5, 'afghan', 'with_fabric', '3', 6, 150.00, 850.00, '', 1, '2026-05-11 23:33:29', NULL),
-(51, 26, 5, 'afghan', 'without_fabric', '0', 0, 0.00, 850.00, '', 1, '2026-05-11 23:48:10', NULL);
+(55, 29, 5, 'afghan', 'with_fabric', '3', 6, 150.00, 850.00, '', 1, '2026-05-12 17:06:57', NULL),
+(56, 30, 5, 'afghan', 'with_fabric', '5', 6, 250.00, 850.00, '', 1, '2026-05-12 17:11:59', NULL),
+(57, 31, 7, 'afghan', 'with_fabric', '6', 6, 300.00, 600.00, '', 1, '2026-05-12 17:15:38', NULL),
+(58, 32, 5, 'afghan', 'with_fabric', '5', 6, 250.00, 850.00, '', 1, '2026-05-12 17:16:03', NULL),
+(59, 33, 5, 'afghan', 'with_fabric', '4', 6, 200.00, 850.00, '', 1, '2026-05-12 17:16:26', NULL),
+(60, 34, 5, 'afghan', 'with_fabric', '3', 6, 150.00, 850.00, '', 1, '2026-05-12 17:36:41', NULL),
+(61, 34, 4, 'vest', 'without_fabric', '0', 6, 0.00, 800.00, 'aaaa', 1, '2026-05-12 17:36:56', NULL),
+(63, 35, 5, 'afghan', 'without_fabric', '0', 6, 0.00, 850.00, '', 1, '2026-05-12 17:41:48', NULL),
+(64, 36, 5, 'afghan', 'without_fabric', '0', 6, 0.00, 850.00, '', 1, '2026-05-12 17:42:23', NULL),
+(65, 37, 5, 'afghan', 'with_fabric', '3', 6, 150.00, 850.00, '', 1, '2026-05-12 17:47:56', NULL),
+(66, 37, 4, 'vest', NULL, '0', NULL, NULL, 800.00, '', 1, '2026-05-12 17:48:07', NULL),
+(67, 37, 7, 'afghan', NULL, '0', NULL, NULL, 600.00, '', 1, '2026-05-12 17:48:23', NULL),
+(68, 38, 5, 'afghan', 'with_fabric', '4', 6, 200.00, 850.00, '', 1, '2026-05-12 17:50:59', NULL),
+(69, 39, 5, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-12 18:43:24', NULL),
+(70, 40, 5, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-12 18:44:33', NULL),
+(71, 41, 5, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-12 18:50:00', NULL),
+(72, 42, 5, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-12 19:11:02', NULL),
+(73, 43, 5, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-12 22:34:36', NULL),
+(74, 44, 5, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-12 22:35:26', NULL),
+(75, 45, 5, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-12 23:16:58', NULL),
+(76, 46, 5, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-12 23:29:45', NULL),
+(77, 46, 7, 'afghan', NULL, '0', NULL, NULL, 600.00, '', 1, '2026-05-12 23:55:26', NULL),
+(78, 46, 5, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-12 23:56:58', NULL),
+(79, 47, 0, 'afghan', 'with_fabric', '4', 6, 200.00, 850.00, '', 1, '2026-05-13 01:03:13', NULL),
+(80, 47, 0, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-13 01:03:18', NULL),
+(81, 48, 0, 'afghan', 'with_fabric', '6', 6, 300.00, 850.00, '', 1, '2026-05-13 01:05:04', NULL),
+(82, 48, 0, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-13 01:05:08', NULL),
+(83, 49, 0, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-13 01:21:55', NULL),
+(84, 50, 0, 'afghan', NULL, '0', NULL, NULL, 850.00, '', 1, '2026-05-13 01:22:39', NULL),
+(85, 50, 0, 'afghan', 'with_fabric', '3', 6, 150.00, 850.00, '', 1, '2026-05-13 01:22:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -613,6 +651,71 @@ CREATE TABLE IF NOT EXISTS `positions` (
 INSERT INTO `positions` (`id`, `name`, `who_it`, `state`, `created_at`, `updated_at`) VALUES
 (7, 'مدیر مالی', 'ali', 1, '2025-08-07 00:09:19', NULL),
 (6, 'حسابدار', 'ali', 1, '2025-08-07 00:09:08', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `salary_months`
+--
+
+DROP TABLE IF EXISTS `salary_months`;
+CREATE TABLE IF NOT EXISTS `salary_months` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `employee_id` int NOT NULL,
+  `base_salary` int DEFAULT NULL,
+  `year` int NOT NULL,
+  `month` tinyint NOT NULL,
+  `bonus` int DEFAULT NULL,
+  `deduction` int DEFAULT NULL,
+  `final_salary` int DEFAULT NULL,
+  `status` int NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `salary_months`
+--
+
+INSERT INTO `salary_months` (`id`, `employee_id`, `base_salary`, `year`, `month`, `bonus`, `deduction`, `final_salary`, `status`, `created_at`, `updated_at`) VALUES
+(4, 101, 20000, 1405, 2, NULL, NULL, NULL, 0, '2026-05-13 19:24:45', NULL),
+(5, 98, NULL, 1405, 2, NULL, NULL, NULL, 0, '2026-05-13 19:37:21', NULL),
+(6, 101, 20000, 1405, 1, NULL, NULL, NULL, 0, '2026-05-13 19:53:27', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `salary_payments`
+--
+
+DROP TABLE IF EXISTS `salary_payments`;
+CREATE TABLE IF NOT EXISTS `salary_payments` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `employee_id` int NOT NULL,
+  `salary_month_id` int NOT NULL,
+  `paid_amount` int NOT NULL,
+  `date` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(1024) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  `who_it` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `salary_payments`
+--
+
+INSERT INTO `salary_payments` (`id`, `employee_id`, `salary_month_id`, `paid_amount`, `date`, `description`, `status`, `who_it`, `created_at`, `updated_at`) VALUES
+(7, 98, 1, 200, '1778683819', '', 1, 'for suport', '2026-05-13 19:20:22', NULL),
+(8, 101, 2, 2000, '1778683908', '', 1, 'for suport', '2026-05-13 19:21:51', '2026-05-13 19:29:25'),
+(9, 98, 1, 333, '1778683973', '', 1, 'for suport', '2026-05-13 19:22:56', NULL),
+(10, 98, 3, 33, '1778683976', '', 1, 'for suport', '2026-05-13 19:23:10', NULL),
+(11, 101, 4, 332, '1778684081', '', 1, 'for suport', '2026-05-13 19:24:45', NULL),
+(12, 101, 4, 25, '1778685785', '', 1, 'for suport', '2026-05-13 19:53:12', NULL),
+(13, 101, 6, 500, '1774985400', '', 1, 'for suport', '2026-05-13 19:53:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -681,7 +784,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -690,7 +793,10 @@ CREATE TABLE IF NOT EXISTS `transactions` (
 INSERT INTO `transactions` (`id`, `user_id`, `ref_id`, `type`, `total_amount`, `paid_amount`, `status`, `created_at`, `updated_at`) VALUES
 (3, 17, 13, 1, 5200.00, 500.00, 1, '2026-05-02 02:12:34', NULL),
 (4, 17, 20, 1, 14000.00, 500.00, 1, '2026-05-09 00:03:10', NULL),
-(5, 21, 24, 1, 20020.00, 200.00, 1, '2026-05-11 22:02:15', NULL);
+(5, 21, 24, 1, 20020.00, 200.00, 1, '2026-05-11 22:02:15', NULL),
+(6, 21, 27, 1, 22720.00, 33.00, 1, '2026-05-11 23:53:47', NULL),
+(7, 21, 28, 1, 24700.00, 500.00, 1, '2026-05-11 23:56:49', NULL),
+(8, 20, 33, 1, 1050.00, 500.00, 1, '2026-05-12 17:16:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -722,7 +828,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `password`, `address`, `image`, `description`, `state`, `who_it`, `created_at`, `updated_at`) VALUES
 (21, 'mohammad jan', '334456', NULL, '$2y$10$1KlfVgOmI0YVR5Zag4WUTO1lrnE5mOk.7m9Al0QZQZWc5kKeDoMMi', '', NULL, '', 1, 'for suport', '2026-05-11 17:47:31', NULL),
-(19, 'ali jan', '1111', NULL, '$2y$10$Glvj00HVEbfdvKeWkxIhie6TGRnUhGENpTqC9vwXO5IKCHFhdmCq.', 'address dfsdf sdf', '2026-04-25-18-12-53_69ecc4dd423f2.jpg', 'descr fomr', 1, 'for suport', '2026-04-25 18:12:53', NULL),
 (20, 'ahmad jan', '3322', NULL, '$2y$10$ZwaEYRj3WMVUlWz3vYBnsOZVbyTE.xJRFe4Nds3Sn3XPx5YEwgxuG', 'address', '2026-05-11-17-20-55_6a01d0af245ea.png', 'dew all', 1, 'for suport', '2026-05-11 17:20:55', NULL);
 
 -- --------------------------------------------------------
