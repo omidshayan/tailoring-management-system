@@ -63,42 +63,43 @@ class Salary extends App
         exit();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // edit employee page
-    public function editEmployee($id)
+    // edit salary page
+    public function editSalary($id)
     {
         $this->middleware(true, true, 'general', true);
 
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
-        if ($employee != null) {
-            require_once(BASE_PATH . '/resources/views/app/employees/edit-employee.php');
+        $item = $this->db->select('SELECT * FROM salary_payments WHERE id = ?', [$id])->fetch();
+
+        if ($item != null) {
+            require_once(BASE_PATH . '/resources/views/app/salaries/edit-salary.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // edit employee store
     public function editEmployeeStore($request, $id)
