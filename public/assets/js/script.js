@@ -59,25 +59,35 @@ closeLeftMenu.addEventListener("click", function () {
 });
 
 // Sidebar submenu
-$(".sidebar-dropdown-menu").slideUp("fast");
+$(".sidebar-dropdown-menu").slideUp(0);
+
 $(
   ".sidebar-menu-item.has-dropdown > a, .sidebar-dropdown-menu-item.has-dropdown > a",
 ).click(function (e) {
   e.preventDefault();
 
-  if (!$(this).parent().hasClass("focused")) {
-    $(this).parent().parent().find(".sidebar-dropdown-menu").slideUp("fast");
-    $(this).parent().parent().find(".has-dropdown").removeClass("focused");
+  let parent = $(this).parent();
+
+  if (parent.hasClass("focused")) {
+    parent.removeClass("focused");
+    parent.find(".sidebar-dropdown-menu").stop(true, true).slideUp("fast");
+    return;
   }
-  $(this).next().slideToggle("fast");
-  $(this).parent().toggleClass("focused");
+
+  $(
+    ".sidebar-menu-item.has-dropdown, .sidebar-dropdown-menu-item.has-dropdown",
+  ).removeClass("focused");
+  $(".sidebar-dropdown-menu").stop(true, true).slideUp("fast");
+
+  parent.addClass("focused");
+  parent.find(".sidebar-dropdown-menu").stop(true, true).slideDown("fast");
 });
 
 $(".sidebar-toggle").click(function () {
   $(".sidebar").toggleClass("collapsed");
 
   $(".sidebar.collapsed").mouseleave(function () {
-    $(".sidebar-dropdown-menu").slideUp("fast");
+    $(".sidebar-dropdown-menu").stop(true, true).slideUp("fast");
     $(
       ".sidebar-menu-item.has-dropdown, .sidebar-dropdown-menu-item.has-dropdown",
     ).removeClass("focused");
@@ -87,7 +97,7 @@ $(".sidebar-toggle").click(function () {
 $(".sidebar-overlay").click(function () {
   $(".sidebar").addClass("collapsed");
 
-  $(".sidebar-dropdown-menu").slideUp("fast");
+  $(".sidebar-dropdown-menu").stop(true, true).slideUp("fast");
   $(
     ".sidebar-menu-item.has-dropdown, .sidebar-dropdown-menu-item.has-dropdown",
   ).removeClass("focused");
@@ -96,6 +106,7 @@ $(".sidebar-overlay").click(function () {
 if (window.innerWidth < 768) {
   $(".sidebar").addClass("collapsed");
 }
+// end sidebar
 
 // dark and light mode
 document.addEventListener("DOMContentLoaded", function () {

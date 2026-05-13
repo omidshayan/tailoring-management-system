@@ -56,7 +56,7 @@
 
           <!-- oders -->
           <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
+            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown <?= isActive(['add-order', 'orders']) ?>">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 16 16">
@@ -72,12 +72,12 @@
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('add-order') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت سفارش جدید</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('add-order', 'sub-menu-focused') ?>">ثبت سفارش جدید</li>
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('orders') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش سفارشات</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('orders', 'sub-menu-focused') ?>">نمایش سفارشات</li>
                   </a>
                 <?php endif; ?>
               </ul>
@@ -86,7 +86,7 @@
 
           <!-- fabrics -->
           <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
+            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown  <?= isActive(['fabric-inventory', 'buy-fabric', 'fabric-purchases', 'add-fabric', 'fabrics']) ?>">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
@@ -101,30 +101,30 @@
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('fabric-inventory') ?>">
-                    <li class="sidebar-dropdown-menu-item">موجودی پارچه‌ها</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('fabric-inventory', 'sub-menu-focused') ?>">موجودی پارچه‌ها</li>
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('buy-fabric') ?>">
-                    <li class="sidebar-dropdown-menu-item">خرید پارچه</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('buy-fabric', 'sub-menu-focused') ?>">خرید پارچه</li>
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('fabric-purchases') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش خرید‌ها</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('fabric-purchases', 'sub-menu-focused') ?>">نمایش خرید‌ها</li>
                   </a>
                 <?php endif; ?>
                 <hr class="hr">
                 <hr class="hr">
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('add-fabric') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت پارچه جدید</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('add-fabric', 'sub-menu-focused') ?>">ثبت پارچه جدید</li>
                   </a>
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('fabrics') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش پارچه‌ها</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('fabrics', 'sub-menu-focused') ?>">نمایش پارچه‌ها</li>
                   </a>
                 <?php endif; ?>
               </ul>
@@ -133,7 +133,7 @@
 
           <!-- sallaries -->
           <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
+            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown <?= isActive(['add-salary', 'employee-salaries', 'salaries']) ?>">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
@@ -148,17 +148,17 @@
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('add-salary') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت معاش</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('add-salary', 'sub-menu-focused') ?>">ثبت معاش</li>
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('employee-salaries') ?>">
-                    <li class="sidebar-dropdown-menu-item">معاشات</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('employee-salaries', 'sub-menu-focused') ?>">معاشات</li>
                   </a>
                 <?php endif; ?>
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('salaries') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش پرداختی‌ها</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('salaries', 'sub-menu-focused') ?>">نمایش پرداختی‌ها</li>
                   </a>
                 <?php endif; ?>
               </ul>
@@ -167,7 +167,7 @@
 
           <!-- employees -->
           <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
+            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown <?= isActive(['add-employee', 'employees']) ?>">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
@@ -182,13 +182,13 @@
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('add-employee') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت کارمند جدید</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('add-employee', 'sub-menu-focused') ?>">ثبت کارمند جدید</li>
                   </a>
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('employees') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش کارمندان</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('employees', 'sub-menu-focused') ?>">نمایش کارمندان</li>
                   </a>
                 <?php endif; ?>
               </ul>
@@ -197,7 +197,7 @@
 
           <!-- customer -->
           <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
+            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown <?= isActive(['add-user', 'users']) ?>">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
@@ -212,13 +212,13 @@
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('add-user') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت مشتری جدید</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('add-user', 'sub-menu-focused') ?>">ثبت مشتری جدید</li>
                   </a>
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('users') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش مشتریان</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('users', 'sub-menu-focused') ?>">نمایش مشتریان</li>
                   </a>
                 <?php endif; ?>
 
@@ -234,7 +234,7 @@
 
           <!-- expenses -->
           <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
+            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown <?= isActive(['add-expense', 'expenses', 'expenses_categories']) ?>">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 24 24">
@@ -249,19 +249,19 @@
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('add-expense') ?>">
-                    <li class="sidebar-dropdown-menu-item">ثبت مصرفی</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('add-expense', 'sub-menu-focused') ?>">ثبت مصرفی</li>
                   </a>
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('expenses') ?>">
-                    <li class="sidebar-dropdown-menu-item">نمایش مصارف</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('expenses', 'sub-menu-focused') ?>">نمایش مصارف</li>
                   </a>
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('expenses_categories') ?>">
-                    <li class="sidebar-dropdown-menu-item">مدیریت دسته بندی‌ها</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('expenses_categories', 'sub-menu-focused') ?>">مدیریت دسته بندی‌ها</li>
                   </a>
                 <?php endif; ?>
               </ul>
@@ -311,7 +311,7 @@
 
           <!-- basic sections -->
           <?php if ($this->hasAccess('general')): ?>
-            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown">
+            <li class="sidebar-menu ri-dashboard-line sidebar-menu-item has-dropdown <?= isActive(['models']) ?>">
               <a href="#" class="d-flex align-center justify-between dddd">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 16 16">
@@ -327,7 +327,7 @@
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
                   <a href="<?= url('models') ?>">
-                    <li class="sidebar-dropdown-menu-item">مدیریت مدل‌ها</li>
+                    <li class="sidebar-dropdown-menu-item <?= isActive('models', 'sub-menu-focused') ?>">مدیریت مدل‌ها</li>
                   </a>
                 <?php endif; ?>
                 <!-- <?php if ($this->hasAccess('general')): ?>
@@ -375,7 +375,7 @@
           <?php endif; ?> -->
 
           <!-- profile -->
-          <li class="sidebar-menu">
+          <li class="sidebar-menu <?= isActive('profile') ?>">
             <a href="<?= url('profile') ?>" class="d-flex align-center justify-between">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w17" viewBox="0 0 16 16">
