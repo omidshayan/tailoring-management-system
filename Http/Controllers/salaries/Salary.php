@@ -45,42 +45,45 @@ class Salary extends App
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // show employees
-    public function showEmployees()
+    // show salaries
+    public function salaries()
     {
         $this->middleware(true, true, 'general');
-        $employees = $this->db->select(
-            'SELECT * FROM employees 
-            WHERE super_admin IS NULL 
-            OR super_admin != ? 
-            ORDER BY id DESC',
-            [3]
-        )->fetchAll();
-        require_once(BASE_PATH . '/resources/views/app/employees/show-employees.php');
+
+        $salaries = $this->db->select("
+            SELECT 
+                sp.*,
+                e.name AS employee_name
+            FROM salary_payments sp
+            LEFT JOIN employees e ON sp.employee_id = e.id
+            ORDER BY sp.id DESC
+        ")->fetchAll();
+
+        require_once(BASE_PATH . '/resources/views/app/salaries/salaries.php');
         exit();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // edit employee page
     public function editEmployee($id)
