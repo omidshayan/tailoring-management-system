@@ -30,40 +30,88 @@ class Salary extends App
         $request['year'] = tr_num(jdate('Y', $timestamp), 'en');
         $request['month'] = tr_num(jdate('m', $timestamp), 'en');
 
-        $employee = $this->db->select('SELECT salary_price FROM employees WHERE id = ?', [$request['employee_id']])->fetch();
-
-        $salary_months = $this->db->select('SELECT id FROM salary_months WHERE employee_id = ? AND `year` = ? AND `month` = ? LIMIT 1', [$request['employee_id'], $request['year'], $request['month']])->fetch();
-
-        if (!$salary_months) {
-            $salary_infos = [
-                'employee_id' => $request['employee_id'],
-                'base_salary' => $employee['salary_price'],
-                'year' => $request['year'],
-                'month' => $request['month'],
-            ];
-            $this->db->insert('salary_months', array_keys($salary_infos), $salary_infos);
-        }
-
         try {
+
             $this->db->beginTransaction();
 
+            // get employee salary
+            $employee = $this->db->select(
+                'SELECT salary_price FROM employees WHERE id = ?',
+                [$request['employee_id']]
+            )->fetch();
+
+            // check employee exists
+            if (!$employee) {
+                $this->flashMessage('error', 'کارمند پیدا نشد');
+            }
+
+            if ($employee['salary_price'] == null) {
+                $this->flashMessage('error', 'معاش کارمند ثبت نشده است!');
+            }
+
+            // check salary month exists
+            $salary_months = $this->db->select(
+                'SELECT id FROM salary_months 
+                WHERE employee_id = ? 
+                AND `year` = ? 
+                AND `month` = ? 
+                LIMIT 1',
+                [
+                    $request['employee_id'],
+                    $request['year'],
+                    $request['month']
+                ]
+            )->fetch();
+
+            // create month if not exists
+            if (!$salary_months) {
+
+                $salary_infos = [
+                    'employee_id' => $request['employee_id'],
+                    'base_salary' => $employee['salary_price'],
+                    'year' => $request['year'],
+                    'month' => $request['month'],
+                ];
+
+                $this->db->insert(
+                    'salary_months',
+                    array_keys($salary_infos),
+                    $salary_infos
+                );
+
+                $salaryMonthId = $this->db->lastInsertId();
+            } else {
+
+                $salaryMonthId = $salary_months['id'];
+            }
+
+            // payment insert
             $payment = [
                 'employee_id' => $request['employee_id'],
-                'salary_month_id' => $salary_months['id'],
+                'salary_month_id' => $salaryMonthId,
                 'paid_amount' => $request['paid_amount'],
                 'date' => $request['date'],
                 'description' => $request['description'],
                 'who_it' => $request['who_it'],
             ];
-            // insert new employee
-            $this->db->insert('salary_payments', array_keys($payment), $payment);
+
+            $this->db->insert(
+                'salary_payments',
+                array_keys($payment),
+                $payment
+            );
 
             $this->db->commit();
 
             $this->flashMessage('success', _success);
         } catch (Exception $e) {
+
             $this->db->rollBack();
-            $this->flashMessage('error', 'خطا در ثبت اطلاعات: ' . $e->getMessage());
+
+            $this->flashMessage(
+                'error',
+                'خطا در ثبت اطلاعات: ' . $e->getMessage()
+            );
         }
     }
 
