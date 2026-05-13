@@ -8,7 +8,10 @@ class Salary extends App
     public function addSalary()
     {
         $this->middleware(true, true, 'general', true);
-        require_once(BASE_PATH . '/resources/views/app/employees/add-employee.php');
+
+        $employees = $this->db->select('SELECT * FROM employees WHERE `state` = ? AND `role` = ?', [1, 1])->fetchAll();
+
+        require_once(BASE_PATH . '/resources/views/app/salaries/add-salary.php');
     }
 
 

@@ -1,54 +1,44 @@
     <?php
-    $title = 'ثبت کارمند';
+    $title = 'ثبت معاش جدید';
     include_once('resources/views/layouts/header.php');
     include_once('public/alerts/check-inputs.php');
-    include_once('public/alerts/toastr.php'); ?>
+    include_once('public/alerts/toastr.php');
+    include_once('resources/views/scripts/datePicker.php');
+    ?>
 
     <div class="content">
-        <div class="content-title">ثبت کارمند جدید</div>
+        <div class="content-title">ثبت معاش جدید</div>
 
         <div class="box-container">
             <div class="insert">
                 <form action="<?= url('employee-store') ?>" method="POST" enctype="multipart/form-data">
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">نام و تخلص <?= _star ?> </div>
-                            <input type="text" class="checkInput" name="employee_name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" />
+                            <div class="label-form mb5 fs14">انتخاب کارمند <?= _star ?> </div>
+                            <select name="employee_id" class="checkSelect">
+                                <option selected disabled>کارمند را انتخاب نمایید</option>
+                                <?php
+                                foreach ($employees as $employee) { ?>
+                                    <option value="<?= $employee['id'] ?>"><?= $employee['employee_name'] ?></option>
+                                <?php }
+                                ?>
+                            </select>
                         </div>
                         <div class="one">
-                            <div class="label-form mb5 fs14">شماره <?= _star ?> </div>
-                            <input type="number" class="checkInput" id="phone" name="phone" placeholder="شماره را وارد نمایید" />
+                            <div class="label-form mb5 fs14">مبلغ پرداختی <?= _star ?> </div>
+                            <input type="number" class="checkInput" id="phone" name="paid_amount" placeholder="مبلغ پرداختی معاش را وارد نمایید" />
                         </div>
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
-                            <div class="label-form mb5 fs14">رمزعبور <?= _star ?></div>
-                            <input type="password" class="checkInput" id="password" name="password" value="" placeholder="رمزعبور را وارد نمایید" />
-                        </div>
-                        <div class="one">
-                            <div class="label-form mb5 fs14">معاش</div>
-                            <input type="text" name="salary_price" placeholder="معاش را وارد نمایید" maxlength="40" />
-                        </div>
-                    </div>
-
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form mb5 fs14">آدرس</div>
-                            <textarea name="address" placeholder="آدرس را وارد نمایید"></textarea>
+                            <div class="label-form mb5 fs14">تاریخ پرداخت را انتخاب کنید <?= _star ?></div>
+                            <input type="text" data-jdp class="form-control date-view checkInput" placeholder="تاریخ را انتخاب کنید">
+                            <input type="hidden" class="date-server checkInput" name="date">
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">توضیحات</div>
                             <textarea name="description" placeholder="توضیحات را وارد نمایید"></textarea>
                         </div>
-                    </div>
-                    <div class="inputs d-flex">
-                        <div class="one">
-                            <div class="label-form mb5 fs14">انتخاب عکس</div>
-                            <input type="file" id="image" name="image" accept="image/*">
-                        </div>
-                    </div>
-                    <div id="imagePreview">
-                        <img src="" class="img" alt="">
                     </div>
 
                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" />
@@ -57,14 +47,5 @@
             </div>
         </div>
     </div>
-
-    <!-- copy phone at password field -->
-    <script>
-        document.getElementById('phone').addEventListener('input', function() {
-
-            document.getElementById('password').value = this.value;
-
-        });
-    </script>
 
     <?php include_once('resources/views/layouts/footer.php') ?>
