@@ -1934,7 +1934,10 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     height: 500px;
     overflow-y: scroll;
 }
-
+.ho{
+    max-height: 200px !important;
+    overflow: auto;
+}
 .hover {
     padding: 5px !important;
 }

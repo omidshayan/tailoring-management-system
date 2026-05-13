@@ -55,15 +55,19 @@
 
             <ul class="mt10 text-right ho">
               <?php
+              $number = 1;
               foreach ($ordersList as $order) { ?>
                 <a href="<?= url('order-details/' . $order['id']) ?>" class="color">
                   <li class="p5">
+                    <?= $number ?> -
                     سفارش
                     <?= $order['name'] ?>
                     ثبت شد.
                   </li>
                 </a>
-              <?php }
+              <?php
+                $number++;
+              }
               ?>
             </ul>
           </div>
