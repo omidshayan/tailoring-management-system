@@ -17,13 +17,13 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">شماره <?= _star ?> </div>
-                            <input type="number" class="checkInput" name="phone" placeholder="شماره را وارد نمایید" />
+                            <input type="number" class="checkInput" id="phone" name="phone" placeholder="شماره را وارد نمایید" />
                         </div>
                     </div>
                     <div class="inputs d-flex">
                         <div class="one">
                             <div class="label-form mb5 fs14">رمزعبور <?= _star ?></div>
-                            <input type="password" class="checkInput" name="password" value="" placeholder="رمزعبور را وارد نمایید" />
+                            <input type="password" class="checkInput" id="password" name="password" value="" placeholder="رمزعبور را وارد نمایید" />
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">معاش</div>
@@ -57,5 +57,14 @@
             </div>
         </div>
     </div>
+
+    <!-- copy phone at password field -->
+    <script>
+        document.getElementById('phone').addEventListener('input', function() {
+
+            document.getElementById('password').value = this.value;
+
+        });
+    </script>
 
     <?php include_once('resources/views/layouts/footer.php') ?>
