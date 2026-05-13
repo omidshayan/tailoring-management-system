@@ -57,6 +57,9 @@ require_once 'orders/orders.php';
 // fabrics
 require_once 'fabrics/fabrics.php';
 
+// salaries
+require_once 'salaries/salaries.php';
+
 
 function uri($reservedUrl, $class, $method, $requestMethod = 'GET')
 {
