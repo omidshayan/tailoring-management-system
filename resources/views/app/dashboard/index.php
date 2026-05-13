@@ -1,22 +1,8 @@
-    <!-- start sidebar -->
     <?php
     $title = 'داشبورد';
     include_once('resources/views/layouts/header.php') ?>
-    <!-- end sidebar -->
 
-    <!-- tooltip -->
-    <!-- <div class="tool-c text-underline color-orange">
-      (راهنما)
-      <div class="tool-t">
-        text for show
-        <div class="tool-arrow"></div>
-      </div>
-    </div> -->
-
-    <!-- Start content -->
     <div class="content">
-
-      <!-- start report -->
       <div class="report">
         <div class="report-item">
           <div class="report-icon">
@@ -69,6 +55,5 @@
       </div>
 
     </div>
-    <!-- End content -->
 
     <?php include_once('resources/views/layouts/footer.php') ?>
