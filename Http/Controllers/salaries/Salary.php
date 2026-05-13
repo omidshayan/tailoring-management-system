@@ -143,4 +143,22 @@ class Salary extends App
         $this->db->update('salary_payments', $item['id'], ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
+
+    // employee Salaries
+    public function employeeSalaries($id)
+    {
+        $this->middleware(true, true, 'general');
+
+        $item = $this->db->select('SELECT * FROM salary_payments WHERE id = ?', [$id])->fetch();
+
+        if (!$item) {
+            require_once BASE_PATH . '/404.php';
+            exit;
+        }
+
+        $newStatus = $item['status'] == 1 ? 2 : 1;
+
+        $this->db->update('salary_payments', $item['id'], ['status'], [$newStatus]);
+        $this->send_json_response(true, _success, $newStatus);
+    }
 }
