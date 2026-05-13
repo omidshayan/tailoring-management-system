@@ -126,43 +126,21 @@ class Salary extends App
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // change status employee
-    public function changeStatusEmployee($id)
+    // change status salary
+    public function changeStatusSalary($id)
     {
         $this->middleware(true, true, 'general');
 
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
+        $item = $this->db->select('SELECT * FROM salary_payments WHERE id = ?', [$id])->fetch();
 
-        if (!$employee) {
+        if (!$item) {
             require_once BASE_PATH . '/404.php';
             exit;
         }
 
-        $newStatus = $employee['state'] == 1 ? 2 : 1;
+        $newStatus = $item['status'] == 1 ? 2 : 1;
 
-        $this->db->update('employees', $employee['id'], ['state'], [$newStatus]);
+        $this->db->update('salary_payments', $item['id'], ['status'], [$newStatus]);
         $this->send_json_response(true, _success, $newStatus);
     }
 }
