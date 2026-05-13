@@ -145,20 +145,23 @@ class Salary extends App
     }
 
     // employee Salaries
-    public function employeeSalaries($id)
+    public function employeeSalaries()
     {
         $this->middleware(true, true, 'general');
 
-        $item = $this->db->select('SELECT * FROM salary_payments WHERE id = ?', [$id])->fetch();
+        $salaries = $this->db->select("
+            SELECT 
+                e.id,
+                e.employee_name,
+                SUM(sp.paid_amount) AS total_paid
+            FROM salary_payments sp
+            LEFT JOIN employees e 
+                ON sp.employee_id = e.id
+            WHERE sp.status = ?
+            GROUP BY e.id, e.employee_name
+            ORDER BY total_paid DESC
+        ", [1])->fetchAll();
 
-        if (!$item) {
-            require_once BASE_PATH . '/404.php';
-            exit;
-        }
-
-        $newStatus = $item['status'] == 1 ? 2 : 1;
-
-        $this->db->update('salary_payments', $item['id'], ['status'], [$newStatus]);
-        $this->send_json_response(true, _success, $newStatus);
+        require_once(BASE_PATH . '/resources/views/app/salaries/employee-salaries.php');
     }
 }
