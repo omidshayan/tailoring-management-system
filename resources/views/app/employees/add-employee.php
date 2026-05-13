@@ -27,7 +27,7 @@
                         </div>
                         <div class="one">
                             <div class="label-form mb5 fs14">معاش</div>
-                            <input type="text" name="father_name" placeholder="نام پدر را وارد نمایید" maxlength="40" />
+                            <input type="text" name="salary_price" placeholder="معاش را وارد نمایید" maxlength="40" />
                         </div>
                     </div>
 

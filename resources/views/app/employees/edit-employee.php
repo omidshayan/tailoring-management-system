@@ -17,18 +17,18 @@ include_once('public/alerts/error.php');
                         <input type="text" class="checkInput" name="employee_name" placeholder="نام و تخلص را وارد نمایید" maxlength="40" value="<?= $employee['employee_name'] ?>" />
                     </div>
                     <div class="one">
-                        <div class="label-form mb5 fs14">نام پدر</div>
-                        <input type="text" name="father_name" placeholder="نام پدر را وارد نمایید" maxlength="40" value="<?= $employee['father_name'] ?>" />
+                        <div class="label-form mb5 fs14">شماره <?= _star ?> </div>
+                        <input type="number" class="checkInput" name="phone" placeholder="شماره را وارد نمایید" value="<?= $employee['phone'] ?>" />
                     </div>
                 </div>
                 <div class="inputs d-flex">
                     <div class="one">
-                        <div class="label-form mb5 fs14">شماره <?= _star ?> </div>
-                        <input type="number" class="checkInput" name="phone" placeholder="شماره را وارد نمایید" value="<?= $employee['phone'] ?>" />
+                        <div class="label-form mb5 fs14">رمزعبور<?= _star ?> </div>
+                        <input type="password" name="password" placeholder="رمزعبور را وارد نمایید" />
                     </div>
                     <div class="one">
-                        <div class="label-form mb5 fs14">رمزعبور<?= _star ?> </div>
-                        <input type="password" disabled placeholder="رمزعبور را وارد نمایید" />
+                        <div class="label-form mb5 fs14">معاش</div>
+                        <input type="text" name="salary_price" value="<?= $employee['salary_price'] ?>" placeholder="معاش را وارد نمایید" maxlength="40" />
                     </div>
                 </div>
                 <div class="inputs d-flex">

@@ -58,7 +58,7 @@ class Employee extends App
     public function showEmployees()
     {
         $this->middleware(true, true, 'general');
-       $employees = $this->db->select(
+        $employees = $this->db->select(
             'SELECT * FROM employees 
             WHERE super_admin IS NULL 
             OR super_admin != ? 
@@ -101,6 +101,12 @@ class Employee extends App
                 $this->flashMessage('error', 'شماره موبایل وارد شده قبلاً توسط کارمند دیگری ثبت شده است.');
                 return;
             }
+        }
+
+        if ($request['password'] == '') {
+            unset($request['password']);
+        } else {
+            $request['password'] = $this->hash($request['password']);
         }
 
         // check upload photo
