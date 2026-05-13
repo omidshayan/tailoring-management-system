@@ -30,6 +30,20 @@ class Salary extends App
         $request['year'] = tr_num(jdate('Y', $timestamp), 'en');
         $request['month'] = tr_num(jdate('m', $timestamp), 'en');
 
+        $employee = $this->db->select('SELECT salary_price FROM employees WHERE id = ?', [$request['salary_price']])->fetch();
+
+        $month = $this->db->select('SELECT id FROM salary_months WHERE employee_id = ? AND `year` = ? AND `month` = ? LIMIT 1', [$request['employee_id'], $request['year'], $request['month']])->fetch();
+
+        if (!$month) {
+            $salary_infos = [
+                'employee_id' => $request['employee_id'],
+                'base_salary' => $employee['salary_price'],
+                'year' => $request['year'],
+                'month' => $request['month'],
+            ];
+            $this->db->insert('salary_payments', array_keys($request), $request);
+        }
+
         try {
             $this->db->beginTransaction();
 
