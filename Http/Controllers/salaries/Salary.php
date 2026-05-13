@@ -68,9 +68,19 @@ class Salary extends App
     {
         $this->middleware(true, true, 'general', true);
 
-        $item = $this->db->select('SELECT * FROM salary_payments WHERE id = ?', [$id])->fetch();
+        $item = $this->db->select("
+            SELECT 
+                sp.*,
+                e.employee_name AS employee_name
+            FROM salary_payments sp
+            LEFT JOIN employees e ON sp.employee_id = e.id
+            WHERE sp.id = ?
+        ", [$id])->fetch();
 
         if ($item != null) {
+
+            $employees = $this->db->select('SELECT * FROM employees WHERE `state` = ? AND `role` = ?', [1, 1])->fetchAll();
+
             require_once(BASE_PATH . '/resources/views/app/salaries/edit-salary.php');
             exit();
         } else {
