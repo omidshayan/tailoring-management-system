@@ -1,81 +1,75 @@
 <?php
-$title = 'جزئیات کاربر: ' . $employee['employee_name'];
+$title = 'جزئیات کاربر: ' . $item['employee_name'];
 include_once('resources/views/layouts/header.php');
 include_once('resources/views/scripts/change-status.php');
-include_once('resources/views/scripts/show-img-modal.php');
-$date = explode(' ', $employee['created_at']);
 ?>
 
-<div id="alert" class="alert" style="display: none;">حالم بده، با برنامه نویس مه تماس بگیر :(</div>
-
-<!-- loading and overlay -->
+<div id="alert" class="alert" style="display: none;"></div>
 <div class="overlay" id="loadingOverlay">
     <div class="spinner"></div>
 </div>
-<!-- Start content -->
-<div class="content">
-    <div class="content-title"> جزئیات کاربر : <?= $employee['employee_name'] ?></div>
 
-    <!-- start page content -->
+<div class="content">
+    <div class="content-title"> جزئیات کاربر : <?= $item['employee_name'] ?></div>
+
     <div class="box-container">
 
-        <div class="accordion-title color-orange">مشخصات عمومی</div>
-        <div class="accordion-content">
-            <div class="child-accordioin">
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">نام: </div>
-                    <div class="info-detaile"><?= $employee['employee_name'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">ایمیل: </div>
-                    <div class="info-detaile"><?= ($employee['father_name'] ? $employee['father_name'] : '- - - - ') ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">شماره: </div>
-                    <div class="info-detaile"><?= $employee['phone'] ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">آدرس: </div>
-                    <div class="info-detaile"><?= ($employee['address'] ? $employee['address'] : '- - - - ') ?></div>
-                </div>
-                <div class="detailes-culomn d-flex cursor-p">
-                    <div class="title-detaile">توضیحات: </div>
-                    <div class="info-detaile"><?= ($employee['description'] ? $employee['description'] : '- - - - ') ?></div>
-                </div>
-                <div class="detailes-culomn d-flex align-center cursor-p">
-                    <div class="title-detaile">عکس: </div>
-                    <div class=" m10 flex-justify-align">
-                        <?= $employee['image']
-                            ? '<img class="w50 cursor-p" src="' . asset('public/images/employees/' . $employee['image']) . '" alt="employee image" onclick="openModal(\'' . asset('public/images/employees/' . $employee['image']) . '\')">'
-                            : ' - - - - ' ?>
-                    </div>
-                </div>
-                <div class="detailes-culomn d-flex align-center cursor-p">
-                    <div class="title-detaile"><a href="#" data-url="<?= url('change-status-employee') ?>" data-id="<?= $employee['id'] ?>" class="changeStatus color btn p5 w100 m10 center" id="submit">تغییر وضعیت</a></div>
-                    <div class="info-detaile">
-                        <div class="w100 m10 center status status-column" id="status"><?= ($employee['state'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
-                    </div>
-                </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">نام کارمند</div>
+                <div class="w100 m10 center"><?= $item['employee_name'] ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">مبلغ پرداخت شده</div>
+                <div class="w100 m10 center"><?= $this->formatNumber($item['paid_amount']) . ' <span class="fs11 color-orange"> (افغانی)</span>' ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">تاریخ پرداخت</div>
+                <div class="w100 m10 center"><?= jdate('l Y/m/d', $item['date']) ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">توضیحات</div>
+                <div class="w100 m10 center"><?= ($item['description']) ? $item['description'] : '- - - -' ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">تاریخ ثبت</div>
+                <div class="w100 m10 center"><?= jdate('Y/m/d', strtotime($item['created_at'])) ?></div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">ثبت شده توسط</div>
+                <div class="w100 m10 center"><?= $item['who_it'] ?></div>
             </div>
         </div>
 
-        <!-- salaries -->
-        <div class="accordion-title color-orange">جزئیات مالی</div>
-        <div class="accordion-content">
-            <div class="child-accordioin">
-                <div class="color-red p10 center fs14">
-                    چیزی یافت نشد
+        <div class="details">
+            <div class="detail-item d-flex">
+                <div class="w100 m10 center">
+                    <!-- HTML -->
+                    <div class="w100 m10 center">
+                        <td>
+                            <a href="#" data-url="<?= url('change-status-salary') ?>" data-id="<?= $item['id'] ?>" class="changeStatus color btn p5 w100 m10 center">تغییر وضعیت</a>
+                        </td>
+                    </div>
                 </div>
+                <div class="w100 m10 center status status-column flex-justify-align" id="status"><?= ($item['status'] == 1) ? '<span class="color-green">فعال</span>' : '<span class="color-red">غیرفعال</span>' ?></div>
             </div>
         </div>
 
-        <a href="<?= url('employees') ?>">
+        <a href="<?= url('salaries') ?>">
             <div class="btn center p5">برگشت</div>
         </a>
 
     </div>
-    <!-- end page content -->
 </div>
-<!-- End content -->
 
 <?php include_once('resources/views/layouts/footer.php') ?>

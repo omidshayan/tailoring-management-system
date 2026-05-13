@@ -103,43 +103,50 @@ class Salary extends App
         $this->flashMessageTo('success', _success, url('salaries'));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // employee detiles page
-    public function employeeDetails($id)
+    // salary detiles page
+    public function salaryDetails($id)
     {
         $this->middleware(true, true, 'general');
 
-        $employee = $this->db->select('SELECT * FROM employees WHERE id = ?', [$id])->fetch();
+        $item = $this->db->select("
+            SELECT 
+                sp.*,
+                e.employee_name AS employee_name
+            FROM salary_payments sp
+            LEFT JOIN employees e ON sp.employee_id = e.id
+            WHERE sp.id = ?
+        ", [$id])->fetch();
 
-        if ($employee != null) {
-            require_once(BASE_PATH . '/resources/views/app/employees/employee-details.php');
+        if ($item != null) {
+            require_once(BASE_PATH . '/resources/views/app/salaries/salary-details.php');
             exit();
         } else {
             require_once(BASE_PATH . '/404.php');
             exit();
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // change status employee
     public function changeStatusEmployee($id)
