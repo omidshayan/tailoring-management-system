@@ -702,41 +702,4 @@ class App
                 ';
         }
 
-        // check salary month
-        public function checkSalaryMonth($employeeId, $timestamp)
-        {
-                $year = tr_num(jdate('Y', $timestamp), 'en');
-                $month = tr_num(jdate('m', $timestamp), 'en');
-
-                // check exists
-                $salaryMonth = $this->db->select(
-                        "SELECT id FROM salary_months 
-         WHERE employee_id = ? AND `year` = ? AND `month` = ? 
-         LIMIT 1",
-                        [$employeeId, $year, $month]
-                )->fetch();
-
-                if ($salaryMonth) {
-                        return $salaryMonth['id'];
-                }
-
-                // get employee salary
-                $employee = $this->db->select(
-                        "SELECT salary_price FROM employees WHERE id = ?",
-                        [$employeeId]
-                )->fetch();
-
-                if (!$employee) {
-                        return false;
-                }
-
-                // create month
-                $this->db->insert(
-                        'salary_months',
-                        ['employee_id', 'base_salary', 'year', 'month'],
-                        [$employeeId, $employee['salary_price'], $year, $month]
-                );
-
-                return $this->db->lastInsertId();
-        }
 }
