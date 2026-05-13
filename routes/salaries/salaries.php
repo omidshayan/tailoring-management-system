@@ -1,13 +1,11 @@
 <?php
-require_once 'Http/Controllers/employees/Employee.php';
+require_once 'Http/Controllers/salaries/Salary.php';
 
-// add product routes
-uri('add-employee', 'App\Employee', 'addEmployee');
-uri('employees', 'App\Employee', 'showEmployees');
-uri('employee-store', 'App\Employee', 'employeeStore', 'POST');
-uri('employee-details/{id}', 'App\Employee', 'employeeDetails');
-uri('edit-employee/{id}', 'App\Employee', 'editEmployee');
-uri('edit-employee/store/{id}', 'App\Employee', 'editEmployeeStore', 'POST');
-uri('change-status-employee/{id}', 'App\Employee', 'changeStatusEmployee');
-
-uri('search-employee', 'App\Employee', 'searchEmployee', 'POST');
+// salary routes
+uri('add-salary', 'App\Salary', 'addSalary');
+uri('salaries', 'App\Salary', 'showEmployees');
+uri('salary-store', 'App\Salary', 'salaryStore', 'POST');
+uri('salary-details/{id}', 'App\Salary', 'salaryDetails');
+uri('edit-salary/{id}', 'App\Salary', 'editSalary');
+uri('edit-salary/store/{id}', 'App\Salary', 'editSalaryStore', 'POST');
+uri('change-status-salary/{id}', 'App\Salary', 'changeStatusSalary');

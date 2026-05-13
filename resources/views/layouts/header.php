@@ -147,13 +147,13 @@
               </a>
               <ul class="sidebar-dropdown-menu">
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('add-employee') ?>">
+                  <a href="<?= url('add-salary') ?>">
                     <li class="sidebar-dropdown-menu-item">ثبت معاش</li>
                   </a>
                 <?php endif; ?>
 
                 <?php if ($this->hasAccess('general')): ?>
-                  <a href="<?= url('employees') ?>">
+                  <a href="<?= url('salaries') ?>">
                     <li class="sidebar-dropdown-menu-item">نمایش معاشات</li>
                   </a>
                 <?php endif; ?>
