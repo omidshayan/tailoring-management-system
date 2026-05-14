@@ -22,6 +22,28 @@ class Dashboard extends App
 
         $employees = $this->db->select("SELECT COUNT(*) AS total FROM employees WHERE `state` = 1")->fetch();
 
+        $chartOrders = $this->db->select("SELECT DATE(created_at) as order_date, COUNT(*) as total FROM orders WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) GROUP BY DATE(created_at) ORDER BY order_date ASC")->fetchAll();
+
+        $days = [];
+
+        for ($i = 6; $i >= 0; $i--) {
+            $date = date('Y-m-d', strtotime("-$i days"));
+            $days[$date] = 0;
+        }
+
+        foreach ($chartOrders as $row) {
+            $days[$row['order_date']] = (int)$row['total'];
+        }
+
+        $chartData = [];
+
+        foreach ($days as $date => $total) {
+            $chartData[] = [
+                'date' => $date,
+                'total' => $total
+            ];
+        }
+
         require_once(BASE_PATH . '/resources/views/app/dashboard/index.php');
     }
 }

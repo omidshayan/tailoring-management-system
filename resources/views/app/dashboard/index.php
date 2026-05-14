@@ -95,61 +95,70 @@
       </div>
 
       <!-- chart -->
-      <div class="parent-dash-chart mmw mt20">
+      <div class="parent-dash-chart d-box mt20">
         <div class="dash-chart">
-          <canvas id="weeklyChart"></canvas>
-        </div>
-        <div class="dash-chart">
-          <canvas id="typeChart"></canvas>
+          <canvas id="ordersChart"></canvas>
         </div>
       </div>
+      <!-- end chart -->
 
     </div>
 
 
     <!-- charts -->
-    <script>
-      const isoDates1 = <?= json_encode(array_column($days, 'iso')) ?>;
-      const shamsi1 = <?= json_encode(array_column($days, 'shamsi')) ?>;
-      const salesData = <?= json_encode(array_column($days, 'sales')) ?>;
 
-      const labels1 = isoDates1.map(d => {
-        const parts = d.split('-');
-        const dt = new Date(parts[0], Number(parts[1]) - 1, parts[2]);
-        return dt.toLocaleDateString('fa-AF', {
+    <script>
+      const ordersData = <?= json_encode($chartData) ?>;
+
+      const labels = ordersData.map(item => {
+        return new Date(item.date).toLocaleDateString('fa-IR', {
           weekday: 'long'
         });
       });
 
-      new Chart(document.getElementById('weeklyChart'), {
+      const totals = ordersData.map(item => item.total);
+
+      const ctx = document.getElementById('ordersChart');
+
+      new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: labels1,
+          labels: labels,
           datasets: [{
-            label: 'فروش روزانه (افغانی)',
-            data: salesData,
-            backgroundColor: 'rgba(2, 236, 80, 0.62)',
-            borderColor: 'rgba(0, 255, 34, 1)',
-            borderWidth: 1,
-            maxBarThickness: 20
+            label: 'تعداد سفارشات',
+            data: totals,
+            backgroundColor: '#4f46e5',
+            hoverBackgroundColor: '#3730a3',
+            borderRadius: 8,
+            borderSkipped: false,
+            barThickness: 18
           }]
         },
         options: {
           responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              enabled: true,
+              callbacks: {
+                label: function(context) {
+                  return 'تعداد سفارشات: ' + context.raw;
+                }
+              }
             }
           },
-          plugins: {
-            tooltip: {
-              callbacks: {
-                title: function(ctx) {
-                  const idx = ctx[0].dataIndex;
-                  return labels1[idx] + ' - ' + shamsi1[idx];
-                },
-                label: ctx => 'فروش: ' + ctx.formattedValue + ' افـ'
+          scales: {
+            x: {
+              grid: {
+                display: false
+              }
+            },
+            y: {
+              beginAtZero: true,
+              ticks: {
+                precision: 0
               }
             }
           }
